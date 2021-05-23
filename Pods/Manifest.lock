@@ -1,0 +1,24 @@
+PODS:
+  - BCrypt (1.0.0)
+  - KeychainAccess (4.2.2)
+  - Validator (3.2.1)
+
+DEPENDENCIES:
+  - BCrypt
+  - KeychainAccess
+  - Validator
+
+SPEC REPOS:
+  trunk:
+    - BCrypt
+    - KeychainAccess
+    - Validator
+
+SPEC CHECKSUMS:
+  BCrypt: 712b656110e5020d319c547e4d8f3053ded82b2a
+  KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
+  Validator: 80a6f567220c962dfd2d9928ae98a8c1d164f6f4
+
+PODFILE CHECKSUM: 85d6fc45f695973a7c0f94cfc6e722991f8b6df5
+
+COCOAPODS: 1.10.1

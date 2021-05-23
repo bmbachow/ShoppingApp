@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp-frameworks.sh
+${BUILT_PRODUCTS_DIR}/BCrypt/BCrypt.framework
+${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework
+${BUILT_PRODUCTS_DIR}/Validator/Validator.framework
