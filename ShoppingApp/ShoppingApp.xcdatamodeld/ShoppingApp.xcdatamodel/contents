@@ -1,4 +1,80 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E241" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AccountPaymentMethodEntity" representedClassName="AccountPaymentMethodEntity" parentEntity="PaymentMethodEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="accountNumber" attributeType="String"/>
+        <attribute name="nameOnAccount" attributeType="String"/>
+        <attribute name="routingNumber" attributeType="String"/>
+    </entity>
+    <entity name="CardPaymentMethodEntity" representedClassName="CardPaymentMethodEntity" parentEntity="PaymentMethodEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="cardNumber" attributeType="String"/>
+        <attribute name="nameOnCard" attributeType="String"/>
+    </entity>
+    <entity name="CategoryEntity" representedClassName="CategoryEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductEntity" inverseName="category" inverseEntity="ProductEntity"/>
+    </entity>
+    <entity name="DeliveryEntity" representedClassName="DeliveryEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="deliveredDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="expectedDeliveryDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="shippedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="currentLocation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocationEntity" inverseName="delivery" inverseEntity="LocationEntity"/>
+        <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OrderEntity" inverseName="delivery" inverseEntity="OrderEntity"/>
+    </entity>
+    <entity name="LocationEntity" representedClassName="LocationEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="latitude" attributeType="Double" usesScalarValueType="YES"/>
+        <attribute name="longitude" attributeType="Double" usesScalarValueType="YES"/>
+        <relationship name="delivery" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DeliveryEntity" inverseName="currentLocation" inverseEntity="DeliveryEntity"/>
+    </entity>
+    <entity name="OrderEntity" representedClassName="OrderEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="orderedDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="delivery" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DeliveryEntity" inverseName="order" inverseEntity="DeliveryEntity"/>
+        <relationship name="paymentMethod" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentMethodEntity" inverseName="orders" inverseEntity="PaymentMethodEntity"/>
+        <relationship name="products" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ProductEntity" inverseName="orders" inverseEntity="ProductEntity"/>
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="orders" inverseEntity="UserEntity"/>
+    </entity>
+    <entity name="PaymentMethodEntity" representedClassName="PaymentMethodEntity" syncable="YES" codeGenerationType="class">
+        <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="OrderEntity" inverseName="paymentMethod" inverseEntity="OrderEntity"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="paymentMethods" inverseEntity="UserEntity"/>
+    </entity>
+    <entity name="ProductEntity" representedClassName="ProductEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="price" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="productDescription" optional="YES" attributeType="String"/>
+        <relationship name="cartUsers" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="UserEntity" inverseName="cartProducts" inverseEntity="UserEntity"/>
+        <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryEntity" inverseName="products" inverseEntity="CategoryEntity"/>
+        <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="OrderEntity" inverseName="products" inverseEntity="OrderEntity"/>
+        <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ProductReviewEntity" inverseName="product" inverseEntity="ProductReviewEntity"/>
+        <relationship name="wishListUsers" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="UserEntity" inverseName="wishListProducts" inverseEntity="UserEntity"/>
+    </entity>
+    <entity name="ProductReviewEntity" representedClassName="ProductReviewEntity" syncable="YES" codeGenerationType="class">
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProductEntity" inverseName="reviews" inverseEntity="ProductEntity"/>
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="reviews" inverseEntity="UserEntity"/>
+    </entity>
+    <entity name="UserEntity" representedClassName="UserEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="email" attributeType="String"/>
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
+        <attribute name="phoneNumber" attributeType="String"/>
+        <attribute name="searchHistory" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String]"/>
+        <relationship name="cartProducts" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ProductEntity" inverseName="cartUsers" inverseEntity="ProductEntity"/>
+        <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OrderEntity" inverseName="user" inverseEntity="OrderEntity"/>
+        <relationship name="paymentMethods" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PaymentMethodEntity" inverseName="user" inverseEntity="PaymentMethodEntity"/>
+        <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ProductReviewEntity" inverseName="user" inverseEntity="ProductReviewEntity"/>
+        <relationship name="wishListProducts" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ProductEntity" inverseName="wishListUsers" inverseEntity="ProductEntity"/>
+    </entity>
+    <elements>
+        <element name="CategoryEntity" positionX="-3182.745666503907" positionY="-2484.279449462891" width="128" height="88"/>
+        <element name="OrderEntity" positionX="-2723.453002929688" positionY="-2651.342437744141" width="128" height="133"/>
+        <element name="ProductEntity" positionX="-2944.902954101562" positionY="-2497.447570800782" width="128" height="178"/>
+        <element name="UserEntity" positionX="-3126.313354492188" positionY="-2785.868408203125" width="128" height="193"/>
+        <element name="DeliveryEntity" positionX="-2549.677124023438" positionY="-2638.256164550781" width="128" height="118"/>
+        <element name="LocationEntity" positionX="-2389.678588867188" positionY="-2464.133972167969" width="128" height="88"/>
+        <element name="ProductReviewEntity" positionX="-2590.53271484375" positionY="-2464.435577392578" width="128" height="73"/>
+        <element name="CardPaymentMethodEntity" positionX="-2937.164123535156" positionY="-2790.85693359375" width="167.1560668945312" height="73"/>
+        <element name="AccountPaymentMethodEntity" positionX="-2719.697387695312" positionY="-2795.223876953125" width="188.1484375" height="88"/>
+        <element name="PaymentMethodEntity" positionX="-2914.240295410156" positionY="-2896.662826538086" width="128" height="73"/>
+    </elements>
 </model>
