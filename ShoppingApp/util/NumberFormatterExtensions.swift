@@ -14,6 +14,13 @@ extension NumberFormatter {
         return formatter
     }
     
+    static var dollars: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = "USD"
+        return formatter
+    }
+    
     func string(from float: Float) -> String? {
         return self.string(from: NSNumber(floatLiteral: Double(float)))
     }
