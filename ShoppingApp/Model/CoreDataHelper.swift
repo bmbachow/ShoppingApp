@@ -181,11 +181,13 @@ class CoreDataHelper: RemoteAPI {
         ]
         
         let products: [(categoryName: String, name: String, price: Double, productDescription: String, image: UIImage)] = [
-            (categoryName: "Monitors", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
-            (categoryName: "Monitors", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
-            (categoryName: "Monitors", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
-            (categoryName: "Monitors", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
-            (categoryName: "Monitors", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Monitors", name: "AOC CU32V3 32' Super-Curved 4K UHD monitor, 1500R Curved VA, 4ms, 121% sRGB Coverage / 90% DCI-P3, HDMI 2.0/DisplayPort, VESA, Black", price: 0, productDescription: "", image: UIImage(named: "d-aocmonitor")!),
+            (categoryName: "Monitors", name: "LG 32UL500-W 32 Inch UHD (3840 x 2160) VA Display with AMD FreeSync, DCI-P3 95% Color Gamut and HDR 10 Compatibility, Silver/White, Silve/White", price: 0, productDescription: "", image: UIImage(named: "d-lg32inch")!),
+            (categoryName: "Monitors", name: "Dell SE2419Hx 24' IPS Full HD (1920x1080) Monitor, Black", price: 0, productDescription: "", image: UIImage(named: "d-dell24inch")!),
+            (categoryName: "Monitors", name: "ASUS VP249QGR 23.8” Gaming Monitor 144Hz Full HD (1920 x 1080) IPS 1ms FreeSync Extreme Low Motion Blur Eye Care DisplayPort HDMI VGA,BLACK",
+             price: 0, productDescription: "", image: UIImage(named: "d-asusgaming")!),
+            (categoryName: "Monitors", name: "Philips 328E1CA 32' Curved Monitor, 4K UHD, 120% sRGB, Adaptive-Sync, Speakers, Vesa, 4Yr Advance Replacement Warranty",
+             price: 0, productDescription: "", image: UIImage(named: "d-phillipsmonitor")!),
             (categoryName: "Laptops", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
             (categoryName: "Laptops", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
             (categoryName: "Laptops", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
