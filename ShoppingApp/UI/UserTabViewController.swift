@@ -6,3 +6,15 @@
 //
 
 import Foundation
+import UIKit
+
+class UserTabViewController: BaseViewController {
+    var user: User? {
+        (self.tabBarController as? UserTabBarController)?.user
+    }
+    
+    func presentSignInViewController() {
+        let signInViewController = SignInViewController()
+        self.present(signInViewController, animated: true, completion: nil)
+    }
+}

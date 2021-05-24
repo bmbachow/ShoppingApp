@@ -13,7 +13,7 @@ class KeychainHelper {
     
     struct Key {
         static let password = "password"
-        static let username = "username"
+        static let userID = "userID"
         static let shouldSaveLoginCredentials = "shouldSaveLoginCredentials"
     }
  
@@ -28,20 +28,20 @@ class KeychainHelper {
     
     func saveLoginCredentials(_ loginCredentials: LoginCredentials) {
         UserDefaultsHelper().shouldSaveLoginCredentials = true
-        self.keychain[Key.username] = loginCredentials.username
+        self.keychain[Key.userID] = loginCredentials.userID
         self.keychain[Key.password] = loginCredentials.password
     }
     
     func retrieveLoginCredentials() -> LoginCredentials? {
         guard let password = self.keychain[Key.password] else { return nil }
-        guard let username = self.keychain[Key.username] else { return nil }
-        return LoginCredentials(username: username, password: password)
+        guard let userID = self.keychain[Key.userID] else { return nil }
+        return LoginCredentials(userID: userID, password: password)
     }
     
     func deleteLoginCredentials() {
         UserDefaultsHelper().shouldSaveLoginCredentials = false
         self.keychain[Key.password] = nil
-        self.keychain[Key.username] = nil
+        self.keychain[Key.userID] = nil
     }
     
 }

@@ -16,8 +16,8 @@ class CoreDataHelper: RemoteAPI {
         self.container.viewContext
     }
     let bcryptHasher = BCryptHasher.standard
-    init() {
-        self.container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+    init(container: NSPersistentContainer) {
+        self.container = container
         self.seedDatabaseIfEmpty()
     }
     //MARK: User
@@ -177,8 +177,6 @@ class CoreDataHelper: RemoteAPI {
         UserDefaultsHelper().databaseWasSeeded = true
     }
 }
-
-
 
 
 //MARK: Error

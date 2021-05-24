@@ -7,9 +7,17 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class BaseViewController: UIViewController {
     
-    let remoteAPI: RemoteAPI = CoreDataHelper()
+    var appDelegate: AppDelegate { UIApplication.shared.delegate as! AppDelegate }
+    
+    var remoteAPI: RemoteAPI { self.appDelegate.remoteAPI! }
+    
+    func presentSwiftUIView<T: View>(view: T) {
+        let hostingController = UIHostingController(rootView: view)
+        self.present(hostingController, animated: true, completion: nil)
+    }
     
 }

@@ -8,6 +8,9 @@
 import Foundation
 
 extension Delivery {
+    
+    // add functionality like this in the extensions
+    
     var isDelivered: Bool {
         self.deliveredDate != nil
     }

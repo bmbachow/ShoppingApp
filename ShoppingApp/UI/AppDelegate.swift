@@ -13,16 +13,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    var signInViewController: SignInViewController?
+    var remoteAPI: RemoteAPI?
+
+    var tabBarController: UserTabBarController?
+    var shoppingViewController: ShoppingViewController?
+    var userHomeViewController: UserHomeViewController?
+    var cartViewController: CartViewController?
+    var settingsViewController: SettingsViewController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        self.signInViewController = SignInViewController()
+        self.remoteAPI = CoreDataHelper(container: self.persistentContainer)
         
-        self.window!.rootViewController = self.signInViewController!
+        self.tabBarController = UserTabBarController()
+        self.window!.rootViewController = self.tabBarController!
         
+        self.shoppingViewController = ShoppingViewController()
+        self.shoppingViewController!.tabBarItem = UITabBarItem(title: "Shop", image: UIImage(systemName: "house"), selectedImage: nil)
+        
+        self.userHomeViewController = UserHomeViewController()
+        self.userHomeViewController!.tabBarItem = UITabBarItem(title: "User", image: UIImage(systemName: "person"), selectedImage: nil)
+        
+        self.cartViewController = CartViewController()
+        self.cartViewController!.tabBarItem = UITabBarItem(title: "Cart", image: UIImage(systemName: "cart"), selectedImage: nil)
+        
+        self.settingsViewController = SettingsViewController()
+        self.settingsViewController!.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "line.horizontal.3"), selectedImage: nil)
+        
+        self.tabBarController!.viewControllers = [self.shoppingViewController!, self.userHomeViewController!, self.cartViewController!, self.settingsViewController!]
+        
+        self.window!.rootViewController = self.tabBarController!
         self.window!.makeKeyAndVisible()
         
         // Override point for customization after application launch.

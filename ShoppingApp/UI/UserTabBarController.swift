@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import UIKit
+
+class UserTabBarController: UITabBarController {
+    var user: User?
+}
