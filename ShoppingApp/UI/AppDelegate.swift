@@ -16,9 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var remoteAPI: RemoteAPI?
 
     var tabBarController: UserTabBarController?
+    
+    var shoppingNavigationController: UINavigationController?
     var shoppingViewController: ShoppingViewController?
+    
+    var userHomeNavigationController: UINavigationController?
     var userHomeViewController: UserHomeViewController?
+    
+    var cartNavigationController: UINavigationController?
     var cartViewController: CartViewController?
+    
+    var settingsNavigationController: UINavigationController?
     var settingsViewController: SettingsViewController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -32,17 +40,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.shoppingViewController = ShoppingViewController()
         self.shoppingViewController!.tabBarItem = UITabBarItem(title: "Shop", image: UIImage(systemName: "house"), selectedImage: nil)
+        self.shoppingNavigationController = UINavigationController(rootViewController: self.shoppingViewController!)
+        self.shoppingNavigationController!.setNavigationBarHidden(true, animated: false)
         
         self.userHomeViewController = UserHomeViewController()
         self.userHomeViewController!.tabBarItem = UITabBarItem(title: "User", image: UIImage(systemName: "person"), selectedImage: nil)
+        self.userHomeNavigationController = UINavigationController(rootViewController: self.userHomeViewController!)
+        self.userHomeNavigationController!.setNavigationBarHidden(true, animated: false)
         
         self.cartViewController = CartViewController()
         self.cartViewController!.tabBarItem = UITabBarItem(title: "Cart", image: UIImage(systemName: "cart"), selectedImage: nil)
+        self.cartNavigationController = UINavigationController(rootViewController: self.cartViewController!)
+        self.cartNavigationController!.setNavigationBarHidden(true, animated: false)
         
         self.settingsViewController = SettingsViewController()
         self.settingsViewController!.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "line.horizontal.3"), selectedImage: nil)
+        self.settingsNavigationController = UINavigationController(rootViewController: self.settingsViewController!)
+        self.settingsNavigationController!.setNavigationBarHidden(true, animated: false)
         
-        self.tabBarController!.viewControllers = [self.shoppingViewController!, self.userHomeViewController!, self.cartViewController!, self.settingsViewController!]
+        self.tabBarController!.viewControllers = [self.shoppingNavigationController!, self.userHomeNavigationController!, self.cartNavigationController!, self.settingsNavigationController!]
         
         self.window!.rootViewController = self.tabBarController!
         self.window!.makeKeyAndVisible()

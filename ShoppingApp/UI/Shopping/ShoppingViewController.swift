@@ -86,4 +86,13 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         return 2
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            return
+        default:
+            let viewController = ProductDetailViewController(user: self.user, product: self.products[indexPath.row])
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
 }

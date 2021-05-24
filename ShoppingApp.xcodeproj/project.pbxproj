@@ -57,6 +57,7 @@
 		5292777A265C3F1500394180 /* ProductDetailMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52927778265C3F1500394180 /* ProductDetailMainTableViewCell.swift */; };
 		5292777B265C3F1500394180 /* ProductDetailMainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52927779265C3F1500394180 /* ProductDetailMainTableViewCell.xib */; };
 		5292777F265C564E00394180 /* ShoppingAdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5292777D265C564E00394180 /* ShoppingAdTableViewCell.xib */; };
+		52927781265C5A4400394180 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52927780265C5A4400394180 /* UIExtensions.swift */; };
 		52CD8B17265BE09C00AFAC8C /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52CD8B15265BE09C00AFAC8C /* AlertViewController.xib */; };
 		52CD8B18265BE09C00AFAC8C /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8B16265BE09C00AFAC8C /* AlertViewController.swift */; };
 		52D8F89926580BA700EF220A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D8F89826580BA700EF220A /* AppDelegate.swift */; };
@@ -130,6 +131,7 @@
 		52927778265C3F1500394180 /* ProductDetailMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailMainTableViewCell.swift; sourceTree = "<group>"; };
 		52927779265C3F1500394180 /* ProductDetailMainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductDetailMainTableViewCell.xib; sourceTree = "<group>"; };
 		5292777D265C564E00394180 /* ShoppingAdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingAdTableViewCell.xib; sourceTree = "<group>"; };
+		52927780265C5A4400394180 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		52CD8B15265BE09C00AFAC8C /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		52CD8B16265BE09C00AFAC8C /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		52D8F89526580BA700EF220A /* ShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -323,6 +325,7 @@
 				52E0B06E265B199100B9C77E /* UserTabViewController.swift */,
 				52D8F8A626580BA900EF220A /* LaunchScreen.storyboard */,
 				52E0B06A265B11BB00B9C77E /* ViewControllerBlueprint.storyboard */,
+				52927780265C5A4400394180 /* UIExtensions.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52927781265C5A4400394180 /* UIExtensions.swift in Sources */,
 				5267258D265AECA600D9CAB9 /* BCryptHasher.swift in Sources */,
 				526724C6265AE3AC00D9CAB9 /* UserExtensions.swift in Sources */,
 				52672586265AECA600D9CAB9 /* InputValidator.swift in Sources */,

@@ -11,6 +11,8 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
   
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var backButton: UIButton!
+    
     var user: User?
     
     let product: Product
@@ -34,6 +36,9 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.register(UINib(nibName: "ProductDetailMainTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductDetailMainTableViewCell")
         self.productDetailMainTableViewCell.productNameLabel.text = self.product.name
         self.productDetailMainTableViewCell.productImageView.image = self.product.image
         self.productDetailMainTableViewCell.productPriceLabel.text = NumberFormatter.dollars.string(from: Float(self.product.price))
@@ -41,6 +46,10 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    @IBAction func tappedBackButton(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
