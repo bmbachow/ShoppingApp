@@ -83,8 +83,8 @@
 
 /* Begin PBXFileReference section */
 		0D42D8D3867F8317008707C544DD58CF /* portable_endian.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = portable_endian.h; path = BCrypt/Classes/bcryptc/include/portable_endian.h; sourceTree = "<group>"; };
-		110CFDE3C9EB22EDDE7187EF6B8BEC9E /* timingsafe_bcmp.c */ = {isa = PBXFileReference; includeInIndex = 1; name = timingsafe_bcmp.c; path = BCrypt/Classes/bcryptc/timingsafe_bcmp.c; sourceTree = "<group>"; };
-		13AB1FFE3FB46270444D333C48E73517 /* bcrypt.c */ = {isa = PBXFileReference; includeInIndex = 1; name = bcrypt.c; path = BCrypt/Classes/bcryptc/bcrypt.c; sourceTree = "<group>"; };
+		110CFDE3C9EB22EDDE7187EF6B8BEC9E /* timingsafe_bcmp.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = timingsafe_bcmp.c; path = BCrypt/Classes/bcryptc/timingsafe_bcmp.c; sourceTree = "<group>"; };
+		13AB1FFE3FB46270444D333C48E73517 /* bcrypt.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = bcrypt.c; path = BCrypt/Classes/bcryptc/bcrypt.c; sourceTree = "<group>"; };
 		18559F6D0FC82BE2682CDCC12CC6B08E /* ContainsNumberValidationPattern.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContainsNumberValidationPattern.swift; path = Validator/Sources/Patterns/ContainsNumberValidationPattern.swift; sourceTree = "<group>"; };
 		1B8891BB409ECB6A0046D3817D005925 /* BCrypt.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BCrypt.modulemap; sourceTree = "<group>"; };
 		233CA9CC2F5EBDBDC34EA95FC5F2FC49 /* CaseValidationPattern.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CaseValidationPattern.swift; path = Validator/Sources/Patterns/CaseValidationPattern.swift; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 		2AA61A368D00AEC894F681BA25ED65DE /* BCrypt-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "BCrypt-Info.plist"; sourceTree = "<group>"; };
 		2E69EFBCA2BC8D7D35BDBAF786018663 /* Keychain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Keychain.swift; path = Lib/KeychainAccess/Keychain.swift; sourceTree = "<group>"; };
 		3E2296EAA5357963FD8B8C9BC44760B5 /* Validator-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Validator-prefix.pch"; sourceTree = "<group>"; };
-		3E941FC29F33BF4EFA65EF695F08ACED /* Pods_ShoppingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ShoppingApp.framework; path = "Pods-ShoppingApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E941FC29F33BF4EFA65EF695F08ACED /* Pods_ShoppingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F926D224F456482CFF0B1641E0EA0DE /* BCrypt-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BCrypt-umbrella.h"; sourceTree = "<group>"; };
 		46B50A128E3E2AA4D47F741C1BA34093 /* KeychainAccess-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KeychainAccess-dummy.m"; sourceTree = "<group>"; };
 		46C18D005402C3302823993A981292D1 /* KeychainAccess-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "KeychainAccess-Info.plist"; sourceTree = "<group>"; };
@@ -105,11 +105,11 @@
 		54C5CDF7605EC3575F278A0BCBB64FA8 /* UISlider+Validator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UISlider+Validator.swift"; path = "Validator/Sources/UIKit+Validator/UISlider+Validator.swift"; sourceTree = "<group>"; };
 		5A6102B3D9621C9AEF8375123427B542 /* ValidatableInterfaceElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ValidatableInterfaceElement.swift; path = "Validator/Sources/UIKit+Validator/ValidatableInterfaceElement.swift"; sourceTree = "<group>"; };
 		5A6D7F2C1E4EC5BA493104E6CE139F95 /* KeychainAccess.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KeychainAccess.release.xcconfig; sourceTree = "<group>"; };
-		607D56077962408CF65253CFD0663544 /* sha2.c */ = {isa = PBXFileReference; includeInIndex = 1; name = sha2.c; path = BCrypt/Classes/bcryptc/sha2.c; sourceTree = "<group>"; };
+		607D56077962408CF65253CFD0663544 /* sha2.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = sha2.c; path = BCrypt/Classes/bcryptc/sha2.c; sourceTree = "<group>"; };
 		6710433A73B668CE1D8DFF8C5D9EBEA3 /* ValidationRuleURL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ValidationRuleURL.swift; path = Validator/Sources/Rules/ValidationRuleURL.swift; sourceTree = "<group>"; };
 		6F6266B807164E0367A7D74E67596F2B /* Validator.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Validator.modulemap; sourceTree = "<group>"; };
 		76A815574038E458E062B7319734615F /* KeychainAccess-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KeychainAccess-prefix.pch"; sourceTree = "<group>"; };
-		778A43DE3EA035383F503F3CB114C303 /* Validator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Validator.framework; path = Validator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		778A43DE3EA035383F503F3CB114C303 /* Validator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Validator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		782F87CFBC5D1C7F2D96358A3BF5BA8B /* ValidationRuleRequired.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ValidationRuleRequired.swift; path = Validator/Sources/Rules/ValidationRuleRequired.swift; sourceTree = "<group>"; };
 		7A78C252789E61B264DB0BD8DC7E3411 /* BCrypt-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BCrypt-prefix.pch"; sourceTree = "<group>"; };
 		7F751805762349F20FED9C13203725FB /* ValidationRuleComparison.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ValidationRuleComparison.swift; path = Validator/Sources/Rules/ValidationRuleComparison.swift; sourceTree = "<group>"; };
@@ -119,11 +119,11 @@
 		8B4C7495E2705802E136639CC8EC8B97 /* ValidationRuleContains.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ValidationRuleContains.swift; path = Validator/Sources/Rules/ValidationRuleContains.swift; sourceTree = "<group>"; };
 		8E1775B8846573E5E34A5E78CD282858 /* Validatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validatable.swift; path = Validator/Sources/Validatable.swift; sourceTree = "<group>"; };
 		93F2DC725A26DB44073B54041A2BF234 /* Pods-ShoppingApp-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ShoppingApp-Info.plist"; sourceTree = "<group>"; };
-		9576754E1E70CB61F09F9357C5B55211 /* bcrypt_pbkdf.c */ = {isa = PBXFileReference; includeInIndex = 1; name = bcrypt_pbkdf.c; path = BCrypt/Classes/bcryptc/bcrypt_pbkdf.c; sourceTree = "<group>"; };
-		9807B6F2EEE9B2289FD974094C3DD3B6 /* blf.c */ = {isa = PBXFileReference; includeInIndex = 1; name = blf.c; path = BCrypt/Classes/bcryptc/blf.c; sourceTree = "<group>"; };
+		9576754E1E70CB61F09F9357C5B55211 /* bcrypt_pbkdf.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = bcrypt_pbkdf.c; path = BCrypt/Classes/bcryptc/bcrypt_pbkdf.c; sourceTree = "<group>"; };
+		9807B6F2EEE9B2289FD974094C3DD3B6 /* blf.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = blf.c; path = BCrypt/Classes/bcryptc/blf.c; sourceTree = "<group>"; };
 		9A826507F34D657E7564DE313C2D40C8 /* Pods-ShoppingApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ShoppingApp-frameworks.sh"; sourceTree = "<group>"; };
 		9B18B1EFA0B973AB9B621300105A2E1A /* ValidationPattern.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ValidationPattern.swift; path = Validator/Sources/Patterns/ValidationPattern.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DB87538D17DB09DCDA48EE635E8EEF8 /* KeychainAccess.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = KeychainAccess.modulemap; sourceTree = "<group>"; };
 		A7AE2AA63A1A8885614B33EAB1B7BE25 /* PerfectBCrypt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PerfectBCrypt.swift; path = BCrypt/Classes/PerfectBCrypt/PerfectBCrypt.swift; sourceTree = "<group>"; };
 		A9D5F4C99F63172199565B9D416D856E /* Pods-ShoppingApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ShoppingApp-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 		B164FD70B04AB322FA82BBC97535DAA4 /* blf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = blf.h; path = BCrypt/Classes/bcryptc/include/blf.h; sourceTree = "<group>"; };
 		B354B09D75F739AF5A53EFE82EE1CA6F /* EmailValidationPattern.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EmailValidationPattern.swift; path = Validator/Sources/Patterns/EmailValidationPattern.swift; sourceTree = "<group>"; };
 		B86F64FE3C72AEAAF23B999B1ADF9E0F /* sha2.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = sha2.h; path = BCrypt/Classes/bcryptc/include/sha2.h; sourceTree = "<group>"; };
-		BD63D935BB3EBEA73856BBE74E8D5459 /* BCrypt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BCrypt.framework; path = BCrypt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD63D935BB3EBEA73856BBE74E8D5459 /* BCrypt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BCrypt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFACCBACBEE887FC8F0856A56E79F2FF /* Pods-ShoppingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ShoppingApp.release.xcconfig"; sourceTree = "<group>"; };
 		BFC561740E24D04C59495FE0A880E65D /* ValidationRuleCondition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ValidationRuleCondition.swift; path = Validator/Sources/Rules/ValidationRuleCondition.swift; sourceTree = "<group>"; };
 		C5E462F0BA935C6C9C7AD9D8475C433E /* Validator-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Validator-Info.plist"; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 		DD2519DC0B066D8FE762157E25DF0DD7 /* Pods-ShoppingApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ShoppingApp-umbrella.h"; sourceTree = "<group>"; };
 		E1FEFF38C6FDA22DA5C27E404E72C5E9 /* UITextField+Validator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITextField+Validator.swift"; path = "Validator/Sources/UIKit+Validator/UITextField+Validator.swift"; sourceTree = "<group>"; };
 		E86FB55D0B23C8E2742D18E5C60F19A0 /* ValidationResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ValidationResult.swift; path = Validator/Sources/ValidationResult.swift; sourceTree = "<group>"; };
-		E8EE7F078656FABB8F6821D10FF994BB /* KeychainAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KeychainAccess.framework; path = KeychainAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8EE7F078656FABB8F6821D10FF994BB /* KeychainAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeychainAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA53486B3D566F6786D2EDD0FD7B7C2C /* ValidationRuleSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ValidationRuleSet.swift; path = Validator/Sources/Rules/ValidationRuleSet.swift; sourceTree = "<group>"; };
 		EA88BD968CAE9CF9F39F2FFD77FA652E /* Pods-ShoppingApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ShoppingApp-dummy.m"; sourceTree = "<group>"; };
 		EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -255,7 +255,6 @@
 				4A77F51C4B11DB653A7AB9EBFA6662C5 /* Validator.swift */,
 				A7EA85444C73E469CE0252B5950993D1 /* Support Files */,
 			);
-			name = Validator;
 			path = Validator;
 			sourceTree = "<group>";
 		};
@@ -265,7 +264,6 @@
 				2E69EFBCA2BC8D7D35BDBAF786018663 /* Keychain.swift */,
 				7771789B61A33A2D98AC8AF7FA200B60 /* Support Files */,
 			);
-			name = KeychainAccess;
 			path = KeychainAccess;
 			sourceTree = "<group>";
 		};
@@ -370,7 +368,6 @@
 				110CFDE3C9EB22EDDE7187EF6B8BEC9E /* timingsafe_bcmp.c */,
 				07B9DF30317EAD0D04CF8DE8D8F62ED7 /* Support Files */,
 			);
-			name = BCrypt;
 			path = BCrypt;
 			sourceTree = "<group>";
 		};
@@ -498,7 +495,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1250;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 9.3";
@@ -693,7 +690,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/BCrypt/BCrypt-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/BCrypt/BCrypt-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -766,7 +763,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/BCrypt/BCrypt-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/BCrypt/BCrypt-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -801,7 +798,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/KeychainAccess/KeychainAccess-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/KeychainAccess/KeychainAccess-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -873,7 +870,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -901,7 +898,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Validator/Validator-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Validator/Validator-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -936,7 +933,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Validator/Validator-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Validator/Validator-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1005,7 +1002,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1032,7 +1029,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/KeychainAccess/KeychainAccess-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/KeychainAccess/KeychainAccess-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
