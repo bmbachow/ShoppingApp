@@ -242,7 +242,14 @@ class CoreDataHelper: RemoteAPI {
             (categoryName: "Gaming", name: "", price: 0, productDescription: "", image: UIImage(named: "")!)
         ]
     
-        //MARK: TODO: create dummy data
+        
+        for category in categories {
+            self.postNewCategory(name: category.name, image: category.image, success: {_ in}, failure: {_ in})
+        }
+        
+        for product in products {
+            self.postNewProduct(name: product.name, categoryName: product.categoryName, price: product.price, productDescription: product.productDescription, image: product.image, success: {_ in}, failure: {_ in})
+        }
         
         UserDefaultsHelper().databaseWasSeeded = true
     }
