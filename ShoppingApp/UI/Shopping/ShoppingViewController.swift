@@ -15,6 +15,10 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
     
     private var products = [Product]()
     
+    lazy var adCell : ShoppingAdTableViewCell = {
+        return self.tableView.dequeueReusableCell(withIdentifier: "ShoppingAdTableViewCell") as! ShoppingAdTableViewCell
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
@@ -32,6 +36,7 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         }, failure: { error in
             print(error.localizedDescription)
         })
+        self.adCell.startAdTimer()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -42,15 +47,34 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.adCell.invalidateTimer()
+    }
+    
     //MARK: UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        switch section {
+        case 0:
+            return 1
+        default:
+            return self.products.count
+        }
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        switch indexPath.section {
+        case 0:
+            return self.adCell
+        default:
+            return UITableViewCell()
+        }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     
 }
