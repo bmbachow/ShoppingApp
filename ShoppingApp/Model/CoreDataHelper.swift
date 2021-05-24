@@ -171,6 +171,42 @@ class CoreDataHelper: RemoteAPI {
         guard !UserDefaultsHelper().databaseWasSeeded else {
             return
         }
+        
+        let categories: [(name: String, image: UIImage)] = [
+            (name: "Monitors", image: UIImage(named: "")!),
+            (name: "Laptops", image: UIImage(named: "")!),
+            (name: "Accessories", image: UIImage(named: "")!),
+            (name: "Smartphones", image: UIImage(named: "")!),
+            (name: "Gaming", image: UIImage(named: "")!)
+        ]
+        
+        let products: [(categoryName: String, name: String, price: Double, productDescription: String, image: UIImage)] = [
+            (categoryName: "Monitors", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Monitors", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Monitors", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Monitors", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Monitors", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Laptops", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Laptops", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Laptops", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Laptops", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Laptops", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Accessories", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Accessories", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Accessories", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Accessories", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Accessories", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Smartphones", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Smartphones", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Smartphones", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Smartphones", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Smartphones", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Gaming", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Gaming", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Gaming", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Gaming", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
+            (categoryName: "Gaming", name: "", price: 0, productDescription: "", image: UIImage(named: "")!)
+        ]
     
         //MARK: TODO: create dummy data
         
