@@ -36,13 +36,18 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         self.productDetailMainTableViewCell.productNameLabel.text = self.product.name
         self.productDetailMainTableViewCell.productImageView.image = self.product.image
+        self.productDetailMainTableViewCell.productPriceLabel.text = NumberFormatter.dollars.string(from: Float(self.product.price))
     }
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        return self.productDetailMainTableViewCell
     }
 }
