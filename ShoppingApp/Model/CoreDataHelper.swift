@@ -109,6 +109,18 @@ class CoreDataHelper: RemoteAPI {
             failure(error)
         }
     }
+  
+    func postNewProduct(name: String, categoryName: String, price: Double, productDescription: String, image: UIImage, success: (Product) -> Void, failure: (Error) -> Void) {
+        do {
+            guard let category = try self.getCategorySync(name: name) else {
+                return failure(CoreDataHelperError.expectedDataUnavailable("No category exists named \(categoryName)"))
+            }
+            self.postNewProduct(name: name, category: category, price: price, productDescription: productDescription, image: image, success: success, failure: failure)
+        } catch {
+            failure(error)
+        }
+    }
+    
     
     //MARK: Order
     func placeOrder(user: User, products: [Product], price: Double, paymentMethod: PaymentMethod, success: (Order) -> Void, failure: (Error) -> Void) {
@@ -145,6 +157,28 @@ class CoreDataHelper: RemoteAPI {
         } catch {
             failure(error)
         }
+    }
+    
+    func getCategory(name: String, success: (Category?) -> Void, failure: (Error) -> Void) {
+        do {
+            let category = try self.getCategorySync(name: name)
+            success(category)
+        } catch {
+            failure(error)
+        }
+    }
+    
+    private func getCategorySync(name: String) throws -> Category? {
+        let request: NSFetchRequest<Category> = Category.fetchRequest()
+        request.predicate = NSPredicate(format: "name == %@", name)
+        let categories = try self.viewContext.fetch(request)
+        guard categories.count <= 1 else {
+            throw(CoreDataHelperError.dataCorruption("Should only be one category named \(name)"))
+        }
+        guard categories.count == 1 else {
+            return nil
+        }
+        return categories[0]
     }
     
     //MARK: ProductReview

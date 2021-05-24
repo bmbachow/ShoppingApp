@@ -25,6 +25,9 @@ protocol RemoteAPI {
     func placeOrder(user: User, products: [Product], price: Double, paymentMethod: PaymentMethod, success: (Order) -> Void, failure: (Error) -> Void)
     
     //MARK: Category
+    
+    func getCategory(name: String, success: (Category?) -> Void, failure: (Error) -> Void)
+    
     func postNewCategory(name: String, image: UIImage, success: (Category) -> Void, failure: (Error) -> Void)
     
     //MARK: ProductReview
