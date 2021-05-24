@@ -287,11 +287,13 @@ class CoreDataHelper: RemoteAPI {
                 price: 829.00,
                 productDescription: "",
                 image: UIImage(named: "s-apple")!),
-            (categoryName: "Gaming", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
-            (categoryName: "Gaming", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
-            (categoryName: "Gaming", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
-            (categoryName: "Gaming", name: "", price: 0, productDescription: "", image: UIImage(named: "")!),
-            (categoryName: "Gaming", name: "", price: 0, productDescription: "", image: UIImage(named: "")!)
+
+            (categoryName: "Gaming", name: "AKRacing Gaming Chair", price: 399.99, productDescription: "AKRacing Core Series EX-Wide SE Ergonomic Red Gaming Chair with Wide Seat, 330 Lbs Weight Limit, Rocker and Seat Height Adjustment Mechanisms", image: UIImage(named: "racingChair")!),
+            (categoryName: "Gaming", name: "BENGOO G9000 Stereo Gaming Headset", price: 19.99, productDescription: "Stereo Gaming Headset for PS4 PC Xbox One PS5 Controller, Noise Cancelling Over Ear Headphones with Mic, LED Light, Bass Surround, Soft Memory Earmuffs for Laptop Mac Nintendo NES Games", image: UIImage(named: "gamingHeadset")!),
+            (categoryName: "Gaming", name: "Nintendo Switch", price: 299.98, productDescription: "Hybrid video game console, consisting of a console unit, a dock, and two Joy-Con controllers", image: UIImage(named: "nintendoSwitch")!),
+            (categoryName: "Gaming", name: "Microsoft Xbox Series X", price: 1249.00, productDescription: "Microsoft Xbox Series X 1TB SSD Video Game Console + 1 Xbox Wireless Controller - 8X Cores Zen 2 CPU, RDNA 2 GPU, 16GB GDDR6 Memory, True 4K Gaming, 8K HDR, 120 FPS, 4K UHD Blu-Ray - Broage HDMI Cable", image: UIImage(named: "xboxSeriesX")!),
+            (categoryName: "Gaming", name: "Playstation 5", price: 1099.99, productDescription: "Playstation 5 Home Video Game Console: Blu-Ray Edition", image: UIImage(named: "playstation5")!)
+
         ]
     
         
