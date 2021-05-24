@@ -10,7 +10,12 @@ import UIKit
 
 class UserTabViewController: BaseViewController {
     var user: User? {
-        (self.tabBarController as? UserTabBarController)?.user
+        get {
+            (self.tabBarController as? UserTabBarController)?.user
+        } set {
+            (self.tabBarController as? UserTabBarController)?.user = newValue
+        }
+        
     }
     
     func presentSignInViewController() {

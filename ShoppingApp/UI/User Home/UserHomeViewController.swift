@@ -14,10 +14,12 @@ class UserHomeViewController: UserTabViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
 
     @IBAction func tappedSignInButton(_ sender: UIButton) {
         self.presentSignInViewController()
     }
-    
-
 }

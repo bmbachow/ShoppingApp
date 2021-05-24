@@ -20,4 +20,26 @@ class BaseViewController: UIViewController {
         self.present(hostingController, animated: true, completion: nil)
     }
     
+    func presentBasicAlert(title: String? = nil, message: String? = nil, onDismiss: (() -> Void)? = nil) {
+        let alert = AlertViewController(title: title, message: message)
+        alert.addAction(title: "OK") {
+            self.dismiss(animated: true, completion: {
+                onDismiss?()
+            })
+        }
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func presentAlertWithActions(title: String? = nil, message: String? = nil, actions: [(title: String, handler: () -> Void)], onDismiss: (() -> Void)? = nil) {
+        let alert = AlertViewController(title: title, message: message)
+        for action in actions {
+            alert.addAction(title: action.title) {
+                action.handler()
+                self.dismiss(animated: true, completion: {
+                    onDismiss?()
+                })
+            }
+        }
+        self.present(alert, animated: true, completion: nil)
+    }
 }

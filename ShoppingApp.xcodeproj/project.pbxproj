@@ -49,6 +49,8 @@
 		5267258C265AECA600D9CAB9 /* TimeIntervalFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52672584265AECA600D9CAB9 /* TimeIntervalFormatter.swift */; };
 		5267258D265AECA600D9CAB9 /* BCryptHasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52672585265AECA600D9CAB9 /* BCryptHasher.swift */; };
 		5267258F265B0D3F00D9CAB9 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267258E265B0D3F00D9CAB9 /* UserDefaultsHelper.swift */; };
+		52CD8B17265BE09C00AFAC8C /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52CD8B15265BE09C00AFAC8C /* AlertViewController.xib */; };
+		52CD8B18265BE09C00AFAC8C /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8B16265BE09C00AFAC8C /* AlertViewController.swift */; };
 		52D8F89926580BA700EF220A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D8F89826580BA700EF220A /* AppDelegate.swift */; };
 		52D8F8A326580BA700EF220A /* ShoppingApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52D8F8A126580BA700EF220A /* ShoppingApp.xcdatamodeld */; };
 		52D8F8A526580BA900EF220A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52D8F8A426580BA900EF220A /* Assets.xcassets */; };
@@ -112,6 +114,8 @@
 		52672584265AECA600D9CAB9 /* TimeIntervalFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeIntervalFormatter.swift; sourceTree = "<group>"; };
 		52672585265AECA600D9CAB9 /* BCryptHasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCryptHasher.swift; sourceTree = "<group>"; };
 		5267258E265B0D3F00D9CAB9 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		52CD8B15265BE09C00AFAC8C /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
+		52CD8B16265BE09C00AFAC8C /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		52D8F89526580BA700EF220A /* ShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D8F89826580BA700EF220A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52D8F8A226580BA700EF220A /* ShoppingApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoppingApp.xcdatamodel; sourceTree = "<group>"; };
@@ -237,6 +241,15 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		52CD8B14265BE07500AFAC8C /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				52CD8B16265BE09C00AFAC8C /* AlertViewController.swift */,
+				52CD8B15265BE09C00AFAC8C /* AlertViewController.xib */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		52D8F88C26580BA700EF220A = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +283,7 @@
 		52E0B067265B0FFE00B9C77E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				52CD8B14265BE07500AFAC8C /* Alert */,
 				52E0B071265B1A2A00B9C77E /* Sign In + Register */,
 				52E0B076265B1A7000B9C77E /* Shopping */,
 				52E0B077265B1A8300B9C77E /* User Home */,
@@ -391,6 +405,7 @@
 			files = (
 				52E0B07D265B1ABA00B9C77E /* UserHomeViewController.xib in Resources */,
 				52D8F8A826580BA900EF220A /* LaunchScreen.storyboard in Resources */,
+				52CD8B17265BE09C00AFAC8C /* AlertViewController.xib in Resources */,
 				52E0B06B265B11BB00B9C77E /* ViewControllerBlueprint.storyboard in Resources */,
 				52E0B087265B1B1E00B9C77E /* SettingsViewController.xib in Resources */,
 				52D8F8B226580C6400EF220A /* SignInViewController.xib in Resources */,
@@ -460,6 +475,7 @@
 				5267252C265AE7D400D9CAB9 /* CoreDataHelper.swift in Sources */,
 				52672572265AE95100D9CAB9 /* Location+CoreDataProperties.swift in Sources */,
 				52672577265AE95100D9CAB9 /* Product+CoreDataClass.swift in Sources */,
+				52CD8B18265BE09C00AFAC8C /* AlertViewController.swift in Sources */,
 				52672573265AE95100D9CAB9 /* User+CoreDataClass.swift in Sources */,
 				52E0B06F265B199100B9C77E /* UserTabViewController.swift in Sources */,
 				526724D4265AE3FC00D9CAB9 /* ProductExtensions.swift in Sources */,
