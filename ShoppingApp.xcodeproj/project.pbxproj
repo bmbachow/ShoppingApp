@@ -50,13 +50,13 @@
 		5267258D265AECA600D9CAB9 /* BCryptHasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52672585265AECA600D9CAB9 /* BCryptHasher.swift */; };
 		5267258F265B0D3F00D9CAB9 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267258E265B0D3F00D9CAB9 /* UserDefaultsHelper.swift */; };
 		52927769265C3B6700394180 /* ShoppingAdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52927767265C3B6700394180 /* ShoppingAdTableViewCell.swift */; };
-		5292776A265C3B6700394180 /* ShoppingAdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52927768265C3B6700394180 /* ShoppingAdTableViewCell.xib */; };
 		5292776D265C3CA300394180 /* ShoppingProductPreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292776B265C3CA300394180 /* ShoppingProductPreviewTableViewCell.swift */; };
 		5292776E265C3CA300394180 /* ShoppingProductPreviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5292776C265C3CA300394180 /* ShoppingProductPreviewTableViewCell.xib */; };
 		52927776265C3EBD00394180 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52927774265C3EBD00394180 /* ProductDetailViewController.swift */; };
 		52927777265C3EBD00394180 /* ProductDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52927775265C3EBD00394180 /* ProductDetailViewController.xib */; };
 		5292777A265C3F1500394180 /* ProductDetailMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52927778265C3F1500394180 /* ProductDetailMainTableViewCell.swift */; };
 		5292777B265C3F1500394180 /* ProductDetailMainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52927779265C3F1500394180 /* ProductDetailMainTableViewCell.xib */; };
+		5292777F265C564E00394180 /* ShoppingAdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5292777D265C564E00394180 /* ShoppingAdTableViewCell.xib */; };
 		52CD8B17265BE09C00AFAC8C /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52CD8B15265BE09C00AFAC8C /* AlertViewController.xib */; };
 		52CD8B18265BE09C00AFAC8C /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8B16265BE09C00AFAC8C /* AlertViewController.swift */; };
 		52D8F89926580BA700EF220A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D8F89826580BA700EF220A /* AppDelegate.swift */; };
@@ -123,13 +123,13 @@
 		52672585265AECA600D9CAB9 /* BCryptHasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCryptHasher.swift; sourceTree = "<group>"; };
 		5267258E265B0D3F00D9CAB9 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		52927767265C3B6700394180 /* ShoppingAdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingAdTableViewCell.swift; sourceTree = "<group>"; };
-		52927768265C3B6700394180 /* ShoppingAdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingAdTableViewCell.xib; sourceTree = "<group>"; };
 		5292776B265C3CA300394180 /* ShoppingProductPreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingProductPreviewTableViewCell.swift; sourceTree = "<group>"; };
 		5292776C265C3CA300394180 /* ShoppingProductPreviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingProductPreviewTableViewCell.xib; sourceTree = "<group>"; };
 		52927774265C3EBD00394180 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		52927775265C3EBD00394180 /* ProductDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductDetailViewController.xib; sourceTree = "<group>"; };
 		52927778265C3F1500394180 /* ProductDetailMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailMainTableViewCell.swift; sourceTree = "<group>"; };
 		52927779265C3F1500394180 /* ProductDetailMainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductDetailMainTableViewCell.xib; sourceTree = "<group>"; };
+		5292777D265C564E00394180 /* ShoppingAdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingAdTableViewCell.xib; sourceTree = "<group>"; };
 		52CD8B15265BE09C00AFAC8C /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		52CD8B16265BE09C00AFAC8C /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		52D8F89526580BA700EF220A /* ShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -342,7 +342,7 @@
 				52E0B072265B1A6A00B9C77E /* ShoppingViewController.swift */,
 				52E0B073265B1A6A00B9C77E /* ShoppingViewController.xib */,
 				52927767265C3B6700394180 /* ShoppingAdTableViewCell.swift */,
-				52927768265C3B6700394180 /* ShoppingAdTableViewCell.xib */,
+				5292777D265C564E00394180 /* ShoppingAdTableViewCell.xib */,
 				5292776B265C3CA300394180 /* ShoppingProductPreviewTableViewCell.swift */,
 				5292776C265C3CA300394180 /* ShoppingProductPreviewTableViewCell.xib */,
 			);
@@ -436,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52E0B07D265B1ABA00B9C77E /* UserHomeViewController.xib in Resources */,
+				5292777F265C564E00394180 /* ShoppingAdTableViewCell.xib in Resources */,
 				52D8F8A826580BA900EF220A /* LaunchScreen.storyboard in Resources */,
 				52CD8B17265BE09C00AFAC8C /* AlertViewController.xib in Resources */,
 				52E0B06B265B11BB00B9C77E /* ViewControllerBlueprint.storyboard in Resources */,
@@ -443,7 +444,6 @@
 				5292776E265C3CA300394180 /* ShoppingProductPreviewTableViewCell.xib in Resources */,
 				52E0B087265B1B1E00B9C77E /* SettingsViewController.xib in Resources */,
 				52D8F8B226580C6400EF220A /* SignInViewController.xib in Resources */,
-				5292776A265C3B6700394180 /* ShoppingAdTableViewCell.xib in Resources */,
 				52D8F8A526580BA900EF220A /* Assets.xcassets in Resources */,
 				52E0B082265B1AD100B9C77E /* CartViewController.xib in Resources */,
 				52E0B075265B1A6A00B9C77E /* ShoppingViewController.xib in Resources */,

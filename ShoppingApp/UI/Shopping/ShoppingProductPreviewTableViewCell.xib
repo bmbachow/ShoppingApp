@@ -16,20 +16,25 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vhw-g6-EDS">
-                        <rect key="frame" x="16" y="12" width="61" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vhw-g6-EDS">
+                        <rect key="frame" x="16" y="12" width="288" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="Vhw-g6-EDS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="8B7-cA-omF"/>
+                    <constraint firstItem="Vhw-g6-EDS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="R3d-jM-Ccq"/>
+                    <constraint firstAttribute="trailing" secondItem="Vhw-g6-EDS" secondAttribute="trailing" constant="16" id="cKi-Qn-Hfz"/>
+                    <constraint firstAttribute="bottom" secondItem="Vhw-g6-EDS" secondAttribute="bottom" constant="11" id="qKe-Ag-7x0"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="productLabel" destination="Vhw-g6-EDS" id="6Sv-QR-NXo"/>
             </connections>
-            <point key="canvasLocation" x="-178" y="9"/>
+            <point key="canvasLocation" x="-178.2608695652174" y="8.7053571428571423"/>
         </tableViewCell>
     </objects>
 </document>
