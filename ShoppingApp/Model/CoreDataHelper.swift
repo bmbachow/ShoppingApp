@@ -112,7 +112,7 @@ class CoreDataHelper: RemoteAPI {
   
     func postNewProduct(name: String, categoryName: String, price: Double, productDescription: String, image: UIImage, success: (Product) -> Void, failure: (Error) -> Void) {
         do {
-            guard let category = try self.getCategorySync(name: name) else {
+            guard let category = try self.getCategorySync(name: categoryName) else {
                 return failure(CoreDataHelperError.expectedDataUnavailable("No category exists named \(categoryName)"))
             }
             self.postNewProduct(name: name, category: category, price: price, productDescription: productDescription, image: image, success: success, failure: failure)
@@ -121,6 +121,15 @@ class CoreDataHelper: RemoteAPI {
         }
     }
     
+    func getAllProducts(success: ([Product]) -> Void, failure: (Error) -> Void) {
+        let request: NSFetchRequest<Product> = Product.fetchRequest()
+        do {
+            let products = try self.viewContext.fetch(request)
+            success(products)
+        } catch {
+            failure(error)
+        }
+    }
     
     //MARK: Order
     func placeOrder(user: User, products: [Product], price: Double, paymentMethod: PaymentMethod, success: (Order) -> Void, failure: (Error) -> Void) {
@@ -207,11 +216,11 @@ class CoreDataHelper: RemoteAPI {
         }
         
         let categories: [(name: String, image: UIImage)] = [
-            (name: "Monitors", image: UIImage(named: "")!),
-            (name: "Laptops", image: UIImage(named: "")!),
-            (name: "Accessories", image: UIImage(named: "")!),
-            (name: "Smartphones", image: UIImage(named: "")!),
-            (name: "Gaming", image: UIImage(named: "")!)
+            (name: "Monitors", image: UIImage()),
+            (name: "Laptops", image: UIImage()),
+            (name: "Accessories", image: UIImage()),
+            (name: "Smartphones", image: UIImage()),
+            (name: "Gaming", image: UIImage())
         ]
         
         let products: [(categoryName: String, name: String, price: Double, productDescription: String, image: UIImage)] = [
@@ -255,7 +264,7 @@ class CoreDataHelper: RemoteAPI {
             (categoryName: "Accessories", name: "Apple Watch Series 3", price: 229.99, productDescription: "Apple Watch Series 3 with cellular allows you to stay connected, make calls, receive texts and more, even without iPhone nearby", image: UIImage(named: "A-AppleWatch")!),
             (categoryName: "Accessories", name: "PowerBear HDMI Cable", price: 9.99, productDescription: "PowerBear 4K HDMI Cable 10 ft | High Speed, Braided Nylon & Gold Connectors, 4K @ 60Hz, Ultra HD, 2K, 1080P & ARC Compatible | for Laptop, Monitor, PS5, PS4, Xbox One, Fire TV, Apple TV & More", image: UIImage(named: "A-HDMIcable")!),
             (categoryName: "Accessories", name: "Powlight Power Strip", price: 24.98, productDescription: "Power Strip with 8 Ft, Powlight Surge Protector with 12 AC Outlets and 4 USB Charging Ports,1875W/15A, 2100 Joules, 8 Feet Long Extension Cord for Smartphone Tablets Home,Office, Hotel- Black", image: UIImage(named: "A-PowerStrip")!),
-            (categoryName: "Accessories", name: "Kasa Smart Plug", price: 13.99, productDescription: "Kasa Smart (HS100) Plug by TP-Link, Smart Home WiFi Outlet Works with Alexa, Echo, Google Home & IFTTT, No Hub Required, Remote Control, 15 Amp, UL Certified", image: UIImage(named: "")!),
+            (categoryName: "Accessories", name: "Kasa Smart Plug", price: 13.99, productDescription: "Kasa Smart (HS100) Plug by TP-Link, Smart Home WiFi Outlet Works with Alexa, Echo, Google Home & IFTTT, No Hub Required, Remote Control, 15 Amp, UL Certified", image: UIImage(named: "A-WIFIplug")!),
             (categoryName: "Accessories", name: "Anker Wireless Charger", price: 18.99, productDescription: "Anker Wireless Charger, PowerWave Stand, Qi-Certified, 10 Watt Fast Charging", image: UIImage(named: "A-WirelessCharger")!),
             (
                 categoryName: "Smartphones",
@@ -304,6 +313,8 @@ class CoreDataHelper: RemoteAPI {
         for product in products {
             self.postNewProduct(name: product.name, categoryName: product.categoryName, price: product.price, productDescription: product.productDescription, image: product.image, success: {_ in}, failure: {_ in})
         }
+        
+        try? self.viewContext.save()
         
         UserDefaultsHelper().databaseWasSeeded = true
     }
