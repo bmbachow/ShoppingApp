@@ -7,7 +7,15 @@
 
 import UIKit
 
+
+
+
 class ShoppingProductPreviewTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var productLabel: UILabel!
+    
+    
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

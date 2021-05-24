@@ -69,12 +69,21 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         case 0:
             return self.adCell
         default:
-            return UITableViewCell()
+            let product = self.products[indexPath.row]
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "ShoppingProductPreviewTableViewCell") as! ShoppingProductPreviewTableViewCell
+            cell.productLabel.text = product.name
+            return cell
+        
         }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
     
 }
