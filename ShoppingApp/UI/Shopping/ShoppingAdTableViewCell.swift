@@ -29,7 +29,13 @@ class ShoppingAdTableViewCell: UITableViewCell {
     func startAdTimer(){
         self.timer.invalidate()
         self.timer = Timer.scheduledTimer(withTimeInterval: 12.0, repeats: true) { timer in
-            self.shoppingImage.image = self.images.randomElement()
+            UIView.transition(with: self.shoppingImage,
+                              duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                                self.shoppingImage.image = self.images.randomElement()
+                              },
+                              completion: nil)
         }
     }
     
