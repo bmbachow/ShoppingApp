@@ -52,6 +52,7 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
     }
     
     override func userChanged() {
+        guard self.tableView != nil else { return }
         super.userChanged()
         self.refreshData()
         self.userNotSignedInViewController.view.isHidden = self.shouldHideUserNotSignedInViewController
