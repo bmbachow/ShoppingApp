@@ -2,7 +2,7 @@
 //  Category+CoreDataProperties.swift
 //  ShoppingApp
 //
-//  Created by Robert Olieman on 5/23/21.
+//  Created by Robert Olieman on 5/25/21.
 //
 //
 
@@ -16,8 +16,8 @@ extension Category {
         return NSFetchRequest<Category>(entityName: "Category")
     }
 
-    @NSManaged public var name: String?
     @NSManaged public var imageData: Data?
+    @NSManaged public var name: String?
     @NSManaged public var products: NSOrderedSet?
 
 }

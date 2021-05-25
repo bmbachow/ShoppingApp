@@ -2,7 +2,7 @@
 //  Order+CoreDataProperties.swift
 //  ShoppingApp
 //
-//  Created by Robert Olieman on 5/23/21.
+//  Created by Robert Olieman on 5/25/21.
 //
 //
 
@@ -18,10 +18,10 @@ extension Order {
 
     @NSManaged public var orderedDate: Date?
     @NSManaged public var price: Double
-    @NSManaged public var products: NSOrderedSet?
-    @NSManaged public var user: User?
     @NSManaged public var delivery: Delivery?
     @NSManaged public var paymentMethod: PaymentMethod?
+    @NSManaged public var products: NSOrderedSet?
+    @NSManaged public var user: User?
 
 }
 

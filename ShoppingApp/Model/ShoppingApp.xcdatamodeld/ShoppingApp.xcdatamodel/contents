@@ -65,6 +65,7 @@
         <attribute name="lastName" attributeType="String"/>
         <attribute name="password" attributeType="String"/>
         <attribute name="phoneNumber" attributeType="String"/>
+        <attribute name="registeredDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="searchHistory" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String]"/>
         <relationship name="cartProducts" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Product" inverseName="cartUsers" inverseEntity="Product"/>
         <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Order" inverseName="user" inverseEntity="Order"/>
@@ -82,6 +83,6 @@
         <element name="PaymentMethod" positionX="-2914.240295410156" positionY="-2896.662826538086" width="128" height="73"/>
         <element name="Product" positionX="-2944.902954101562" positionY="-2497.447570800782" width="128" height="178"/>
         <element name="ProductReview" positionX="-2586.463134765625" positionY="-2466.063323974609" width="128" height="133"/>
-        <element name="User" positionX="-3126.313354492188" positionY="-2782.61279296875" width="128" height="208"/>
+        <element name="User" positionX="-3122.243896484375" positionY="-2777.729370117188" width="128" height="223"/>
     </elements>
 </model>

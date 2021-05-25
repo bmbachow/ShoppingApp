@@ -17,7 +17,7 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     let product: Product
     
-    lazy var productDetailMainTableViewCell: ProductDetailMainTableViewCell = {
+    lazy private var productDetailMainTableViewCell: ProductDetailMainTableViewCell = {
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "ProductDetailMainTableViewCell") as? ProductDetailMainTableViewCell else {
             fatalError("Unable to dequeue ProductDetailMainTableViewCell")
         }

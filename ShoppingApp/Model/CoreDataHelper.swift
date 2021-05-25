@@ -54,6 +54,7 @@ class CoreDataHelper: RemoteAPI {
             user.email = email
             user.phoneNumber = phoneNumber
             user.password = try bcryptHasher.hashPasword(password)
+            user.registeredDate = Date()
             try self.viewContext.save()
             success(user)
         } catch {
