@@ -22,6 +22,10 @@ extension Product {
         return total/Double(reviews.count)
     }
     
+    var numberOfRatings: Int {
+        return self.reviewsArray.count
+    }
+    
     var image: UIImage? {
         guard let data = self.imageData else { return nil }
         return UIImage(data: data)
