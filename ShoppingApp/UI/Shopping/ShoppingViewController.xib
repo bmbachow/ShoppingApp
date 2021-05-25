@@ -19,16 +19,47 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6EK-RE-PNN">
-                    <rect key="frame" x="0.0" y="116" width="414" height="746"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6EK-RE-PNN">
+                    <rect key="frame" x="0.0" y="108" width="414" height="754"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1y-1Q-qav">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                    <subviews>
+                        <searchBar contentMode="redraw" placeholder="Search Amazon" translatesAutoresizingMaskIntoConstraints="NO" id="KCb-d7-HNB">
+                            <rect key="frame" x="0.0" y="57" width="414" height="51"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="KCb-d7-HNB" firstAttribute="leading" secondItem="Q1y-1Q-qav" secondAttribute="leading" id="I9l-3c-ekL"/>
+                        <constraint firstAttribute="bottom" secondItem="KCb-d7-HNB" secondAttribute="bottom" id="WAj-i1-i4t"/>
+                        <constraint firstAttribute="height" constant="108" id="xLg-xL-fym"/>
+                        <constraint firstAttribute="trailing" secondItem="KCb-d7-HNB" secondAttribute="trailing" id="xlT-w7-CK2"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Q1y-1Q-qav" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CMB-xJ-tNP"/>
+                <constraint firstItem="6EK-RE-PNN" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Il3-5z-q8P"/>
+                <constraint firstItem="6EK-RE-PNN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Lnu-jV-BLA"/>
+                <constraint firstItem="6EK-RE-PNN" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="dOo-oZ-mCG"/>
+                <constraint firstItem="6EK-RE-PNN" firstAttribute="top" secondItem="Q1y-1Q-qav" secondAttribute="bottom" id="iCB-nY-K84"/>
+                <constraint firstItem="Q1y-1Q-qav" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="phA-P3-xZg"/>
+                <constraint firstItem="Q1y-1Q-qav" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="wb0-Hl-f6j"/>
+            </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="97.767857142857139"/>
         </view>
+        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="PkM-PO-o6b">
+            <rect key="frame" x="0.0" y="0.0" width="97" height="34"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+            <textInputTraits key="textInputTraits"/>
+            <point key="canvasLocation" x="525" y="-294"/>
+        </textField>
     </objects>
     <resources>
         <systemColor name="systemBackgroundColor">

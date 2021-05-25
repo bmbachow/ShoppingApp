@@ -23,6 +23,8 @@ class ShoppingProductPreviewTableViewCell:
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.productRating.settings.fillMode = .precise
+        self.productRating.isUserInteractionEnabled = false
         // Initialization code
     }
 
