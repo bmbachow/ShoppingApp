@@ -8,6 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		00CC8D55C583454F5128EB87 /* Pods_ShoppingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A999FEB31D6D3A9F2CC3443 /* Pods_ShoppingApp.framework */; };
+		520F43D8265D448C00A6B282 /* StarFillMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43C8265D448C00A6B282 /* StarFillMode.swift */; };
+		520F43D9265D448C00A6B282 /* StarLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43C9265D448C00A6B282 /* StarLayer.swift */; };
+		520F43DA265D448C00A6B282 /* CosmosAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43CA265D448C00A6B282 /* CosmosAccessibility.swift */; };
+		520F43DB265D448C00A6B282 /* CosmosText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43CC265D448C00A6B282 /* CosmosText.swift */; };
+		520F43DC265D448C00A6B282 /* CosmosDefaultSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43CD265D448C00A6B282 /* CosmosDefaultSettings.swift */; };
+		520F43DD265D448C00A6B282 /* CosmosTouchTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43CE265D448C00A6B282 /* CosmosTouchTarget.swift */; };
+		520F43DE265D448C00A6B282 /* CosmosSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43CF265D448C00A6B282 /* CosmosSize.swift */; };
+		520F43DF265D448C00A6B282 /* RightToLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43D0265D448C00A6B282 /* RightToLeft.swift */; };
+		520F43E0265D448C00A6B282 /* CosmosLayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43D1265D448C00A6B282 /* CosmosLayers.swift */; };
+		520F43E1265D448C00A6B282 /* CosmosLocalizedRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43D2265D448C00A6B282 /* CosmosLocalizedRating.swift */; };
+		520F43E2265D448C00A6B282 /* CosmosLayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43D3265D448C00A6B282 /* CosmosLayerHelper.swift */; };
+		520F43E3265D448C00A6B282 /* CosmosTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43D4265D448C00A6B282 /* CosmosTouch.swift */; };
+		520F43E4265D448C00A6B282 /* CosmosRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43D5265D448C00A6B282 /* CosmosRating.swift */; };
+		520F43E5265D448C00A6B282 /* CosmosSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43D6265D448C00A6B282 /* CosmosSettings.swift */; };
+		520F43E6265D448C00A6B282 /* CosmosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43D7265D448C00A6B282 /* CosmosView.swift */; };
 		526723E4265AD8D600D9CAB9 /* StarRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526723E3265AD8D600D9CAB9 /* StarRating.swift */; };
 		526724C6265AE3AC00D9CAB9 /* UserExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526724C5265AE3AC00D9CAB9 /* UserExtensions.swift */; };
 		526724C8265AE3B700D9CAB9 /* ProductReviewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526724C7265AE3B700D9CAB9 /* ProductReviewExtensions.swift */; };
@@ -82,6 +97,22 @@
 
 /* Begin PBXFileReference section */
 		0A999FEB31D6D3A9F2CC3443 /* Pods_ShoppingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		520F43C8265D448C00A6B282 /* StarFillMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarFillMode.swift; sourceTree = "<group>"; };
+		520F43C9265D448C00A6B282 /* StarLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarLayer.swift; sourceTree = "<group>"; };
+		520F43CA265D448C00A6B282 /* CosmosAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosAccessibility.swift; sourceTree = "<group>"; };
+		520F43CB265D448C00A6B282 /* Cosmos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cosmos.h; sourceTree = "<group>"; };
+		520F43CC265D448C00A6B282 /* CosmosText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosText.swift; sourceTree = "<group>"; };
+		520F43CD265D448C00A6B282 /* CosmosDefaultSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDefaultSettings.swift; sourceTree = "<group>"; };
+		520F43CE265D448C00A6B282 /* CosmosTouchTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosTouchTarget.swift; sourceTree = "<group>"; };
+		520F43CF265D448C00A6B282 /* CosmosSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosSize.swift; sourceTree = "<group>"; };
+		520F43D0265D448C00A6B282 /* RightToLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightToLeft.swift; sourceTree = "<group>"; };
+		520F43D1265D448C00A6B282 /* CosmosLayers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosLayers.swift; sourceTree = "<group>"; };
+		520F43D2265D448C00A6B282 /* CosmosLocalizedRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosLocalizedRating.swift; sourceTree = "<group>"; };
+		520F43D3265D448C00A6B282 /* CosmosLayerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosLayerHelper.swift; sourceTree = "<group>"; };
+		520F43D4265D448C00A6B282 /* CosmosTouch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosTouch.swift; sourceTree = "<group>"; };
+		520F43D5265D448C00A6B282 /* CosmosRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosRating.swift; sourceTree = "<group>"; };
+		520F43D6265D448C00A6B282 /* CosmosSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosSettings.swift; sourceTree = "<group>"; };
+		520F43D7265D448C00A6B282 /* CosmosView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosView.swift; sourceTree = "<group>"; };
 		526723E3265AD8D600D9CAB9 /* StarRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRating.swift; sourceTree = "<group>"; };
 		526724C5265AE3AC00D9CAB9 /* UserExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExtensions.swift; sourceTree = "<group>"; };
 		526724C7265AE3B700D9CAB9 /* ProductReviewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductReviewExtensions.swift; sourceTree = "<group>"; };
@@ -185,6 +216,37 @@
 				A28BDA2507A6B461EEDDCEF0 /* Pods-ShoppingApp.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		520F43C7265D448C00A6B282 /* Cosmos */ = {
+			isa = PBXGroup;
+			children = (
+				520F43C8265D448C00A6B282 /* StarFillMode.swift */,
+				520F43C9265D448C00A6B282 /* StarLayer.swift */,
+				520F43CA265D448C00A6B282 /* CosmosAccessibility.swift */,
+				520F43CB265D448C00A6B282 /* Cosmos.h */,
+				520F43CC265D448C00A6B282 /* CosmosText.swift */,
+				520F43CD265D448C00A6B282 /* CosmosDefaultSettings.swift */,
+				520F43CE265D448C00A6B282 /* CosmosTouchTarget.swift */,
+				520F43CF265D448C00A6B282 /* CosmosSize.swift */,
+				520F43D0265D448C00A6B282 /* RightToLeft.swift */,
+				520F43D1265D448C00A6B282 /* CosmosLayers.swift */,
+				520F43D2265D448C00A6B282 /* CosmosLocalizedRating.swift */,
+				520F43D3265D448C00A6B282 /* CosmosLayerHelper.swift */,
+				520F43D4265D448C00A6B282 /* CosmosTouch.swift */,
+				520F43D5265D448C00A6B282 /* CosmosRating.swift */,
+				520F43D6265D448C00A6B282 /* CosmosSettings.swift */,
+				520F43D7265D448C00A6B282 /* CosmosView.swift */,
+			);
+			path = Cosmos;
+			sourceTree = "<group>";
+		};
+		520F43E7265D44E900A6B282 /* third party */ = {
+			isa = PBXGroup;
+			children = (
+				520F43C7265D448C00A6B282 /* Cosmos */,
+			);
+			path = "third party";
 			sourceTree = "<group>";
 		};
 		526723B6265AD1F500D9CAB9 /* Model */ = {
@@ -301,6 +363,7 @@
 		52D8F89726580BA700EF220A /* ShoppingApp */ = {
 			isa = PBXGroup;
 			children = (
+				520F43E7265D44E900A6B282 /* third party */,
 				5267257D265AECA600D9CAB9 /* util */,
 				526723B6265AD1F500D9CAB9 /* Model */,
 				52E0B067265B0FFE00B9C77E /* UI */,
@@ -503,6 +566,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				520F43DA265D448C00A6B282 /* CosmosAccessibility.swift in Sources */,
+				520F43D9265D448C00A6B282 /* StarLayer.swift in Sources */,
+				520F43E5265D448C00A6B282 /* CosmosSettings.swift in Sources */,
 				52927781265C5A4400394180 /* UIExtensions.swift in Sources */,
 				5267258D265AECA600D9CAB9 /* BCryptHasher.swift in Sources */,
 				526724C6265AE3AC00D9CAB9 /* UserExtensions.swift in Sources */,
@@ -516,23 +582,29 @@
 				5267252C265AE7D400D9CAB9 /* CoreDataHelper.swift in Sources */,
 				52672572265AE95100D9CAB9 /* Location+CoreDataProperties.swift in Sources */,
 				5292777A265C3F1500394180 /* ProductDetailMainTableViewCell.swift in Sources */,
+				520F43E0265D448C00A6B282 /* CosmosLayers.swift in Sources */,
 				52672577265AE95100D9CAB9 /* Product+CoreDataClass.swift in Sources */,
 				52CD8B18265BE09C00AFAC8C /* AlertViewController.swift in Sources */,
 				52672573265AE95100D9CAB9 /* User+CoreDataClass.swift in Sources */,
 				52E0B06F265B199100B9C77E /* UserTabViewController.swift in Sources */,
 				526724D4265AE3FC00D9CAB9 /* ProductExtensions.swift in Sources */,
+				520F43DC265D448C00A6B282 /* CosmosDefaultSettings.swift in Sources */,
 				52D8F8A326580BA700EF220A /* ShoppingApp.xcdatamodeld in Sources */,
 				526724CC265AE3CD00D9CAB9 /* LocationExtensions.swift in Sources */,
 				52672579265AE95100D9CAB9 /* CardPaymentMethod+CoreDataClass.swift in Sources */,
 				5267256F265AE95100D9CAB9 /* AccountPaymentMethod+CoreDataClass.swift in Sources */,
+				520F43E4265D448C00A6B282 /* CosmosRating.swift in Sources */,
 				52672576265AE95100D9CAB9 /* PaymentMethod+CoreDataProperties.swift in Sources */,
 				52672574265AE95100D9CAB9 /* User+CoreDataProperties.swift in Sources */,
 				5267258F265B0D3F00D9CAB9 /* UserDefaultsHelper.swift in Sources */,
 				52672589265AECA600D9CAB9 /* LoginCredentials.swift in Sources */,
 				52672578265AE95100D9CAB9 /* Product+CoreDataProperties.swift in Sources */,
 				526724CA265AE3C100D9CAB9 /* DeliveryExtensions.swift in Sources */,
+				520F43E6265D448C00A6B282 /* CosmosView.swift in Sources */,
 				52D8F89926580BA700EF220A /* AppDelegate.swift in Sources */,
+				520F43E1265D448C00A6B282 /* CosmosLocalizedRating.swift in Sources */,
 				5267256E265AE95100D9CAB9 /* ProductReview+CoreDataProperties.swift in Sources */,
+				520F43E2265D448C00A6B282 /* CosmosLayerHelper.swift in Sources */,
 				5267257C265AE95100D9CAB9 /* Category+CoreDataProperties.swift in Sources */,
 				52672569265AE95100D9CAB9 /* Delivery+CoreDataClass.swift in Sources */,
 				5267256D265AE95100D9CAB9 /* ProductReview+CoreDataClass.swift in Sources */,
@@ -541,20 +613,26 @@
 				52672571265AE95100D9CAB9 /* Location+CoreDataClass.swift in Sources */,
 				5267256B265AE95100D9CAB9 /* Order+CoreDataClass.swift in Sources */,
 				52E0B081265B1AD100B9C77E /* CartViewController.swift in Sources */,
+				520F43DB265D448C00A6B282 /* CosmosText.swift in Sources */,
 				5267257B265AE95100D9CAB9 /* Category+CoreDataClass.swift in Sources */,
 				52927769265C3B6700394180 /* ShoppingAdTableViewCell.swift in Sources */,
 				526724CE265AE3DB00D9CAB9 /* CategoryExtensions.swift in Sources */,
 				5267258B265AECA600D9CAB9 /* NumberFormatterExtensions.swift in Sources */,
+				520F43E3265D448C00A6B282 /* CosmosTouch.swift in Sources */,
 				52E0B07C265B1ABA00B9C77E /* UserHomeViewController.swift in Sources */,
+				520F43D8265D448C00A6B282 /* StarFillMode.swift in Sources */,
 				5267256C265AE95100D9CAB9 /* Order+CoreDataProperties.swift in Sources */,
+				520F43DF265D448C00A6B282 /* RightToLeft.swift in Sources */,
 				526724D2265AE3F100D9CAB9 /* CardPaymentMethodExtensions.swift in Sources */,
 				526724D6265AE40900D9CAB9 /* OrderExtensions.swift in Sources */,
 				526724D0265AE3E600D9CAB9 /* AccountPaymentMethodExtensions.swift in Sources */,
 				526724D8265AE41300D9CAB9 /* PaymentMethodExtensions.swift in Sources */,
+				520F43DD265D448C00A6B282 /* CosmosTouchTarget.swift in Sources */,
 				5267256A265AE95100D9CAB9 /* Delivery+CoreDataProperties.swift in Sources */,
 				526724C8265AE3B700D9CAB9 /* ProductReviewExtensions.swift in Sources */,
 				5267257A265AE95100D9CAB9 /* CardPaymentMethod+CoreDataProperties.swift in Sources */,
 				52D8F8B126580C6400EF220A /* SignInViewController.swift in Sources */,
+				520F43DE265D448C00A6B282 /* CosmosSize.swift in Sources */,
 				52672570265AE95100D9CAB9 /* AccountPaymentMethod+CoreDataProperties.swift in Sources */,
 				52E0B06D265B193600B9C77E /* UserTabBarController.swift in Sources */,
 				52E0B074265B1A6A00B9C77E /* ShoppingViewController.swift in Sources */,
