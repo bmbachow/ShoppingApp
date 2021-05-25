@@ -16,10 +16,12 @@ class ProductDetailMainTableViewCell: UITableViewCell {
     
     @IBOutlet weak var productPriceLabel: UILabel!
     
+    @IBOutlet weak var cosmosView: CosmosView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
+        self.cosmosView.settings.fillMode = .precise
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

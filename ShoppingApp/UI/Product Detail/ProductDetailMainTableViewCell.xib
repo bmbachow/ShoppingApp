@@ -4,16 +4,17 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="644" id="KGk-i7-Jjw" customClass="ProductDetailMainTableViewCell" customModule="ShoppingApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="533" height="644"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="694" id="KGk-i7-Jjw" customClass="ProductDetailMainTableViewCell" customModule="ShoppingApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="533" height="694"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="533" height="644"/>
+                <rect key="frame" x="0.0" y="0.0" width="533" height="694"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e9B-p6-Lwo">
@@ -29,16 +30,43 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7D-ft-KEk">
-                        <rect key="frame" x="12" y="557.5" width="509" height="24"/>
+                        <rect key="frame" x="12" y="617.5" width="509" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xqy-Mj-VVl">
-                        <rect key="frame" x="222.5" y="589" width="88" height="43"/>
+                        <rect key="frame" x="222.5" y="649" width="88" height="33"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <state key="normal" title="Add to Cart"/>
                     </button>
+                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CVI-vB-RsN" customClass="CosmosView" customModule="ShoppingApp" customModuleProvider="target">
+                        <rect key="frame" x="12" y="554" width="261" height="55.5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                <real key="value" value="35"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                <color key="value" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                <integer key="value" value="0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="minTouchRating">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Xqy-Mj-VVl" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="27r-3u-Q7N"/>
@@ -46,22 +74,31 @@
                     <constraint firstItem="e7D-ft-KEk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="JfZ-w4-ntm"/>
                     <constraint firstItem="e9B-p6-Lwo" firstAttribute="top" secondItem="fKO-ri-zdA" secondAttribute="bottom" constant="8" id="Roq-iP-kkn"/>
                     <constraint firstItem="e9B-p6-Lwo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="SC1-Qw-MYk"/>
-                    <constraint firstItem="e7D-ft-KEk" firstAttribute="top" secondItem="e9B-p6-Lwo" secondAttribute="bottom" constant="8" id="ThZ-Tq-Bsa"/>
+                    <constraint firstItem="CVI-vB-RsN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="TpE-Xq-64K"/>
                     <constraint firstAttribute="trailing" secondItem="fKO-ri-zdA" secondAttribute="trailing" constant="12" id="Uiq-dO-2BR"/>
+                    <constraint firstItem="CVI-vB-RsN" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.489681" id="cUp-q4-7eI"/>
                     <constraint firstItem="fKO-ri-zdA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="dqN-Ei-JYw"/>
+                    <constraint firstItem="e7D-ft-KEk" firstAttribute="top" secondItem="CVI-vB-RsN" secondAttribute="bottom" constant="8" id="iI4-oX-ggv"/>
                     <constraint firstItem="fKO-ri-zdA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="phb-83-h7Z"/>
                     <constraint firstAttribute="trailing" secondItem="e9B-p6-Lwo" secondAttribute="trailing" constant="12" id="qp5-B8-od5"/>
+                    <constraint firstItem="CVI-vB-RsN" firstAttribute="top" secondItem="e9B-p6-Lwo" secondAttribute="bottom" constant="4.5" id="qpr-WQ-CTS"/>
                     <constraint firstItem="Xqy-Mj-VVl" firstAttribute="top" secondItem="e7D-ft-KEk" secondAttribute="bottom" constant="7.5" id="rQ2-0N-7iF"/>
                     <constraint firstAttribute="trailing" secondItem="e7D-ft-KEk" secondAttribute="trailing" constant="12" id="zHU-7T-Lej"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="cosmosView" destination="CVI-vB-RsN" id="Hxr-2X-IlI"/>
                 <outlet property="productImageView" destination="e9B-p6-Lwo" id="6Hr-2o-seS"/>
                 <outlet property="productNameLabel" destination="fKO-ri-zdA" id="MiI-OB-Ye4"/>
                 <outlet property="productPriceLabel" destination="e7D-ft-KEk" id="lf9-XC-SUs"/>
             </connections>
-            <point key="canvasLocation" x="184.78260869565219" y="229.6875"/>
+            <point key="canvasLocation" x="184.78260869565219" y="246.42857142857142"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

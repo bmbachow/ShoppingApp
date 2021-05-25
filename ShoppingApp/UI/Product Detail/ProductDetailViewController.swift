@@ -42,6 +42,7 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
         self.productDetailMainTableViewCell.productNameLabel.text = self.product.name
         self.productDetailMainTableViewCell.productImageView.image = self.product.image
         self.productDetailMainTableViewCell.productPriceLabel.text = NumberFormatter.dollars.string(from: Float(self.product.price))
+        self.productDetailMainTableViewCell.cosmosView.rating = self.product.averageRating ?? 0
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
