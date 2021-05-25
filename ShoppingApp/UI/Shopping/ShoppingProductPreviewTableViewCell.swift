@@ -18,6 +18,9 @@ class ShoppingProductPreviewTableViewCell:
     
     @IBOutlet weak var productImage: UIImageView!
     
+    @IBOutlet weak var productRating: CosmosView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

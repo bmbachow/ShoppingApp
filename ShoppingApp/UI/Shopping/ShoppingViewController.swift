@@ -74,6 +74,7 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
             cell.productName.text = product.name
             cell.productImage.image = product.image
             cell.productPrice.text = NumberFormatter.dollars.string(from: Float(product.price))
+            cell.productRating.rating = product.averageRating ?? 0
             return cell
         
         }
