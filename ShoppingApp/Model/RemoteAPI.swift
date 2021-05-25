@@ -34,5 +34,5 @@ protocol RemoteAPI {
     func postNewCategory(name: String, image: UIImage, success: (Category) -> Void, failure: (Error) -> Void)
     
     //MARK: ProductReview
-    func postNewProductReview(user: User, product: Product, title: String, body: String, rating: StarRating, success: (ProductReview) -> Void, failure: (Error) -> Void)
+    func postNewProductReview(user: User?, product: Product, title: String, body: String, rating: StarRating, success: (ProductReview) -> Void, failure: (Error) -> Void)
 }

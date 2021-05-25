@@ -192,7 +192,7 @@ class CoreDataHelper: RemoteAPI {
     
     //MARK: ProductReview
     
-    func postNewProductReview(user: User, product: Product, title: String, body: String, rating: StarRating, success: (ProductReview) -> Void, failure: (Error) -> Void) {
+    func postNewProductReview(user: User?, product: Product, title: String, body: String, rating: StarRating, success: (ProductReview) -> Void, failure: (Error) -> Void) {
         let review = ProductReview(context: self.viewContext)
         review.user = user
         review.product = product
@@ -310,13 +310,143 @@ class CoreDataHelper: RemoteAPI {
             self.postNewCategory(name: category.name, image: category.image, success: {_ in}, failure: {_ in})
         }
         
-        for product in products {
-            self.postNewProduct(name: product.name, categoryName: product.categoryName, price: product.price, productDescription: product.productDescription, image: product.image, success: {_ in}, failure: {_ in})
+        for productData in products {
+            self.postNewProduct(name: productData.name, categoryName: productData.categoryName, price: productData.price, productDescription: productData.productDescription, image: productData.image, success: { product in
+                for _ in 0..<20 {
+                    let reviewData = self.generateRandomReviewData()
+                    self.postNewProductReview(user: nil, product: product, title: reviewData.title, body: reviewData.body, rating: reviewData.rating, success: {_ in}, failure: {_ in})
+                }
+            }, failure: {_ in})
         }
         
         try? self.viewContext.save()
         
         UserDefaultsHelper().databaseWasSeeded = true
+    }
+    
+    private func generateRandomReviewData() -> (rating: StarRating, title: String, body: String) {
+        let starRating: StarRating = {
+            let random = Double.random(in: 0...1)
+            if random > 0.6 {
+                return .five
+            } else if random > 0.35 {
+                return .four
+            } else if random > 0.2 {
+                return .three
+            } else if random > 0.1 {
+                return .two
+            } else {
+                return .one
+            }
+        }()
+        
+        let review: (title: String, body: String) = {
+            switch starRating {
+            case .one:
+                return [
+                    (title: "Crap",
+                     body: "I hate it."
+                    ),
+                    (title: "Terrible!",
+                     body: "This thing is garbage."
+                    ),
+                    (title: "Worse than death",
+                     body: "Honestly not good at all. I want my money back."
+                    ),
+                    (title: "Why?",
+                     body: "It should be illegal to sell this product."
+                    ),
+                    (title: "Do not buy!",
+                     body: "Worst purchase I ever made."
+                    )
+                ].randomElement()!
+            case .two:
+                return [
+                    (title: "Mostly junk",
+                     body: "Pretty bad product. Not recommended."
+                    ),
+                    (title: "Ugh",
+                     body: "Seemed ok at first, but broke after second use."
+                    ),
+                    (title: "Save your money!",
+                     body: "Not at all worth the price. I returned it and bought a better one."
+                    ),
+                    (title: "Sad",
+                     body: "Extremely disappointed. I had such high hopes. I don't know what to believe anymore."
+                    ),
+                    (title: "Nice paperweight",
+                     body: "Looks really cool but doesn't work at all."
+                    )
+                ].randomElement()!
+            case .three:
+                return [
+                    (title: "Meh",
+                     body: "Not the absolute worst. Sort of alright I guess. I've seen better. "
+                    ),
+                    (title: "Bored",
+                     body: "Has some nice features, but there are better options out there."
+                    ),
+                    (title: "Overpriced",
+                     body: "Would be great if it were about half as expensive. Buy a better thing instead."
+                    ),
+                    (title: "Not for me",
+                     body: "Pretty good if you are the type of person who likes this type of thing."
+                    ),
+                    (title: "Not ready for prime time",
+                     body: "I really wanted to love this product, but unfortunately it has some serious flaws. Maybe the next version will be better."
+                    )
+                ].randomElement()!
+            case .four:
+                return [
+                    (title: "Very nice",
+                     body: "Really really good but not the best. But still pretty great."
+                    ),
+                    (title: "They don't make em like they used to",
+                     body: "This is the best I could find, but still not as good as my old 2011 model."
+                    ),
+                    (title: "Almost perfect",
+                     body: "I would have given this thing 5 stars if it didn't do that one dumb thing I hate!"
+                    ),
+                    (title: "One of the best",
+                     body: "This is seriously amazing, but I don't give away 5 star reviews as haphazardly as some people."
+                    ),
+                    (title: "Pretty good product",
+                     body: "I like it a lot but I had to return it because it's not user friendly enough for my Grandma."
+                    ),
+                    (title: "A minus",
+                     body: "Keep trying, you're almost there."
+                    )
+                ].randomElement()!
+            case .five:
+                return [
+                    (title: "Awesome!",
+                     body: "I didn't know it was possible to make a thing this good. I stare at it all day."
+                    ),
+                    (title: "Incredible",
+                     body: "Best on the market! I bought 18."
+                    ),
+                    (title: "Best dollars I ever spent",
+                     body: "If you only ever buy one thing, buy this product! You will not regret it. It's worth the money. Sell your house if you have to."
+                    ),
+                    (title: "500 stars",
+                     body: "I was skeptical at first, but now I know this is the best one of these ever made. 5 stars is not enough!"
+                    ),
+                    (title: "Changed my life",
+                     body: "I can't even stand how wonderful this freaking thing is. It made me a better person!"
+                    ),
+                    (title: "My eyes are opened",
+                     body: "I thought I knew what a good one of these looked like, but I knew nothing until I bought this thing."
+                    ),
+                    (title: "It does everything",
+                     body: "My old one did less things, but this one has every feature."
+                    ),
+                    (title: "Speechless",
+                     body: "I can't find the words to express how perfect this product is.")
+                ].randomElement()!
+            }
+        }()
+        
+        return (rating: starRating, title: review.title, body: review.body)
     }
 }
 
