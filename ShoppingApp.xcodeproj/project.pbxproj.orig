@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00CC8D55C583454F5128EB87 /* Pods_ShoppingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A999FEB31D6D3A9F2CC3443 /* Pods_ShoppingApp.framework */; };
-		400D3430265D42CD005D8234 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400D342E265D42CD005D8234 /* RegisterViewController.swift */; };
-		400D3431265D42CD005D8234 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 400D342F265D42CD005D8234 /* RegisterViewController.xib */; };
+<<<<<<< HEAD
 		520F43D8265D448C00A6B282 /* StarFillMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43C8265D448C00A6B282 /* StarFillMode.swift */; };
 		520F43D9265D448C00A6B282 /* StarLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43C9265D448C00A6B282 /* StarLayer.swift */; };
 		520F43DA265D448C00A6B282 /* CosmosAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43CA265D448C00A6B282 /* CosmosAccessibility.swift */; };
@@ -25,6 +24,10 @@
 		520F43E4265D448C00A6B282 /* CosmosRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43D5265D448C00A6B282 /* CosmosRating.swift */; };
 		520F43E5265D448C00A6B282 /* CosmosSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43D6265D448C00A6B282 /* CosmosSettings.swift */; };
 		520F43E6265D448C00A6B282 /* CosmosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43D7265D448C00A6B282 /* CosmosView.swift */; };
+=======
+		400D3430265D42CD005D8234 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400D342E265D42CD005D8234 /* RegisterViewController.swift */; };
+		400D3431265D42CD005D8234 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 400D342F265D42CD005D8234 /* RegisterViewController.xib */; };
+>>>>>>> ecf797b908ded28e95859117be029abdac136285
 		526723E4265AD8D600D9CAB9 /* StarRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526723E3265AD8D600D9CAB9 /* StarRating.swift */; };
 		526724C6265AE3AC00D9CAB9 /* UserExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526724C5265AE3AC00D9CAB9 /* UserExtensions.swift */; };
 		526724C8265AE3B700D9CAB9 /* ProductReviewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526724C7265AE3B700D9CAB9 /* ProductReviewExtensions.swift */; };
@@ -99,8 +102,7 @@
 
 /* Begin PBXFileReference section */
 		0A999FEB31D6D3A9F2CC3443 /* Pods_ShoppingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		400D342E265D42CD005D8234 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		400D342F265D42CD005D8234 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		520F43C8265D448C00A6B282 /* StarFillMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarFillMode.swift; sourceTree = "<group>"; };
 		520F43C9265D448C00A6B282 /* StarLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarLayer.swift; sourceTree = "<group>"; };
 		520F43CA265D448C00A6B282 /* CosmosAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosAccessibility.swift; sourceTree = "<group>"; };
@@ -117,6 +119,10 @@
 		520F43D5265D448C00A6B282 /* CosmosRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosRating.swift; sourceTree = "<group>"; };
 		520F43D6265D448C00A6B282 /* CosmosSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosSettings.swift; sourceTree = "<group>"; };
 		520F43D7265D448C00A6B282 /* CosmosView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosView.swift; sourceTree = "<group>"; };
+=======
+		400D342E265D42CD005D8234 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		400D342F265D42CD005D8234 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+>>>>>>> ecf797b908ded28e95859117be029abdac136285
 		526723E3265AD8D600D9CAB9 /* StarRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRating.swift; sourceTree = "<group>"; };
 		526724C5265AE3AC00D9CAB9 /* UserExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExtensions.swift; sourceTree = "<group>"; };
 		526724C7265AE3B700D9CAB9 /* ProductReviewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductReviewExtensions.swift; sourceTree = "<group>"; };

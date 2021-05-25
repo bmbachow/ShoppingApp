@@ -24,7 +24,6 @@ extension NumberFormatter {
     func string(from float: Float) -> String? {
         return self.string(from: NSNumber(floatLiteral: Double(float)))
     }
-
 }
 
 

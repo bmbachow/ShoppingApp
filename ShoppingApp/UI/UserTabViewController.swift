@@ -13,13 +13,19 @@ class UserTabViewController: BaseViewController {
         get {
             (self.tabBarController as? UserTabBarController)?.user
         } set {
+            print("set user")
             (self.tabBarController as? UserTabBarController)?.user = newValue
         }
         
     }
     
     func presentSignInViewController() {
-        let signInViewController = SignInViewController()
+        let signInViewController = SignInViewController(presentingUserTabViewController: self)
         self.present(signInViewController, animated: true, completion: nil)
+    }
+    
+    func presentSignUpViewController(){
+        let registerViewController = RegisterViewController(presentingUserTabViewController: self)
+        self.present(registerViewController, animated: true ,completion: nil)
     }
 }
