@@ -13,7 +13,6 @@ class UserTabViewController: BaseViewController {
         get {
             (self.tabBarController as? UserTabBarController)?.user
         } set {
-            print("set user")
             (self.tabBarController as? UserTabBarController)?.user = newValue
         }
         
@@ -27,5 +26,9 @@ class UserTabViewController: BaseViewController {
     func presentSignUpViewController(){
         let registerViewController = RegisterViewController(presentingUserTabViewController: self)
         self.present(registerViewController, animated: true ,completion: nil)
+    }
+    
+    func userChanged() {
+        
     }
 }
