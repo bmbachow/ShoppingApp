@@ -71,7 +71,9 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         default:
             let product = self.products[indexPath.row]
             let cell = self.tableView.dequeueReusableCell(withIdentifier: "ShoppingProductPreviewTableViewCell") as! ShoppingProductPreviewTableViewCell
-            cell.productLabel.text = product.name
+            cell.productName.text = product.name
+            cell.productImage.image = product.image
+            cell.productPrice.text = NumberFormatter.dollars.string(from: Float(product.price))
             return cell
         
         }
