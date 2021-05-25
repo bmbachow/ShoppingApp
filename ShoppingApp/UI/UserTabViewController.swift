@@ -22,4 +22,9 @@ class UserTabViewController: BaseViewController {
         let signInViewController = SignInViewController()
         self.present(signInViewController, animated: true, completion: nil)
     }
+    
+    func presentSignUpViewController(){
+        let registerViewController = RegisterViewController()
+        self.present(registerViewController, animated: true ,completion: nil)
+    }
 }
