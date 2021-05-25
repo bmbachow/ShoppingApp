@@ -236,13 +236,13 @@ class CoreDataHelper: RemoteAPI {
         ]
         
         let products: [(categoryName: String, name: String, price: Double, productDescription: String, image: UIImage)] = [
-            (categoryName: "Monitors", name: "AOC CU32V3 32' Super-Curved 4K UHD monitor, 1500R Curved VA, 4ms, 121% sRGB Coverage / 90% DCI-P3, HDMI 2.0/DisplayPort, VESA, Black", price: 0, productDescription: "", image: UIImage(named: "d-aocmonitor")!),
-            (categoryName: "Monitors", name: "LG 32UL500-W 32 Inch UHD (3840 x 2160) VA Display with AMD FreeSync, DCI-P3 95% Color Gamut and HDR 10 Compatibility, Silver/White, Silve/White", price: 0, productDescription: "", image: UIImage(named: "d-lg32inch")!),
-            (categoryName: "Monitors", name: "Dell SE2419Hx 24' IPS Full HD (1920x1080) Monitor, Black", price: 0, productDescription: "", image: UIImage(named: "d-dell24inch")!),
+            (categoryName: "Monitors", name: "AOC CU32V3 32' Super-Curved 4K UHD monitor, 1500R Curved VA, 4ms, 121% sRGB Coverage / 90% DCI-P3, HDMI 2.0/DisplayPort, VESA, Black", price: 382.99, productDescription: "", image: UIImage(named: "d-aocmonitor")!),
+            (categoryName: "Monitors", name: "LG 32UL500-W 32 Inch UHD (3840 x 2160) VA Display with AMD FreeSync, DCI-P3 95% Color Gamut and HDR 10 Compatibility, Silver/White, Silve/White", price: 326.99, productDescription: "", image: UIImage(named: "d-lg32inch")!),
+            (categoryName: "Monitors", name: "Dell SE2419Hx 24' IPS Full HD (1920x1080) Monitor, Black", price: 249.95, productDescription: "", image: UIImage(named: "d-dell24inch")!),
             (categoryName: "Monitors", name: "ASUS VP249QGR 23.8” Gaming Monitor 144Hz Full HD (1920 x 1080) IPS 1ms FreeSync Extreme Low Motion Blur Eye Care DisplayPort HDMI VGA,BLACK",
-             price: 0, productDescription: "", image: UIImage(named: "d-asusgaming")!),
+             price: 179.00, productDescription: "", image: UIImage(named: "d-asusgaming")!),
             (categoryName: "Monitors", name: "Philips 328E1CA 32' Curved Monitor, 4K UHD, 120% sRGB, Adaptive-Sync, Speakers, Vesa, 4Yr Advance Replacement Warranty",
-             price: 0, productDescription: "", image: UIImage(named: "d-phillipsmonitor")!),
+             price: 304.87, productDescription: "", image: UIImage(named: "d-phillipsmonitor")!),
             (
                 categoryName: "Laptops",
                 name: "2020 Flagship HP 14 Chromebook Laptop Computer 14\" HD SVA Anti-Glare Display Intel Celeron Processor 4GB DDR4 64GB eMMC Backlit WiFi Webcam Chrome OS (Renewed)",
@@ -273,11 +273,36 @@ class CoreDataHelper: RemoteAPI {
                 price: 449.00,
                 productDescription: "",
                 image: UIImage(named: "l-dell")!),
-            (categoryName: "Accessories", name: "Apple Watch Series 3", price: 229.99, productDescription: "Apple Watch Series 3 with cellular allows you to stay connected, make calls, receive texts and more, even without iPhone nearby", image: UIImage(named: "A-AppleWatch")!),
-            (categoryName: "Accessories", name: "PowerBear HDMI Cable", price: 9.99, productDescription: "PowerBear 4K HDMI Cable 10 ft | High Speed, Braided Nylon & Gold Connectors, 4K @ 60Hz, Ultra HD, 2K, 1080P & ARC Compatible | for Laptop, Monitor, PS5, PS4, Xbox One, Fire TV, Apple TV & More", image: UIImage(named: "A-HDMIcable")!),
-            (categoryName: "Accessories", name: "Powlight Power Strip", price: 24.98, productDescription: "Power Strip with 8 Ft, Powlight Surge Protector with 12 AC Outlets and 4 USB Charging Ports,1875W/15A, 2100 Joules, 8 Feet Long Extension Cord for Smartphone Tablets Home,Office, Hotel- Black", image: UIImage(named: "A-PowerStrip")!),
-            (categoryName: "Accessories", name: "Kasa Smart Plug", price: 13.99, productDescription: "Kasa Smart (HS100) Plug by TP-Link, Smart Home WiFi Outlet Works with Alexa, Echo, Google Home & IFTTT, No Hub Required, Remote Control, 15 Amp, UL Certified", image: UIImage(named: "A-WIFIplug")!),
-            (categoryName: "Accessories", name: "Anker Wireless Charger", price: 18.99, productDescription: "Anker Wireless Charger, PowerWave Stand, Qi-Certified, 10 Watt Fast Charging", image: UIImage(named: "A-WirelessCharger")!),
+            (
+                categoryName: "Accessories",
+                name: "Apple Watch Series 3 (GPS + Cellular, 42MM) - Space Gray Aluminum Case with Black Sport Band (Renewed)",
+                price: 229.99,
+                productDescription: "",
+                image: UIImage(named: "A-AppleWatch")!),
+            (
+                categoryName: "Accessories",
+                name: "PowerBear 4K HDMI Cable 10 ft | High Speed, Braided Nylon & Gold Connectors, 4K @ 60Hz, Ultra HD, 2K, 1080P & ARC Compatible | for Laptop, Monitor, PS5, PS4, Xbox One, Fire TV, Apple TV & More",
+                price: 9.99,
+                productDescription: "",
+                image: UIImage(named: "A-HDMIcable")!),
+            (
+                categoryName: "Accessories",
+                name: "Power Strip with 8 Ft, POWLIGHT Surge Protector with 12 AC Outlets and 4 USB Charging Ports,1875W/15A, 2100 Joules, 8 Feet Long Extension Cord for Smartphone Tablets Home,Office, Hotel- Black",
+                price: 24.98,
+                productDescription: "",
+                image: UIImage(named: "A-PowerStrip")!),
+            (
+                categoryName: "Accessories",
+                name: "Kasa Smart (HS100) Plug by TP-Link, Smart Home WiFi Outlet Works with Alexa, Echo, Google Home & IFTTT, No Hub Required, Remote Control, 15 Amp, UL Certified",
+                price: 13.99,
+                productDescription: "",
+                image: UIImage(named: "A-WIFIplug")!),
+            (
+                categoryName: "Accessories",
+                name: "Anker Wireless Charger, PowerWave Stand, Qi-Certified, 10 Watt Fast Charging",
+                price: 18.99,
+                productDescription: "",
+                image: UIImage(named: "A-WirelessCharger")!),
             (
                 categoryName: "Smartphones",
                 name: "TCL 10L, Unlocked Android Smartphone with 6.53\" FHD + LCD Display, 48MP Quad Rear Camera System, 64GB+6GB RAM, 4000mAh Battery - Arctic White",
@@ -309,11 +334,31 @@ class CoreDataHelper: RemoteAPI {
                 productDescription: "",
                 image: UIImage(named: "s-apple")!),
 
-            (categoryName: "Gaming", name: "AKRacing Gaming Chair", price: 399.99, productDescription: "AKRacing Core Series EX-Wide SE Ergonomic Red Gaming Chair with Wide Seat, 330 Lbs Weight Limit, Rocker and Seat Height Adjustment Mechanisms", image: UIImage(named: "racingChair")!),
-            (categoryName: "Gaming", name: "BENGOO G9000 Stereo Gaming Headset", price: 19.99, productDescription: "Stereo Gaming Headset for PS4 PC Xbox One PS5 Controller, Noise Cancelling Over Ear Headphones with Mic, LED Light, Bass Surround, Soft Memory Earmuffs for Laptop Mac Nintendo NES Games", image: UIImage(named: "gamingHeadset")!),
-            (categoryName: "Gaming", name: "Nintendo Switch", price: 299.98, productDescription: "Hybrid video game console, consisting of a console unit, a dock, and two Joy-Con controllers", image: UIImage(named: "nintendoSwitch")!),
-            (categoryName: "Gaming", name: "Microsoft Xbox Series X", price: 1249.00, productDescription: "Microsoft Xbox Series X 1TB SSD Video Game Console + 1 Xbox Wireless Controller - 8X Cores Zen 2 CPU, RDNA 2 GPU, 16GB GDDR6 Memory, True 4K Gaming, 8K HDR, 120 FPS, 4K UHD Blu-Ray - Broage HDMI Cable", image: UIImage(named: "xboxSeriesX")!),
-            (categoryName: "Gaming", name: "Playstation 5", price: 1099.99, productDescription: "Playstation 5 Home Video Game Console: Blu-Ray Edition", image: UIImage(named: "playstation5")!)
+            (
+                categoryName: "Gaming",
+                name: "AKRacing Core Series EX-Wide SE Ergonomic Red Gaming Chair with Wide Seat, 330 Lbs Weight Limit, Rocker and Seat Height Adjustment Mechanisms",
+                price: 399.99,
+                productDescription: "",
+                image: UIImage(named: "racingChair")!),
+            (
+                categoryName: "Gaming",
+                name: "BENGOO G9000 Stereo Gaming Headset for PS4 PC Xbox One PS5 Controller, Noise Cancelling Over Ear Headphones with Mic, LED Light, Bass Surround, Soft Memory Earmuffs for Laptop Mac Nintendo NES Games",
+                price: 19.99,
+                productDescription: "",
+                image: UIImage(named: "gamingHeadset")!),
+            (
+                categoryName: "Gaming",
+                name: "Nintendo Switch",
+                price: 299.98,
+                productDescription: "Hybrid video game console, consisting of a console unit, a dock, and two Joy-Con controllers",
+                image: UIImage(named: "nintendoSwitch")!),
+            (
+                categoryName: "Gaming",
+                name: "Microsoft Xbox Series X 1TB SSD Video Game Console + 1 Xbox Wireless Controller - 8X Cores Zen 2 CPU, RDNA 2 GPU, 16GB GDDR6 Memory, True 4K Gaming, 8K HDR, 120 FPS, 4K UHD Blu-Ray - Broage HDMI Cable",
+                price: 1249.00,
+                productDescription: "",
+                image: UIImage(named: "xboxSeriesX")!),
+            (categoryName: "Gaming", name: "Playstation 5 Home Video Game Console: Blu-Ray Edition", price: 1099.99, productDescription: "", image: UIImage(named: "playstation5")!)
 
         ]
     

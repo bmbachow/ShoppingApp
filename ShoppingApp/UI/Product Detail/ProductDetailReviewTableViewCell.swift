@@ -9,10 +9,19 @@ import UIKit
 
 class ProductDetailReviewTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var usernameTextView: UITextView!
     
-
+    @IBOutlet weak var cosmosView: CosmosView!
+    
+    @IBOutlet weak var reviewDateTextView: UITextView!
+    
+    @IBOutlet weak var titleTextView: UITextView!
+    
+    @IBOutlet weak var bodyTextView: UITextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.cosmosView.isUserInteractionEnabled = false
         // Initialization code
     }
 

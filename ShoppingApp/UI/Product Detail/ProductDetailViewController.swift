@@ -39,14 +39,21 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: "ProductDetailMainTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductDetailMainTableViewCell")
+        self.tableView.register((UINib(nibName: "ProductDetailReviewTableViewCell", bundle: nil)), forCellReuseIdentifier: "ProductDetailReviewTableViewCell")
         self.productDetailMainTableViewCell.productNameLabel.text = self.product.name
         self.productDetailMainTableViewCell.productImageView.image = self.product.image
         self.productDetailMainTableViewCell.productPriceLabel.text = NumberFormatter.dollars.string(from: Float(self.product.price))
         self.productDetailMainTableViewCell.cosmosView.rating = self.product.averageRating ?? 0
     }
 
+    //MARK: UITableView
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     @IBAction func tappedBackButton(_ sender: UIButton) {
@@ -54,10 +61,31 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        switch section {
+        case 0:
+            return 0
+        default:
+            return self.product.reviewsArray.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return self.productDetailMainTableViewCell
+        switch indexPath.row {
+        case 0:
+            return self.productDetailMainTableViewCell
+        default:
+            let review = self.product.reviewsArray[indexPath.row]
+            guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "ProductDetailReviewTableViewCell") as? ProductDetailReviewTableViewCell else {
+                fatalError("Unable to dequeue ProductDetailReviewTableViewCell")
+            }
+            cell.usernameTextView.text = review.user?.firstName ?? "Anonymous"
+            cell.cosmosView.rating = Double(review.rating)
+            if let postedDate = review.postedDate {
+                cell.reviewDateTextView.text = "Reviewed on " + DateFormatter.standardDate.string(from: postedDate) + " at " + DateFormatter.standardTime.string(from: postedDate)
+            }
+            cell.titleTextView.text = review.title
+            cell.bodyTextView.text = review.body
+            return cell
+        }
     }
 }
