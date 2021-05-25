@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		00CC8D55C583454F5128EB87 /* Pods_ShoppingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A999FEB31D6D3A9F2CC3443 /* Pods_ShoppingApp.framework */; };
+		400D3430265D42CD005D8234 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400D342E265D42CD005D8234 /* RegisterViewController.swift */; };
+		400D3431265D42CD005D8234 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 400D342F265D42CD005D8234 /* RegisterViewController.xib */; };
 		526723E4265AD8D600D9CAB9 /* StarRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526723E3265AD8D600D9CAB9 /* StarRating.swift */; };
 		526724C6265AE3AC00D9CAB9 /* UserExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526724C5265AE3AC00D9CAB9 /* UserExtensions.swift */; };
 		526724C8265AE3B700D9CAB9 /* ProductReviewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526724C7265AE3B700D9CAB9 /* ProductReviewExtensions.swift */; };
@@ -82,6 +84,8 @@
 
 /* Begin PBXFileReference section */
 		0A999FEB31D6D3A9F2CC3443 /* Pods_ShoppingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		400D342E265D42CD005D8234 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		400D342F265D42CD005D8234 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		526723E3265AD8D600D9CAB9 /* StarRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRating.swift; sourceTree = "<group>"; };
 		526724C5265AE3AC00D9CAB9 /* UserExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExtensions.swift; sourceTree = "<group>"; };
 		526724C7265AE3B700D9CAB9 /* ProductReviewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductReviewExtensions.swift; sourceTree = "<group>"; };
@@ -335,6 +339,8 @@
 			children = (
 				52D8F8AF26580C6400EF220A /* SignInViewController.swift */,
 				52D8F8B026580C6400EF220A /* SignInViewController.xib */,
+				400D342E265D42CD005D8234 /* RegisterViewController.swift */,
+				400D342F265D42CD005D8234 /* RegisterViewController.xib */,
 			);
 			path = "Sign In + Register";
 			sourceTree = "<group>";
@@ -447,6 +453,7 @@
 				5292776E265C3CA300394180 /* ShoppingProductPreviewTableViewCell.xib in Resources */,
 				52E0B087265B1B1E00B9C77E /* SettingsViewController.xib in Resources */,
 				52D8F8B226580C6400EF220A /* SignInViewController.xib in Resources */,
+				400D3431265D42CD005D8234 /* RegisterViewController.xib in Resources */,
 				52D8F8A526580BA900EF220A /* Assets.xcassets in Resources */,
 				52E0B082265B1AD100B9C77E /* CartViewController.xib in Resources */,
 				52E0B075265B1A6A00B9C77E /* ShoppingViewController.xib in Resources */,
@@ -560,6 +567,7 @@
 				52E0B074265B1A6A00B9C77E /* ShoppingViewController.swift in Sources */,
 				5292776D265C3CA300394180 /* ShoppingProductPreviewTableViewCell.swift in Sources */,
 				52672588265AECA600D9CAB9 /* GeneralError.swift in Sources */,
+				400D3430265D42CD005D8234 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

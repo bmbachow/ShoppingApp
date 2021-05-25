@@ -24,6 +24,18 @@ extension UIButton {
         isHighlighted = false
         super.touchesCancelled(touches, with: event)
     }
+    
+}
 
+extension UITextField {
+    
+    var textnoEmptyString : String? {
+        if(self.text == ""){
+            return nil
+        }
+        return self.text
+    }
+    
+    
 }
 

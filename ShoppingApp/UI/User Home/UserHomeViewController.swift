@@ -22,4 +22,8 @@ class UserHomeViewController: UserTabViewController {
     @IBAction func tappedSignInButton(_ sender: UIButton) {
         self.presentSignInViewController()
     }
+    @IBAction func tappedSignUpButton(_ sender: Any) {
+        self.presentSignUpViewController()
+    }
+    
 }
