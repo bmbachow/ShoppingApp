@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegisterViewController: UserTabViewController {
+class RegisterViewController: BaseViewController {
 
     
     
@@ -18,12 +18,19 @@ class RegisterViewController: UserTabViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var phone: UITextField!
     
+    weak var presentingUserTabViewController: UserTabViewController?
     
+    init(presentingUserTabViewController: UserTabViewController) {
+        self.presentingUserTabViewController = presentingUserTabViewController
+        super.init(nibName: "RegisterViewController", bundle: nil)
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -60,11 +67,10 @@ class RegisterViewController: UserTabViewController {
         }
         else{
             remoteAPI.postNewUser(firstName: firstName, lastName: lastName, email: email, phoneNumber: phone, password: pass, success: {user in
-                self.user = user
+                self.presentingUserTabViewController?.user = user
             }) { error in
                 print(error.localizedDescription)
             }
-            print(self.user)
         }
         
         

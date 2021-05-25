@@ -26,16 +26,28 @@ class CoreDataHelper: RemoteAPI {
             guard email != nil || phoneNumber != nil else {
                 return failure(CoreDataHelperError.validationError("User must have email or phoneNumber."))
             }
+            var invalidInputMessages = [String]()
             if let email = email {
-                guard InputValidator.Email.validate(email) else {
-                    return failure(CoreDataHelperError.validationError("Invalid email address"))
+                if !InputValidator.Email.validate(email) {
+                    invalidInputMessages += ["Invalid email address"]
+                }
+                if try self.getUserSync(emailOrPhoneNumber: email) != nil {
+                    invalidInputMessages += ["A user with that email address already exists."]
                 }
             }
             if let phoneNumber = phoneNumber {
-                guard InputValidator.PhoneNumber.validate(phoneNumber) else {
-                    return failure(CoreDataHelperError.validationError("Invalid phone number"))
+                if !InputValidator.PhoneNumber.validate(phoneNumber) {
+                    invalidInputMessages += ["Invalid phone number"]
+                }
+                if try self.getUserSync(emailOrPhoneNumber: phoneNumber) != nil {
+                    invalidInputMessages += ["A user with that phone number already exists."]
                 }
             }
+            
+            guard invalidInputMessages.isEmpty else {
+                return failure(CoreDataHelperError.validationError(invalidInputMessages.joined(separator: "\n\n")))
+            }
+            
             let user = User(context: self.viewContext)
             user.firstName = firstName
             user.lastName = lastName
