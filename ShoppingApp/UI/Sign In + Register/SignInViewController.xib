@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignInViewController" customModule="ShoppingApp" customModuleProvider="target">
             <connections>
+                <outlet property="pass" destination="Umr-cM-1Uv" id="ecM-wt-dKo"/>
+                <outlet property="userName" destination="EFr-Bf-cd3" id="gZC-bl-bOD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -38,9 +40,12 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14M-Oe-Aup">
-                    <rect key="frame" x="184" y="341" width="46" height="30"/>
+                    <rect key="frame" x="177" y="340" width="62" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="signIn:" destination="-1" eventType="touchUpInside" id="mDw-Zi-PS9"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
