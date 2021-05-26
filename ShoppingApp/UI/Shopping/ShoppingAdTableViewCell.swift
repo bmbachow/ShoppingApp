@@ -11,6 +11,7 @@ class ShoppingAdTableViewCell: UITableViewCell {
     
     @IBOutlet weak var shoppingImage: UIImageView!
     
+    @IBOutlet weak var pageCon: UIPageControl!
     private var timer = Timer()
     
     var images : [UIImage] = [UIImage(named: "shopping0")!, UIImage(named: "shopping1")!, UIImage(named: "shopping2")!]
@@ -34,6 +35,10 @@ class ShoppingAdTableViewCell: UITableViewCell {
                               options: .transitionCrossDissolve,
                               animations: {
                                 self.shoppingImage.image = self.images.randomElement()
+                                self.pageCon.currentPage += 1
+                                if(self.pageCon.currentPage > 3){
+                                    self.pageCon.currentPage = 0
+                                }
                               },
                               completion: nil)
         }

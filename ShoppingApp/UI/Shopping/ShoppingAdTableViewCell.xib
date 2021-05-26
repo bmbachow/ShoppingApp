@@ -17,22 +17,29 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="195"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iBe-tx-D8C">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="2044"/>
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iBe-tx-D8C">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="shopping1" translatesAutoresizingMaskIntoConstraints="NO" id="0aw-s2-Axk">
-                                <rect key="frame" x="21" y="7" width="278" height="163"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="0aw-s2-Axk" secondAttribute="height" multiplier="70:37" id="9hX-Lr-Efp"/>
                                 </constraints>
                             </imageView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="jVf-7Q-7uW">
+                                <rect key="frame" x="98" y="168" width="124" height="28"/>
+                                <color key="pageIndicatorTintColor" red="0.66178721539999996" green="0.68710139299999995" blue="1" alpha="0.64423694350000005" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="jVf-7Q-7uW" secondAttribute="trailing" constant="98" id="Jvg-TF-CgV"/>
                             <constraint firstAttribute="bottom" secondItem="0aw-s2-Axk" secondAttribute="bottom" constant="30" id="Yo6-M7-tLv"/>
-                            <constraint firstAttribute="trailing" secondItem="0aw-s2-Axk" secondAttribute="trailing" constant="20" id="ZMG-kT-hEs"/>
-                            <constraint firstItem="0aw-s2-Axk" firstAttribute="top" secondItem="iBe-tx-D8C" secondAttribute="top" constant="10" id="mmz-TP-Wn0"/>
-                            <constraint firstItem="0aw-s2-Axk" firstAttribute="leading" secondItem="iBe-tx-D8C" secondAttribute="leading" constant="20" id="w7E-g8-CqJ"/>
+                            <constraint firstAttribute="trailing" secondItem="0aw-s2-Axk" secondAttribute="trailing" id="ZMG-kT-hEs"/>
+                            <constraint firstItem="jVf-7Q-7uW" firstAttribute="centerX" secondItem="iBe-tx-D8C" secondAttribute="centerX" id="au7-dv-AQS"/>
+                            <constraint firstItem="jVf-7Q-7uW" firstAttribute="top" secondItem="0aw-s2-Axk" secondAttribute="bottom" id="b68-ip-F52"/>
+                            <constraint firstItem="0aw-s2-Axk" firstAttribute="top" secondItem="iBe-tx-D8C" secondAttribute="top" id="mmz-TP-Wn0"/>
+                            <constraint firstItem="0aw-s2-Axk" firstAttribute="leading" secondItem="iBe-tx-D8C" secondAttribute="leading" id="w7E-g8-CqJ"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -45,6 +52,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="pageCon" destination="jVf-7Q-7uW" id="pRI-3j-RiQ"/>
                 <outlet property="shoppingImage" destination="0aw-s2-Axk" id="JBI-fH-FO0"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="150.33482142857142"/>
