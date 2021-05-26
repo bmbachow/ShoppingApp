@@ -220,7 +220,7 @@ class CoreDataHelper: RemoteAPI {
     func getProducts(searchString: String, category: Category?, success: ([Product]) -> Void, failure: (Error) -> Void) {
         let request: NSFetchRequest<Product> = Product.fetchRequest()
         var predicates = [NSPredicate]()
-        predicates += [NSPredicate(format: "name LIKE %@", searchString)]
+        predicates += [NSPredicate(format: "name CONTAINS[c] %@", searchString)]
         if let categoryName = category?.name {
             predicates += [NSPredicate(format: "category.name == %@", categoryName)]
         }

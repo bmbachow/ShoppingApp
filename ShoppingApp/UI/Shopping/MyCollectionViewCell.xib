@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="140" height="71"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bE8-1W-Qwa">
-                                <rect key="frame" x="0.0" y="10" width="140" height="51"/>
+                                <rect key="frame" x="0.0" y="6" width="140" height="59"/>
                                 <state key="normal" title="Category"/>
                                 <connections>
                                     <action selector="tappedCategoryButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="ZKh-Q6-j4z"/>
@@ -29,8 +29,8 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="bE8-1W-Qwa" firstAttribute="leading" secondItem="bcZ-NL-Zdz" secondAttribute="leading" id="KWR-hN-frN"/>
-                            <constraint firstItem="bE8-1W-Qwa" firstAttribute="top" secondItem="bcZ-NL-Zdz" secondAttribute="top" constant="10" id="TM8-WB-NXP"/>
-                            <constraint firstAttribute="bottom" secondItem="bE8-1W-Qwa" secondAttribute="bottom" constant="10" id="Trf-3R-RfN"/>
+                            <constraint firstItem="bE8-1W-Qwa" firstAttribute="top" secondItem="bcZ-NL-Zdz" secondAttribute="top" constant="6" id="TM8-WB-NXP"/>
+                            <constraint firstAttribute="bottom" secondItem="bE8-1W-Qwa" secondAttribute="bottom" constant="6" id="Trf-3R-RfN"/>
                             <constraint firstAttribute="trailing" secondItem="bE8-1W-Qwa" secondAttribute="trailing" id="hOG-Vx-Jv3"/>
                         </constraints>
                     </view>

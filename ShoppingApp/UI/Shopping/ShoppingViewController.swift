@@ -13,11 +13,16 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
     
     @IBOutlet var collectionView: UICollectionView!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    
     private var shouldShowSignInViewControllerOnAppear = true
     
     private var products = [Product]()
     
     private var categories = [Category]()
+    
+    private var selectedCategory: Category?
     
     lazy var adCell : ShoppingAdTableViewCell = {
         return self.tableView.dequeueReusableCell(withIdentifier: "ShoppingAdTableViewCell") as! ShoppingAdTableViewCell
@@ -25,6 +30,7 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.searchBar.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: "ShoppingAdTableViewCell", bundle: nil), forCellReuseIdentifier: "ShoppingAdTableViewCell")
@@ -129,13 +135,29 @@ extension ShoppingViewController: UICollectionViewDelegate{
 
 extension ShoppingViewController: UICollectionViewDataSource{
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.categories.count
+        switch section {
+        case 0:
+            return 1
+        default:
+            return self.categories.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as! MyCollectionViewCell
-        cell.configure(buttonText: self.categories[indexPath.row].name!)
+        let buttonText: String
+        switch indexPath.section {
+        case 0:
+            buttonText = "All"
+        default:
+            buttonText = self.categories[indexPath.row].name ?? "?"
+        }
+        cell.configure(buttonText: buttonText)
         cell.delegate = self
         return cell
         
@@ -148,10 +170,29 @@ extension ShoppingViewController : MyCollectionViewCellDelegate{
         guard let indexPath = self.collectionView.indexPath(for: cell) else {
             return
         }
-        print(self.categories[indexPath.row].name)
+        switch indexPath.section {
+        case 0:
+            self.selectedCategory = nil
+        default:
+            self.selectedCategory = self.categories[indexPath.row]
+        }
+    }
+}
+
+extension ShoppingViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchString = searchBar.text else { return }
+        self.remoteAPI.getProducts(searchString: searchString, category: self.selectedCategory, success: { products in
+            self.products = products
+            self.tableView.reloadData()
+        }, failure: { error in
+            print(error.localizedDescription)
+        })
     }
     
-    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
+    }
 }
 
 //
