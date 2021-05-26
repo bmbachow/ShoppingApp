@@ -24,6 +24,10 @@ extension NumberFormatter {
     func string(from float: Float) -> String? {
         return self.string(from: NSNumber(floatLiteral: Double(float)))
     }
+    
+    func string(from double: Double) -> String? {
+        return self.string(from: NSNumber(floatLiteral: double))
+    }
 }
 
 

@@ -9,6 +9,11 @@
         <attribute name="cardNumber" attributeType="String"/>
         <attribute name="nameOnCard" attributeType="String"/>
     </entity>
+    <entity name="CartItem" representedClassName="CartItem" syncable="YES">
+        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="cartItems" inverseEntity="Product"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="cartItems" inverseEntity="User"/>
+    </entity>
     <entity name="Category" representedClassName="Category" syncable="YES">
         <attribute name="imageData" optional="YES" attributeType="Binary"/>
         <attribute name="name" attributeType="String"/>
@@ -31,6 +36,8 @@
     <entity name="Order" representedClassName="Order" syncable="YES">
         <attribute name="orderedDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="shippingPrice" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
+        <attribute name="tax" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
         <relationship name="delivery" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Delivery" inverseName="order" inverseEntity="Delivery"/>
         <relationship name="paymentMethod" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentMethod" inverseName="orders" inverseEntity="PaymentMethod"/>
         <relationship name="products" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Product" inverseName="orders" inverseEntity="Product"/>
@@ -45,7 +52,8 @@
         <attribute name="name" attributeType="String"/>
         <attribute name="price" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="productDescription" optional="YES" attributeType="String"/>
-        <relationship name="cartUsers" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="User" inverseName="cartProducts" inverseEntity="User"/>
+        <relationship name="cartItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CartItem" inverseName="product" inverseEntity="CartItem"/>
+        <relationship name="cartUsers" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="User"/>
         <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="products" inverseEntity="Category"/>
         <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Order" inverseName="products" inverseEntity="Order"/>
         <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ProductReview" inverseName="product" inverseEntity="ProductReview"/>
@@ -65,8 +73,9 @@
         <attribute name="lastName" attributeType="String"/>
         <attribute name="password" attributeType="String"/>
         <attribute name="phoneNumber" attributeType="String"/>
+        <attribute name="registeredDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="searchHistory" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String]"/>
-        <relationship name="cartProducts" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Product" inverseName="cartUsers" inverseEntity="Product"/>
+        <relationship name="cartItems" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CartItem" inverseName="user" inverseEntity="CartItem"/>
         <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Order" inverseName="user" inverseEntity="Order"/>
         <relationship name="paymentMethods" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PaymentMethod" inverseName="user" inverseEntity="PaymentMethod"/>
         <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ProductReview" inverseName="user" inverseEntity="ProductReview"/>
@@ -75,13 +84,14 @@
     <elements>
         <element name="AccountPaymentMethod" positionX="-2672.158203125" positionY="-2764.104400634766" width="188.1484375" height="88"/>
         <element name="CardPaymentMethod" positionX="-2937.164123535156" positionY="-2790.85693359375" width="167.1560668945312" height="73"/>
-        <element name="Category" positionX="-3181.431762695313" positionY="-2483.058563232422" width="128" height="88"/>
-        <element name="Delivery" positionX="-2483.615600585938" positionY="-2630.353118896484" width="128" height="133"/>
-        <element name="Location" positionX="-2264.732299804688" positionY="-2476.288330078125" width="128" height="103"/>
-        <element name="Order" positionX="-2723.453002929688" positionY="-2651.342437744141" width="128" height="133"/>
-        <element name="PaymentMethod" positionX="-2914.240295410156" positionY="-2896.662826538086" width="128" height="73"/>
-        <element name="Product" positionX="-2944.902954101562" positionY="-2497.447570800782" width="128" height="178"/>
-        <element name="ProductReview" positionX="-2586.463134765625" positionY="-2466.063323974609" width="128" height="133"/>
-        <element name="User" positionX="-3126.313354492188" positionY="-2782.61279296875" width="128" height="208"/>
+        <element name="CartItem" positionX="-3261.925537109375" positionY="-2362.168243408203" width="128" height="88"/>
+        <element name="Category" positionX="-3284.731201171875" positionY="-2480.807983398438" width="128" height="88"/>
+        <element name="Delivery" positionX="-2480.359985351563" positionY="-2633.201751708984" width="128" height="133"/>
+        <element name="Location" positionX="-2265.546264648438" positionY="-2476.695251464844" width="128" height="103"/>
+        <element name="Order" positionX="-2720.197265625" positionY="-2652.563293457032" width="128" height="163"/>
+        <element name="PaymentMethod" positionX="-2910.984680175781" positionY="-2893.255874633789" width="128" height="73"/>
+        <element name="Product" positionX="-2930.65966796875" positionY="-2490.122375488282" width="128" height="193"/>
+        <element name="ProductReview" positionX="-2584.021362304688" positionY="-2464.842498779296" width="128" height="133"/>
+        <element name="User" positionX="-3088.929870605469" positionY="-2775.096511840821" width="128" height="223"/>
     </elements>
 </model>

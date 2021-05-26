@@ -2,7 +2,7 @@
 //  Product+CoreDataProperties.swift
 //  ShoppingApp
 //
-//  Created by Robert Olieman on 5/23/21.
+//  Created by Robert Olieman on 5/26/21.
 //
 //
 
@@ -16,50 +16,33 @@ extension Product {
         return NSFetchRequest<Product>(entityName: "Product")
     }
 
+    @NSManaged public var imageData: Data?
     @NSManaged public var name: String?
     @NSManaged public var price: Double
     @NSManaged public var productDescription: String?
-    @NSManaged public var imageData: Data?
+    @NSManaged public var cartItems: NSSet?
+    @NSManaged public var cartUsers: NSOrderedSet?
     @NSManaged public var category: Category?
     @NSManaged public var orders: NSOrderedSet?
-    @NSManaged public var cartUsers: NSOrderedSet?
-    @NSManaged public var wishListUsers: NSOrderedSet?
     @NSManaged public var reviews: NSOrderedSet?
+    @NSManaged public var wishListUsers: NSOrderedSet?
 
 }
 
-// MARK: Generated accessors for orders
+// MARK: Generated accessors for cartItems
 extension Product {
 
-    @objc(insertObject:inOrdersAtIndex:)
-    @NSManaged public func insertIntoOrders(_ value: Order, at idx: Int)
+    @objc(addCartItemsObject:)
+    @NSManaged public func addToCartItems(_ value: CartItem)
 
-    @objc(removeObjectFromOrdersAtIndex:)
-    @NSManaged public func removeFromOrders(at idx: Int)
+    @objc(removeCartItemsObject:)
+    @NSManaged public func removeFromCartItems(_ value: CartItem)
 
-    @objc(insertOrders:atIndexes:)
-    @NSManaged public func insertIntoOrders(_ values: [Order], at indexes: NSIndexSet)
+    @objc(addCartItems:)
+    @NSManaged public func addToCartItems(_ values: NSSet)
 
-    @objc(removeOrdersAtIndexes:)
-    @NSManaged public func removeFromOrders(at indexes: NSIndexSet)
-
-    @objc(replaceObjectInOrdersAtIndex:withObject:)
-    @NSManaged public func replaceOrders(at idx: Int, with value: Order)
-
-    @objc(replaceOrdersAtIndexes:withOrders:)
-    @NSManaged public func replaceOrders(at indexes: NSIndexSet, with values: [Order])
-
-    @objc(addOrdersObject:)
-    @NSManaged public func addToOrders(_ value: Order)
-
-    @objc(removeOrdersObject:)
-    @NSManaged public func removeFromOrders(_ value: Order)
-
-    @objc(addOrders:)
-    @NSManaged public func addToOrders(_ values: NSOrderedSet)
-
-    @objc(removeOrders:)
-    @NSManaged public func removeFromOrders(_ values: NSOrderedSet)
+    @objc(removeCartItems:)
+    @NSManaged public func removeFromCartItems(_ values: NSSet)
 
 }
 
@@ -98,38 +81,38 @@ extension Product {
 
 }
 
-// MARK: Generated accessors for wishListUsers
+// MARK: Generated accessors for orders
 extension Product {
 
-    @objc(insertObject:inWishListUsersAtIndex:)
-    @NSManaged public func insertIntoWishListUsers(_ value: User, at idx: Int)
+    @objc(insertObject:inOrdersAtIndex:)
+    @NSManaged public func insertIntoOrders(_ value: Order, at idx: Int)
 
-    @objc(removeObjectFromWishListUsersAtIndex:)
-    @NSManaged public func removeFromWishListUsers(at idx: Int)
+    @objc(removeObjectFromOrdersAtIndex:)
+    @NSManaged public func removeFromOrders(at idx: Int)
 
-    @objc(insertWishListUsers:atIndexes:)
-    @NSManaged public func insertIntoWishListUsers(_ values: [User], at indexes: NSIndexSet)
+    @objc(insertOrders:atIndexes:)
+    @NSManaged public func insertIntoOrders(_ values: [Order], at indexes: NSIndexSet)
 
-    @objc(removeWishListUsersAtIndexes:)
-    @NSManaged public func removeFromWishListUsers(at indexes: NSIndexSet)
+    @objc(removeOrdersAtIndexes:)
+    @NSManaged public func removeFromOrders(at indexes: NSIndexSet)
 
-    @objc(replaceObjectInWishListUsersAtIndex:withObject:)
-    @NSManaged public func replaceWishListUsers(at idx: Int, with value: User)
+    @objc(replaceObjectInOrdersAtIndex:withObject:)
+    @NSManaged public func replaceOrders(at idx: Int, with value: Order)
 
-    @objc(replaceWishListUsersAtIndexes:withWishListUsers:)
-    @NSManaged public func replaceWishListUsers(at indexes: NSIndexSet, with values: [User])
+    @objc(replaceOrdersAtIndexes:withOrders:)
+    @NSManaged public func replaceOrders(at indexes: NSIndexSet, with values: [Order])
 
-    @objc(addWishListUsersObject:)
-    @NSManaged public func addToWishListUsers(_ value: User)
+    @objc(addOrdersObject:)
+    @NSManaged public func addToOrders(_ value: Order)
 
-    @objc(removeWishListUsersObject:)
-    @NSManaged public func removeFromWishListUsers(_ value: User)
+    @objc(removeOrdersObject:)
+    @NSManaged public func removeFromOrders(_ value: Order)
 
-    @objc(addWishListUsers:)
-    @NSManaged public func addToWishListUsers(_ values: NSOrderedSet)
+    @objc(addOrders:)
+    @NSManaged public func addToOrders(_ values: NSOrderedSet)
 
-    @objc(removeWishListUsers:)
-    @NSManaged public func removeFromWishListUsers(_ values: NSOrderedSet)
+    @objc(removeOrders:)
+    @NSManaged public func removeFromOrders(_ values: NSOrderedSet)
 
 }
 
@@ -165,6 +148,41 @@ extension Product {
 
     @objc(removeReviews:)
     @NSManaged public func removeFromReviews(_ values: NSOrderedSet)
+
+}
+
+// MARK: Generated accessors for wishListUsers
+extension Product {
+
+    @objc(insertObject:inWishListUsersAtIndex:)
+    @NSManaged public func insertIntoWishListUsers(_ value: User, at idx: Int)
+
+    @objc(removeObjectFromWishListUsersAtIndex:)
+    @NSManaged public func removeFromWishListUsers(at idx: Int)
+
+    @objc(insertWishListUsers:atIndexes:)
+    @NSManaged public func insertIntoWishListUsers(_ values: [User], at indexes: NSIndexSet)
+
+    @objc(removeWishListUsersAtIndexes:)
+    @NSManaged public func removeFromWishListUsers(at indexes: NSIndexSet)
+
+    @objc(replaceObjectInWishListUsersAtIndex:withObject:)
+    @NSManaged public func replaceWishListUsers(at idx: Int, with value: User)
+
+    @objc(replaceWishListUsersAtIndexes:withWishListUsers:)
+    @NSManaged public func replaceWishListUsers(at indexes: NSIndexSet, with values: [User])
+
+    @objc(addWishListUsersObject:)
+    @NSManaged public func addToWishListUsers(_ value: User)
+
+    @objc(removeWishListUsersObject:)
+    @NSManaged public func removeFromWishListUsers(_ value: User)
+
+    @objc(addWishListUsers:)
+    @NSManaged public func addToWishListUsers(_ values: NSOrderedSet)
+
+    @objc(removeWishListUsers:)
+    @NSManaged public func removeFromWishListUsers(_ values: NSOrderedSet)
 
 }
 

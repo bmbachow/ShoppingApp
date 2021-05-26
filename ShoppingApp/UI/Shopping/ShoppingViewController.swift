@@ -25,17 +25,17 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: "ShoppingAdTableViewCell", bundle: nil), forCellReuseIdentifier: "ShoppingAdTableViewCell")
         self.tableView.register(UINib(nibName: "ShoppingProductPreviewTableViewCell", bundle: nil), forCellReuseIdentifier: "ShoppingProductPreviewTableViewCell")
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         self.remoteAPI.getAllProducts(success: { products in
             self.products = products
             self.tableView.reloadData()
         }, failure: { error in
             print(error.localizedDescription)
         })
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+      
         self.adCell.startAdTimer()
     }
 
@@ -94,7 +94,7 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         case 0:
             return
         default:
-            let viewController = ProductDetailViewController(user: self.user, product: self.products[indexPath.row])
+            let viewController = ProductDetailViewController(product: self.products[indexPath.row])
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
