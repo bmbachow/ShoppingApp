@@ -124,28 +124,43 @@ extension ShoppingViewController: UICollectionViewDelegate{
         collectionView.deselectItem(at: indexPath, animated: true)
         print("you tapped me")
     }
+    
 }
 
 extension ShoppingViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return self.categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as! MyCollectionViewCell
-        cell.configure(with: UIImage(named: "image")!)
+        cell.configure(buttonText: self.categories[indexPath.row].name!)
+        cell.delegate = self
         return cell
         
     }
 }
 
+extension ShoppingViewController : MyCollectionViewCellDelegate{
+    
+    func tappedCategoryButton(in cell: MyCollectionViewCell) {
+        guard let indexPath = self.collectionView.indexPath(for: cell) else {
+            return
+        }
+        print(self.categories[indexPath.row].name)
+    }
+    
+    
+}
 
+//
 //extension ShoppingViewController: UICollectionViewDelegateFlowLayout{
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: NSIndexPath) -> CGSize {
-//        return CGSize(width: 200, height: 120)
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //
 //    }
+//
 //}
+//
 
 

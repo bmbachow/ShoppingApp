@@ -7,21 +7,33 @@
 
 import UIKit
 
+protocol MyCollectionViewCellDelegate : AnyObject {
+    func tappedCategoryButton(in cell : MyCollectionViewCell)
+}
+
 class MyCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet var imageView: UIImageView!
+
+    @IBOutlet weak var categoryButton: UIButton!
+    
+    weak var delegate : MyCollectionViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
     
-    public func configure(with image: UIImage){
-        imageView.image = image
+    public func configure (buttonText : String) {
+        self.categoryButton.setTitle(buttonText, for: .normal)
     }
     
     static func nib() -> UINib {
         return UINib(nibName: "MyCollectionViewCell", bundle: nil)
+    }
+    
+    
+    @IBAction func tappedCategoryButton(_ sender: Any) {
+        self.delegate?.tappedCategoryButton(in: self)
     }
     
 }
