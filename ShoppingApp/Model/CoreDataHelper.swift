@@ -217,6 +217,23 @@ class CoreDataHelper: RemoteAPI {
         }
     }
     
+    func getProducts(searchString: String, category: Category?, success: ([Product]) -> Void, failure: (Error) -> Void) {
+        let request: NSFetchRequest<Product> = Product.fetchRequest()
+        var predicates = [NSPredicate]()
+        predicates += [NSPredicate(format: "name LIKE %@", searchString)]
+        if let categoryName = category?.name {
+            predicates += [NSPredicate(format: "category.name == %@", categoryName)]
+        }
+        let andPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        request.predicate = andPredicate
+        do {
+            let products = try self.viewContext.fetch(request)
+            success(products)
+        } catch {
+            failure(error)
+        }
+    }
+    
     
     //MARK: Order
     func placeOrder(user: User, products: [Product], price: Double, paymentMethod: PaymentMethod, success: (Order) -> Void, failure: (Error) -> Void) {
