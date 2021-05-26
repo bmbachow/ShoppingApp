@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class UserTabViewController: BaseViewController {
+    
     var user: User? {
         get {
             (self.tabBarController as? UserTabBarController)?.user
@@ -16,6 +17,10 @@ class UserTabViewController: BaseViewController {
             (self.tabBarController as? UserTabBarController)?.user = newValue
         }
         
+    }
+    
+    var userTabBarController: UserTabBarController? {
+        return self.tabBarController as? UserTabBarController
     }
     
     func presentSignInViewController() {
@@ -29,6 +34,6 @@ class UserTabViewController: BaseViewController {
     }
     
     func userChanged() {
-        
+    
     }
 }

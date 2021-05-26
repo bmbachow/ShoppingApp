@@ -107,6 +107,15 @@ class CoreDataHelper: RemoteAPI {
         }
     }
     
+    func patchUser(user: User, success: () -> Void, failure: (Error) -> Void) {
+        do {
+            try self.viewContext.save()
+            success()
+        } catch {
+            failure(error)
+        }
+    }
+    
     //MARK: Product
     func postNewProduct(name: String, category: Category, price: Double, productDescription: String, image: UIImage, success: (Product) -> Void, failure: (Error) -> Void) {
         let product = Product(context: self.viewContext)

@@ -104,6 +104,10 @@
 		52E0B082265B1AD100B9C77E /* CartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E0B080265B1AD100B9C77E /* CartViewController.xib */; };
 		52E0B086265B1B1E00B9C77E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E0B084265B1B1E00B9C77E /* SettingsViewController.swift */; };
 		52E0B087265B1B1E00B9C77E /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E0B085265B1B1E00B9C77E /* SettingsViewController.xib */; };
+		52EEF3EC265E7D5C006C3759 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EEF3EA265E7D5C006C3759 /* ProductCollectionViewCell.swift */; };
+		52EEF3ED265E7D5C006C3759 /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52EEF3EB265E7D5C006C3759 /* ProductCollectionViewCell.xib */; };
+		52EEF3F0265E9208006C3759 /* CartProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EEF3EE265E9208006C3759 /* CartProductTableViewCell.swift */; };
+		52EEF3F1265E9208006C3759 /* CartProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52EEF3EF265E9208006C3759 /* CartProductTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -207,6 +211,10 @@
 		52E0B080265B1AD100B9C77E /* CartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartViewController.xib; sourceTree = "<group>"; };
 		52E0B084265B1B1E00B9C77E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		52E0B085265B1B1E00B9C77E /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		52EEF3EA265E7D5C006C3759 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		52EEF3EB265E7D5C006C3759 /* ProductCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCollectionViewCell.xib; sourceTree = "<group>"; };
+		52EEF3EE265E9208006C3759 /* CartProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProductTableViewCell.swift; sourceTree = "<group>"; };
+		52EEF3EF265E9208006C3759 /* CartProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartProductTableViewCell.xib; sourceTree = "<group>"; };
 		A28BDA2507A6B461EEDDCEF0 /* Pods-ShoppingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.release.xcconfig"; path = "Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.release.xcconfig"; sourceTree = "<group>"; };
 		ABA0EBB2B8C1F7B55331A7EB /* Pods-ShoppingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.debug.xcconfig"; path = "Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -453,6 +461,8 @@
 				520F43F3265DA48C00A6B282 /* UserHomeMainTableViewCell.xib */,
 				520F43F6265DA4B000A6B282 /* ProductsCollectionTableViewCell.swift */,
 				520F43F7265DA4B000A6B282 /* ProductsCollectionTableViewCell.xib */,
+				52EEF3EA265E7D5C006C3759 /* ProductCollectionViewCell.swift */,
+				52EEF3EB265E7D5C006C3759 /* ProductCollectionViewCell.xib */,
 			);
 			path = "User Home";
 			sourceTree = "<group>";
@@ -462,6 +472,8 @@
 			children = (
 				52E0B07F265B1AD100B9C77E /* CartViewController.swift */,
 				52E0B080265B1AD100B9C77E /* CartViewController.xib */,
+				52EEF3EE265E9208006C3759 /* CartProductTableViewCell.swift */,
+				52EEF3EF265E9208006C3759 /* CartProductTableViewCell.xib */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -545,12 +557,14 @@
 				5292777B265C3F1500394180 /* ProductDetailMainTableViewCell.xib in Resources */,
 				520F43EB265D798D00A6B282 /* ProductDetailReviewTableViewCell.xib in Resources */,
 				5292776E265C3CA300394180 /* ShoppingProductPreviewTableViewCell.xib in Resources */,
+				52EEF3F1265E9208006C3759 /* CartProductTableViewCell.xib in Resources */,
 				52E0B087265B1B1E00B9C77E /* SettingsViewController.xib in Resources */,
 				52D8F8B226580C6400EF220A /* SignInViewController.xib in Resources */,
 				400D3431265D42CD005D8234 /* RegisterViewController.xib in Resources */,
 				52D8F8A526580BA900EF220A /* Assets.xcassets in Resources */,
 				52E0B082265B1AD100B9C77E /* CartViewController.xib in Resources */,
 				52E0B075265B1A6A00B9C77E /* ShoppingViewController.xib in Resources */,
+				52EEF3ED265E7D5C006C3759 /* ProductCollectionViewCell.xib in Resources */,
 				52927777265C3EBD00394180 /* ProductDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -614,6 +628,7 @@
 				520F441C265DA86900A6B282 /* AccountPaymentMethod+CoreDataClass.swift in Sources */,
 				5267258D265AECA600D9CAB9 /* BCryptHasher.swift in Sources */,
 				526724C6265AE3AC00D9CAB9 /* UserExtensions.swift in Sources */,
+				52EEF3EC265E7D5C006C3759 /* ProductCollectionViewCell.swift in Sources */,
 				52672586265AECA600D9CAB9 /* InputValidator.swift in Sources */,
 				5267258C265AECA600D9CAB9 /* TimeIntervalFormatter.swift in Sources */,
 				520F441B265DA86900A6B282 /* PaymentMethod+CoreDataProperties.swift in Sources */,
@@ -658,6 +673,7 @@
 				520F43D8265D448C00A6B282 /* StarFillMode.swift in Sources */,
 				520F43DF265D448C00A6B282 /* RightToLeft.swift in Sources */,
 				526724D2265AE3F100D9CAB9 /* CardPaymentMethodExtensions.swift in Sources */,
+				52EEF3F0265E9208006C3759 /* CartProductTableViewCell.swift in Sources */,
 				526724D6265AE40900D9CAB9 /* OrderExtensions.swift in Sources */,
 				526724D0265AE3E600D9CAB9 /* AccountPaymentMethodExtensions.swift in Sources */,
 				520F441F265DA86900A6B282 /* ProductReview+CoreDataProperties.swift in Sources */,

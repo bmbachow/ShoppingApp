@@ -7,9 +7,15 @@
 
 import UIKit
 
-class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITableViewDataSource {
+class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+
+    
     
     @IBOutlet weak var tableView: UITableView!
+    
+    weak var ordersCollectionView: UICollectionView!
+    
+    weak var wishListCollectionView: UICollectionView!
     
     private let userNotSignedInViewController = UserNotSignedInViewController()
     
@@ -23,10 +29,32 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
         return "Member since " + DateFormatter.standardDate.string(from: registeredDate)
     }
     
-    lazy private var productDetailMainTableViewCell: UserHomeMainTableViewCell = {
+    lazy private var userHomeMainTableViewCell: UserHomeMainTableViewCell = {
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "UserHomeMainTableViewCell") as? UserHomeMainTableViewCell else {
             fatalError("Unable to dequeue UserHomeMainTableViewCell")
         }
+        return cell
+    }()
+    
+    lazy private var ordersCollectionTableViewCell: ProductsCollectionTableViewCell = {
+        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "OrdersCollectionTableViewCell") as? ProductsCollectionTableViewCell else {
+            fatalError("Unable to dequeue ProductsCollectionTableViewCell")
+        }
+        cell.button.setTitle("Orders", for: .normal)
+        self.ordersCollectionView = cell.collectionView
+        self.ordersCollectionView.delegate = self
+        self.ordersCollectionView.dataSource = self
+        return cell
+    }()
+    
+    lazy private var wishListCollectionTableViewCell: ProductsCollectionTableViewCell = {
+        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "WishListCollectionTableViewCell") as? ProductsCollectionTableViewCell else {
+            fatalError("Unable to dequeue ProductsCollectionTableViewCell")
+        }
+        cell.button.setTitle("Wish List", for: .normal)
+        self.wishListCollectionView = cell.collectionView
+        self.wishListCollectionView.delegate = self
+        self.wishListCollectionView.dataSource = self
         return cell
     }()
 
@@ -37,6 +65,12 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
         self.addChild(userNotSignedInViewController)
         self.view.addSubview(userNotSignedInViewController.view)
         self.tableView.register(UINib(nibName: "UserHomeMainTableViewCell", bundle: nil), forCellReuseIdentifier: "UserHomeMainTableViewCell")
+        self.tableView.register(UINib(nibName: "ProductsCollectionTableViewCell", bundle: nil), forCellReuseIdentifier: "OrdersCollectionTableViewCell")
+        self.tableView.register(UINib(nibName: "ProductsCollectionTableViewCell", bundle: nil), forCellReuseIdentifier: "WishListCollectionTableViewCell")
+        let _ = self.ordersCollectionTableViewCell
+        let _ = self.wishListCollectionTableViewCell
+        self.ordersCollectionView.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductCollectionViewCell")
+        self.wishListCollectionView.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductCollectionViewCell")
         NSLayoutConstraint.activate([
             userNotSignedInViewController.view.topAnchor.constraint(equalTo: self.view.topAnchor),
             userNotSignedInViewController.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
@@ -59,27 +93,67 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
     }
     
     func refreshData() {
-        self.productDetailMainTableViewCell.nameLabel.text = (user?.firstName ?? "") + " " + (user?.lastName ?? "")
-        self.productDetailMainTableViewCell.memberSinceLabel.text = self.memberSinceString
+        self.userHomeMainTableViewCell.nameLabel.text = (user?.firstName ?? "") + " " + (user?.lastName ?? "")
+        self.userHomeMainTableViewCell.memberSinceLabel.text = self.memberSinceString
         self.tableView.reloadData()
+        self.ordersCollectionView.reloadData()
+        self.wishListCollectionView.reloadData()
     }
     
     //MARK: UITableView
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        UITableView.automaticDimension
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        1
+        2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return self.productDetailMainTableViewCell
+        switch indexPath.section {
+        case 0:
+            return self.userHomeMainTableViewCell
+        default:
+            switch indexPath.row {
+            case 0:
+                return self.ordersCollectionTableViewCell
+            default:
+                return self.wishListCollectionTableViewCell
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        switch section {
+        case 0:
+            return 1
+        default:
+            return 2
+        }
+        
     }
     
+    //MARK: UICollectionView
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == self.ordersCollectionView {
+            return self.user?.ordersArray.count ?? 0
+        } else {
+            return self.user?.wishListProductsArray.count ?? 0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == self.ordersCollectionView {
+            return UICollectionViewCell()
+        } else {
+            let product = self.user?.wishListProductsArray[indexPath.row]
+            guard let cell = self.wishListCollectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath) as? ProductCollectionViewCell else {
+                fatalError("Unable to dequeue ProductCollectionViewCell")
+            }
+            cell.imageView.image = product?.image
+            return cell
+        }
+    }
 }

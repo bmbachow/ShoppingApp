@@ -1,17 +1,19 @@
 //
-//  ProductsCollectionTableViewCell.swift
+//  CartProductTableViewCell.swift
 //  ShoppingApp
 //
-//  Created by Robert Olieman on 5/25/21.
+//  Created by Robert Olieman on 5/26/21.
 //
 
 import UIKit
 
-class ProductsCollectionTableViewCell: UITableViewCell {
+class CartProductTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var productImageView: UIImageView!
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var priceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,10 +25,5 @@ class ProductsCollectionTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    @IBAction func tappedButton(_ sender: UIButton) {
-        
-    }
-    
     
 }

@@ -94,7 +94,7 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         case 0:
             return
         default:
-            let viewController = ProductDetailViewController(user: self.user, product: self.products[indexPath.row])
+            let viewController = ProductDetailViewController(product: self.products[indexPath.row])
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }

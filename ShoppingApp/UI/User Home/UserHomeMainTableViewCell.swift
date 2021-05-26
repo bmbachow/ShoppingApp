@@ -13,6 +13,16 @@ class UserHomeMainTableViewCell: UITableViewCell {
     
     @IBOutlet weak var memberSinceLabel: UILabel!
     
+    init() {
+        super.init(style: .default, reuseIdentifier: nil)
+        Bundle.main.loadNibNamed("UserHomeMainTableViewCell", owner: self, options: nil)
+        self.contentView.fixInView(self)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

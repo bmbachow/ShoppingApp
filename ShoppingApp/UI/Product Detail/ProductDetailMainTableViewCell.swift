@@ -14,9 +14,13 @@ class ProductDetailMainTableViewCell: UITableViewCell {
     
     @IBOutlet weak var productImageView: UIImageView!
     
+    @IBOutlet weak var cosmosView: CosmosView!
+    
     @IBOutlet weak var productPriceLabel: UILabel!
     
-    @IBOutlet weak var cosmosView: CosmosView!
+    @IBOutlet weak var addToCartButton: UIButton!
+    
+    @IBOutlet weak var addToWishListButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,6 +33,4 @@ class ProductDetailMainTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    
 }
