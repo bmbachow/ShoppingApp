@@ -17,6 +17,8 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
     
     private var products = [Product]()
     
+    private var categories = [Category]()
+    
     lazy var adCell : ShoppingAdTableViewCell = {
         return self.tableView.dequeueReusableCell(withIdentifier: "ShoppingAdTableViewCell") as! ShoppingAdTableViewCell
     }()
@@ -34,11 +36,6 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         collectionView.delegate = self
         collectionView.dataSource = self
       
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         self.remoteAPI.getAllProducts(success: { products in
             self.products = products
             self.tableView.reloadData()
@@ -46,6 +43,17 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
             print(error.localizedDescription)
         })
 
+        self.remoteAPI.getAllCategories(success: { categories in
+            self.categories = categories
+            self.collectionView.reloadData()
+        }, failure: { error in
+            print(error.localizedDescription)
+        })
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.adCell.startAdTimer()
     }
     
