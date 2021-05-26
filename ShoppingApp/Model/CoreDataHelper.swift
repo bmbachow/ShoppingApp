@@ -255,6 +255,16 @@ class CoreDataHelper: RemoteAPI {
         }
     }
     
+    func getAllCategories(success: ([Category]) ->  Void, failure: (Error) -> Void) {
+        let request: NSFetchRequest<Category> = Category.fetchRequest()
+        do {
+            let categories = try self.viewContext.fetch(request)
+            success(categories)
+        } catch {
+            failure(error)
+        }
+    }
+    
     func getCategory(name: String, success: (Category?) -> Void, failure: (Error) -> Void) {
         do {
             let category = try self.getCategorySync(name: name)

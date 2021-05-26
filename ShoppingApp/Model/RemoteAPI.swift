@@ -44,6 +44,8 @@ protocol RemoteAPI {
     
     //MARK: Category
     
+    func getAllCategories(success: ([Category]) ->  Void, failure: (Error) -> Void)
+    
     func getCategory(name: String, success: (Category?) -> Void, failure: (Error) -> Void)
     
     func postNewCategory(name: String, image: UIImage, success: (Category) -> Void, failure: (Error) -> Void)
