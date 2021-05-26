@@ -11,6 +11,8 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet var collectionView: UICollectionView!
+    
     private var shouldShowSignInViewControllerOnAppear = true
     
     private var products = [Product]()
@@ -26,6 +28,15 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         self.tableView.register(UINib(nibName: "ShoppingAdTableViewCell", bundle: nil), forCellReuseIdentifier: "ShoppingAdTableViewCell")
         self.tableView.register(UINib(nibName: "ShoppingProductPreviewTableViewCell", bundle: nil), forCellReuseIdentifier: "ShoppingProductPreviewTableViewCell")
         
+//        let layout = UICollectionViewFlowLayout()
+//        layout.itemSize = CGSize (width: 200, height: 120)
+//        collectionView.collectionViewLayout = layout
+        collectionView.register(MyCollectionViewCell.nib(), forCellWithReuseIdentifier: "MyCollectionViewCell")
+        collectionView.delegate = self
+        collectionView.dataSource = self
+
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +49,7 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         })
         self.adCell.startAdTimer()
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if self.shouldShowSignInViewControllerOnAppear {
@@ -61,7 +72,7 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         default:
             return self.products.count
         }
-
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -76,7 +87,7 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
             cell.productPrice.text = NumberFormatter.dollars.string(from: Float(product.price))
             cell.productRating.rating = product.averageRating ?? 0
             return cell
-        
+            
         }
         
     }
@@ -99,3 +110,35 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         }
     }
 }
+
+extension ShoppingViewController: UICollectionViewDelegate{
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        print("you tapped me")
+    }
+}
+
+extension ShoppingViewController: UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as! MyCollectionViewCell
+        cell.configure(with: UIImage(named: "image")!)
+        return cell
+        
+    }
+}
+
+
+//extension ShoppingViewController: UICollectionViewDelegateFlowLayout{
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: NSIndexPath) -> CGSize {
+//        return CGSize(width: 200, height: 120)
+//
+//    }
+//}
+
+
