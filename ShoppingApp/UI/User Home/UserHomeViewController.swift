@@ -93,11 +93,22 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
     }
     
     func refreshData() {
+        guard self.tableView != nil else { return }
         self.userHomeMainTableViewCell.nameLabel.text = (user?.firstName ?? "") + " " + (user?.lastName ?? "")
         self.userHomeMainTableViewCell.memberSinceLabel.text = self.memberSinceString
         self.tableView.reloadData()
         self.ordersCollectionView.reloadData()
         self.wishListCollectionView.reloadData()
+    }
+    
+    override func cartChanged() {
+        super.cartChanged()
+        self.refreshData()
+    }
+    
+    override func wishListChanged() {
+        super.wishListChanged()
+        self.refreshData()
     }
     
     //MARK: UITableView

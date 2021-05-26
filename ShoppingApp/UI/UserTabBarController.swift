@@ -61,24 +61,31 @@ class UserTabBarController: UITabBarController {
             for viewController in self.userTabViewControllers {
                 viewController.userChanged()
             }
-            self.refreshCart(shouldReloadCartTableView: true)
+            self.cartChanged(fromViewController: nil)
         }
     }
     
-    func refreshCart(shouldReloadCartTableView: Bool) {
+    func cartChanged(fromViewController sender: UserTabViewController?) {
+        for viewController in self.userTabViewControllers {
+            guard viewController != sender else { continue }
+            viewController.cartChanged()
+        }
+        self.refreshCartBadge()
+    }
+    
+    func wishListChanged(fromViewController sender: UserTabViewController?) {
+        for viewController in self.userTabViewControllers {
+            guard viewController != sender else { continue }
+            viewController.wishListChanged()
+        }
+    }
+    
+    private func refreshCartBadge() {
         if let cartItemsCount = user?.totalProductsInCart,
            cartItemsCount > 0 {
             self.cartNavigationController.tabBarItem.badgeValue = String(cartItemsCount)
         } else {
             self.cartNavigationController.tabBarItem.badgeValue = nil
         }
-        if shouldReloadCartTableView {
-            self.cartViewController.tableView?.reloadData()
-        }
     }
-    
-    func updateCartBadge() {
-        
-    }
-    
 }

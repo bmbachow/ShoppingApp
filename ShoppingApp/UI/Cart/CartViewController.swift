@@ -35,12 +35,23 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
     }
     
     func updateSubtotalAmountLabel() {
-        self.subtotalAmountLabel.text = self.subtotalAmountLabelText
+        self.subtotalAmountLabel?.text = self.subtotalAmountLabelText
     }
     
     @IBAction func tappedCheckOutButton(_ sender: UIButton) {
         
     }
+    
+    override func cartChanged() {
+        super.cartChanged()
+        self.updateSubtotalAmountLabel()
+        self.tableView?.reloadData()
+    }
+    
+    override func wishListChanged() {
+        super.wishListChanged()
+    }
+    
     
     //MARK: UITableView
     
@@ -80,7 +91,7 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
         let cartItem = self.cartItems[indexPath.row]
         self.remoteAPI.changeCartItemNumber(cartItem: cartItem, number: Int(cell.stepper.value), success: {
             cell.numberLabel.text = String(self.cartItems[indexPath.row].number)
-            self.userTabBarController?.refreshCart(shouldReloadCartTableView: false)
+            self.userTabBarController?.cartChanged(fromViewController: self)
             self.updateSubtotalAmountLabel()
         }, failure: { error in
             cell.stepper.value = Double(cartItem.number)
@@ -99,7 +110,7 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
             print(self.cartItems.count)
             self.tableView.deleteRows(at: [indexPath], with: .right)
             self.tableView.endUpdates()
-            self.userTabBarController?.refreshCart(shouldReloadCartTableView: false)
+            self.userTabBarController?.cartChanged(fromViewController: self)
             self.updateSubtotalAmountLabel()
         }, failure: { error in
             self.tableView.endUpdates()

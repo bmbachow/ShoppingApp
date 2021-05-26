@@ -62,7 +62,7 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
     func addProductToCart() {
         if let user = self.user {
             self.remoteAPI.addProductToCart(product: self.product, user: user, success: {
-                self.userTabBarController?.refreshCart(shouldReloadCartTableView: true)
+                self.userTabBarController?.cartChanged(fromViewController: self)
             }, failure: { error in
                 print(error.localizedDescription)
             })
@@ -71,7 +71,11 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
     
     func addProductToWishList() {
         if let user = self.user {
-            //
+            self.remoteAPI.addProductToWishList(product: self.product, user: user, success: {
+                self.userTabBarController?.wishListChanged(fromViewController: self)
+            }, failure: { error in
+                print(error.localizedDescription)
+            })
         }
     }
     

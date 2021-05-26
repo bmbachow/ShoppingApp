@@ -36,4 +36,12 @@ class UserTabViewController: BaseViewController {
     func userChanged() {
     
     }
+    
+    func cartChanged() {
+        
+    }
+    
+    func wishListChanged() {
+        
+    }
 }

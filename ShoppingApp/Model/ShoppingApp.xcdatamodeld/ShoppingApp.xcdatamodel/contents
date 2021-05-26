@@ -36,6 +36,8 @@
     <entity name="Order" representedClassName="Order" syncable="YES">
         <attribute name="orderedDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="shippingPrice" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
+        <attribute name="tax" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
         <relationship name="delivery" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Delivery" inverseName="order" inverseEntity="Delivery"/>
         <relationship name="paymentMethod" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PaymentMethod" inverseName="orders" inverseEntity="PaymentMethod"/>
         <relationship name="products" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Product" inverseName="orders" inverseEntity="Product"/>
@@ -86,7 +88,7 @@
         <element name="Category" positionX="-3284.731201171875" positionY="-2480.807983398438" width="128" height="88"/>
         <element name="Delivery" positionX="-2480.359985351563" positionY="-2633.201751708984" width="128" height="133"/>
         <element name="Location" positionX="-2265.546264648438" positionY="-2476.695251464844" width="128" height="103"/>
-        <element name="Order" positionX="-2720.604248046875" positionY="-2651.342437744141" width="128" height="133"/>
+        <element name="Order" positionX="-2720.197265625" positionY="-2652.563293457032" width="128" height="163"/>
         <element name="PaymentMethod" positionX="-2910.984680175781" positionY="-2893.255874633789" width="128" height="73"/>
         <element name="Product" positionX="-2930.65966796875" positionY="-2490.122375488282" width="128" height="193"/>
         <element name="ProductReview" positionX="-2584.021362304688" positionY="-2464.842498779296" width="128" height="133"/>
