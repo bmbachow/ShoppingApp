@@ -42,7 +42,9 @@ class roundLabel : UILabel{
         super.init(coder:coder)
         layer.cornerRadius = 10
         clipsToBounds = true
-extension UIView
+    }
+}
+        extension UIView
 {
     func fixInView(_ container: UIView!) -> Void{
         self.translatesAutoresizingMaskIntoConstraints = false;
