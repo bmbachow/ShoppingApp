@@ -451,6 +451,9 @@ class CoreDataHelper: RemoteAPI {
             }, failure: {_ in})
         }
         
+        
+        self.postNewUser(firstName: "Jeff", lastName: "Bezos", email: "jeff@amazon.com", phoneNumber: "1234567890", password: "Amazon1!", success: {_ in}, failure: {_ in})
+        
         try? self.viewContext.save()
         
         UserDefaultsHelper().databaseWasSeeded = true
