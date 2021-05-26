@@ -156,6 +156,7 @@ extension ShoppingViewController: UICollectionViewDataSource{
             buttonText = "All"
         default:
             buttonText = self.categories[indexPath.row].name ?? "?"
+            
         }
         cell.configure(buttonText: buttonText)
         cell.delegate = self
