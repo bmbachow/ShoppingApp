@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol CartProductTableViewCellDelegate: AnyObject {
+    func stepperValueChanged(inCell cell: CartProductTableViewCell)
+    func tappedDeleteButton(inCell cell: CartProductTableViewCell)
+}
+
 class CartProductTableViewCell: UITableViewCell {
     
     @IBOutlet weak var productImageView: UIImageView!
@@ -14,6 +19,14 @@ class CartProductTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var priceLabel: UILabel!
+    
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    @IBOutlet weak var stepper: UIStepper!
+    
+    @IBOutlet weak var numberLabel: UILabel!
+    
+    weak var delegate: CartProductTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,4 +39,14 @@ class CartProductTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    
+    @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        self.delegate?.stepperValueChanged(inCell: self)
+    }
+    
+    
+    @IBAction func tappedDeleteButton(_ sender: UIButton) {
+        self.delegate?.tappedDeleteButton(inCell: self)
+    }
+
 }

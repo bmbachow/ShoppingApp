@@ -61,9 +61,8 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
     
     func addProductToCart() {
         if let user = self.user {
-            user.addToCartProducts(self.product)
-            self.remoteAPI.patchUser(user: user, success: {
-                self.userTabBarController?.refreshCartBadge()
+            self.remoteAPI.addProductToCart(product: self.product, user: user, success: {
+                self.userTabBarController?.refreshCart(shouldReloadCartTableView: true)
             }, failure: { error in
                 print(error.localizedDescription)
             })
@@ -72,12 +71,7 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
     
     func addProductToWishList() {
         if let user = self.user {
-            user.addToWishListProducts(self.product)
-            self.remoteAPI.patchUser(user: user, success: {
-                
-            }, failure: { error in
-                print(error.localizedDescription)
-            })
+            //
         }
     }
     

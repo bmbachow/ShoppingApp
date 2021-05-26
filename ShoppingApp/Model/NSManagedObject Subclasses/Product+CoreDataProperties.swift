@@ -2,7 +2,7 @@
 //  Product+CoreDataProperties.swift
 //  ShoppingApp
 //
-//  Created by Robert Olieman on 5/25/21.
+//  Created by Robert Olieman on 5/26/21.
 //
 //
 
@@ -20,11 +20,29 @@ extension Product {
     @NSManaged public var name: String?
     @NSManaged public var price: Double
     @NSManaged public var productDescription: String?
+    @NSManaged public var cartItems: NSSet?
     @NSManaged public var cartUsers: NSOrderedSet?
     @NSManaged public var category: Category?
     @NSManaged public var orders: NSOrderedSet?
     @NSManaged public var reviews: NSOrderedSet?
     @NSManaged public var wishListUsers: NSOrderedSet?
+
+}
+
+// MARK: Generated accessors for cartItems
+extension Product {
+
+    @objc(addCartItemsObject:)
+    @NSManaged public func addToCartItems(_ value: CartItem)
+
+    @objc(removeCartItemsObject:)
+    @NSManaged public func removeFromCartItems(_ value: CartItem)
+
+    @objc(addCartItems:)
+    @NSManaged public func addToCartItems(_ values: NSSet)
+
+    @objc(removeCartItems:)
+    @NSManaged public func removeFromCartItems(_ values: NSSet)
 
 }
 

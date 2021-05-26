@@ -116,6 +116,70 @@ class CoreDataHelper: RemoteAPI {
         }
     }
     
+    //MARK: Cart
+    
+    func addProductToCart(product: Product, user: User, success: () -> Void, failure: (Error) -> Void) {
+        if let cartItem = user.cartItemsArray.first(where: { $0.product == product }) {
+            cartItem.number += 1
+        } else {
+            let cartItem = CartItem(context: self.viewContext)
+            cartItem.product = product
+            cartItem.number = 1
+            user.addToCartItems(cartItem)
+        }
+        do {
+            try self.viewContext.save()
+            success()
+        } catch {
+            failure(error)
+        }
+    }
+    
+    func changeCartItemNumber(cartItem: CartItem, number: Int, success: () -> Void, failure: (Error) -> Void) {
+        cartItem.number = Int16(number)
+        do {
+            try self.viewContext.save()
+            success()
+        } catch {
+            failure(error)
+        }
+    }
+    
+    func deleteItemFromCart(cartItem: CartItem, success: () -> Void, failure: (Error) -> Void) {
+        
+        self.viewContext.delete(cartItem)
+        do {
+            try self.viewContext.save()
+            success()
+        } catch {
+            failure(error)
+        }
+    }
+    
+    //MARK: Wish List
+    
+    func addProductToWishList(product: Product, user: User, success: () -> Void, failure: (Error) -> Void) {
+        if !user.wishListProductsArray.contains(product) {
+            user.addToWishListProducts(product)
+        }
+        do {
+            try self.viewContext.save()
+            success()
+        } catch {
+            failure(error)
+        }
+    }
+    
+    func deleteProductFromWishList(product: Product, user: User, success: () -> Void, failure: (Error) -> Void) {
+        user.removeFromWishListProducts(product)
+        do {
+            try self.viewContext.save()
+            success()
+        } catch {
+            failure(error)
+        }
+    }
+    
     //MARK: Product
     func postNewProduct(name: String, category: Category, price: Double, productDescription: String, image: UIImage, success: (Product) -> Void, failure: (Error) -> Void) {
         let product = Product(context: self.viewContext)
@@ -152,6 +216,7 @@ class CoreDataHelper: RemoteAPI {
             failure(error)
         }
     }
+    
     
     //MARK: Order
     func placeOrder(user: User, products: [Product], price: Double, paymentMethod: PaymentMethod, success: (Order) -> Void, failure: (Error) -> Void) {

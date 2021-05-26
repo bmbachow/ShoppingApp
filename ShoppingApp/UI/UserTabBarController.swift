@@ -45,10 +45,11 @@ class UserTabBarController: UITabBarController {
         
         self.settingsNavigationController = UINavigationController(rootViewController: self.settingsViewController)
         self.settingsNavigationController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "line.horizontal.3"), selectedImage: nil)
-        
-        
         super.init(nibName: nil, bundle: nil)
-        self.viewControllers = [self.shoppingNavigationController, self.userHomeNavigationController, self.cartNavigationController, self.settingsNavigationController]
+        for navigationController in self.navigationControllers {
+            navigationController.setNavigationBarHidden(true, animated: false)
+        }
+        self.viewControllers = self.navigationControllers
     }
     
     required init?(coder: NSCoder) {
@@ -60,16 +61,24 @@ class UserTabBarController: UITabBarController {
             for viewController in self.userTabViewControllers {
                 viewController.userChanged()
             }
-            self.refreshCartBadge()
+            self.refreshCart(shouldReloadCartTableView: true)
         }
     }
     
-    func refreshCartBadge() {
-        if let cartProductsCount = user?.cartProductsArray.count,
-           cartProductsCount > 0 {
-            self.cartNavigationController.tabBarItem.badgeValue = String(cartProductsCount)
+    func refreshCart(shouldReloadCartTableView: Bool) {
+        if let cartItemsCount = user?.totalProductsInCart,
+           cartItemsCount > 0 {
+            self.cartNavigationController.tabBarItem.badgeValue = String(cartItemsCount)
         } else {
             self.cartNavigationController.tabBarItem.badgeValue = nil
         }
+        if shouldReloadCartTableView {
+            self.cartViewController.tableView?.reloadData()
+        }
     }
+    
+    func updateCartBadge() {
+        
+    }
+    
 }
