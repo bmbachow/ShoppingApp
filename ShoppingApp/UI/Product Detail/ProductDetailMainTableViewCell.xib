@@ -11,11 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="694" id="KGk-i7-Jjw" customClass="ProductDetailMainTableViewCell" customModule="ShoppingApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="533" height="694"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="731" id="KGk-i7-Jjw" customClass="ProductDetailMainTableViewCell" customModule="ShoppingApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="533" height="731"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="533" height="694"/>
+                <rect key="frame" x="0.0" y="0.0" width="533" height="731"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e9B-p6-Lwo">
@@ -37,7 +37,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xqy-Mj-VVl">
-                        <rect key="frame" x="222.5" y="628.5" width="88" height="53.5"/>
+                        <rect key="frame" x="222.5" y="628.5" width="88" height="33"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <state key="normal" title="Add to Cart"/>
                     </button>
@@ -69,21 +69,21 @@
                             <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
                                 <color key="value" name="cosmosBorderColor"/>
                             </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="emptyBorderWidth">
-                                <real key="value" value="1"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="filledBorderWidth">
-                                <real key="value" value="1"/>
-                            </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ban-xf-PSS" userLabel="Add to Wish List">
+                        <rect key="frame" x="204.5" y="667.5" width="124" height="43.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <state key="normal" title="Add to Wish List"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Xqy-Mj-VVl" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="27r-3u-Q7N"/>
-                    <constraint firstAttribute="bottom" secondItem="Xqy-Mj-VVl" secondAttribute="bottom" constant="12" id="7zN-sl-znK"/>
+                    <constraint firstAttribute="bottom" secondItem="Ban-xf-PSS" secondAttribute="bottom" constant="20" id="EcA-Og-gHM"/>
                     <constraint firstItem="e7D-ft-KEk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="JfZ-w4-ntm"/>
                     <constraint firstItem="e9B-p6-Lwo" firstAttribute="top" secondItem="fKO-ri-zdA" secondAttribute="bottom" constant="8" id="Roq-iP-kkn"/>
                     <constraint firstItem="e9B-p6-Lwo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="SC1-Qw-MYk"/>
+                    <constraint firstItem="Ban-xf-PSS" firstAttribute="top" secondItem="Xqy-Mj-VVl" secondAttribute="bottom" constant="6" id="TEd-Uc-JdJ"/>
                     <constraint firstItem="CVI-vB-RsN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="TpE-Xq-64K"/>
                     <constraint firstAttribute="trailing" secondItem="fKO-ri-zdA" secondAttribute="trailing" constant="12" id="Uiq-dO-2BR"/>
                     <constraint firstItem="CVI-vB-RsN" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.489681" id="cUp-q4-7eI"/>
@@ -93,17 +93,20 @@
                     <constraint firstAttribute="trailing" secondItem="e9B-p6-Lwo" secondAttribute="trailing" constant="12" id="qp5-B8-od5"/>
                     <constraint firstItem="CVI-vB-RsN" firstAttribute="top" secondItem="e9B-p6-Lwo" secondAttribute="bottom" constant="4.5" id="qpr-WQ-CTS"/>
                     <constraint firstItem="Xqy-Mj-VVl" firstAttribute="top" secondItem="e7D-ft-KEk" secondAttribute="bottom" constant="7.5" id="rQ2-0N-7iF"/>
+                    <constraint firstItem="Ban-xf-PSS" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="vSt-pm-YWh"/>
                     <constraint firstAttribute="trailing" secondItem="e7D-ft-KEk" secondAttribute="trailing" constant="12" id="zHU-7T-Lej"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="addToCartButton" destination="Xqy-Mj-VVl" id="oMc-zH-64j"/>
+                <outlet property="addToWishListButton" destination="Ban-xf-PSS" id="dP1-9i-W1t"/>
                 <outlet property="cosmosView" destination="CVI-vB-RsN" id="Hxr-2X-IlI"/>
                 <outlet property="productImageView" destination="e9B-p6-Lwo" id="6Hr-2o-seS"/>
                 <outlet property="productNameLabel" destination="fKO-ri-zdA" id="MiI-OB-Ye4"/>
                 <outlet property="productPriceLabel" destination="e7D-ft-KEk" id="lf9-XC-SUs"/>
             </connections>
-            <point key="canvasLocation" x="184.78260869565219" y="246.42857142857142"/>
+            <point key="canvasLocation" x="184.78260869565219" y="251.45089285714283"/>
         </tableViewCell>
     </objects>
     <designables>
@@ -113,7 +116,7 @@
     </designables>
     <resources>
         <namedColor name="cosmosBorderColor">
-            <color red="0.84112465381622314" green="0.50514823198318481" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8410000205039978" green="0.50499999523162842" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="cosmosFilledColor">
             <color red="1" green="0.80000001192092896" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -9,14 +9,18 @@ import Foundation
 import UIKit
 
 class UserTabViewController: BaseViewController {
+    
     var user: User? {
         get {
             (self.tabBarController as? UserTabBarController)?.user
         } set {
-            print("set user")
             (self.tabBarController as? UserTabBarController)?.user = newValue
         }
         
+    }
+    
+    var userTabBarController: UserTabBarController? {
+        return self.tabBarController as? UserTabBarController
     }
     
     func presentSignInViewController() {
@@ -27,5 +31,17 @@ class UserTabViewController: BaseViewController {
     func presentSignUpViewController(){
         let registerViewController = RegisterViewController(presentingUserTabViewController: self)
         self.present(registerViewController, animated: true ,completion: nil)
+    }
+    
+    func userChanged() {
+    
+    }
+    
+    func cartChanged() {
+        
+    }
+    
+    func wishListChanged() {
+        
     }
 }

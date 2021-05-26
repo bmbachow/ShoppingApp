@@ -2,7 +2,7 @@
 //  PaymentMethod+CoreDataProperties.swift
 //  ShoppingApp
 //
-//  Created by Robert Olieman on 5/23/21.
+//  Created by Robert Olieman on 5/26/21.
 //
 //
 
@@ -16,8 +16,8 @@ extension PaymentMethod {
         return NSFetchRequest<PaymentMethod>(entityName: "PaymentMethod")
     }
 
-    @NSManaged public var user: User?
     @NSManaged public var orders: NSOrderedSet?
+    @NSManaged public var user: User?
 
 }
 

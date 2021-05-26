@@ -2,7 +2,7 @@
 //  AccountPaymentMethod+CoreDataProperties.swift
 //  ShoppingApp
 //
-//  Created by Robert Olieman on 5/23/21.
+//  Created by Robert Olieman on 5/26/21.
 //
 //
 
@@ -17,7 +17,7 @@ extension AccountPaymentMethod {
     }
 
     @NSManaged public var accountNumber: String?
-    @NSManaged public var routingNumber: String?
     @NSManaged public var nameOnAccount: String?
+    @NSManaged public var routingNumber: String?
 
 }

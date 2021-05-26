@@ -7,25 +7,30 @@
 
 import UIKit
 
-class ProductDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ProductDetailViewController: UserTabViewController, UITableViewDelegate, UITableViewDataSource {
   
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var backButton: UIButton!
     
-    var user: User?
+    weak var addToCartButton: UIButton!
+    
+    weak var addToWishListButton: UIButton!
     
     let product: Product
     
-    lazy var productDetailMainTableViewCell: ProductDetailMainTableViewCell = {
+    lazy private var productDetailMainTableViewCell: ProductDetailMainTableViewCell = {
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "ProductDetailMainTableViewCell") as? ProductDetailMainTableViewCell else {
             fatalError("Unable to dequeue ProductDetailMainTableViewCell")
         }
+        self.addToCartButton = cell.addToCartButton
+        cell.addToCartButton.addTarget(self, action: #selector(self.tappedAddToCartButton), for: .touchUpInside)
+        self.addToWishListButton = cell.addToWishListButton
+        cell.addToWishListButton.addTarget(self, action: #selector(self.tappedAddToWishListButton), for: .touchUpInside)
         return cell
     }()
     
-    init(user: User?, product: Product) {
-        self.user = user
+    init(product: Product) {
         self.product = product
         super.init(nibName: "ProductDetailViewController", bundle: nil)
     }
@@ -45,6 +50,36 @@ class ProductDetailViewController: UIViewController, UITableViewDelegate, UITabl
         self.productDetailMainTableViewCell.productPriceLabel.text = NumberFormatter.dollars.string(from: Float(self.product.price))
         self.productDetailMainTableViewCell.cosmosView.rating = self.product.averageRating ?? 0
     }
+    
+    @objc func tappedAddToCartButton(_ sender: UIButton) {
+        self.addProductToCart()
+    }
+    
+    @objc func tappedAddToWishListButton(_ sender: UIButton) {
+        self.addProductToWishList()
+    }
+    
+    func addProductToCart() {
+        if let user = self.user {
+            self.remoteAPI.addProductToCart(product: self.product, user: user, success: {
+                self.userTabBarController?.cartChanged(fromViewController: self)
+            }, failure: { error in
+                print(error.localizedDescription)
+            })
+        }
+    }
+    
+    func addProductToWishList() {
+        if let user = self.user {
+            self.remoteAPI.addProductToWishList(product: self.product, user: user, success: {
+                self.userTabBarController?.wishListChanged(fromViewController: self)
+            }, failure: { error in
+                print(error.localizedDescription)
+            })
+        }
+    }
+    
+   
 
     //MARK: UITableView
     

@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CartViewController" customModule="ShoppingApp" customModuleProvider="target">
             <connections>
+                <outlet property="checkOutButton" destination="2dE-nG-k5f" id="YxF-k9-x9T"/>
+                <outlet property="subtotalAmountLabel" destination="glm-2m-ILT" id="i12-0f-214"/>
+                <outlet property="tableView" destination="UC4-Ld-Gug" id="w7Y-01-0p2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,17 +21,49 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cart" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRs-oc-OZj">
-                    <rect key="frame" x="188" y="436" width="38" height="24"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UC4-Ld-Gug">
+                    <rect key="frame" x="0.0" y="115" width="414" height="781"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EBe-Yw-hAN">
+                    <rect key="frame" x="144" y="44" width="127" height="23"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtotal: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dF-pv-7Ow">
+                            <rect key="frame" x="0.0" y="0.0" width="81" height="23"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glm-2m-ILT">
+                            <rect key="frame" x="81" y="0.0" width="46" height="23"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dE-nG-k5f">
+                    <rect key="frame" x="169.5" y="73" width="75" height="30"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Check out"/>
+                    <connections>
+                        <action selector="tappedCheckOutButton:" destination="-1" eventType="touchUpInside" id="4MJ-PR-ibO"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="132" y="98"/>
+            <constraints>
+                <constraint firstItem="2dE-nG-k5f" firstAttribute="top" secondItem="5dF-pv-7Ow" secondAttribute="bottom" constant="6" id="4vp-Vl-IPu"/>
+                <constraint firstItem="UC4-Ld-Gug" firstAttribute="top" secondItem="2dE-nG-k5f" secondAttribute="bottom" constant="12" id="MEQ-no-moI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UC4-Ld-Gug" secondAttribute="trailing" id="QBQ-yv-b89"/>
+                <constraint firstItem="5dF-pv-7Ow" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Xmc-kT-Tyh"/>
+                <constraint firstItem="UC4-Ld-Gug" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="34" id="aaq-25-4Ge"/>
+                <constraint firstItem="2dE-nG-k5f" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="jLl-11-18h"/>
+                <constraint firstItem="UC4-Ld-Gug" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qWn-X9-vO5"/>
+                <constraint firstItem="EBe-Yw-hAN" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="vKX-q8-XK2"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="97.767857142857139"/>
         </view>
     </objects>
     <resources>
