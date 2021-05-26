@@ -27,25 +27,34 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: "ShoppingAdTableViewCell", bundle: nil), forCellReuseIdentifier: "ShoppingAdTableViewCell")
         self.tableView.register(UINib(nibName: "ShoppingProductPreviewTableViewCell", bundle: nil), forCellReuseIdentifier: "ShoppingProductPreviewTableViewCell")
+<<<<<<< HEAD
+        
 //        let layout = UICollectionViewFlowLayout()
 //        layout.itemSize = CGSize (width: 200, height: 120)
 //        collectionView.collectionViewLayout = layout
         collectionView.register(MyCollectionViewCell.nib(), forCellWithReuseIdentifier: "MyCollectionViewCell")
         collectionView.delegate = self
         collectionView.dataSource = self
-      
+
+        
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+=======
+>>>>>>> c3a916014516fe212c568d282740ba5bfdffdfa9
         self.remoteAPI.getAllProducts(success: { products in
             self.products = products
             self.tableView.reloadData()
         }, failure: { error in
             print(error.localizedDescription)
         })
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+      
         self.adCell.startAdTimer()
     }
     

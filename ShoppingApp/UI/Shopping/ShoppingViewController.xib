@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShoppingViewController" customModule="ShoppingApp" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="ZIJ-n0-JGg" id="AHF-be-rKM"/>
                 <outlet property="tableView" destination="6EK-RE-PNN" id="wPX-Yf-KDp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -19,49 +20,37 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6EK-RE-PNN">
-                    <rect key="frame" x="0.0" y="108" width="414" height="754"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6EK-RE-PNN">
+                    <rect key="frame" x="0.0" y="194" width="414" height="668"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1y-1Q-qav">
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q1y-1Q-qav">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xF5-1X-Pd7" customClass="roundLabel" customModule="ShoppingApp" customModuleProvider="target">
-                            <rect key="frame" x="8" y="64" width="398" height="33"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Search Amazon" translatesAutoresizingMaskIntoConstraints="NO" id="KCb-d7-HNB">
-                            <rect key="frame" x="0.0" y="52" width="414" height="56"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search Amazon" translatesAutoresizingMaskIntoConstraints="NO" id="KCb-d7-HNB">
+                            <rect key="frame" x="0.0" y="57" width="414" height="51"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                     </subviews>
-                    <color key="backgroundColor" red="0.66178721540487817" green="0.68710139296631056" blue="1" alpha="0.64423694345205484" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstItem="KCb-d7-HNB" firstAttribute="leading" secondItem="Q1y-1Q-qav" secondAttribute="leading" id="I9l-3c-ekL"/>
-                        <constraint firstAttribute="bottom" secondItem="KCb-d7-HNB" secondAttribute="bottom" id="WAj-i1-i4t"/>
-                        <constraint firstAttribute="height" constant="108" id="xLg-xL-fym"/>
-                        <constraint firstAttribute="trailing" secondItem="KCb-d7-HNB" secondAttribute="trailing" id="xlT-w7-CK2"/>
-                    </constraints>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ZIJ-n0-JGg">
+                    <rect key="frame" x="0.0" y="116" width="414" height="102"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sFi-RU-HvC">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <constraints>
-                <constraint firstItem="Q1y-1Q-qav" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CMB-xJ-tNP"/>
-                <constraint firstItem="6EK-RE-PNN" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Il3-5z-q8P"/>
-                <constraint firstItem="6EK-RE-PNN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Lnu-jV-BLA"/>
-                <constraint firstItem="6EK-RE-PNN" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="dOo-oZ-mCG"/>
-                <constraint firstItem="6EK-RE-PNN" firstAttribute="top" secondItem="Q1y-1Q-qav" secondAttribute="bottom" id="iCB-nY-K84"/>
-                <constraint firstItem="Q1y-1Q-qav" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="phA-P3-xZg"/>
-                <constraint firstItem="Q1y-1Q-qav" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="wb0-Hl-f6j"/>
-            </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="97.767857142857139"/>
         </view>
         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="PkM-PO-o6b">
