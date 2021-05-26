@@ -38,11 +38,15 @@ protocol RemoteAPI {
     
     func getAllProducts(success: ([Product]) -> Void, failure: (Error) -> Void)
     
+    func getProducts(searchString: String, category: Category?, success: ([Product]) -> Void, failure: (Error) -> Void)
+    
     //MARK: Order
     func placeOrder(user: User, products: [Product], price: Double, paymentMethod: PaymentMethod, success: (Order) -> Void, failure: (Error) -> Void)
     
     
     //MARK: Category
+    
+    func getAllCategories(success: ([Category]) ->  Void, failure: (Error) -> Void)
     
     func getCategory(name: String, success: (Category?) -> Void, failure: (Error) -> Void)
     

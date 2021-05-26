@@ -13,9 +13,16 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
     
     @IBOutlet var collectionView: UICollectionView!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    
     private var shouldShowSignInViewControllerOnAppear = true
     
     private var products = [Product]()
+    
+    private var categories = [Category]()
+    
+    private var selectedCategory: Category?
     
     lazy var adCell : ShoppingAdTableViewCell = {
         return self.tableView.dequeueReusableCell(withIdentifier: "ShoppingAdTableViewCell") as! ShoppingAdTableViewCell
@@ -23,6 +30,7 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.searchBar.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: "ShoppingAdTableViewCell", bundle: nil), forCellReuseIdentifier: "ShoppingAdTableViewCell")
@@ -34,11 +42,6 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         collectionView.delegate = self
         collectionView.dataSource = self
       
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         self.remoteAPI.getAllProducts(success: { products in
             self.products = products
             self.tableView.reloadData()
@@ -46,6 +49,17 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
             print(error.localizedDescription)
         })
 
+        self.remoteAPI.getAllCategories(success: { categories in
+            self.categories = categories
+            self.collectionView.reloadData()
+        }, failure: { error in
+            print(error.localizedDescription)
+        })
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.adCell.startAdTimer()
     }
     
@@ -116,28 +130,78 @@ extension ShoppingViewController: UICollectionViewDelegate{
         collectionView.deselectItem(at: indexPath, animated: true)
         print("you tapped me")
     }
+    
 }
 
 extension ShoppingViewController: UICollectionViewDataSource{
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        switch section {
+        case 0:
+            return 1
+        default:
+            return self.categories.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as! MyCollectionViewCell
-        cell.configure(with: UIImage(named: "image")!)
+        let buttonText: String
+        switch indexPath.section {
+        case 0:
+            buttonText = "All"
+        default:
+            buttonText = self.categories[indexPath.row].name ?? "?"
+        }
+        cell.configure(buttonText: buttonText)
+        cell.delegate = self
         return cell
         
     }
 }
 
+extension ShoppingViewController : MyCollectionViewCellDelegate{
+    
+    func tappedCategoryButton(in cell: MyCollectionViewCell) {
+        guard let indexPath = self.collectionView.indexPath(for: cell) else {
+            return
+        }
+        switch indexPath.section {
+        case 0:
+            self.selectedCategory = nil
+        default:
+            self.selectedCategory = self.categories[indexPath.row]
+        }
+    }
+}
 
+extension ShoppingViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchString = searchBar.text else { return }
+        self.remoteAPI.getProducts(searchString: searchString, category: self.selectedCategory, success: { products in
+            self.products = products
+            self.tableView.reloadData()
+        }, failure: { error in
+            print(error.localizedDescription)
+        })
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
+    }
+}
+
+//
 //extension ShoppingViewController: UICollectionViewDelegateFlowLayout{
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: NSIndexPath) -> CGSize {
-//        return CGSize(width: 200, height: 120)
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //
 //    }
+//
 //}
+//
 
 
