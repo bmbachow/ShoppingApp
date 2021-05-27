@@ -37,7 +37,11 @@ extension User {
         })
     }
     
-    func setAddressAsDefault(address: Address) {
-        
+    var fullName: String {
+        return (self.firstName ?? "firstName?") + " " + (self.lastName ?? "lastName?")
+    }
+    
+    var defaultAddress: Address? {
+        return self.addressesArray.first(where: { $0.isDefault })
     }
 }

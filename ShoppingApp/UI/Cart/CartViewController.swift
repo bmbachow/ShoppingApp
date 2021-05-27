@@ -55,7 +55,7 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
     
     func goToCheckOut() {
         guard let user = self.user else { return }
-        let orderViewController = OrderViewController(user: user, cartItems: self.cartItems,
+        let orderViewController = OrderViewController(user: user, cartItems: self.cartItems, remoteAPI: self.remoteAPI,
                                                       cancelAction: { [weak self] in
                                                         self?.dismiss(animated: true, completion: nil)
                                                       })

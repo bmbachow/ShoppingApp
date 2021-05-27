@@ -8,49 +8,58 @@
 import SwiftUI
 
 struct ChooseAddressView: View {
-
+    
+    let remoteAPI: RemoteAPI
     @ObservedObject var orderData: OrderData
+    @Binding var backButtonText: String
+    @Binding var titleText: String
+    @Binding var backButtonAction: () -> Void
     
     let cancelAction: () -> Void
     
-    var body: some View {
-        VStack {
-            ZStack {
-                HStack {
-                    Spacer()
-                        .frame(width: 12)
-                    Button(action: self.cancelAction, label: {
-                        Text("Cancel")
-                            .foregroundColor(Color(UIColor.link))
-                    })
-                    Spacer()
-                }
-                Text("Shipping address")
-                    .fontWeight(.bold)
-            }
-            List {
-                if orderData.user.addressesArray.count > 0 {
-                    ForEach(self.orderData.user.addressesArray) {address in
-                        AddressCellView(address: address)
-                    }
-                } else {
-                    Text("You have no saved addresses")
-                }
-                Button(action: {}, label: {
-                    Text("Add new address")
-                        .foregroundColor(Color(UIColor.link))
-                        .fontWeight(.bold)
-                })
-            }
+    var selectedAddress: Address? {
+        if let address = orderData.address {
+            return address
         }
+        return orderData.user.defaultAddress
+    }
+    
+    func isSelectedAddress(address: Address) -> Bool {
+        let selected = address == self.selectedAddress
+        return selected
+    }
+    
+    var body: some View {
+        List {
+            if self.orderData.user.addressesArray.count > 0 {
+                ForEach(self.orderData.user.addressesArray) { address in
+                    let isSelected = self.isSelectedAddress(address: address)
+                    AddressCellView(address: address, isSelected: isSelected)
+                }
+            } else {
+                Text("You have no saved addresses")
+            }
+            NavigationLink(destination:
+                            NewAddressView(remoteAPI: self.remoteAPI, orderData: self.orderData, backButtonText: self.$backButtonText, titleText: self.$titleText, backButtonAction: self.$backButtonAction),
+                           label: {
+                            Text("Add new address")
+                                .foregroundColor(Color(UIColor.link))
+                                .fontWeight(.bold)
+                           })
+        }
+        .navigationBarHidden(true)
+        .onAppear(perform: {
+            self.backButtonText = "Cancel"
+            self.titleText = "Shipping address"
+            self.backButtonAction = self.cancelAction
+        })
     }
 }
 
 /*
-struct AddressView_Previews: PreviewProvider {
+struct ChooseAddressView_Previews: PreviewProvider {
     static var previews: some View {
-        
+        ChooseAddressView()
     }
 }
- */
-
+*/

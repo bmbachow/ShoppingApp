@@ -16,11 +16,11 @@ class OrderViewController: BaseViewController {
     
     let firstViewController: UIHostingController<AnyView>
     
-    init(user: User, cartItems: [CartItem], cancelAction: @escaping () -> Void) {
+    init(user: User, cartItems: [CartItem], remoteAPI: RemoteAPI, cancelAction: @escaping () -> Void) {
         let orderData = OrderData(user: user, cartItems: cartItems)
         self.cancelAction = cancelAction
         self.orderData = orderData
-        self.firstViewController = ChooseAddressView(orderData: orderData, cancelAction: cancelAction).wrappedInUIHostingController()
+        self.firstViewController = OrderContainerView(remoteAPI: remoteAPI, orderData: self.orderData, backButtonAction: cancelAction, cancelAction: cancelAction).wrappedInUIHostingController()
         super.init(nibName: nil, bundle: nil)
         self.addChild(firstViewController)
         self.view.addSubview(firstViewController.view)

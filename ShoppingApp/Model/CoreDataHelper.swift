@@ -322,6 +322,45 @@ class CoreDataHelper: RemoteAPI {
         }
     }
     
+    //MARK: Address
+    func postNewAddress(user: User, fullName: String, streetAddress: String, streetAddress2: String?, city: String, state: String, zipCode: String, isDefault: Bool, success: (Address) -> Void, failure: (Error) -> Void) {
+        let address = Address(context: self.viewContext)
+        address.user = user
+        address.fullName = fullName
+        address.streetAddress = streetAddress
+        address.streetAddress2 = streetAddress2
+        address.city = city
+        address.state = state
+        address.zipCode = zipCode
+        if isDefault {
+            for address in user.addressesArray {
+                address.isDefault = false
+            }
+        }
+        address.isDefault = isDefault
+        do {
+            try self.viewContext.save()
+            success(address)
+        } catch {
+            failure(error)
+        }
+    }
+    
+    func patchDefaultAddress(isDefault: Bool, user: User, address: Address, success: () -> Void, failure: (Error) -> Void) {
+        if isDefault {
+            for address in user.addressesArray {
+                address.isDefault = false
+            }
+        }
+        address.isDefault = isDefault
+        do {
+            try self.viewContext.save()
+            success()
+        } catch {
+            failure(error)
+        }
+    }
+    
     //MARK: seedDatabaseIfEmpty()
     
     private func seedDatabaseIfEmpty() {
