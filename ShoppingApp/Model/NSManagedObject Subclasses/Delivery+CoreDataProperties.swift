@@ -2,7 +2,7 @@
 //  Delivery+CoreDataProperties.swift
 //  ShoppingApp
 //
-//  Created by Robert Olieman on 5/26/21.
+//  Created by Robert Olieman on 5/27/21.
 //
 //
 
@@ -22,6 +22,7 @@ extension Delivery {
     @NSManaged public var currentLocation: Location?
     @NSManaged public var destinationLocation: Location?
     @NSManaged public var order: Order?
+    @NSManaged public var address: Address?
 
 }
 

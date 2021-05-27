@@ -5,6 +5,17 @@
         <attribute name="nameOnAccount" attributeType="String"/>
         <attribute name="routingNumber" attributeType="String"/>
     </entity>
+    <entity name="Address" representedClassName="Address" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="fullName" optional="YES" attributeType="String"/>
+        <attribute name="isDefault" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="state" optional="YES" attributeType="String"/>
+        <attribute name="streetAddress" optional="YES" attributeType="String"/>
+        <attribute name="streetAddress2" optional="YES" attributeType="String"/>
+        <attribute name="zipCode" optional="YES" attributeType="String"/>
+        <relationship name="deliveries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Delivery" inverseName="address" inverseEntity="Delivery"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="addresses" inverseEntity="User"/>
+    </entity>
     <entity name="CardPaymentMethod" representedClassName="CardPaymentMethod" parentEntity="PaymentMethod" syncable="YES">
         <attribute name="cardNumber" attributeType="String"/>
         <attribute name="nameOnCard" attributeType="String"/>
@@ -23,6 +34,7 @@
         <attribute name="deliveredDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="expectedDeliveryDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="shippedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="deliveries" inverseEntity="Address"/>
         <relationship name="currentLocation" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Location" inverseName="deliveryForCurrentLocation" inverseEntity="Location"/>
         <relationship name="destinationLocation" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Location" inverseName="deliveryForDestinationLocation" inverseEntity="Location"/>
         <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="delivery" inverseEntity="Order"/>
@@ -75,6 +87,7 @@
         <attribute name="phoneNumber" attributeType="String"/>
         <attribute name="registeredDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="searchHistory" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String]"/>
+        <relationship name="addresses" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Address" inverseName="user" inverseEntity="Address"/>
         <relationship name="cartItems" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CartItem" inverseName="user" inverseEntity="CartItem"/>
         <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Order" inverseName="user" inverseEntity="Order"/>
         <relationship name="paymentMethods" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PaymentMethod" inverseName="user" inverseEntity="PaymentMethod"/>
@@ -82,16 +95,17 @@
         <relationship name="wishListProducts" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Product" inverseName="wishListUsers" inverseEntity="Product"/>
     </entity>
     <elements>
-        <element name="AccountPaymentMethod" positionX="-2672.158203125" positionY="-2764.104400634766" width="188.1484375" height="88"/>
-        <element name="CardPaymentMethod" positionX="-2937.164123535156" positionY="-2790.85693359375" width="167.1560668945312" height="73"/>
-        <element name="CartItem" positionX="-3261.925537109375" positionY="-2362.168243408203" width="128" height="88"/>
-        <element name="Category" positionX="-3284.731201171875" positionY="-2480.807983398438" width="128" height="88"/>
-        <element name="Delivery" positionX="-2480.359985351563" positionY="-2633.201751708984" width="128" height="133"/>
-        <element name="Location" positionX="-2265.546264648438" positionY="-2476.695251464844" width="128" height="103"/>
-        <element name="Order" positionX="-2720.197265625" positionY="-2652.563293457032" width="128" height="163"/>
-        <element name="PaymentMethod" positionX="-2910.984680175781" positionY="-2893.255874633789" width="128" height="73"/>
-        <element name="Product" positionX="-2930.65966796875" positionY="-2490.122375488282" width="128" height="193"/>
-        <element name="ProductReview" positionX="-2584.021362304688" positionY="-2464.842498779296" width="128" height="133"/>
-        <element name="User" positionX="-3088.929870605469" positionY="-2775.096511840821" width="128" height="223"/>
+        <element name="AccountPaymentMethod" positionX="-2733.444702148438" positionY="-2794.909927368165" width="188.1484375" height="88"/>
+        <element name="CardPaymentMethod" positionX="-2929.990417480468" positionY="-2787.694366455078" width="167.1560668945312" height="73"/>
+        <element name="CartItem" positionX="-3266.146484375" positionY="-2363.0751953125" width="128" height="88"/>
+        <element name="Category" positionX="-3288.9521484375" positionY="-2481.714935302735" width="128" height="88"/>
+        <element name="Delivery" positionX="-2332.22998046875" positionY="-2653.556060791015" width="128" height="148"/>
+        <element name="Location" positionX="-2134.813232421875" positionY="-2448.704681396485" width="128" height="103"/>
+        <element name="Order" positionX="-2709.360961914062" positionY="-2641.668670654298" width="128" height="163"/>
+        <element name="PaymentMethod" positionX="-2915.205627441406" positionY="-2894.162826538086" width="128" height="73"/>
+        <element name="Product" positionX="-2934.880615234375" positionY="-2491.029327392579" width="128" height="193"/>
+        <element name="ProductReview" positionX="-2588.242309570313" positionY="-2465.749450683593" width="128" height="133"/>
+        <element name="User" positionX="-3098.441162109375" positionY="-2773.561752319337" width="128" height="238"/>
+        <element name="Address" positionX="-2528.795776367188" positionY="-2840.37727355957" width="128" height="178"/>
     </elements>
 </model>

@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  ShoppingApp
 //
-//  Created by Robert Olieman on 5/26/21.
+//  Created by Robert Olieman on 5/27/21.
 //
 //
 
@@ -23,11 +23,47 @@ extension User {
     @NSManaged public var phoneNumber: String?
     @NSManaged public var registeredDate: Date?
     @NSManaged public var searchHistory: [String]?
+    @NSManaged public var cartItems: NSOrderedSet?
     @NSManaged public var orders: NSOrderedSet?
     @NSManaged public var paymentMethods: NSOrderedSet?
     @NSManaged public var reviews: NSOrderedSet?
     @NSManaged public var wishListProducts: NSOrderedSet?
-    @NSManaged public var cartItems: NSOrderedSet?
+    @NSManaged public var addresses: NSOrderedSet?
+
+}
+
+// MARK: Generated accessors for cartItems
+extension User {
+
+    @objc(insertObject:inCartItemsAtIndex:)
+    @NSManaged public func insertIntoCartItems(_ value: CartItem, at idx: Int)
+
+    @objc(removeObjectFromCartItemsAtIndex:)
+    @NSManaged public func removeFromCartItems(at idx: Int)
+
+    @objc(insertCartItems:atIndexes:)
+    @NSManaged public func insertIntoCartItems(_ values: [CartItem], at indexes: NSIndexSet)
+
+    @objc(removeCartItemsAtIndexes:)
+    @NSManaged public func removeFromCartItems(at indexes: NSIndexSet)
+
+    @objc(replaceObjectInCartItemsAtIndex:withObject:)
+    @NSManaged public func replaceCartItems(at idx: Int, with value: CartItem)
+
+    @objc(replaceCartItemsAtIndexes:withCartItems:)
+    @NSManaged public func replaceCartItems(at indexes: NSIndexSet, with values: [CartItem])
+
+    @objc(addCartItemsObject:)
+    @NSManaged public func addToCartItems(_ value: CartItem)
+
+    @objc(removeCartItemsObject:)
+    @NSManaged public func removeFromCartItems(_ value: CartItem)
+
+    @objc(addCartItems:)
+    @NSManaged public func addToCartItems(_ values: NSOrderedSet)
+
+    @objc(removeCartItems:)
+    @NSManaged public func removeFromCartItems(_ values: NSOrderedSet)
 
 }
 
@@ -171,38 +207,38 @@ extension User {
 
 }
 
-// MARK: Generated accessors for cartItems
+// MARK: Generated accessors for addresses
 extension User {
 
-    @objc(insertObject:inCartItemsAtIndex:)
-    @NSManaged public func insertIntoCartItems(_ value: CartItem, at idx: Int)
+    @objc(insertObject:inAddressesAtIndex:)
+    @NSManaged public func insertIntoAddresses(_ value: Address, at idx: Int)
 
-    @objc(removeObjectFromCartItemsAtIndex:)
-    @NSManaged public func removeFromCartItems(at idx: Int)
+    @objc(removeObjectFromAddressesAtIndex:)
+    @NSManaged public func removeFromAddresses(at idx: Int)
 
-    @objc(insertCartItems:atIndexes:)
-    @NSManaged public func insertIntoCartItems(_ values: [CartItem], at indexes: NSIndexSet)
+    @objc(insertAddresses:atIndexes:)
+    @NSManaged public func insertIntoAddresses(_ values: [Address], at indexes: NSIndexSet)
 
-    @objc(removeCartItemsAtIndexes:)
-    @NSManaged public func removeFromCartItems(at indexes: NSIndexSet)
+    @objc(removeAddressesAtIndexes:)
+    @NSManaged public func removeFromAddresses(at indexes: NSIndexSet)
 
-    @objc(replaceObjectInCartItemsAtIndex:withObject:)
-    @NSManaged public func replaceCartItems(at idx: Int, with value: CartItem)
+    @objc(replaceObjectInAddressesAtIndex:withObject:)
+    @NSManaged public func replaceAddresses(at idx: Int, with value: Address)
 
-    @objc(replaceCartItemsAtIndexes:withCartItems:)
-    @NSManaged public func replaceCartItems(at indexes: NSIndexSet, with values: [CartItem])
+    @objc(replaceAddressesAtIndexes:withAddresses:)
+    @NSManaged public func replaceAddresses(at indexes: NSIndexSet, with values: [Address])
 
-    @objc(addCartItemsObject:)
-    @NSManaged public func addToCartItems(_ value: CartItem)
+    @objc(addAddressesObject:)
+    @NSManaged public func addToAddresses(_ value: Address)
 
-    @objc(removeCartItemsObject:)
-    @NSManaged public func removeFromCartItems(_ value: CartItem)
+    @objc(removeAddressesObject:)
+    @NSManaged public func removeFromAddresses(_ value: Address)
 
-    @objc(addCartItems:)
-    @NSManaged public func addToCartItems(_ values: NSOrderedSet)
+    @objc(addAddresses:)
+    @NSManaged public func addToAddresses(_ values: NSOrderedSet)
 
-    @objc(removeCartItems:)
-    @NSManaged public func removeFromCartItems(_ values: NSOrderedSet)
+    @objc(removeAddresses:)
+    @NSManaged public func removeFromAddresses(_ values: NSOrderedSet)
 
 }
 

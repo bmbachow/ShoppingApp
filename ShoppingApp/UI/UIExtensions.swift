@@ -7,6 +7,21 @@
 
 import Foundation
 import UIKit
+import SwiftUI
+
+extension View {
+    func wrappedInUIHostingController() -> UIHostingController<AnyView> {
+        return UIHostingController(rootView: AnyView(self))
+    }
+    
+    func wrappedInUIHostingController() -> UIHostingController<Self> {
+        return UIHostingController(rootView: self)
+    }
+}
+
+extension PreviewProvider {
+    var remoteAPI: RemoteAPI { (UIApplication.shared.delegate as! AppDelegate).remoteAPI! }
+}
 
 extension UIButton {
 

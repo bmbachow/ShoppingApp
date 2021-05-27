@@ -23,6 +23,9 @@ extension User {
     var paymentMethodsArray: [PaymentMethod] {
         self.paymentMethods?.array as? [PaymentMethod] ?? []
     }
+    var addressesArray: [Address] {
+        self.addresses?.array as? [Address] ?? []
+    }
     var totalProductsInCart: Int {
         return self.cartItemsArray.reduce(0) { result, cartItem in
             result + Int(cartItem.number)
@@ -32,5 +35,9 @@ extension User {
         return self.cartItemsArray.reduce(Double(0), { result, cartItem in
             result + cartItem.itemSubtotal
         })
+    }
+    
+    func setAddressAsDefault(address: Address) {
+        
     }
 }

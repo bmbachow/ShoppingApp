@@ -39,7 +39,8 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func tappedCheckOutButton(_ sender: UIButton) {
-        
+        guard self.user != nil else { return }
+        self.goToCheckOut()
     }
     
     override func cartChanged() {
@@ -52,6 +53,15 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
         super.wishListChanged()
     }
     
+    func goToCheckOut() {
+        guard let user = self.user else { return }
+        let orderViewController = OrderViewController(user: user, cartItems: self.cartItems,
+                                                      cancelAction: { [weak self] in
+                                                        self?.dismiss(animated: true, completion: nil)
+                                                      })
+        orderViewController.modalPresentationStyle = .fullScreen
+        self.present(orderViewController, animated: true)
+    }
     
     //MARK: UITableView
     
