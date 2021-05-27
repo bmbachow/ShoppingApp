@@ -12,7 +12,6 @@ protocol MyCollectionViewCellDelegate : AnyObject {
 }
 
 class MyCollectionViewCell: UICollectionViewCell {
-    
 
     @IBOutlet weak var categoryButton: UIButton!
     
@@ -25,6 +24,8 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     public func configure (buttonText : String) {
         self.categoryButton.setTitle(buttonText, for: .normal)
+        self.categoryButton.tintColor = .black
+        
     }
     
     static func nib() -> UINib {
