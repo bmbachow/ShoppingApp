@@ -76,10 +76,9 @@ class ShoppingAdTableViewCell: UITableViewCell {
                           duration: 0.5,
                           options: options,
                           animations: {
-                            self.shoppingImage.image = self.nextImage(forward: true)
+                            self.shoppingImage.image = self.nextImage(forward: forward)
                           },
                           completion: nil)
-        
         self.pageCon.currentPage = self.currentImageIndex
     }
     
