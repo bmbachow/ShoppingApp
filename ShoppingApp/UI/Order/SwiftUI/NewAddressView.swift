@@ -20,10 +20,6 @@ struct NewAddressView: View {
     @State private var zipCodeText: String = ""
     @State private var makeDefault = false
     
-    @Binding var backButtonText: String
-    @Binding var titleText: String
-    @Binding var backButtonAction: () -> Void
-    
     var shouldDisableSaveButton: Bool {
         self.nameText.isEmpty ||
             self.streetAddressText.isEmpty ||
@@ -80,15 +76,9 @@ struct NewAddressView: View {
             }
             
             .padding(24)
-            .onAppear(perform: {
-                self.nameText = self.orderData.user.fullName
-                self.backButtonText = "< Back"
-                self.titleText = "New address"
-                self.backButtonAction = {self.presentationMode.wrappedValue.dismiss()}
-            })
         }
-        .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
+        .navigationTitle(Text("New address"))
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     func saveAndSelectAddress() {
@@ -103,7 +93,7 @@ struct NewAddressView: View {
             zipCode: self.zipCodeText,
             isDefault: self.makeDefault, success: { address in
                 self.orderData.address = address
-                self.backButtonAction()
+                self.presentationMode.wrappedValue.dismiss()
             }, failure: { error in
                 print(error.localizedDescription)
             })

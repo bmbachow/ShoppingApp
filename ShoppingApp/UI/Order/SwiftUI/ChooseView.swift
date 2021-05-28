@@ -16,23 +16,12 @@ struct ChooseView: View {
     
     let remoteAPI: RemoteAPI
     @ObservedObject var orderData: OrderData
-    @Binding var backButtonText: String
-    @Binding var titleText: String
-    @Binding var backButtonAction: () -> Void
     @State var navigationSelection: Int?
     let cancelAction: () -> Void
     let mode: ChooseView.Mode
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    private var backButtonTextForCurrentMode: String {
-        switch self.mode {
-        case .address:
-            return "Cancel"
-        case .paymentMethod:
-            return "< Back"
-        }
-    }
     
     private var titleTextForCurrentMode: String {
         switch self.mode {
@@ -55,7 +44,7 @@ struct ChooseView: View {
     private var nextPageDestinationForCurrentMode: AnyView {
         switch self.mode {
         case .address:
-            return AnyView(ChooseView(remoteAPI: self.remoteAPI, orderData: self.orderData, backButtonText: self.$backButtonText, titleText: self.$titleText, backButtonAction: self.$backButtonAction, cancelAction: {}, mode: .paymentMethod))
+            return AnyView(ChooseView(remoteAPI: self.remoteAPI, orderData: self.orderData, cancelAction: {}, mode: .paymentMethod))
         case .paymentMethod:
             return AnyView(Text("Next view"))
         }
@@ -93,76 +82,81 @@ struct ChooseView: View {
     
     var body: some View {
         
-        List {
-            if !self.listForCurrentModeIsEmpty() {
+            List {
+                if !self.listForCurrentModeIsEmpty() {
+                    switch self.mode {
+                    case .address:
+                        ForEach(self.orderData.user.addressesArray) { address in
+                            let isSelected = self.isSelectedAddress(address: address)
+                            AddressCellView(address: address, isSelected: isSelected, navigationAction: {self.navigationSelection = 1})
+                        }
+                    case .paymentMethod:
+                        ForEach(self.orderData.user.addressesArray) { address in
+                            let isSelected = self.isSelectedAddress(address: address)
+                            AddressCellView(address: address, isSelected: isSelected, navigationAction: {self.navigationSelection = 1})
+                        }
+                    }
+                    
+                } else {
+                    Text(self.emptyMessageForCurrentMode)
+                }
                 switch self.mode {
                 case .address:
-                    ForEach(self.orderData.user.addressesArray) { address in
-                        let isSelected = self.isSelectedAddress(address: address)
-                        AddressCellView(address: address, isSelected: isSelected, navigationAction: {self.navigationSelection = 1})
-                    }
+                    Button(action: { self.navigationSelection = 2 }, label: {
+                        Text("Add new address")
+                            .foregroundColor(Color(UIColor.link))
+                            .fontWeight(.bold)
+                    })
+                    .buttonStyle(BorderlessButtonStyle())
                 case .paymentMethod:
-                    ForEach(self.orderData.user.addressesArray) { address in
-                        let isSelected = self.isSelectedAddress(address: address)
-                        AddressCellView(address: address, isSelected: isSelected, navigationAction: {self.navigationSelection = 1})
+                    Menu {
+                        Button(action: {
+                            self.navigationSelection = 3
+                        }, label: {
+                            Text("Credit or debit card")
+                        })
+                        Button(action: {
+                            self.navigationSelection = 4
+                        }, label: {
+                            Text("Personal checking account")
+                        })
+                    } label: {
+                        Text("Add new payment method")
+                            .foregroundColor(Color(UIColor.link))
+                            .fontWeight(.bold)
+                    }
+                    
+                }
+                
+            }
+            .navigationTitle(Text(self.titleTextForCurrentMode))
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(leading: VStack {
+                if self.mode == .address {
+                    Button(action: self.cancelAction, label: {
+                            Text("Cancel")
+                                .fontWeight(.regular)
+                    })
+                }
+            })
+            .listStyle(PlainListStyle())
+            .background(
+                VStack{
+                    NavigationLink(destination: self.nextPageDestinationForCurrentMode, tag: 1, selection: self.$navigationSelection, label: {EmptyView()})
+                    NavigationLink(destination:
+                                    NewAddressView(remoteAPI: self.remoteAPI, orderData: self.orderData), tag: 2, selection: self.$navigationSelection,
+                                   label: {EmptyView()})
+                    NavigationLink(destination:
+                                    NewCardPaymentMethodView(remoteAPI: self.remoteAPI, orderData: self.orderData),
+                                   tag: 3, selection: self.$navigationSelection, label: {EmptyView()})
+                    NavigationLink(destination:
+                                    NewAccountPaymentMethodView(remoteAPI: self.remoteAPI, orderData: self.orderData),
+                                   tag: 4, selection: self.$navigationSelection, label: {EmptyView()})
+                    NavigationLink(destination: EmptyView()) {
+                        EmptyView()
                     }
                 }
-    
-            } else {
-                Text(self.emptyMessageForCurrentMode)
-            }
-            switch self.mode {
-            case .address:
-                Button(action: { self.navigationSelection = 2 }, label: {
-                    Text("Add new address")
-                        .foregroundColor(Color(UIColor.link))
-                        .fontWeight(.bold)
-                })
-                .buttonStyle(BorderlessButtonStyle())
-            case .paymentMethod:
-                Menu {
-                    Button(action: {
-                            self.navigationSelection = 3
-                    }, label: {
-                        Text("Credit or debit card")
-                    })
-                    Button(action: {
-                            self.navigationSelection = 4
-                    }, label: {
-                        Text("Personal checking account")
-                    })
-                } label: {
-                    Text("Add new payment method")
-                        .foregroundColor(Color(UIColor.link))
-                        .fontWeight(.bold)
-                }
-
-            }
-           
-        }
-        .navigationBarHidden(true)
-        .onAppear(perform: {
-            self.backButtonText = self.backButtonTextForCurrentMode
-            self.titleText = self.titleTextForCurrentMode
-            self.backButtonAction = self.mode == .address ? self.cancelAction : {self.presentationMode.wrappedValue.dismiss()}
-        })
-        .background(
-            VStack{
-                NavigationLink(destination: self.nextPageDestinationForCurrentMode, tag: 1, selection: self.$navigationSelection, label: {EmptyView()})
-                NavigationLink(destination:
-                                NewAddressView(remoteAPI: self.remoteAPI, orderData: self.orderData, backButtonText: self.$backButtonText, titleText: self.$titleText, backButtonAction: self.$backButtonAction), tag: 2, selection: self.$navigationSelection,
-                               label: {EmptyView()})
-                NavigationLink(destination:
-                                NewCardPaymentMethodView(remoteAPI: self.remoteAPI, orderData: self.orderData, backButtonText: self.$backButtonText, titleText: self.$titleText, backButtonAction: self.$backButtonAction),
-                               tag: 3, selection: self.$navigationSelection, label: {EmptyView()})
-                NavigationLink(destination:
-                                NewAccountPaymentMethodView(remoteAPI: self.remoteAPI, orderData: self.orderData, backButtonText: self.$backButtonText, titleText: self.$titleText, backButtonAction: self.$backButtonAction),
-                               tag: 4, selection: self.$navigationSelection, label: {EmptyView()})
-                NavigationLink(destination: EmptyView()) {
-                    EmptyView()
-                }
-            }
-        )
+            )
     }
 }
 

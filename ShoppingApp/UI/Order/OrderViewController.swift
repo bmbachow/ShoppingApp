@@ -20,7 +20,7 @@ class OrderViewController: BaseViewController {
         let orderData = OrderData(user: user, cartItems: cartItems)
         self.cancelAction = cancelAction
         self.orderData = orderData
-        self.firstViewController = OrderContainerView(remoteAPI: remoteAPI, orderData: self.orderData, backButtonAction: cancelAction, cancelAction: cancelAction).wrappedInUIHostingController()
+        self.firstViewController = OrderNavigationView(remoteAPI: remoteAPI, orderData: self.orderData, cancelAction: cancelAction).wrappedInUIHostingController()
         super.init(nibName: nil, bundle: nil)
         self.addChild(firstViewController)
         self.view.addSubview(firstViewController.view)

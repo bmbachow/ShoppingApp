@@ -11,9 +11,6 @@ struct NewCardPaymentMethodView: View {
     
     let remoteAPI: RemoteAPI
     @ObservedObject var orderData: OrderData
-    @Binding var backButtonText: String
-    @Binding var titleText: String
-    @Binding var backButtonAction: () -> Void
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -22,14 +19,9 @@ struct NewCardPaymentMethodView: View {
             VStack {
                 Text("New card")
             }
-            .onAppear(perform: {
-                self.titleText = "New credit or debit card"
-                self.backButtonText = "< Back"
-                self.backButtonAction = {self.presentationMode.wrappedValue.dismiss()}
-            })
         }
-        .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
+        .navigationTitle(Text("New credit or debit card"))
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
