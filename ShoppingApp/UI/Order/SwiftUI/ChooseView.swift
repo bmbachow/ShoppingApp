@@ -131,14 +131,11 @@ struct ChooseView: View {
             }
             .navigationTitle(Text(self.titleTextForCurrentMode))
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(leading: VStack {
-                if self.mode == .address {
-                    Button(action: self.cancelAction, label: {
-                            Text("Cancel")
-                                .fontWeight(.regular)
-                    })
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: self.cancelAction) { Text("Cancel") }
                 }
-            })
+            }
             .listStyle(PlainListStyle())
             .background(
                 VStack{
