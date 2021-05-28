@@ -34,14 +34,31 @@ class UserTabViewController: BaseViewController {
     }
     
     func userChanged() {
-    
+        guard let userTabViewController = self.nextUserTabViewControllerInNavigationController() else {
+            return
+        }
+        userTabViewController.userChanged()
     }
     
     func cartChanged() {
-        
+        guard let userTabViewController = self.nextUserTabViewControllerInNavigationController() else {
+            return
+        }
+        userTabViewController.cartChanged()
     }
     
     func wishListChanged() {
-        
+        guard let userTabViewController = self.nextUserTabViewControllerInNavigationController() else {
+            return
+        }
+        userTabViewController.wishListChanged()
+    }
+    
+    func nextUserTabViewControllerInNavigationController() -> UserTabViewController? {
+        guard let index = self.navigationController?.viewControllers.firstIndex(of: self) else { return nil }
+        guard navigationController!.viewControllers.count > index + 1 else {
+            return nil
+        }
+        return navigationController?.viewControllers[index + 1] as? UserTabViewController
     }
 }

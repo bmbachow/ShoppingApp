@@ -19,7 +19,7 @@ struct ChooseView: View {
     @Binding var backButtonText: String
     @Binding var titleText: String
     @Binding var backButtonAction: () -> Void
-    @State var isShowingDestination: Bool = false
+    @State var navigationSelection: Int?
     let cancelAction: () -> Void
     let mode: ChooseView.Mode
     
@@ -118,24 +118,42 @@ struct ChooseView: View {
                 case .address:
                     ForEach(self.orderData.user.addressesArray) { address in
                         let isSelected = self.isSelectedAddress(address: address)
-                        AddressCellView(address: address, isSelected: isSelected, isShowingDestination: self.$isShowingDestination)
+                        AddressCellView(address: address, isSelected: isSelected, navigationAction: {self.navigationSelection = 1})
                     }
                 case .paymentMethod:
                     ForEach(self.orderData.user.addressesArray) { address in
                         let isSelected = self.isSelectedAddress(address: address)
-                        AddressCellView(address: address, isSelected: isSelected, isShowingDestination: self.$isShowingDestination)
+                        AddressCellView(address: address, isSelected: isSelected, navigationAction: {self.navigationSelection = 1})
                     }
                 }
     
             } else {
                 Text(self.emptyMessageForCurrentMode)
             }
-            NavigationLink(destination: self.addNewDestinationForCurrentMode,
-                           label: {
-                            Text(self.addNewTextForCurrentMode)
-                                .foregroundColor(Color(UIColor.link))
-                                .fontWeight(.bold)
-                           })
+            switch self.mode {
+            case .address:
+                Button(action: { self.navigationSelection = 2 }, label: {
+                    Text(self.addNewTextForCurrentMode)
+                        .foregroundColor(Color(UIColor.link))
+                        .fontWeight(.bold)
+                })
+                .buttonStyle(BorderlessButtonStyle())
+            case .paymentMethod:
+                Menu {
+                    Button(action: {}, label: {
+                        Text("Credit or debit card")
+                    })
+                    Button(action: {}, label: {
+                        Text("Personal checking account")
+                    })
+                } label: {
+                    Text(self.addNewTextForCurrentMode)
+                        .foregroundColor(Color(UIColor.link))
+                        .fontWeight(.bold)
+                }
+
+            }
+           
         }
         .navigationBarHidden(true)
         .onAppear(perform: {
@@ -144,7 +162,18 @@ struct ChooseView: View {
             self.backButtonAction = self.mode == .address ? self.cancelAction : {self.presentationMode.wrappedValue.dismiss()}
         })
         .background(
-            NavigationLink(destination: self.nextPageDestinationForCurrentMode, isActive: self.$isShowingDestination, label: {EmptyView()})
+            VStack{
+                NavigationLink(destination: self.nextPageDestinationForCurrentMode, tag: 1, selection: self.$navigationSelection, label: {EmptyView()})
+                NavigationLink(destination: self.addNewDestinationForCurrentMode, tag: 2, selection: self.$navigationSelection,
+                               label: {
+                                Text(self.addNewTextForCurrentMode)
+                                    .foregroundColor(Color(UIColor.link))
+                                    .fontWeight(.bold)
+                               })
+                NavigationLink(destination: EmptyView()) {
+                    EmptyView()
+                }
+            }
         )
     }
 }

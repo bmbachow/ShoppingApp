@@ -11,7 +11,7 @@ struct AddressCellView: View {
     
     let address: Address
     var isSelected: Bool
-    @Binding var isShowingDestination: Bool
+    let navigationAction: () -> Void
     
     var addressCityStateZipString: String {
         return (self.address.city ?? "city?") + ", " + (self.address.state ?? "state?") + " " + (self.address.zipCode ?? "zipCode?")
@@ -30,7 +30,7 @@ struct AddressCellView: View {
             if self.isSelected {
                 HStack {
                     Spacer()
-                    Button(action: {self.isShowingDestination = true}, label: {
+                    Button(action: self.navigationAction, label: {
                         Text("Select this address")
                             .foregroundColor(Color(UIColor.link))
                             .fontWeight(.bold)
