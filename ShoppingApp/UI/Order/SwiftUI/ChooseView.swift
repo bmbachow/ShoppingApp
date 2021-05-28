@@ -43,15 +43,6 @@ struct ChooseView: View {
         }
     }
     
-    private var addNewTextForCurrentMode: String {
-        switch self.mode {
-        case .address:
-            return "Add new address"
-        case .paymentMethod:
-            return "Add new payment method"
-        }
-    }
-    
     private var emptyMessageForCurrentMode: String {
         switch self.mode {
         case .address:
@@ -69,16 +60,6 @@ struct ChooseView: View {
             return AnyView(Text("Next view"))
         }
     }
-    
-    private var addNewDestinationForCurrentMode: AnyView {
-        switch self.mode {
-        case .address:
-            return AnyView(NewAddressView(remoteAPI: self.remoteAPI, orderData: self.orderData, backButtonText: self.$backButtonText, titleText: self.$titleText, backButtonAction: self.$backButtonAction))
-        case .paymentMethod:
-            return AnyView(NewPaymentMethodView())
-        }
-    }
-    
     
     private var selectedAddress: Address? {
         if let address = orderData.address {
@@ -133,21 +114,25 @@ struct ChooseView: View {
             switch self.mode {
             case .address:
                 Button(action: { self.navigationSelection = 2 }, label: {
-                    Text(self.addNewTextForCurrentMode)
+                    Text("Add new address")
                         .foregroundColor(Color(UIColor.link))
                         .fontWeight(.bold)
                 })
                 .buttonStyle(BorderlessButtonStyle())
             case .paymentMethod:
                 Menu {
-                    Button(action: {}, label: {
+                    Button(action: {
+                            self.navigationSelection = 3
+                    }, label: {
                         Text("Credit or debit card")
                     })
-                    Button(action: {}, label: {
+                    Button(action: {
+                            self.navigationSelection = 4
+                    }, label: {
                         Text("Personal checking account")
                     })
                 } label: {
-                    Text(self.addNewTextForCurrentMode)
+                    Text("Add new payment method")
                         .foregroundColor(Color(UIColor.link))
                         .fontWeight(.bold)
                 }
@@ -164,12 +149,15 @@ struct ChooseView: View {
         .background(
             VStack{
                 NavigationLink(destination: self.nextPageDestinationForCurrentMode, tag: 1, selection: self.$navigationSelection, label: {EmptyView()})
-                NavigationLink(destination: self.addNewDestinationForCurrentMode, tag: 2, selection: self.$navigationSelection,
-                               label: {
-                                Text(self.addNewTextForCurrentMode)
-                                    .foregroundColor(Color(UIColor.link))
-                                    .fontWeight(.bold)
-                               })
+                NavigationLink(destination:
+                                NewAddressView(remoteAPI: self.remoteAPI, orderData: self.orderData, backButtonText: self.$backButtonText, titleText: self.$titleText, backButtonAction: self.$backButtonAction), tag: 2, selection: self.$navigationSelection,
+                               label: {EmptyView()})
+                NavigationLink(destination:
+                                NewCardPaymentMethodView(remoteAPI: self.remoteAPI, orderData: self.orderData, backButtonText: self.$backButtonText, titleText: self.$titleText, backButtonAction: self.$backButtonAction),
+                               tag: 3, selection: self.$navigationSelection, label: {EmptyView()})
+                NavigationLink(destination:
+                                NewAccountPaymentMethodView(remoteAPI: self.remoteAPI, orderData: self.orderData, backButtonText: self.$backButtonText, titleText: self.$titleText, backButtonAction: self.$backButtonAction),
+                               tag: 4, selection: self.$navigationSelection, label: {EmptyView()})
                 NavigationLink(destination: EmptyView()) {
                     EmptyView()
                 }

@@ -37,6 +37,7 @@ struct OrderContainerView: View {
                 NavigationView {
                     ChooseView(remoteAPI: self.remoteAPI, orderData: self.orderData, backButtonText: self.$cancelButtonText, titleText: self.$titleText, backButtonAction: self.$backButtonAction, cancelAction: self.cancelAction, mode: .address)
                 }
+                .navigationViewStyle(StackNavigationViewStyle())
             }
     }
 }
