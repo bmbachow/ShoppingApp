@@ -121,6 +121,10 @@
 		52EEF3F1265E9208006C3759 /* CartProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52EEF3EF265E9208006C3759 /* CartProductTableViewCell.xib */; };
 		5F02A4F0265DA78200FC331E /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F02A4EE265DA78200FC331E /* MyCollectionViewCell.swift */; };
 		5F02A4F1265DA78200FC331E /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F02A4EF265DA78200FC331E /* MyCollectionViewCell.xib */; };
+		5F02A4F526602CEB00FC331E /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F02A4F326602CEB00FC331E /* WishListViewController.swift */; };
+		5F02A4F626602CEB00FC331E /* WishListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F02A4F426602CEB00FC331E /* WishListViewController.xib */; };
+		5F02A4F926602FE000FC331E /* WishListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F02A4F726602FE000FC331E /* WishListTableViewCell.swift */; };
+		5F02A4FC266030DA00FC331E /* WishListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F02A4FB266030DA00FC331E /* WishListTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -241,6 +245,10 @@
 		52EEF3EF265E9208006C3759 /* CartProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartProductTableViewCell.xib; sourceTree = "<group>"; };
 		5F02A4EE265DA78200FC331E /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		5F02A4EF265DA78200FC331E /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
+		5F02A4F326602CEB00FC331E /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
+		5F02A4F426602CEB00FC331E /* WishListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishListViewController.xib; sourceTree = "<group>"; };
+		5F02A4F726602FE000FC331E /* WishListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListTableViewCell.swift; sourceTree = "<group>"; };
+		5F02A4FB266030DA00FC331E /* WishListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WishListTableViewCell.xib; path = ShoppingApp/UI/Cart/WishListTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		A28BDA2507A6B461EEDDCEF0 /* Pods-ShoppingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.release.xcconfig"; path = "Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.release.xcconfig"; sourceTree = "<group>"; };
 		ABA0EBB2B8C1F7B55331A7EB /* Pods-ShoppingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.debug.xcconfig"; path = "Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -450,6 +458,7 @@
 		52E0B067265B0FFE00B9C77E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				5F02A4F226602C8300FC331E /* Wish List */,
 				52CD8B14265BE07500AFAC8C /* Alert */,
 				52E0B071265B1A2A00B9C77E /* Sign In + Register */,
 				52E0B076265B1A7000B9C77E /* Shopping */,
@@ -542,6 +551,17 @@
 			path = Order;
 			sourceTree = "<group>";
 		};
+		5F02A4F226602C8300FC331E /* Wish List */ = {
+			isa = PBXGroup;
+			children = (
+				5F02A4FB266030DA00FC331E /* WishListTableViewCell.xib */,
+				5F02A4F326602CEB00FC331E /* WishListViewController.swift */,
+				5F02A4F426602CEB00FC331E /* WishListViewController.xib */,
+				5F02A4F726602FE000FC331E /* WishListTableViewCell.swift */,
+			);
+			path = "Wish List";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -609,6 +629,7 @@
 				52E36278265FC3EC004D6FD3 /* OrderViewController.xib in Resources */,
 				520F43F5265DA48C00A6B282 /* UserHomeMainTableViewCell.xib in Resources */,
 				52CD8B17265BE09C00AFAC8C /* AlertViewController.xib in Resources */,
+				5F02A4F626602CEB00FC331E /* WishListViewController.xib in Resources */,
 				52E0B06B265B11BB00B9C77E /* ViewControllerBlueprint.storyboard in Resources */,
 				5292777B265C3F1500394180 /* ProductDetailMainTableViewCell.xib in Resources */,
 				5F02A4F1265DA78200FC331E /* MyCollectionViewCell.xib in Resources */,
@@ -617,6 +638,7 @@
 				52EEF3F1265E9208006C3759 /* CartProductTableViewCell.xib in Resources */,
 				52E0B087265B1B1E00B9C77E /* SettingsViewController.xib in Resources */,
 				52D8F8B226580C6400EF220A /* SignInViewController.xib in Resources */,
+				5F02A4FC266030DA00FC331E /* WishListTableViewCell.xib in Resources */,
 				400D3431265D42CD005D8234 /* RegisterViewController.xib in Resources */,
 				52D8F8A526580BA900EF220A /* Assets.xcassets in Resources */,
 				52E0B082265B1AD100B9C77E /* CartViewController.xib in Resources */,
@@ -692,6 +714,7 @@
 				5267258C265AECA600D9CAB9 /* TimeIntervalFormatter.swift in Sources */,
 				52E0B069265B104500B9C77E /* BaseViewController.swift in Sources */,
 				526723E4265AD8D600D9CAB9 /* StarRating.swift in Sources */,
+				5F02A4F526602CEB00FC331E /* WishListViewController.swift in Sources */,
 				52927776265C3EBD00394180 /* ProductDetailViewController.swift in Sources */,
 				5267252A265AE7C200D9CAB9 /* RemoteAPI.swift in Sources */,
 				52E3625D265FC204004D6FD3 /* Product+CoreDataProperties.swift in Sources */,
@@ -727,6 +750,7 @@
 				520F43E2265D448C00A6B282 /* CosmosLayerHelper.swift in Sources */,
 				52E36264265FC204004D6FD3 /* Category+CoreDataClass.swift in Sources */,
 				52E0B086265B1B1E00B9C77E /* SettingsViewController.swift in Sources */,
+				5F02A4F926602FE000FC331E /* WishListTableViewCell.swift in Sources */,
 				52672587265AECA600D9CAB9 /* KeychainHelper.swift in Sources */,
 				520F43F0265D9A8800A6B282 /* UserHomeViewController.swift in Sources */,
 				52E0B081265B1AD100B9C77E /* CartViewController.swift in Sources */,

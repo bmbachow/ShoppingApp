@@ -15,6 +15,10 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
     
     weak var ordersCollectionView: UICollectionView!
     
+    weak var ordersButton: UIButton!
+    
+    weak var wishListButton: UIButton!
+    
     weak var wishListCollectionView: UICollectionView!
     
     private let userNotSignedInViewController = UserNotSignedInViewController()
@@ -40,6 +44,8 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "OrdersCollectionTableViewCell") as? ProductsCollectionTableViewCell else {
             fatalError("Unable to dequeue ProductsCollectionTableViewCell")
         }
+        self.ordersButton = cell.button
+        cell.button.addTarget(self, action: #selector(self.tappedOrdersButton(_:)), for: .touchUpInside)
         cell.button.setTitle("Orders", for: .normal)
         self.ordersCollectionView = cell.collectionView
         self.ordersCollectionView.delegate = self
@@ -51,6 +57,8 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "WishListCollectionTableViewCell") as? ProductsCollectionTableViewCell else {
             fatalError("Unable to dequeue ProductsCollectionTableViewCell")
         }
+        self.wishListButton = cell.button
+        cell.button.addTarget(self, action: #selector(self.tappedWishListButton(_:)), for: .touchUpInside)
         cell.button.setTitle("Wish List", for: .normal)
         self.wishListCollectionView = cell.collectionView
         self.wishListCollectionView.delegate = self
@@ -110,6 +118,29 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
         super.wishListChanged()
         self.refreshData()
     }
+    
+    
+    
+    
+    
+    
+    
+    @objc func tappedOrdersButton(_ sender: UIButton){
+        
+    }
+    
+    @objc func tappedWishListButton(_ sender: UIButton){
+        let vc = WishListViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     //MARK: UITableView
     
