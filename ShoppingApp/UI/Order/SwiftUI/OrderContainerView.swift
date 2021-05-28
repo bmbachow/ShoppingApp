@@ -35,7 +35,7 @@ struct OrderContainerView: View {
                 }
                 .frame(height: UIConstants.topBarHeight)
                 NavigationView {
-                    ChooseAddressView(remoteAPI: self.remoteAPI, orderData: self.orderData, backButtonText: self.$cancelButtonText, titleText: self.$titleText, backButtonAction: self.$backButtonAction, cancelAction: self.cancelAction)
+                    ChooseView(remoteAPI: self.remoteAPI, orderData: self.orderData, backButtonText: self.$cancelButtonText, titleText: self.$titleText, backButtonAction: self.$backButtonAction, cancelAction: self.cancelAction, mode: .address)
                 }
             }
     }

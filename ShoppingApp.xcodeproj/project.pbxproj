@@ -64,11 +64,12 @@
 		5292777B265C3F1500394180 /* ProductDetailMainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52927779265C3F1500394180 /* ProductDetailMainTableViewCell.xib */; };
 		5292777F265C564E00394180 /* ShoppingAdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5292777D265C564E00394180 /* ShoppingAdTableViewCell.xib */; };
 		52927781265C5A4400394180 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52927780265C5A4400394180 /* UIExtensions.swift */; };
+		52A1FA2D266125B8009FBC97 /* NewPaymentMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A1FA2C266125B8009FBC97 /* NewPaymentMethodView.swift */; };
 		52A2872A265FDFCC008584E9 /* AddressCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A28729265FDFCC008584E9 /* AddressCellView.swift */; };
 		52A2872C265FEFE2008584E9 /* NewAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2872B265FEFE2008584E9 /* NewAddressView.swift */; };
 		52A2872E265FF25C008584E9 /* StandardTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2872D265FF25C008584E9 /* StandardTextField.swift */; };
 		52A2873226600102008584E9 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2873126600102008584E9 /* UIConstants.swift */; };
-		52A2873426600730008584E9 /* ChooseAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2873326600730008584E9 /* ChooseAddressView.swift */; };
+		52A2873426600730008584E9 /* ChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2873326600730008584E9 /* ChooseView.swift */; };
 		52A2873626602739008584E9 /* AnimatableGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2873526602739008584E9 /* AnimatableGradient.swift */; };
 		52A2873826602B43008584E9 /* AnimatingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2873726602B43008584E9 /* AnimatingTextView.swift */; };
 		52B70C38265EA40A0061E757 /* CartItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B70C37265EA40A0061E757 /* CartItemExtensions.swift */; };
@@ -188,11 +189,12 @@
 		52927779265C3F1500394180 /* ProductDetailMainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductDetailMainTableViewCell.xib; sourceTree = "<group>"; };
 		5292777D265C564E00394180 /* ShoppingAdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingAdTableViewCell.xib; sourceTree = "<group>"; };
 		52927780265C5A4400394180 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		52A1FA2C266125B8009FBC97 /* NewPaymentMethodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPaymentMethodView.swift; sourceTree = "<group>"; };
 		52A28729265FDFCC008584E9 /* AddressCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCellView.swift; sourceTree = "<group>"; };
 		52A2872B265FEFE2008584E9 /* NewAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddressView.swift; sourceTree = "<group>"; };
 		52A2872D265FF25C008584E9 /* StandardTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardTextField.swift; sourceTree = "<group>"; };
 		52A2873126600102008584E9 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
-		52A2873326600730008584E9 /* ChooseAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAddressView.swift; sourceTree = "<group>"; };
+		52A2873326600730008584E9 /* ChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseView.swift; sourceTree = "<group>"; };
 		52A2873526602739008584E9 /* AnimatableGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableGradient.swift; sourceTree = "<group>"; };
 		52A2873726602B43008584E9 /* AnimatingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatingTextView.swift; sourceTree = "<group>"; };
 		52B70C37265EA40A0061E757 /* CartItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemExtensions.swift; sourceTree = "<group>"; };
@@ -414,9 +416,10 @@
 			isa = PBXGroup;
 			children = (
 				52E36279265FC67B004D6FD3 /* OrderContainerView.swift */,
-				52A2873326600730008584E9 /* ChooseAddressView.swift */,
+				52A2873326600730008584E9 /* ChooseView.swift */,
 				52A28729265FDFCC008584E9 /* AddressCellView.swift */,
 				52A2872B265FEFE2008584E9 /* NewAddressView.swift */,
+				52A1FA2C266125B8009FBC97 /* NewPaymentMethodView.swift */,
 				52A2872D265FF25C008584E9 /* StandardTextField.swift */,
 				52A2873526602739008584E9 /* AnimatableGradient.swift */,
 				52A2873726602B43008584E9 /* AnimatingTextView.swift */,
@@ -763,9 +766,10 @@
 				52E3626A265FC204004D6FD3 /* Delivery+CoreDataClass.swift in Sources */,
 				520F43DF265D448C00A6B282 /* RightToLeft.swift in Sources */,
 				526724D2265AE3F100D9CAB9 /* CardPaymentMethodExtensions.swift in Sources */,
-				52A2873426600730008584E9 /* ChooseAddressView.swift in Sources */,
+				52A2873426600730008584E9 /* ChooseView.swift in Sources */,
 				52E36261265FC204004D6FD3 /* PaymentMethod+CoreDataProperties.swift in Sources */,
 				52E36277265FC3EC004D6FD3 /* OrderViewController.swift in Sources */,
+				52A1FA2D266125B8009FBC97 /* NewPaymentMethodView.swift in Sources */,
 				52E3627E265FCFCF004D6FD3 /* SampleData.swift in Sources */,
 				52A2872E265FF25C008584E9 /* StandardTextField.swift in Sources */,
 				52EEF3F0265E9208006C3759 /* CartProductTableViewCell.swift in Sources */,

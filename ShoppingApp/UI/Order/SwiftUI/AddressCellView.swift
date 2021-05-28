@@ -10,8 +10,8 @@ import SwiftUI
 struct AddressCellView: View {
     
     let address: Address
-    
     var isSelected: Bool
+    @Binding var isShowingDestination: Bool
     
     var addressCityStateZipString: String {
         return (self.address.city ?? "city?") + ", " + (self.address.state ?? "state?") + " " + (self.address.zipCode ?? "zipCode?")
@@ -26,10 +26,11 @@ struct AddressCellView: View {
                 Text(streetAddress2)
             }
             Text(self.addressCityStateZipString)
+           
             if self.isSelected {
                 HStack {
                     Spacer()
-                    Button(action: {}, label: {
+                    Button(action: {self.isShowingDestination = true}, label: {
                         Text("Select this address")
                             .foregroundColor(Color(UIColor.link))
                             .fontWeight(.bold)
