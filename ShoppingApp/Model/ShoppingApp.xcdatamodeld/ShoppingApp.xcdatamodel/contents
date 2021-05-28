@@ -8,7 +8,7 @@
     <entity name="Address" representedClassName="Address" syncable="YES">
         <attribute name="city" optional="YES" attributeType="String"/>
         <attribute name="fullName" optional="YES" attributeType="String"/>
-        <attribute name="isDefault" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isDefault" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="state" optional="YES" attributeType="String"/>
         <attribute name="streetAddress" optional="YES" attributeType="String"/>
         <attribute name="streetAddress2" optional="YES" attributeType="String"/>
@@ -96,6 +96,7 @@
     </entity>
     <elements>
         <element name="AccountPaymentMethod" positionX="-2733.444702148438" positionY="-2794.909927368165" width="188.1484375" height="88"/>
+        <element name="Address" positionX="-2528.795776367188" positionY="-2840.37727355957" width="128" height="178"/>
         <element name="CardPaymentMethod" positionX="-2929.990417480468" positionY="-2787.694366455078" width="167.1560668945312" height="73"/>
         <element name="CartItem" positionX="-3266.146484375" positionY="-2363.0751953125" width="128" height="88"/>
         <element name="Category" positionX="-3288.9521484375" positionY="-2481.714935302735" width="128" height="88"/>
@@ -106,6 +107,5 @@
         <element name="Product" positionX="-2934.880615234375" positionY="-2491.029327392579" width="128" height="193"/>
         <element name="ProductReview" positionX="-2588.242309570313" positionY="-2465.749450683593" width="128" height="133"/>
         <element name="User" positionX="-3098.441162109375" positionY="-2773.561752319337" width="128" height="238"/>
-        <element name="Address" positionX="-2528.795776367188" positionY="-2840.37727355957" width="128" height="178"/>
     </elements>
 </model>
