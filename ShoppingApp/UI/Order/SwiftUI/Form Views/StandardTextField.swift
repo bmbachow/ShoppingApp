@@ -10,7 +10,7 @@ import SwiftUI
 struct StandardTextField: View {
     
     let titleKey: LocalizedStringKey
-    @State var text: Binding<String>
+    @State private var text: Binding<String>
     
     static let standardFontSize: CGFloat = 17
     let fontSize: CGFloat

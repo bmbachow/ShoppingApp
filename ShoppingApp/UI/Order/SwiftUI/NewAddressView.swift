@@ -32,53 +32,39 @@ struct NewAddressView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .center, spacing: 20) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Full name")
-                    StandardTextField("", text: self.$nameText)
+            FormVStack {
+                LabeledTextFieldSet(labelText: "Full name", fields: [
+                    (titleKey: "", text: self.$nameText),
+                ])
+                LabeledTextFieldSet(labelText: "Address", fields: [
+                    (titleKey: "Street address", text: self.$streetAddressText),
+                    (titleKey: "Street address line 2 (optional)", text: self.$streetAddress2Text)
+                ])
+                LabeledTextFieldSet(labelText: "City", fields: [
+                    (titleKey: "", text: self.$cityText),
+                ])
+                FormHStack {
+                    LabeledTextFieldSet(labelText: "State", fields: [
+                        (titleKey: "", text: self.$stateText),
+                    ])
+                    LabeledTextFieldSet(labelText: "Zip code", fields: [
+                        (titleKey: "", text: self.$zipCodeText),
+                    ])
                 }
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Address")
-                    StandardTextField("Street address", text: self.$streetAddressText)
-                    StandardTextField("Street address line 2 (optional)", text: self.$streetAddress2Text)
-                }
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("City")
-                    StandardTextField("", text: self.$cityText)
-                }
-                HStack(spacing: 20) {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("State")
-                        StandardTextField("", text: self.$stateText)
-                    }
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Zip")
-                        StandardTextField("", text: self.$zipCodeText)
-                    }
-                }
-                Spacer()
-                    .frame(height: 12)
-                HStack {
-                    Toggle("", isOn: self.$makeDefault)
-                        .labelsHidden()
-                    Text("Make this my default address")
-                    Spacer()
-                }
-                Spacer()
-                    .frame(height: 12)
-                Button(action: self.saveAndSelectAddress, label: {
-                    Text("Use this address")
-                        .foregroundColor(Color(UIColor.link))
-                        .fontWeight(.bold)
-                })
-                .buttonStyle(PlainButtonStyle())
+                FormSpacer()
+                StandardToggle(isOn: self.$makeDefault, titleText: "Make this my default address")
+                FormSpacer()
+                StandardButton(action: {
+                    self.saveAndSelectAddress()
+                }, labelText: "Use this address")
                 .disabled(self.shouldDisableSaveButton)
             }
-            
-            .padding(24)
         }
         .navigationTitle(Text("New address"))
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear(perform: {
+            self.nameText = self.orderData.user.fullName
+        })
     }
     
     func saveAndSelectAddress() {
