@@ -51,6 +51,15 @@ extension UITextField {
     }
 }
 
+class roundButton : UIButton{
+    
+    required init?(coder: NSCoder){
+        super.init(coder:coder)
+        layer.cornerRadius = 10
+        clipsToBounds = true
+    }
+}
+
 class roundLabel : UILabel{
     
     required init?(coder: NSCoder){
