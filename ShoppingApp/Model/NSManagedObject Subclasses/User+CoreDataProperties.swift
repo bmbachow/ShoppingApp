@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  ShoppingApp
 //
-//  Created by Robert Olieman on 5/27/21.
+//  Created by Robert Olieman on 5/31/21.
 //
 //
 
@@ -23,12 +23,47 @@ extension User {
     @NSManaged public var phoneNumber: String?
     @NSManaged public var registeredDate: Date?
     @NSManaged public var searchHistory: [String]?
+    @NSManaged public var addresses: NSOrderedSet?
     @NSManaged public var cartItems: NSOrderedSet?
     @NSManaged public var orders: NSOrderedSet?
     @NSManaged public var paymentMethods: NSOrderedSet?
     @NSManaged public var reviews: NSOrderedSet?
     @NSManaged public var wishListProducts: NSOrderedSet?
-    @NSManaged public var addresses: NSOrderedSet?
+
+}
+
+// MARK: Generated accessors for addresses
+extension User {
+
+    @objc(insertObject:inAddressesAtIndex:)
+    @NSManaged public func insertIntoAddresses(_ value: Address, at idx: Int)
+
+    @objc(removeObjectFromAddressesAtIndex:)
+    @NSManaged public func removeFromAddresses(at idx: Int)
+
+    @objc(insertAddresses:atIndexes:)
+    @NSManaged public func insertIntoAddresses(_ values: [Address], at indexes: NSIndexSet)
+
+    @objc(removeAddressesAtIndexes:)
+    @NSManaged public func removeFromAddresses(at indexes: NSIndexSet)
+
+    @objc(replaceObjectInAddressesAtIndex:withObject:)
+    @NSManaged public func replaceAddresses(at idx: Int, with value: Address)
+
+    @objc(replaceAddressesAtIndexes:withAddresses:)
+    @NSManaged public func replaceAddresses(at indexes: NSIndexSet, with values: [Address])
+
+    @objc(addAddressesObject:)
+    @NSManaged public func addToAddresses(_ value: Address)
+
+    @objc(removeAddressesObject:)
+    @NSManaged public func removeFromAddresses(_ value: Address)
+
+    @objc(addAddresses:)
+    @NSManaged public func addToAddresses(_ values: NSOrderedSet)
+
+    @objc(removeAddresses:)
+    @NSManaged public func removeFromAddresses(_ values: NSOrderedSet)
 
 }
 
@@ -204,41 +239,6 @@ extension User {
 
     @objc(removeWishListProducts:)
     @NSManaged public func removeFromWishListProducts(_ values: NSOrderedSet)
-
-}
-
-// MARK: Generated accessors for addresses
-extension User {
-
-    @objc(insertObject:inAddressesAtIndex:)
-    @NSManaged public func insertIntoAddresses(_ value: Address, at idx: Int)
-
-    @objc(removeObjectFromAddressesAtIndex:)
-    @NSManaged public func removeFromAddresses(at idx: Int)
-
-    @objc(insertAddresses:atIndexes:)
-    @NSManaged public func insertIntoAddresses(_ values: [Address], at indexes: NSIndexSet)
-
-    @objc(removeAddressesAtIndexes:)
-    @NSManaged public func removeFromAddresses(at indexes: NSIndexSet)
-
-    @objc(replaceObjectInAddressesAtIndex:withObject:)
-    @NSManaged public func replaceAddresses(at idx: Int, with value: Address)
-
-    @objc(replaceAddressesAtIndexes:withAddresses:)
-    @NSManaged public func replaceAddresses(at indexes: NSIndexSet, with values: [Address])
-
-    @objc(addAddressesObject:)
-    @NSManaged public func addToAddresses(_ value: Address)
-
-    @objc(removeAddressesObject:)
-    @NSManaged public func removeFromAddresses(_ value: Address)
-
-    @objc(addAddresses:)
-    @NSManaged public func addToAddresses(_ values: NSOrderedSet)
-
-    @objc(removeAddresses:)
-    @NSManaged public func removeFromAddresses(_ values: NSOrderedSet)
 
 }
 

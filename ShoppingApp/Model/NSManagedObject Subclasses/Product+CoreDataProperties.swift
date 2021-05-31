@@ -2,7 +2,7 @@
 //  Product+CoreDataProperties.swift
 //  ShoppingApp
 //
-//  Created by Robert Olieman on 5/27/21.
+//  Created by Robert Olieman on 5/31/21.
 //
 //
 
@@ -21,7 +21,6 @@ extension Product {
     @NSManaged public var price: Double
     @NSManaged public var productDescription: String?
     @NSManaged public var cartItems: NSSet?
-    @NSManaged public var cartUsers: NSOrderedSet?
     @NSManaged public var category: Category?
     @NSManaged public var orders: NSOrderedSet?
     @NSManaged public var reviews: NSOrderedSet?
@@ -43,41 +42,6 @@ extension Product {
 
     @objc(removeCartItems:)
     @NSManaged public func removeFromCartItems(_ values: NSSet)
-
-}
-
-// MARK: Generated accessors for cartUsers
-extension Product {
-
-    @objc(insertObject:inCartUsersAtIndex:)
-    @NSManaged public func insertIntoCartUsers(_ value: User, at idx: Int)
-
-    @objc(removeObjectFromCartUsersAtIndex:)
-    @NSManaged public func removeFromCartUsers(at idx: Int)
-
-    @objc(insertCartUsers:atIndexes:)
-    @NSManaged public func insertIntoCartUsers(_ values: [User], at indexes: NSIndexSet)
-
-    @objc(removeCartUsersAtIndexes:)
-    @NSManaged public func removeFromCartUsers(at indexes: NSIndexSet)
-
-    @objc(replaceObjectInCartUsersAtIndex:withObject:)
-    @NSManaged public func replaceCartUsers(at idx: Int, with value: User)
-
-    @objc(replaceCartUsersAtIndexes:withCartUsers:)
-    @NSManaged public func replaceCartUsers(at indexes: NSIndexSet, with values: [User])
-
-    @objc(addCartUsersObject:)
-    @NSManaged public func addToCartUsers(_ value: User)
-
-    @objc(removeCartUsersObject:)
-    @NSManaged public func removeFromCartUsers(_ value: User)
-
-    @objc(addCartUsers:)
-    @NSManaged public func addToCartUsers(_ values: NSOrderedSet)
-
-    @objc(removeCartUsers:)
-    @NSManaged public func removeFromCartUsers(_ values: NSOrderedSet)
 
 }
 

@@ -12,54 +12,63 @@ struct AddressCellView: View {
     let address: Address
     var isSelected: Bool
     let navigationAction: () -> Void
+    let editAction: () -> Void
+    let selectedAction: () -> Void
     
     var addressCityStateZipString: String {
-        return (self.address.city ?? "city?") + ", " + (self.address.state ?? "state?") + " " + (self.address.zipCode ?? "zipCode?")
+        var str = ""
+        str += (self.address.city ?? "city?")
+        str += ", "
+        str += (self.address.state ?? "state?")
+        str += " "
+        str += (self.address.zipCode ?? "zipCode?")
+        return str
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Spacer()
-                .frame(height: 12)
-            Text(address.streetAddress ?? "streetAddress?")
-            if let streetAddress2 = address.streetAddress2 {
-                Text(streetAddress2)
+        VStack {
+            HStack {
+                Image(systemName: self.isSelected ? "smallcircle.fill.circle.fill" : "circle")
+                    .font(Font.system(size: 25, weight: .ultraLight))
+                    .foregroundColor(Color(UIColor.link))
+                    .onTapGesture {
+                        self.selectedAction()
+                    }
+                .buttonStyle(BorderlessButtonStyle())
+                Spacer()
+                    .frame(width: 26)
+                VStack(alignment: .leading, spacing: 4) {
+                    Spacer()
+                        .frame(height: 8)
+                    Text(address.fullName ?? "name?")
+                    Text(address.streetAddress ?? "streetAddress?")
+                    if let streetAddress2 = address.streetAddress2 {
+                        Text(streetAddress2)
+                    }
+                    Text(self.addressCityStateZipString)
+                }
+                Spacer()
             }
-            Text(self.addressCityStateZipString)
-           
             if self.isSelected {
+                Spacer()
+                    .frame(height: 8)
                 HStack {
                     Spacer()
-                    Button(action: self.navigationAction, label: {
-                        Text("Select this address")
-                            .foregroundColor(Color(UIColor.link))
-                            .fontWeight(.bold)
-                    })
-                    .buttonStyle(BorderlessButtonStyle())
+                    StandardButton(action: self.navigationAction, labelText: "Select this address")
                     Spacer()
                 }
+                Spacer()
+                    .frame(height: 8)
                 HStack {
                     Spacer()
-                    Button(action: {}, label: {
-                        Text("Edit")
-                            .foregroundColor(Color(UIColor.link))
-                            .fontWeight(.bold)
-                    })
-                    .buttonStyle(BorderlessButtonStyle())
+                    StandardButton(action: self.editAction, labelText: "Edit")
                     Spacer()
                 }
             }
             Spacer()
-                .frame(height: 12)
+                .frame(height: 8)
         }
     }
 }
 
 
-/*
-struct AddressCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddressCellView()
-    }
-}
-*/

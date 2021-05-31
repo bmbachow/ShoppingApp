@@ -10,6 +10,7 @@ import CoreData
 import UIKit
 
 class CoreDataHelper: RemoteAPI {
+
   
     let container: NSPersistentContainer
     var viewContext: NSManagedObjectContext {
@@ -346,13 +347,73 @@ class CoreDataHelper: RemoteAPI {
         }
     }
     
-    func patchDefaultAddress(isDefault: Bool, user: User, address: Address, success: () -> Void, failure: (Error) -> Void) {
+    func patchAddress(address: Address, success: () -> Void, failure: (Error) -> Void) {
+        let isDefault = address.isDefault
+        if isDefault, let user = address.user {
+            for paymentMethod in user.paymentMethodsArray {
+                paymentMethod.isDefault = false
+            }
+            address.isDefault = true
+        }
+        do {
+            try self.viewContext.save()
+            success()
+        } catch {
+            failure(error)
+        }
+    }
+    
+    //MARK: PaymentMethod
+    
+    func postNewCardPaymentMethod(user: User, nameOnCard: String, cardNumber: String, expirationMonth: Int, expirationYear: Int, isDefault: Bool, success: (CardPaymentMethod) -> Void, failure: (Error) -> Void) {
+        let cardPaymentMethod = CardPaymentMethod(context: self.viewContext)
+        cardPaymentMethod.user = user
+        cardPaymentMethod.nameOnCard = nameOnCard
+        cardPaymentMethod.cardNumber = cardNumber
+        cardPaymentMethod.expirationMonth = Int16(expirationMonth)
+        cardPaymentMethod.expirationYear = Int16(expirationYear)
         if isDefault {
-            for address in user.addressesArray {
-                address.isDefault = false
+            for paymentMethod in user.paymentMethodsArray {
+                paymentMethod.isDefault = false
             }
         }
-        address.isDefault = isDefault
+        cardPaymentMethod.isDefault = isDefault
+        do {
+            try self.viewContext.save()
+            success(cardPaymentMethod)
+        } catch {
+            failure(error)
+        }
+    }
+    
+    func postNewAccountPaymentMethod(user: User, nameOnAccount: String, accountNumber: String, routingNumber: String, isDefault: Bool, success: (AccountPaymentMethod) -> Void, failure: (Error) -> Void) {
+        let accountPaymentMethod = AccountPaymentMethod(context: self.viewContext)
+        accountPaymentMethod.user = user
+        accountPaymentMethod.nameOnAccount = nameOnAccount
+        accountPaymentMethod.accountNumber = accountNumber
+        accountPaymentMethod.routingNumber = routingNumber
+        if isDefault {
+            for paymentMethod in user.paymentMethodsArray {
+                paymentMethod.isDefault = false
+            }
+        }
+        accountPaymentMethod.isDefault = isDefault
+        do {
+            try self.viewContext.save()
+            success(accountPaymentMethod)
+        } catch {
+            failure(error)
+        }
+    }
+    
+    func patchPaymentMethod(paymentMethod: PaymentMethod, success: () -> Void, failure: (Error) -> Void) {
+        let isDefault = paymentMethod.isDefault
+        if isDefault, let user = paymentMethod.user {
+            for paymentMethod in user.paymentMethodsArray {
+                paymentMethod.isDefault = false
+            }
+            paymentMethod.isDefault = true
+        }
         do {
             try self.viewContext.save()
             success()

@@ -17,7 +17,8 @@ struct ChooseView: View {
     let remoteAPI: RemoteAPI
     @ObservedObject var orderData: OrderData
     @State var navigationSelection: Int?
-    let cancelAction: () -> Void
+    @State var editAddressSelection: Address?
+    let cancelAction: (() -> Void)?
     let mode: ChooseView.Mode
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -44,7 +45,7 @@ struct ChooseView: View {
     private var nextPageDestinationForCurrentMode: AnyView {
         switch self.mode {
         case .address:
-            return AnyView(ChooseView(remoteAPI: self.remoteAPI, orderData: self.orderData, cancelAction: {}, mode: .paymentMethod))
+            return AnyView(ChooseView(remoteAPI: self.remoteAPI, orderData: self.orderData, cancelAction: nil, mode: .paymentMethod))
         case .paymentMethod:
             return AnyView(Text("Next view"))
         }
@@ -57,8 +58,21 @@ struct ChooseView: View {
         return orderData.user.defaultAddress
     }
     
-    private func isSelectedAddress(address: Address) -> Bool {
+    private var selectedPaymentMethod: PaymentMethod? {
+        if let paymentMethod = orderData.paymentMethod {
+            return paymentMethod
+        }
+        return orderData.user.defaultPaymentMethod
+    }
+    
+    private func isSelectedAddress(_ address: Address) -> Bool {
         let selected = address == self.selectedAddress
+        return selected
+    }
+    
+    
+    private func isSelectedPaymentMethod(_ paymentMethod: PaymentMethod) -> Bool {
+        let selected = paymentMethod == self.selectedPaymentMethod
         return selected
     }
     
@@ -72,14 +86,6 @@ struct ChooseView: View {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
     var body: some View {
         
             List {
@@ -87,13 +93,26 @@ struct ChooseView: View {
                     switch self.mode {
                     case .address:
                         ForEach(self.orderData.user.addressesArray) { address in
-                            let isSelected = self.isSelectedAddress(address: address)
-                            AddressCellView(address: address, isSelected: isSelected, navigationAction: {self.navigationSelection = 1})
+                            let isSelected = self.isSelectedAddress(address)
+                            AddressCellView(address: address, isSelected: isSelected,
+                                            navigationAction: {
+                                                self.navigationSelection = 1
+                                            }, editAction: {
+                                                self.editAddressSelection = address
+                                                self.navigationSelection = 3
+                                            }, selectedAction: {
+                                                self.orderData.address = address
+                                            })
                         }
                     case .paymentMethod:
-                        ForEach(self.orderData.user.addressesArray) { address in
-                            let isSelected = self.isSelectedAddress(address: address)
-                            AddressCellView(address: address, isSelected: isSelected, navigationAction: {self.navigationSelection = 1})
+                        ForEach(self.orderData.user.paymentMethodsArray) { paymentMethod in
+                            let isSelected = self.isSelectedPaymentMethod(paymentMethod)
+                            PaymentMethodCellView(paymentMethod: paymentMethod, isSelected: isSelected,
+                                                  navigationAction: {
+                                                    self.navigationSelection = 1
+                                                  }, selectedAction: {
+                                                    self.orderData.paymentMethod = paymentMethod
+                                                  })
                         }
                     }
                     
@@ -111,12 +130,12 @@ struct ChooseView: View {
                 case .paymentMethod:
                     Menu {
                         Button(action: {
-                            self.navigationSelection = 3
+                            self.navigationSelection = 4
                         }, label: {
                             Text("Credit or debit card")
                         })
                         Button(action: {
-                            self.navigationSelection = 4
+                            self.navigationSelection = 5
                         }, label: {
                             Text("Personal checking account")
                         })
@@ -125,15 +144,18 @@ struct ChooseView: View {
                             .foregroundColor(Color(UIColor.link))
                             .fontWeight(.bold)
                     }
-                    
+                    StandardButton(action: {
+                        self.navigationSelection = 1
+                    }, labelText: "Pay with cash on delivery")
                 }
                 
-            }
-            .navigationTitle(Text(self.titleTextForCurrentMode))
+            }            .navigationTitle(Text(self.titleTextForCurrentMode))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: self.cancelAction) { Text("Cancel") }
+                    if let cancelAction = self.cancelAction {
+                        Button(action: cancelAction) { Text("Cancel") }
+                    }
                 }
             }
             .listStyle(PlainListStyle())
@@ -141,14 +163,19 @@ struct ChooseView: View {
                 VStack{
                     NavigationLink(destination: self.nextPageDestinationForCurrentMode, tag: 1, selection: self.$navigationSelection, label: {EmptyView()})
                     NavigationLink(destination:
-                                    NewAddressView(remoteAPI: self.remoteAPI, orderData: self.orderData), tag: 2, selection: self.$navigationSelection,
+                                    AddressFormView(remoteAPI: self.remoteAPI, orderData: self.orderData, address: nil), tag: 2, selection: self.$navigationSelection,
+                                   label: {EmptyView()})
+                    NavigationLink(destination:
+                                    AddressFormView(remoteAPI: self.remoteAPI, orderData: self.orderData, address: self.editAddressSelection), tag: 3, selection: self.$navigationSelection,
                                    label: {EmptyView()})
                     NavigationLink(destination:
                                     NewCardPaymentMethodView(remoteAPI: self.remoteAPI, orderData: self.orderData),
-                                   tag: 3, selection: self.$navigationSelection, label: {EmptyView()})
+                                   tag: 4, selection: self.$navigationSelection, label: {EmptyView()})
                     NavigationLink(destination:
                                     NewAccountPaymentMethodView(remoteAPI: self.remoteAPI, orderData: self.orderData),
-                                   tag: 4, selection: self.$navigationSelection, label: {EmptyView()})
+                                   tag: 5, selection: self.$navigationSelection, label: {EmptyView()})
+                    
+                    
                     NavigationLink(destination: EmptyView()) {
                         EmptyView()
                     }
@@ -157,10 +184,4 @@ struct ChooseView: View {
     }
 }
 
-/*
-struct ChooseAddressView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChooseAddressView()
-    }
-}
-*/
+

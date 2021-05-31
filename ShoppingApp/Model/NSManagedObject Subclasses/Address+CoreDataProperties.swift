@@ -2,7 +2,7 @@
 //  Address+CoreDataProperties.swift
 //  ShoppingApp
 //
-//  Created by Robert Olieman on 5/27/21.
+//  Created by Robert Olieman on 5/31/21.
 //
 //
 
@@ -16,15 +16,15 @@ extension Address {
         return NSFetchRequest<Address>(entityName: "Address")
     }
 
+    @NSManaged public var city: String?
     @NSManaged public var fullName: String?
+    @NSManaged public var isDefault: Bool
+    @NSManaged public var state: String?
     @NSManaged public var streetAddress: String?
     @NSManaged public var streetAddress2: String?
-    @NSManaged public var city: String?
-    @NSManaged public var state: String?
     @NSManaged public var zipCode: String?
-    @NSManaged public var isDefault: Bool
-    @NSManaged public var user: User?
     @NSManaged public var deliveries: NSSet?
+    @NSManaged public var user: User?
 
 }
 

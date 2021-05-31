@@ -44,4 +44,8 @@ extension User {
     var defaultAddress: Address? {
         return self.addressesArray.first(where: { $0.isDefault })
     }
+    
+    var defaultPaymentMethod: PaymentMethod? {
+        return self.paymentMethodsArray.first(where: { $0.isDefault })
+    }
 }

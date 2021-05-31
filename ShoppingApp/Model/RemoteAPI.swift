@@ -57,6 +57,14 @@ protocol RemoteAPI {
     
     //MARK: Address
     func postNewAddress(user: User, fullName: String, streetAddress: String, streetAddress2: String?, city: String, state: String, zipCode: String, isDefault: Bool, success: (Address) -> Void, failure: (Error) -> Void)
+
+    func patchAddress(address: Address, success: () -> Void, failure: (Error) -> Void)
     
-    func patchDefaultAddress(isDefault: Bool, user: User, address: Address, success: () -> Void, failure: (Error) -> Void)
+    //MARK: PaymentMethod
+    
+    func postNewCardPaymentMethod(user: User, nameOnCard: String, cardNumber: String, expirationMonth: Int, expirationYear: Int, isDefault: Bool, success: (CardPaymentMethod) -> Void, failure: (Error) -> Void)
+    
+    func postNewAccountPaymentMethod(user: User, nameOnAccount: String, accountNumber: String, routingNumber: String, isDefault: Bool, success: (AccountPaymentMethod) -> Void, failure: (Error) -> Void)
+    
+    func patchPaymentMethod(paymentMethod: PaymentMethod, success: () -> Void, failure: (Error) -> Void)
 }

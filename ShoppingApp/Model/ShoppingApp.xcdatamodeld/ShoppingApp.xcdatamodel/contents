@@ -18,6 +18,8 @@
     </entity>
     <entity name="CardPaymentMethod" representedClassName="CardPaymentMethod" parentEntity="PaymentMethod" syncable="YES">
         <attribute name="cardNumber" attributeType="String"/>
+        <attribute name="expirationMonth" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="expirationYear" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="nameOnCard" attributeType="String"/>
     </entity>
     <entity name="CartItem" representedClassName="CartItem" syncable="YES">
@@ -56,6 +58,7 @@
         <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="orders" inverseEntity="User"/>
     </entity>
     <entity name="PaymentMethod" representedClassName="PaymentMethod" syncable="YES">
+        <attribute name="isDefault" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Order" inverseName="paymentMethod" inverseEntity="Order"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="paymentMethods" inverseEntity="User"/>
     </entity>
@@ -65,7 +68,6 @@
         <attribute name="price" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="productDescription" optional="YES" attributeType="String"/>
         <relationship name="cartItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CartItem" inverseName="product" inverseEntity="CartItem"/>
-        <relationship name="cartUsers" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="User"/>
         <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="products" inverseEntity="Category"/>
         <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Order" inverseName="products" inverseEntity="Order"/>
         <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ProductReview" inverseName="product" inverseEntity="ProductReview"/>
@@ -97,14 +99,14 @@
     <elements>
         <element name="AccountPaymentMethod" positionX="-2733.444702148438" positionY="-2794.909927368165" width="188.1484375" height="88"/>
         <element name="Address" positionX="-2528.795776367188" positionY="-2840.37727355957" width="128" height="178"/>
-        <element name="CardPaymentMethod" positionX="-2929.990417480468" positionY="-2787.694366455078" width="167.1560668945312" height="73"/>
+        <element name="CardPaymentMethod" positionX="-2929.990417480468" positionY="-2787.694366455078" width="167.1560668945312" height="103"/>
         <element name="CartItem" positionX="-3266.146484375" positionY="-2363.0751953125" width="128" height="88"/>
         <element name="Category" positionX="-3288.9521484375" positionY="-2481.714935302735" width="128" height="88"/>
         <element name="Delivery" positionX="-2332.22998046875" positionY="-2653.556060791015" width="128" height="148"/>
         <element name="Location" positionX="-2134.813232421875" positionY="-2448.704681396485" width="128" height="103"/>
         <element name="Order" positionX="-2709.360961914062" positionY="-2641.668670654298" width="128" height="163"/>
-        <element name="PaymentMethod" positionX="-2915.205627441406" positionY="-2894.162826538086" width="128" height="73"/>
-        <element name="Product" positionX="-2934.880615234375" positionY="-2491.029327392579" width="128" height="193"/>
+        <element name="PaymentMethod" positionX="-2915.205627441406" positionY="-2894.162826538086" width="128" height="88"/>
+        <element name="Product" positionX="-2934.880615234375" positionY="-2491.029327392579" width="128" height="178"/>
         <element name="ProductReview" positionX="-2588.242309570313" positionY="-2465.749450683593" width="128" height="133"/>
         <element name="User" positionX="-3098.441162109375" positionY="-2773.561752319337" width="128" height="238"/>
     </elements>
