@@ -99,15 +99,13 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
             cell.productImage.image = product.image
             cell.productPrice.text = NumberFormatter.dollars.string(from: Float(product.price))
             cell.productRating.rating = product.averageRating ?? 0
+            
             return cell
             
         }
         
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
