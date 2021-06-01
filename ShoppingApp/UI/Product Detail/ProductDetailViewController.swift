@@ -7,8 +7,9 @@
 
 import UIKit
 
-class ProductDetailViewController: UserTabViewController, UITableViewDelegate, UITableViewDataSource {
-  
+class ProductDetailViewController: UserTabViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+
+      
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var backButton: UIButton!
@@ -16,6 +17,10 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
     weak var addToCartButton: UIButton!
     
     weak var addToWishListButton: UIButton!
+    
+    weak var relatedItemsCollectionView: UICollectionView!
+    
+    var relatedProductsArray = [Product]()
     
     let product: Product
     
@@ -30,6 +35,17 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
         return cell
     }()
     
+    lazy private var productCollectionTableViewCell:
+        ProductsCollectionTableViewCell = {
+            guard let cell =
+                    self.tableView.dequeueReusableCell(withIdentifier: "ProductsCollectionTableViewCell") as? ProductsCollectionTableViewCell else {
+                fatalError("Unable to dequeue ProductsCollectionTableViewCell")
+            }
+            self.relatedItemsCollectionView = cell.collectionView
+            cell.button.setTitle("Check these out", for: .normal)
+            return cell
+        }()
+    
     init(product: Product) {
         self.product = product
         super.init(nibName: "ProductDetailViewController", bundle: nil)
@@ -43,12 +59,25 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        let _ = self.productCollectionTableViewCell
+        self.relatedItemsCollectionView.delegate = self
+        self.relatedItemsCollectionView.dataSource = self
         self.tableView.register(UINib(nibName: "ProductDetailMainTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductDetailMainTableViewCell")
         self.tableView.register((UINib(nibName: "ProductDetailReviewTableViewCell", bundle: nil)), forCellReuseIdentifier: "ProductDetailReviewTableViewCell")
+        self.tableView.register((UINib(nibName: "ProductsCollectionTableViewCell", bundle: nil)),
+            forCellReuseIdentifier: "ProductsCollectionTableViewCell")
+        self.relatedItemsCollectionView.register((UINib(nibName: "ProductCollectionViewCell", bundle: nil)),
+            forCellWithReuseIdentifier: "ProductCollectionViewCell")
         self.productDetailMainTableViewCell.productNameLabel.text = self.product.name
         self.productDetailMainTableViewCell.productImageView.image = self.product.image
         self.productDetailMainTableViewCell.productPriceLabel.text = NumberFormatter.dollars.string(from: Float(self.product.price))
         self.productDetailMainTableViewCell.cosmosView.rating = self.product.averageRating ?? 0
+        self.remoteAPI.getProducts(searchString: "", category: self.product.category, success: { products in
+            self.relatedProductsArray = products
+            self.tableView.reloadData()
+        }, failure: { error in
+            print(error.localizedDescription)
+        })
     }
     
     @objc func tappedAddToCartButton(_ sender: UIButton) {
@@ -88,7 +117,7 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     @IBAction func tappedBackButton(_ sender: UIButton) {
@@ -99,6 +128,8 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
         switch section {
         case 0:
             return 0
+        case 1:
+            return 0
         default:
             return self.product.reviewsArray.count
         }
@@ -107,7 +138,10 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
+            print(indexPath)
             return self.productDetailMainTableViewCell
+        case 1:
+            return self.productCollectionTableViewCell
         default:
             let review = self.product.reviewsArray[indexPath.row]
             guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "ProductDetailReviewTableViewCell") as? ProductDetailReviewTableViewCell else {
@@ -122,5 +156,20 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
             cell.bodyTextView.text = review.body
             return cell
         }
+    }
+    
+    // MARK: UICollectionView
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        relatedProductsArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = self.relatedItemsCollectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath) as? ProductCollectionViewCell else {
+            fatalError("Unable to dequeue product collection view cell")
+        }
+        let product = relatedProductsArray[indexPath.row]
+        cell.imageView.image = product.image
+        return cell
     }
 }
