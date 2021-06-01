@@ -15,12 +15,19 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var checkOutButton: UIButton!
     
+    @IBOutlet weak var emptyCartView: UIView!
+    
+    
     var subtotalAmountLabelText: String {
         NumberFormatter.dollars.string(from: self.user?.cartSubtotal ?? 0) ?? "?"
     }
     
     var cartItems: [CartItem] {
         return self.user?.cartItemsArray ?? []
+    }
+    
+    var shouldHideEmptyCartView: Bool {
+        return self.cartItems.isEmpty
     }
     
     override func viewDidLoad() {
