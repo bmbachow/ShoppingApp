@@ -60,6 +60,7 @@
 		5224587F26669D7500CB89F6 /* Delivery+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5224586726669D7500CB89F6 /* Delivery+CoreDataClass.swift */; };
 		5224588026669D7500CB89F6 /* Delivery+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5224586826669D7500CB89F6 /* Delivery+CoreDataProperties.swift */; };
 		522458862666C86600CB89F6 /* OrderThankYouView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522458852666C86600CB89F6 /* OrderThankYouView.swift */; };
+		522458882666CEFF00CB89F6 /* ImageGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522458872666CEFF00CB89F6 /* ImageGridView.swift */; };
 		524CFECE2662724900B72981 /* LabeledTextFieldSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CFECD2662724900B72981 /* LabeledTextFieldSet.swift */; };
 		524CFED02662783000B72981 /* FormVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CFECF2662783000B72981 /* FormVStack.swift */; };
 		524CFED326627CBC00B72981 /* StandardToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CFED226627CBC00B72981 /* StandardToggle.swift */; };
@@ -204,6 +205,7 @@
 		5224586726669D7500CB89F6 /* Delivery+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Delivery+CoreDataClass.swift"; path = "ShoppingApp/Model/Delivery+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		5224586826669D7500CB89F6 /* Delivery+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Delivery+CoreDataProperties.swift"; path = "ShoppingApp/Model/Delivery+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		522458852666C86600CB89F6 /* OrderThankYouView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderThankYouView.swift; sourceTree = "<group>"; };
+		522458872666CEFF00CB89F6 /* ImageGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGridView.swift; sourceTree = "<group>"; };
 		524CFECD2662724900B72981 /* LabeledTextFieldSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextFieldSet.swift; sourceTree = "<group>"; };
 		524CFECF2662783000B72981 /* FormVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormVStack.swift; sourceTree = "<group>"; };
 		524CFED226627CBC00B72981 /* StandardToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardToggle.swift; sourceTree = "<group>"; };
@@ -591,6 +593,7 @@
 				520F43F7265DA4B000A6B282 /* ProductsCollectionTableViewCell.xib */,
 				52EEF3EA265E7D5C006C3759 /* ProductCollectionViewCell.swift */,
 				52EEF3EB265E7D5C006C3759 /* ProductCollectionViewCell.xib */,
+				522458872666CEFF00CB89F6 /* ImageGridView.swift */,
 			);
 			path = "User Home";
 			sourceTree = "<group>";
@@ -781,6 +784,7 @@
 				5224587226669D7500CB89F6 /* ProductReview+CoreDataProperties.swift in Sources */,
 				5267258D265AECA600D9CAB9 /* BCryptHasher.swift in Sources */,
 				526724C6265AE3AC00D9CAB9 /* UserExtensions.swift in Sources */,
+				522458882666CEFF00CB89F6 /* ImageGridView.swift in Sources */,
 				52EEF3EC265E7D5C006C3759 /* ProductCollectionViewCell.swift in Sources */,
 				52672586265AECA600D9CAB9 /* InputValidator.swift in Sources */,
 				5267258C265AECA600D9CAB9 /* TimeIntervalFormatter.swift in Sources */,

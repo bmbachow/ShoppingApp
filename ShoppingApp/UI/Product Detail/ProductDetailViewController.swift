@@ -170,7 +170,9 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
             fatalError("Unable to dequeue product collection view cell")
         }
         let product = relatedProductsArray[indexPath.row]
-        cell.imageView.image = product.image
+        if let image = product.image {
+            cell.imageGridView.setImages([image])
+        }
         return cell
     }
 }
