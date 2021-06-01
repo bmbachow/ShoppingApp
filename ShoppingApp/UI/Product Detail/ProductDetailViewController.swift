@@ -59,21 +59,22 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        let _ = self.productCollectionTableViewCell
-        self.relatedItemsCollectionView.delegate = self
-        self.relatedItemsCollectionView.dataSource = self
         self.tableView.register(UINib(nibName: "ProductDetailMainTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductDetailMainTableViewCell")
         self.tableView.register((UINib(nibName: "ProductDetailReviewTableViewCell", bundle: nil)), forCellReuseIdentifier: "ProductDetailReviewTableViewCell")
         self.tableView.register((UINib(nibName: "ProductsCollectionTableViewCell", bundle: nil)),
             forCellReuseIdentifier: "ProductsCollectionTableViewCell")
+
+        let _ = self.productCollectionTableViewCell
         self.relatedItemsCollectionView.register((UINib(nibName: "ProductCollectionViewCell", bundle: nil)),
             forCellWithReuseIdentifier: "ProductCollectionViewCell")
+        self.relatedItemsCollectionView.delegate = self
+        self.relatedItemsCollectionView.dataSource = self
         self.productDetailMainTableViewCell.productNameLabel.text = self.product.name
         self.productDetailMainTableViewCell.productImageView.image = self.product.image
         self.productDetailMainTableViewCell.productPriceLabel.text = NumberFormatter.dollars.string(from: Float(self.product.price))
         self.productDetailMainTableViewCell.cosmosView.rating = self.product.averageRating ?? 0
-        self.remoteAPI.getProducts(searchString: "", category: self.product.category, success: { products in
-            self.relatedProductsArray = products
+        self.remoteAPI.getProducts(searchString: nil, category: self.product.category, success: { products in
+            self.relatedProductsArray = products.filter({$0.name != self.product.name})
             self.tableView.reloadData()
         }, failure: { error in
             print(error.localizedDescription)
