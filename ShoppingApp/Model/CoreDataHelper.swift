@@ -24,43 +24,47 @@ class CoreDataHelper: RemoteAPI {
     //MARK: User
     func postNewUser(firstName: String, lastName: String, email: String?, phoneNumber: String?, password: String, success: (User) -> Void, failure: (Error) -> Void) {
         do {
-            guard email != nil || phoneNumber != nil else {
-                return failure(CoreDataHelperError.validationError("User must have email or phoneNumber."))
-            }
-            var invalidInputMessages = [String]()
-            if let email = email {
-                if !InputValidator.Email.validate(email) {
-                    invalidInputMessages += ["Invalid email address"]
-                }
-                if try self.getUserSync(emailOrPhoneNumber: email) != nil {
-                    invalidInputMessages += ["A user with that email address already exists."]
-                }
-            }
-            if let phoneNumber = phoneNumber {
-                if !InputValidator.PhoneNumber.validate(phoneNumber) {
-                    invalidInputMessages += ["Invalid phone number"]
-                }
-                if try self.getUserSync(emailOrPhoneNumber: phoneNumber) != nil {
-                    invalidInputMessages += ["A user with that phone number already exists."]
-                }
-            }
-            
-            guard invalidInputMessages.isEmpty else {
-                return failure(CoreDataHelperError.validationError(invalidInputMessages.joined(separator: "\n\n")))
-            }
-            
-            let user = User(context: self.viewContext)
-            user.firstName = firstName
-            user.lastName = lastName
-            user.email = email
-            user.phoneNumber = phoneNumber
-            user.password = try bcryptHasher.hashPasword(password)
-            user.registeredDate = Date()
-            try self.viewContext.save()
+            let user = try self.postNewUserSync(firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber, password: password)
             success(user)
         } catch {
             failure(error)
         }
+    }
+    private func postNewUserSync(firstName: String, lastName: String, email: String?, phoneNumber: String?, password: String) throws -> User {
+        guard email != nil || phoneNumber != nil else {
+            throw CoreDataHelperError.validationError("User must have email or phoneNumber.")
+        }
+        var invalidInputMessages = [String]()
+        if let email = email {
+            if !InputValidator.Email.validate(email) {
+                invalidInputMessages += ["Invalid email address"]
+            }
+            if try self.getUserSync(emailOrPhoneNumber: email) != nil {
+                invalidInputMessages += ["A user with that email address already exists."]
+            }
+        }
+        if let phoneNumber = phoneNumber {
+            if !InputValidator.PhoneNumber.validate(phoneNumber) {
+                invalidInputMessages += ["Invalid phone number"]
+            }
+            if try self.getUserSync(emailOrPhoneNumber: phoneNumber) != nil {
+                invalidInputMessages += ["A user with that phone number already exists."]
+            }
+        }
+        
+        guard invalidInputMessages.isEmpty else {
+            throw CoreDataHelperError.validationError(invalidInputMessages.joined(separator: "\n\n"))
+        }
+        
+        let user = User(context: self.viewContext)
+        user.firstName = firstName
+        user.lastName = lastName
+        user.email = email
+        user.phoneNumber = phoneNumber
+        user.password = try bcryptHasher.hashPasword(password)
+        user.registeredDate = Date()
+        try self.viewContext.save()
+        return user
     }
     
     func authenticateAndGetUser(emailOrPhoneNumber: String, password: String, success: (User?) -> Void, failure: (Error) -> Void) {
@@ -120,6 +124,14 @@ class CoreDataHelper: RemoteAPI {
     //MARK: Cart
     
     func addProductToCart(product: Product, user: User, success: () -> Void, failure: (Error) -> Void) {
+        do {
+            try self.addProductToCartSync(product: product, user: user)
+            success()
+        } catch {
+            failure(error)
+        }
+    }
+    private func addProductToCartSync(product: Product, user: User) throws {
         if let cartItem = user.cartItemsArray.first(where: { $0.product == product }) {
             cartItem.number += 1
         } else {
@@ -128,12 +140,7 @@ class CoreDataHelper: RemoteAPI {
             cartItem.number = 1
             user.addToCartItems(cartItem)
         }
-        do {
-            try self.viewContext.save()
-            success()
-        } catch {
-            failure(error)
-        }
+        try self.viewContext.save()
     }
     
     func changeCartItemNumber(cartItem: CartItem, number: Int, success: () -> Void, failure: (Error) -> Void) {
@@ -160,17 +167,20 @@ class CoreDataHelper: RemoteAPI {
     //MARK: Wish List
     
     func addProductToWishList(product: Product, user: User, success: () -> Void, failure: (Error) -> Void) {
-        if !user.wishListProductsArray.contains(product) {
-            user.addToWishListProducts(product)
-        }
         do {
-            try self.viewContext.save()
+            try self.addProductToWishListSync(product: product, user: user)
             success()
         } catch {
             failure(error)
         }
     }
-    
+    private func addProductToWishListSync(product: Product, user: User) throws {
+        if !user.wishListProductsArray.contains(product) {
+            user.addToWishListProducts(product)
+        }
+        try self.viewContext.save()
+    }
+        
     func deleteProductFromWishList(product: Product, user: User, success: () -> Void, failure: (Error) -> Void) {
         user.removeFromWishListProducts(product)
         do {
@@ -237,9 +247,25 @@ class CoreDataHelper: RemoteAPI {
         }
     }
     
+    private func getRandomProducts(count: Int) throws -> [Product] {
+        let request: NSFetchRequest<Product> = Product.fetchRequest()
+        let products = try self.viewContext.fetch(request)
+        let shuffledProducts = products.shuffled()
+        return Array(shuffledProducts.prefix(count))
+    }
+    
     
     //MARK: Order
-    func placeOrder(user: User, subtotal: Double, shippingPrice: Double, tax: Double, paymentMethod: PaymentMethod?, success: (Order) -> Void, failure: (Error) -> Void) {
+    func placeOrder(user: User, subtotal: Double, shippingPrice: Double, tax: Double, address: Address, paymentMethod: PaymentMethod?, success: (Order) -> Void, failure: (Error) -> Void) {
+        do {
+            let order = try self.placeOrderSync(user: user, subtotal: subtotal, shippingPrice: shippingPrice, tax: tax, address: address, paymentMethod: paymentMethod)
+            success(order)
+        } catch {
+            failure(error)
+        }
+    }
+    
+    private func placeOrderSync(user: User, subtotal: Double, shippingPrice: Double, tax: Double, address: Address, paymentMethod: PaymentMethod?) throws -> Order {
         // paymentMethod set to nil means cash on delivery
         
         let order = Order(context: self.viewContext)
@@ -254,18 +280,15 @@ class CoreDataHelper: RemoteAPI {
         
         let delivery = Delivery(context: self.viewContext)
         order.delivery = delivery
+        
         //MARK: TODO: delivery
         //we need some silly way to simulate delivery data
         
-        do {
-            for cartItem in user.cartItemsArray {
-                user.removeFromCartItems(cartItem)
-            }
-            try self.viewContext.save()
-            success(order)
-        } catch {
-            failure(error)
+        for cartItem in user.cartItemsArray {
+            user.removeFromCartItems(cartItem)
         }
+        try self.viewContext.save()
+        return order
     }
     
     //MARK: Category
@@ -334,6 +357,14 @@ class CoreDataHelper: RemoteAPI {
     
     //MARK: Address
     func postNewAddress(user: User, fullName: String, streetAddress: String, streetAddress2: String?, city: String, state: String, zipCode: String, isDefault: Bool, success: (Address) -> Void, failure: (Error) -> Void) {
+        do {
+            let address = try self.postNewAddressSync(user: user, fullName: fullName, streetAddress: streetAddress, streetAddress2: streetAddress2, city: city, state: state, zipCode: zipCode, isDefault: isDefault)
+            success(address)
+        } catch {
+            failure(error)
+        }
+    }
+    func postNewAddressSync(user: User, fullName: String, streetAddress: String, streetAddress2: String?, city: String, state: String, zipCode: String, isDefault: Bool) throws -> Address {
         let address = Address(context: self.viewContext)
         address.user = user
         address.fullName = fullName
@@ -348,12 +379,8 @@ class CoreDataHelper: RemoteAPI {
             }
         }
         address.isDefault = isDefault
-        do {
-            try self.viewContext.save()
-            success(address)
-        } catch {
-            failure(error)
-        }
+        try self.viewContext.save()
+        return address
     }
     
     func patchAddress(address: Address, success: () -> Void, failure: (Error) -> Void) {
@@ -375,6 +402,14 @@ class CoreDataHelper: RemoteAPI {
     //MARK: PaymentMethod
     
     func postNewCardPaymentMethod(user: User, nameOnCard: String, cardNumber: String, expirationMonth: Int, expirationYear: Int, isDefault: Bool, success: (CardPaymentMethod) -> Void, failure: (Error) -> Void) {
+        do {
+            let cardPaymentMethod = try self.postNewCardPaymentMethodSync(user: user, nameOnCard: nameOnCard, cardNumber: cardNumber, expirationMonth: expirationMonth, expirationYear: expirationYear, isDefault: isDefault)
+            success(cardPaymentMethod)
+        } catch {
+            failure(error)
+        }
+    }
+    private func postNewCardPaymentMethodSync(user: User, nameOnCard: String, cardNumber: String, expirationMonth: Int, expirationYear: Int, isDefault: Bool) throws -> CardPaymentMethod {
         let cardPaymentMethod = CardPaymentMethod(context: self.viewContext)
         cardPaymentMethod.user = user
         cardPaymentMethod.nameOnCard = nameOnCard
@@ -387,15 +422,19 @@ class CoreDataHelper: RemoteAPI {
             }
         }
         cardPaymentMethod.isDefault = isDefault
+        try self.viewContext.save()
+        return cardPaymentMethod
+    }
+    
+    func postNewAccountPaymentMethod(user: User, nameOnAccount: String, accountNumber: String, routingNumber: String, isDefault: Bool, success: (AccountPaymentMethod) -> Void, failure: (Error) -> Void) {
         do {
-            try self.viewContext.save()
-            success(cardPaymentMethod)
+            let accountPaymentMethod = try self.postNewAccountPaymentMethodSync(user: user, nameOnAccount: nameOnAccount, accountNumber: accountNumber, routingNumber: routingNumber, isDefault: isDefault)
+            success(accountPaymentMethod)
         } catch {
             failure(error)
         }
     }
-    
-    func postNewAccountPaymentMethod(user: User, nameOnAccount: String, accountNumber: String, routingNumber: String, isDefault: Bool, success: (AccountPaymentMethod) -> Void, failure: (Error) -> Void) {
+    private func postNewAccountPaymentMethodSync(user: User, nameOnAccount: String, accountNumber: String, routingNumber: String, isDefault: Bool) throws -> AccountPaymentMethod {
         let accountPaymentMethod = AccountPaymentMethod(context: self.viewContext)
         accountPaymentMethod.user = user
         accountPaymentMethod.nameOnAccount = nameOnAccount
@@ -407,12 +446,8 @@ class CoreDataHelper: RemoteAPI {
             }
         }
         accountPaymentMethod.isDefault = isDefault
-        do {
-            try self.viewContext.save()
-            success(accountPaymentMethod)
-        } catch {
-            failure(error)
-        }
+        try self.viewContext.save()
+        return accountPaymentMethod
     }
     
     func patchPaymentMethod(paymentMethod: PaymentMethod, success: () -> Void, failure: (Error) -> Void) {
@@ -588,7 +623,32 @@ class CoreDataHelper: RemoteAPI {
         }
         
         
-        self.postNewUser(firstName: "Jeff", lastName: "Bezos", email: "jeff@amazon.com", phoneNumber: "1234567890", password: "Amazon1!", success: {_ in}, failure: {_ in})
+        let user = try! postNewUserSync(firstName: "Jeff", lastName: "Bezos", email: "jeff@amazon.com", phoneNumber: "1234567890", password: "Amazon1!")
+        
+        let paymentMethod = try! self.postNewCardPaymentMethodSync(user: user, nameOnCard: user.fullName, cardNumber: "773860154875542", expirationMonth: 3, expirationYear: 2024, isDefault: true)
+        
+        let _ = try! self.postNewAccountPaymentMethodSync(user: user, nameOnAccount: "Jeff Bezos", accountNumber: "889367108842", routingNumber: "534824219", isDefault: false)
+        
+        let address = try! self.postNewAddressSync(user: user, fullName: user.fullName, streetAddress: "410 Terry Ave N.", streetAddress2: nil, city: "Seattle", state: "WA", zipCode: "98109", isDefault: true)
+        
+        let _ = try! self.postNewAddressSync(user: user, fullName: user.fullName, streetAddress: "P.O. Box 907", streetAddress2: nil, city: "Bellevue", state: "WA", zipCode: "98009", isDefault: false)
+        
+        
+        for i in 1...5 {
+            for product in try! self.getRandomProducts(count: i) {
+                try! self.addProductToCartSync(product: product, user: user)
+            }
+            let orderData1 = OrderData(user: user)
+            let _ = try! self.placeOrderSync(user: user, subtotal: user.cartSubtotal, shippingPrice: orderData1.calculatedShipping, tax: orderData1.calculatedTax, address: address, paymentMethod: paymentMethod)
+        }
+        
+        for product in try! self.getRandomProducts(count: 4) {
+            try! self.addProductToCartSync(product: product, user: user)
+        }
+        
+        for product in try! self.getRandomProducts(count: 8) {
+            try! self.addProductToWishListSync(product: product, user: user)
+        }
         
         try? self.viewContext.save()
         
