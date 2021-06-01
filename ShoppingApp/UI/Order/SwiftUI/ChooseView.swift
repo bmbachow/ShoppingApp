@@ -47,7 +47,7 @@ struct ChooseView: View {
         case .address:
             return AnyView(ChooseView(remoteAPI: self.remoteAPI, orderData: self.orderData, cancelAction: nil, mode: .paymentMethod))
         case .paymentMethod:
-            return AnyView(Text("Next view"))
+            return AnyView(OrderConfirmationView(remoteAPI: self.remoteAPI, orderData: self.orderData))
         }
     }
     

@@ -2,7 +2,7 @@
 //  AccountPaymentMethod+CoreDataProperties.swift
 //  ShoppingApp
 //
-//  Created by Robert Olieman on 5/31/21.
+//  Created by Robert Olieman on 6/1/21.
 //
 //
 
@@ -16,8 +16,8 @@ extension AccountPaymentMethod {
         return NSFetchRequest<AccountPaymentMethod>(entityName: "AccountPaymentMethod")
     }
 
-    @NSManaged public var routingNumber: String?
-    @NSManaged public var nameOnAccount: String?
     @NSManaged public var accountNumber: String?
+    @NSManaged public var nameOnAccount: String?
+    @NSManaged public var routingNumber: String?
 
 }
