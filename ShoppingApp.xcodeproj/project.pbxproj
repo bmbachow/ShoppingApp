@@ -10,6 +10,8 @@
 		00CC8D55C583454F5128EB87 /* Pods_ShoppingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A999FEB31D6D3A9F2CC3443 /* Pods_ShoppingApp.framework */; };
 		400D3430265D42CD005D8234 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400D342E265D42CD005D8234 /* RegisterViewController.swift */; };
 		400D3431265D42CD005D8234 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 400D342F265D42CD005D8234 /* RegisterViewController.xib */; };
+		40108AB4266682E70068DF29 /* UserNotSignInTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40108AB2266682E70068DF29 /* UserNotSignInTableViewCell.swift */; };
+		40108AB5266682E70068DF29 /* UserNotSignInTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40108AB3266682E70068DF29 /* UserNotSignInTableViewCell.xib */; };
 		520F43D8265D448C00A6B282 /* StarFillMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43C8265D448C00A6B282 /* StarFillMode.swift */; };
 		520F43D9265D448C00A6B282 /* StarLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43C9265D448C00A6B282 /* StarLayer.swift */; };
 		520F43DA265D448C00A6B282 /* CosmosAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43CA265D448C00A6B282 /* CosmosAccessibility.swift */; };
@@ -154,6 +156,8 @@
 		0A999FEB31D6D3A9F2CC3443 /* Pods_ShoppingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		400D342E265D42CD005D8234 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		400D342F265D42CD005D8234 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		40108AB2266682E70068DF29 /* UserNotSignInTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotSignInTableViewCell.swift; sourceTree = "<group>"; };
+		40108AB3266682E70068DF29 /* UserNotSignInTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserNotSignInTableViewCell.xib; sourceTree = "<group>"; };
 		520F43C8265D448C00A6B282 /* StarFillMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarFillMode.swift; sourceTree = "<group>"; };
 		520F43C9265D448C00A6B282 /* StarLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarLayer.swift; sourceTree = "<group>"; };
 		520F43CA265D448C00A6B282 /* CosmosAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosAccessibility.swift; sourceTree = "<group>"; };
@@ -593,6 +597,8 @@
 				520F43F7265DA4B000A6B282 /* ProductsCollectionTableViewCell.xib */,
 				52EEF3EA265E7D5C006C3759 /* ProductCollectionViewCell.swift */,
 				52EEF3EB265E7D5C006C3759 /* ProductCollectionViewCell.xib */,
+				40108AB2266682E70068DF29 /* UserNotSignInTableViewCell.swift */,
+				40108AB3266682E70068DF29 /* UserNotSignInTableViewCell.xib */,
 				522458872666CEFF00CB89F6 /* ImageGridView.swift */,
 			);
 			path = "User Home";
@@ -707,6 +713,7 @@
 				520F43F5265DA48C00A6B282 /* UserHomeMainTableViewCell.xib in Resources */,
 				52CD8B17265BE09C00AFAC8C /* AlertViewController.xib in Resources */,
 				5F02A4F626602CEB00FC331E /* WishListViewController.xib in Resources */,
+				40108AB5266682E70068DF29 /* UserNotSignInTableViewCell.xib in Resources */,
 				52E0B06B265B11BB00B9C77E /* ViewControllerBlueprint.storyboard in Resources */,
 				5292777B265C3F1500394180 /* ProductDetailMainTableViewCell.xib in Resources */,
 				5F02A4F1265DA78200FC331E /* MyCollectionViewCell.xib in Resources */,
@@ -816,6 +823,7 @@
 				5224587F26669D7500CB89F6 /* Delivery+CoreDataClass.swift in Sources */,
 				52A2873226600102008584E9 /* UIConstants.swift in Sources */,
 				52FCE8D32665311C0076C438 /* DateConstants.swift in Sources */,
+				40108AB4266682E70068DF29 /* UserNotSignInTableViewCell.swift in Sources */,
 				526724CC265AE3CD00D9CAB9 /* LocationExtensions.swift in Sources */,
 				520F43E4265D448C00A6B282 /* CosmosRating.swift in Sources */,
 				5267258F265B0D3F00D9CAB9 /* UserDefaultsHelper.swift in Sources */,
