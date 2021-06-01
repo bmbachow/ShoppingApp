@@ -81,7 +81,7 @@ class UserTabBarController: UITabBarController {
     }
     
     private func refreshCartBadge() {
-        if let cartItemsCount = user?.totalProductsInCart,
+        if let cartItemsCount = user?.totalNumberOfProductsInCart,
            cartItemsCount > 0 {
             self.cartNavigationController.tabBarItem.badgeValue = String(cartItemsCount)
         } else {

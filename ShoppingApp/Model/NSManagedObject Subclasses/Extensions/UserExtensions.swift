@@ -26,7 +26,7 @@ extension User {
     var addressesArray: [Address] {
         self.addresses?.array as? [Address] ?? []
     }
-    var totalProductsInCart: Int {
+    var totalNumberOfProductsInCart: Int {
         return self.cartItemsArray.reduce(0) { result, cartItem in
             result + Int(cartItem.number)
         }

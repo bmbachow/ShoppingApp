@@ -65,6 +65,10 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
         let orderViewController = OrderViewController(user: user, cartItems: self.cartItems, remoteAPI: self.remoteAPI,
                                                       cancelAction: { [weak self] in
                                                         self?.dismiss(animated: true, completion: nil)
+                                                      }, confirmedOrderAction: { [weak self] order in
+                                                        self?.cartChanged()
+                                                        self?.userTabBarController?.cartChanged(fromViewController: self)
+                                                        self?.dismiss(animated: true, completion: nil)
                                                       })
         orderViewController.modalPresentationStyle = .fullScreen
         self.present(orderViewController, animated: true)

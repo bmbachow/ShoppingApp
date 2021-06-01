@@ -239,12 +239,16 @@ class CoreDataHelper: RemoteAPI {
     
     
     //MARK: Order
-    func placeOrder(user: User, products: [Product], price: Double, paymentMethod: PaymentMethod, success: (Order) -> Void, failure: (Error) -> Void) {
+    func placeOrder(user: User, subtotal: Double, shippingPrice: Double, tax: Double, paymentMethod: PaymentMethod?, success: (Order) -> Void, failure: (Error) -> Void) {
+        // paymentMethod set to nil means cash on delivery
+        
         let order = Order(context: self.viewContext)
         
         order.user = user
-        order.products = NSOrderedSet(array: products)
-        order.price = price
+        order.cartItems = user.cartItems
+        order.subtotal = subtotal
+        order.shippingPrice = shippingPrice
+        order.tax = tax
         order.paymentMethod = paymentMethod
         order.orderedDate = Date()
         
@@ -254,6 +258,9 @@ class CoreDataHelper: RemoteAPI {
         //we need some silly way to simulate delivery data
         
         do {
+            for cartItem in user.cartItemsArray {
+                user.removeFromCartItems(cartItem)
+            }
             try self.viewContext.save()
             success(order)
         } catch {

@@ -188,7 +188,12 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.ordersCollectionView {
-            return UICollectionViewCell()
+            let product = self.user?.ordersArray[indexPath.row].cartItemsArray[0].product
+            guard let cell = self.wishListCollectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath) as? ProductCollectionViewCell else {
+                fatalError("Unable to dequeue ProductCollectionViewCell")
+            }
+            cell.imageView.image = product?.image
+            return cell
         } else {
             let product = self.user?.wishListProductsArray[indexPath.row]
             guard let cell = self.wishListCollectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath) as? ProductCollectionViewCell else {

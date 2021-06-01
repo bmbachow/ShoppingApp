@@ -13,7 +13,7 @@ struct PaymentMethodCellView: View {
     let paymentMethod: PaymentMethod
     var isSelected: Bool
     let navigationAction: () -> Void
-    let selectedAction: () -> Void
+    let selectedAction: (() -> Void)?
     
     var numberLine: String {
         if let card = self.paymentMethod as? CardPaymentMethod {
@@ -50,15 +50,17 @@ struct PaymentMethodCellView: View {
     var body: some View {
         VStack {
             HStack {
-                Image(systemName: self.isSelected ? "smallcircle.fill.circle.fill" : "circle")
-                    .font(Font.system(size: 25, weight: .ultraLight))
-                    .foregroundColor(Color(UIColor.link))
-                    .onTapGesture {
-                        self.selectedAction()
-                    }
-                .buttonStyle(BorderlessButtonStyle())
-                Spacer()
-                    .frame(width: 26)
+                if let selectedAction = self.selectedAction {
+                    Image(systemName: self.isSelected ? "smallcircle.fill.circle.fill" : "circle")
+                        .font(Font.system(size: 25, weight: .ultraLight))
+                        .foregroundColor(Color(UIColor.link))
+                        .onTapGesture {
+                            selectedAction()
+                        }
+                        .buttonStyle(BorderlessButtonStyle())
+                    Spacer()
+                        .frame(width: 26)
+                }
                 VStack(alignment: .leading, spacing: 4) {
                     Spacer()
                         .frame(height: 8)

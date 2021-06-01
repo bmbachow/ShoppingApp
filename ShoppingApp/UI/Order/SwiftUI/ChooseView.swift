@@ -18,8 +18,9 @@ struct ChooseView: View {
     @ObservedObject var orderData: OrderData
     @State var navigationSelection: Int?
     @State var editAddressSelection: Address?
-    let cancelAction: (() -> Void)?
     let mode: ChooseView.Mode
+    
+    weak var delegate: SwiftUIOrderViewDelegate?
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -45,9 +46,9 @@ struct ChooseView: View {
     private var nextPageDestinationForCurrentMode: AnyView {
         switch self.mode {
         case .address:
-            return AnyView(ChooseView(remoteAPI: self.remoteAPI, orderData: self.orderData, cancelAction: nil, mode: .paymentMethod))
+            return AnyView(ChooseView(remoteAPI: self.remoteAPI, orderData: self.orderData, mode: .paymentMethod, delegate: self.delegate))
         case .paymentMethod:
-            return AnyView(OrderConfirmationView(remoteAPI: self.remoteAPI, orderData: self.orderData))
+            return AnyView(OrderConfirmationView(remoteAPI: self.remoteAPI, orderData: self.orderData, delegate: self.delegate))
         }
     }
     
@@ -145,6 +146,7 @@ struct ChooseView: View {
                             .fontWeight(.bold)
                     }
                     StandardButton(action: {
+                        self.orderData.paymentMethod = nil
                         self.navigationSelection = 1
                     }, labelText: "Pay with cash on delivery")
                 }
@@ -153,12 +155,16 @@ struct ChooseView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    if let cancelAction = self.cancelAction {
-                        Button(action: cancelAction) { Text("Cancel") }
+                    if self.mode == .address {
+                        Button(action: {self.delegate?.cancel()}) { Text("Cancel") }
                     }
                 }
             }
             .listStyle(PlainListStyle())
+            .onAppear(perform: {
+                self.orderData.address = self.selectedAddress
+                self.orderData.paymentMethod = self.selectedPaymentMethod
+            })
             .background(
                 VStack{
                     NavigationLink(destination: self.nextPageDestinationForCurrentMode, tag: 1, selection: self.$navigationSelection, label: {EmptyView()})

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct LabeledVStack<Content>: View where Content: View{
+struct LabeledVStack<Content>: View where Content: View {
     
     private let labelText: String?
     
@@ -24,6 +24,7 @@ struct LabeledVStack<Content>: View where Content: View{
         VStack(alignment: .leading, spacing: 4) {
             if let labelText = self.labelText {
                 Text(labelText)
+                    .font(.system(size: 14, weight: .semibold, design: .default))
             }
             self.content()
         }

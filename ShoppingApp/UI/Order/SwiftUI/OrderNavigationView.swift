@@ -7,16 +7,21 @@
 
 import SwiftUI
 
+protocol SwiftUIOrderViewDelegate: AnyObject {
+    func cancel()
+    func orderConfirmed(_ order: Order)
+}
+
 struct OrderNavigationView: View {
     
     let remoteAPI: RemoteAPI
     @ObservedObject var orderData: OrderData
-    let cancelAction: () -> Void
     
+    weak var delegate: SwiftUIOrderViewDelegate?
     
     var body: some View {
         NavigationView {
-            ChooseView(remoteAPI: self.remoteAPI, orderData: self.orderData, cancelAction: self.cancelAction, mode: .address)
+            ChooseView(remoteAPI: self.remoteAPI, orderData: self.orderData, mode: .address, delegate: self.delegate)
         }
     }
 }

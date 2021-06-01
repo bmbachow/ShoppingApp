@@ -8,7 +8,12 @@
 import Foundation
 
 extension Order {
-    var productsArray: [Product] {
-        self.products?.array as? [Product] ?? []
+    
+    static let defaultTaxRate: Double = 0.08
+    
+    static let freeShippingThreshold: Double = 200
+    
+    var cartItemsArray: [CartItem] {
+        self.cartItems?.array as? [CartItem] ?? []
     }
 }

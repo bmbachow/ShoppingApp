@@ -8,20 +8,22 @@
 import UIKit
 import SwiftUI
 
-class OrderViewController: BaseViewController {
+class OrderViewController: BaseViewController, SwiftUIOrderViewDelegate {
     
     let orderData: OrderData
-    
     let cancelAction: () -> Void
+    let orderConfirmedAction: (Order) -> Void
     
-    let firstViewController: UIHostingController<AnyView>
+    var firstViewController: UIHostingController<AnyView> = EmptyView().wrappedInUIHostingController()
     
-    init(user: User, cartItems: [CartItem], remoteAPI: RemoteAPI, cancelAction: @escaping () -> Void) {
-        let orderData = OrderData(user: user, cartItems: cartItems)
+    
+    init(user: User, cartItems: [CartItem], remoteAPI: RemoteAPI, cancelAction: @escaping () -> Void, confirmedOrderAction: @escaping (Order) -> Void) {
+        let orderData = OrderData(user: user)
         self.cancelAction = cancelAction
+        self.orderConfirmedAction = confirmedOrderAction
         self.orderData = orderData
-        self.firstViewController = OrderNavigationView(remoteAPI: remoteAPI, orderData: self.orderData, cancelAction: cancelAction).wrappedInUIHostingController()
         super.init(nibName: nil, bundle: nil)
+        self.firstViewController = OrderNavigationView(remoteAPI: remoteAPI, orderData: self.orderData, delegate: self).wrappedInUIHostingController()
         self.addChild(firstViewController)
         self.view.addSubview(firstViewController.view)
         self.firstViewController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -36,21 +38,15 @@ class OrderViewController: BaseViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    //MARK: SwiftUIOrderViewDelegate
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    func cancel() {
+        self.cancelAction()
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func orderConfirmed(_ order: Order) {
+        self.orderConfirmedAction(order)
     }
-    */
 
 }

@@ -22,7 +22,6 @@ extension Product {
     @NSManaged public var productDescription: String?
     @NSManaged public var cartItems: NSSet?
     @NSManaged public var category: Category?
-    @NSManaged public var orders: NSOrderedSet?
     @NSManaged public var reviews: NSOrderedSet?
     @NSManaged public var wishListUsers: NSOrderedSet?
 
@@ -42,41 +41,6 @@ extension Product {
 
     @objc(removeCartItems:)
     @NSManaged public func removeFromCartItems(_ values: NSSet)
-
-}
-
-// MARK: Generated accessors for orders
-extension Product {
-
-    @objc(insertObject:inOrdersAtIndex:)
-    @NSManaged public func insertIntoOrders(_ value: Order, at idx: Int)
-
-    @objc(removeObjectFromOrdersAtIndex:)
-    @NSManaged public func removeFromOrders(at idx: Int)
-
-    @objc(insertOrders:atIndexes:)
-    @NSManaged public func insertIntoOrders(_ values: [Order], at indexes: NSIndexSet)
-
-    @objc(removeOrdersAtIndexes:)
-    @NSManaged public func removeFromOrders(at indexes: NSIndexSet)
-
-    @objc(replaceObjectInOrdersAtIndex:withObject:)
-    @NSManaged public func replaceOrders(at idx: Int, with value: Order)
-
-    @objc(replaceOrdersAtIndexes:withOrders:)
-    @NSManaged public func replaceOrders(at indexes: NSIndexSet, with values: [Order])
-
-    @objc(addOrdersObject:)
-    @NSManaged public func addToOrders(_ value: Order)
-
-    @objc(removeOrdersObject:)
-    @NSManaged public func removeFromOrders(_ value: Order)
-
-    @objc(addOrders:)
-    @NSManaged public func addToOrders(_ values: NSOrderedSet)
-
-    @objc(removeOrders:)
-    @NSManaged public func removeFromOrders(_ values: NSOrderedSet)
 
 }
 
