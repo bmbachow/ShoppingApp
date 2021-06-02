@@ -139,7 +139,6 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            print(indexPath)
             return self.productDetailMainTableViewCell
         case 1:
             return self.productCollectionTableViewCell

@@ -16,12 +16,14 @@ class ImageGridView: UIView {
     private func newVStack() -> UIStackView {
         let vStack = UIStackView()
         vStack.axis = .vertical
+        vStack.spacing = 4
         vStack.distribution = .fillEqually
         return vStack
     }
     private func newHStack() -> UIStackView {
         let hStack = UIStackView()
         hStack.axis = .horizontal
+        hStack.spacing = 4
         hStack.distribution = .fillEqually
         return hStack
     }
