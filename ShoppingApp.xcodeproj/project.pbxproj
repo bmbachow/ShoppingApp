@@ -95,6 +95,7 @@
 		5267258C265AECA600D9CAB9 /* TimeIntervalFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52672584265AECA600D9CAB9 /* TimeIntervalFormatter.swift */; };
 		5267258D265AECA600D9CAB9 /* BCryptHasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52672585265AECA600D9CAB9 /* BCryptHasher.swift */; };
 		5267258F265B0D3F00D9CAB9 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267258E265B0D3F00D9CAB9 /* UserDefaultsHelper.swift */; };
+		528820FB2667B43200B40FD0 /* CosmosViewWithCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528820FA2667B43200B40FD0 /* CosmosViewWithCallback.swift */; };
 		52895E6126616BD00012B0AA /* NewCardPaymentMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52895E6026616BD00012B0AA /* NewCardPaymentMethodView.swift */; };
 		52895E6326616C070012B0AA /* NewAccountPaymentMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52895E6226616C070012B0AA /* NewAccountPaymentMethodView.swift */; };
 		52895E6726618CB30012B0AA /* OrderNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52895E6626618CB30012B0AA /* OrderNavigationView.swift */; };
@@ -247,6 +248,7 @@
 		52672584265AECA600D9CAB9 /* TimeIntervalFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeIntervalFormatter.swift; sourceTree = "<group>"; };
 		52672585265AECA600D9CAB9 /* BCryptHasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCryptHasher.swift; sourceTree = "<group>"; };
 		5267258E265B0D3F00D9CAB9 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		528820FA2667B43200B40FD0 /* CosmosViewWithCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosViewWithCallback.swift; sourceTree = "<group>"; };
 		52895E6026616BD00012B0AA /* NewCardPaymentMethodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCardPaymentMethodView.swift; sourceTree = "<group>"; };
 		52895E6226616C070012B0AA /* NewAccountPaymentMethodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccountPaymentMethodView.swift; sourceTree = "<group>"; };
 		52895E6626618CB30012B0AA /* OrderNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderNavigationView.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 		520F43E7265D44E900A6B282 /* third party */ = {
 			isa = PBXGroup;
 			children = (
+				528820FA2667B43200B40FD0 /* CosmosViewWithCallback.swift */,
 				520F43C7265D448C00A6B282 /* Cosmos */,
 			);
 			path = "third party";
@@ -815,6 +818,7 @@
 				52E0B069265B104500B9C77E /* BaseViewController.swift in Sources */,
 				526723E4265AD8D600D9CAB9 /* StarRating.swift in Sources */,
 				5224587E26669D7500CB89F6 /* AccountPaymentMethod+CoreDataProperties.swift in Sources */,
+				528820FB2667B43200B40FD0 /* CosmosViewWithCallback.swift in Sources */,
 				5F02A4F526602CEB00FC331E /* WishListViewController.swift in Sources */,
 				52927776265C3EBD00394180 /* ProductDetailViewController.swift in Sources */,
 				5224586F26669D7500CB89F6 /* Product+CoreDataClass.swift in Sources */,

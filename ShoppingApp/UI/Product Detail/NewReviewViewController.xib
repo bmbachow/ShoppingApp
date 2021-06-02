@@ -14,6 +14,7 @@
                 <outlet property="bodyTextView" destination="dOf-Ym-lGb" id="dcE-zp-7J1"/>
                 <outlet property="cosmosView" destination="O4L-Hv-tXz" id="kOQ-2y-l0k"/>
                 <outlet property="mainStackView" destination="vc2-3w-zd5" id="GvU-FG-cM7"/>
+                <outlet property="submitReviewButton" destination="RH3-e6-cSn" id="x98-0a-DcM"/>
                 <outlet property="titleTextField" destination="gFu-xU-nyl" id="DqO-p0-IHb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -71,6 +72,9 @@
                                             <rect key="frame" x="0.0" y="21" width="366" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="titleTextFieldChanged:" destination="-1" eventType="editingChanged" id="CY8-gx-5PA"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                 </stackView>
@@ -99,6 +103,9 @@
                                     <rect key="frame" x="0.0" y="387" width="366" height="30"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <state key="normal" title="Submit Review"/>
+                                    <connections>
+                                        <action selector="tappedSubmitReviewButton:" destination="-1" eventType="touchUpInside" id="W0Y-V1-BRa"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>

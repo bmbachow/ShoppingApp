@@ -24,6 +24,8 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
     
     var relatedProductsArray = [Product]()
     
+    var productReviewsArray = [ProductReview]()
+    
     let product: Product
     
     lazy private var productDetailMainTableViewCell: ProductDetailMainTableViewCell = {
@@ -93,6 +95,7 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
         }, failure: { error in
             print(error.localizedDescription)
         })
+        self.refreshProductReviewsArray()
     }
     
     @objc func tappedAddToCartButton(_ sender: UIButton) {
@@ -128,10 +131,21 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
     }
     
     func presentNewReviewViewController() {
-        let viewController = NewReviewViewController()
+        guard let user = self.user else { return }
+        let viewController = NewReviewViewController(user: user, product: self.product, reviewSubmittedAction: { [weak self] in
+            self?.refreshProductReviewsArray()
+            self?.dismiss(animated: true, completion: nil)
+        })
         self.present(viewController, animated: true)
     }
     
+    func refreshProductReviewsArray() {
+        self.productReviewsArray = product.reviewsArray.sorted(by: {
+            let date = Date()
+            return $0.postedDate ?? date > $1.postedDate ?? date
+        })
+        self.tableView.reloadData()
+    }
    
 
     //MARK: UITableView
@@ -157,7 +171,7 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
         case 2:
             return 1
         default:
-            return self.product.reviewsArray.count
+            return self.productReviewsArray.count
         }
     }
 
@@ -170,7 +184,7 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
         case 2:
             return self.productDetailReviewHeaderTableViewCell
         default:
-            let review = self.product.reviewsArray[indexPath.row]
+            let review = self.productReviewsArray[indexPath.row]
             guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "ProductDetailReviewTableViewCell") as? ProductDetailReviewTableViewCell else {
                 fatalError("Unable to dequeue ProductDetailReviewTableViewCell")
             }

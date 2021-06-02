@@ -108,3 +108,12 @@ extension UITableViewCell {
         self.separatorInset = UIEdgeInsets(top: 0, left: tableViewWidth, bottom: 0, right: 0)
     }
 }
+
+extension UITextView {
+    var textNoEmptyString : String? {
+        if(self.text == ""){
+            return nil
+        }
+        return self.text
+    }
+}
