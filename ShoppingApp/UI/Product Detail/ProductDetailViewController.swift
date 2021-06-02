@@ -128,16 +128,16 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 0
+            return 1
         case 1:
-            return 0
+            return 1
         default:
             return self.product.reviewsArray.count
         }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
+        switch indexPath.section {
         case 0:
             return self.productDetailMainTableViewCell
         case 1:
