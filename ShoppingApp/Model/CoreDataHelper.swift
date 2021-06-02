@@ -625,6 +625,8 @@ class CoreDataHelper: RemoteAPI {
         
         let user = try! postNewUserSync(firstName: "Jeff", lastName: "Bezos", email: "jeff@amazon.com", phoneNumber: "1234567890", password: "Amazon1!")
         
+        user.setImageDataFromImage(UIImage(named: "jeff")!)
+        
         let paymentMethod = try! self.postNewCardPaymentMethodSync(user: user, nameOnCard: user.fullName, cardNumber: "773860154875542", expirationMonth: 3, expirationYear: 2024, isDefault: true)
         
         let _ = try! self.postNewAccountPaymentMethodSync(user: user, nameOnAccount: "Jeff Bezos", accountNumber: "889367108842", routingNumber: "534824219", isDefault: false)

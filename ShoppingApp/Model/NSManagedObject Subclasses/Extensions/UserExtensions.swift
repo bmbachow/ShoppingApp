@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension User {
     var ordersArray: [Order] {
@@ -47,5 +48,16 @@ extension User {
     
     var defaultPaymentMethod: PaymentMethod? {
         return self.paymentMethodsArray.first(where: { $0.isDefault })
+    }
+    
+    
+    var image: UIImage? {
+        guard let data = self.imageData else { return nil }
+        return UIImage(data: data)
+    }
+    
+    func setImageDataFromImage(_ image: UIImage?) {
+        guard let imageData = image?.pngData() else { return }
+        self.imageData = imageData
     }
 }

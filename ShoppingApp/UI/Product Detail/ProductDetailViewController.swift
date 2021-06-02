@@ -195,6 +195,9 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
             }
             cell.titleTextView.text = review.title
             cell.bodyTextView.text = review.body
+            if let image = review.user?.image {
+                cell.userImageView.image = image
+            }
             cell.hideSeparator(tableViewWidth: self.tableView.frame.width)
             return cell
         }

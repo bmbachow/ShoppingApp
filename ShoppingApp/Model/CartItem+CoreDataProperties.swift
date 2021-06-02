@@ -2,7 +2,7 @@
 //  CartItem+CoreDataProperties.swift
 //  ShoppingApp
 //
-//  Created by Robert Olieman on 6/1/21.
+//  Created by Robert Olieman on 6/2/21.
 //
 //
 
@@ -17,9 +17,9 @@ extension CartItem {
     }
 
     @NSManaged public var number: Int16
+    @NSManaged public var order: Order?
     @NSManaged public var product: Product?
     @NSManaged public var user: User?
-    @NSManaged public var order: Order?
 
 }
 

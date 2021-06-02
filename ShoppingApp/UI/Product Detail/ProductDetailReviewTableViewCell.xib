@@ -41,8 +41,8 @@
                                     </textView>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7pS-Dz-MZq" customClass="CosmosView" customModule="ShoppingApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="49" width="353" height="20"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pS-Dz-MZq" customClass="CosmosView" customModule="ShoppingApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="49" width="353" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rating">
@@ -65,22 +65,22 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" text="Review Date" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tDL-Xb-Rqa" userLabel="Review Date" customClass="CustomPaddingTextView" customModule="ShoppingApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="73" width="353" height="33.5"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Review Date" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tDL-Xb-Rqa" userLabel="Review Date" customClass="CustomPaddingTextView" customModule="ShoppingApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="103" width="353" height="33.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" text="Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nkg-EL-O90" userLabel="Title" customClass="CustomPaddingTextView" customModule="ShoppingApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="110.5" width="353" height="36"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nkg-EL-O90" userLabel="Title" customClass="CustomPaddingTextView" customModule="ShoppingApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="140.5" width="353" height="36"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" text="Body" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xQ8-nc-HZM" userLabel="Body" customClass="CustomPaddingTextView" customModule="ShoppingApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="150.5" width="353" height="32.5"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Body" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xQ8-nc-HZM" userLabel="Body" customClass="CustomPaddingTextView" customModule="ShoppingApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="180.5" width="353" height="2.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
@@ -102,16 +102,12 @@
                 <outlet property="cosmosView" destination="7pS-Dz-MZq" id="ANB-6J-232"/>
                 <outlet property="reviewDateTextView" destination="tDL-Xb-Rqa" id="885-vV-vl5"/>
                 <outlet property="titleTextView" destination="Nkg-EL-O90" id="YsR-rp-yFO"/>
+                <outlet property="userImageView" destination="tGy-1K-UbQ" id="5O7-8B-i3g"/>
                 <outlet property="usernameTextView" destination="x50-Ll-2xa" id="XWr-lg-Xao"/>
             </connections>
             <point key="canvasLocation" x="58.695652173913047" y="131.58482142857142"/>
         </tableViewCell>
     </objects>
-    <designables>
-        <designable name="7pS-Dz-MZq">
-            <size key="intrinsicContentSize" width="120" height="20"/>
-        </designable>
-    </designables>
     <resources>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColorApp">

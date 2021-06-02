@@ -19,9 +19,14 @@ class ProductDetailReviewTableViewCell: UITableViewCell {
     
     @IBOutlet weak var bodyTextView: UITextView!
     
+    @IBOutlet weak var userImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.cosmosView.isUserInteractionEnabled = false
+        self.userImageView.layer.cornerRadius = self.userImageView.frame.width/2
+        self.userImageView.clipsToBounds = true
+        self.userImageView.contentMode = .scaleAspectFill
         // Initialization code
     }
 

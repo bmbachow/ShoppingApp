@@ -85,6 +85,7 @@
         <attribute name="email" attributeType="String"/>
         <attribute name="firstName" attributeType="String"/>
         <attribute name="giftCardBalance" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary"/>
         <attribute name="lastName" attributeType="String"/>
         <attribute name="password" attributeType="String"/>
         <attribute name="phoneNumber" attributeType="String"/>
@@ -100,7 +101,7 @@
     <elements>
         <element name="AccountPaymentMethod" positionX="-6385.71826171875" positionY="-4418.475814819337" width="188.1484375" height="88"/>
         <element name="Address" positionX="-6181.0693359375" positionY="-4463.943161010742" width="128" height="178"/>
-        <element name="CardPaymentMethod" positionX="-6582.26397705078" positionY="-4411.26025390625" width="167.1560668945312" height="103"/>
+        <element name="CardPaymentMethod" positionX="-6584.082885742187" positionY="-4394.076019287109" width="167.1560668945312" height="103"/>
         <element name="CartItem" positionX="-6921.222045898438" positionY="-3987.819732666016" width="128" height="103"/>
         <element name="Category" positionX="-6941.225708007812" positionY="-4105.280822753906" width="128" height="88"/>
         <element name="Delivery" positionX="-5984.096557617188" positionY="-4279.970642089844" width="128" height="148"/>
@@ -109,6 +110,6 @@
         <element name="PaymentMethod" positionX="-6567.479187011719" positionY="-4517.728713989258" width="128" height="88"/>
         <element name="Product" positionX="-6587.154174804688" positionY="-4114.595214843751" width="128" height="163"/>
         <element name="ProductReview" positionX="-6240.515869140625" positionY="-4089.315338134765" width="128" height="133"/>
-        <element name="User" positionX="-6750.714721679688" positionY="-4397.127639770509" width="128" height="253"/>
+        <element name="User" positionX="-6750.714721679688" positionY="-4397.127639770509" width="128" height="268"/>
     </elements>
 </model>
