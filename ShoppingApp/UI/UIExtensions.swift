@@ -102,4 +102,9 @@ extension UITableViewCell {
         whiteBackgroundView.frame = bounds.insetBy(dx: shadowPathInset.dx, dy: shadowPathInset.dy)
         insertSubview(whiteBackgroundView, at: 0)
     }
+    
+    
+    func hideSeparator(tableViewWidth: CGFloat) {
+        self.separatorInset = UIEdgeInsets(top: 0, left: tableViewWidth, bottom: 0, right: 0)
+    }
 }

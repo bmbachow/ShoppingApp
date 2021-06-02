@@ -14,7 +14,7 @@ class OrderViewController: BaseViewController, SwiftUIOrderViewDelegate {
     let cancelAction: () -> Void
     let orderConfirmedAction: (Order) -> Void
     
-    var firstViewController: UIHostingController<AnyView> = EmptyView().wrappedInUIHostingController()
+    var hostingController: UIHostingController<AnyView> = EmptyView().wrappedInUIHostingController()
     
     
     init(user: User, cartItems: [CartItem], remoteAPI: RemoteAPI, cancelAction: @escaping () -> Void, confirmedOrderAction: @escaping (Order) -> Void) {
@@ -23,15 +23,15 @@ class OrderViewController: BaseViewController, SwiftUIOrderViewDelegate {
         self.orderConfirmedAction = confirmedOrderAction
         self.orderData = orderData
         super.init(nibName: nil, bundle: nil)
-        self.firstViewController = OrderNavigationView(remoteAPI: remoteAPI, orderData: self.orderData, delegate: self).wrappedInUIHostingController()
-        self.addChild(firstViewController)
-        self.view.addSubview(firstViewController.view)
-        self.firstViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        self.hostingController = OrderNavigationView(remoteAPI: remoteAPI, orderData: self.orderData, delegate: self).wrappedInUIHostingController()
+        self.addChild(hostingController)
+        self.view.addSubview(hostingController.view)
+        self.hostingController.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.firstViewController.view.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.firstViewController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            self.firstViewController.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.firstViewController.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+            self.hostingController.view.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.hostingController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.hostingController.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.hostingController.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
     }
     

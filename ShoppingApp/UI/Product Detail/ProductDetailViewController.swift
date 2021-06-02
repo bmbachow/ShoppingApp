@@ -18,6 +18,8 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
     
     weak var addToWishListButton: UIButton!
     
+    weak var writeAReviewButton: UIButton!
+    
     weak var relatedItemsCollectionView: UICollectionView!
     
     var relatedProductsArray = [Product]()
@@ -46,6 +48,17 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
             return cell
         }()
     
+    lazy var productDetailReviewHeaderTableViewCell:
+        ProductDetailReviewHeaderTableViewCell = {
+            guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "ProductDetailReviewHeaderTableViewCell") as? ProductDetailReviewHeaderTableViewCell else {
+                fatalError("ProductDetailReviewHeaderTableViewCell")
+            }
+            self.writeAReviewButton = cell.writeAReviewButton
+            cell.writeAReviewButton.addTarget(self, action: #selector(self.tappedWriteAReviewButton), for: .touchUpInside)
+            cell.hideSeparator(tableViewWidth: self.tableView.frame.width)
+            return cell
+        }()
+    
     init(product: Product) {
         self.product = product
         super.init(nibName: "ProductDetailViewController", bundle: nil)
@@ -63,6 +76,7 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
         self.tableView.register((UINib(nibName: "ProductDetailReviewTableViewCell", bundle: nil)), forCellReuseIdentifier: "ProductDetailReviewTableViewCell")
         self.tableView.register((UINib(nibName: "ProductsCollectionTableViewCell", bundle: nil)),
             forCellReuseIdentifier: "ProductsCollectionTableViewCell")
+        self.tableView.register(UINib(nibName: "ProductDetailReviewHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductDetailReviewHeaderTableViewCell")
 
         let _ = self.productCollectionTableViewCell
         self.relatedItemsCollectionView.register((UINib(nibName: "ProductCollectionViewCell", bundle: nil)),
@@ -89,6 +103,10 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
         self.addProductToWishList()
     }
     
+    @objc func tappedWriteAReviewButton(_ sender: UIButton) {
+        self.presentNewReviewViewController()
+    }
+    
     func addProductToCart() {
         if let user = self.user {
             self.remoteAPI.addProductToCart(product: self.product, user: user, success: {
@@ -109,6 +127,11 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
         }
     }
     
+    func presentNewReviewViewController() {
+        let viewController = NewReviewViewController()
+        self.present(viewController, animated: true)
+    }
+    
    
 
     //MARK: UITableView
@@ -118,7 +141,7 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     @IBAction func tappedBackButton(_ sender: UIButton) {
@@ -131,6 +154,8 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
             return 1
         case 1:
             return 1
+        case 2:
+            return 1
         default:
             return self.product.reviewsArray.count
         }
@@ -142,6 +167,8 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
             return self.productDetailMainTableViewCell
         case 1:
             return self.productCollectionTableViewCell
+        case 2:
+            return self.productDetailReviewHeaderTableViewCell
         default:
             let review = self.product.reviewsArray[indexPath.row]
             guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "ProductDetailReviewTableViewCell") as? ProductDetailReviewTableViewCell else {
@@ -154,6 +181,7 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
             }
             cell.titleTextView.text = review.title
             cell.bodyTextView.text = review.body
+            cell.hideSeparator(tableViewWidth: self.tableView.frame.width)
             return cell
         }
     }

@@ -10,4 +10,5 @@ import UIKit
 
 class UIConstants {
     static let topBarHeight: CGFloat = 64
+    
 }

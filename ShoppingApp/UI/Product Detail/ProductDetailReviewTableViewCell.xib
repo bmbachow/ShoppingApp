@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -11,25 +11,38 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="262" id="KGk-i7-Jjw" customClass="ProductDetailReviewTableViewCell" customModule="ShoppingApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="262"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="209" id="KGk-i7-Jjw" customClass="ProductDetailReviewTableViewCell" customModule="ShoppingApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="209"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="262"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="209"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZCo-sB-kMP">
-                        <rect key="frame" x="11" y="11" width="353" height="240"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ZCo-sB-kMP">
+                        <rect key="frame" x="11" y="13" width="353" height="183"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" text="Username" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="x50-Ll-2xa">
-                                <rect key="frame" x="0.0" y="0.0" width="353" height="114.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="JSP-mz-C7o">
+                                <rect key="frame" x="0.0" y="0.0" width="353" height="45"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tGy-1K-UbQ">
+                                        <rect key="frame" x="0.0" y="0.5" width="45" height="44"/>
+                                        <color key="tintColor" name="AccentColorApp"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="GI3-ul-b0G"/>
+                                            <constraint firstAttribute="width" secondItem="tGy-1K-UbQ" secondAttribute="height" multiplier="1:1" id="pMr-29-Xee"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Username" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="x50-Ll-2xa" customClass="CustomPaddingTextView" customModule="ShoppingApp" customModuleProvider="target">
+                                        <rect key="frame" x="52" y="4.5" width="301" height="36"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </stackView>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7pS-Dz-MZq" customClass="CosmosView" customModule="ShoppingApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="114.5" width="353" height="20"/>
+                                <rect key="frame" x="0.0" y="49" width="353" height="20"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rating">
@@ -52,22 +65,22 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" text="Review Date" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tDL-Xb-Rqa" userLabel="Review Date">
-                                <rect key="frame" x="0.0" y="134.5" width="353" height="33.5"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" text="Review Date" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tDL-Xb-Rqa" userLabel="Review Date" customClass="CustomPaddingTextView" customModule="ShoppingApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="73" width="353" height="33.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" text="Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nkg-EL-O90" userLabel="Title">
-                                <rect key="frame" x="0.0" y="168" width="353" height="36"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" text="Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nkg-EL-O90" userLabel="Title" customClass="CustomPaddingTextView" customModule="ShoppingApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="110.5" width="353" height="36"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" text="Body" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xQ8-nc-HZM" userLabel="Body">
-                                <rect key="frame" x="0.0" y="204" width="353" height="36"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" text="Body" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xQ8-nc-HZM" userLabel="Body" customClass="CustomPaddingTextView" customModule="ShoppingApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="150.5" width="353" height="32.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
@@ -77,8 +90,8 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ZCo-sB-kMP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="2vz-8n-7Zb"/>
-                    <constraint firstAttribute="bottom" secondItem="ZCo-sB-kMP" secondAttribute="bottom" constant="11" id="798-m2-74g"/>
+                    <constraint firstItem="ZCo-sB-kMP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="2vz-8n-7Zb"/>
+                    <constraint firstAttribute="bottom" secondItem="ZCo-sB-kMP" secondAttribute="bottom" constant="13" id="798-m2-74g"/>
                     <constraint firstAttribute="trailing" secondItem="ZCo-sB-kMP" secondAttribute="trailing" constant="11" id="U7T-sU-Cd0"/>
                     <constraint firstItem="ZCo-sB-kMP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="11" id="hrW-Cu-hsG"/>
                 </constraints>
@@ -91,7 +104,7 @@
                 <outlet property="titleTextView" destination="Nkg-EL-O90" id="YsR-rp-yFO"/>
                 <outlet property="usernameTextView" destination="x50-Ll-2xa" id="XWr-lg-Xao"/>
             </connections>
-            <point key="canvasLocation" x="58.695652173913047" y="149.33035714285714"/>
+            <point key="canvasLocation" x="58.695652173913047" y="131.58482142857142"/>
         </tableViewCell>
     </objects>
     <designables>
@@ -100,6 +113,10 @@
         </designable>
     </designables>
     <resources>
+        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="AccentColorApp">
+            <color red="0.66299998760223389" green="0.68599998950958252" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="cosmosBorderColor">
             <color red="0.8410000205039978" green="0.50499999523162842" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
