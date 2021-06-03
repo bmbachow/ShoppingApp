@@ -20,6 +20,12 @@ extension DateFormatter {
         return formatter
     }
     
+    static var standardDateShort: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yy"
+        return formatter
+    }
+    
     static var standardTime: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"

@@ -21,6 +21,7 @@ class OrderItemView: UIView {
         
         self.hStack.axis = .horizontal
         self.hStack.spacing = 10
+        self.hStack.distribution = .equalSpacing
         
         self.label.font = UIFont(name: "GillSans", size: 13)!
         self.label.numberOfLines = 1

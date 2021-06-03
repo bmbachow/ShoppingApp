@@ -8,14 +8,16 @@
 import UIKit
 import SwiftUI
 
-class OrderDetailViewController: UIViewController {
+class OrderDetailViewController: UIViewController, SwiftUICheckoutViewDelegate {
 
     var hostingController: UIHostingController<AnyView> = EmptyView().wrappedInUIHostingController()
     
-    init(user: User, order: Order, remoteAPI: RemoteAPI) {
+    init(order: Order, remoteAPI: RemoteAPI) {
         super.init(nibName: nil, bundle: nil)
         self.hostingController = Text("").wrappedInUIHostingController()
-        //self.hostingController = CheckoutConfirmationView(remoteAPI: remoteAPI, orderData: nil, order: order)
+        let orderData = OrderData(user: order.user!)
+        orderData.order = order
+        self.hostingController = CheckoutConfirmationView(remoteAPI: remoteAPI, orderData: orderData, mode: .orderDetail, delegate: self).wrappedInUIHostingController()
         self.addChild(hostingController)
         self.view.addSubview(hostingController.view)
         self.hostingController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -30,4 +32,16 @@ class OrderDetailViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: SwiftUICheckoutViewDelegate
+    
+    func cancel() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func orderConfirmed(_ order: Order) {
+        
+    }
+    
+
 }

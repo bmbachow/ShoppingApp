@@ -39,7 +39,7 @@ class CheckoutViewController: BaseViewController, SwiftUICheckoutViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
 
-    //MARK: SwiftUIOrderViewDelegate
+    //MARK: SwiftUICheckoutViewDelegate
     
     func cancel() {
         self.cancelAction()
