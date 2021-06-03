@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrdersListViewController" customModule="ShoppingApp" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="Ktb-AZ-0CM" id="sJ8-Qt-ccV"/>
+                <outlet property="tableView" destination="d7S-T9-Lh7" id="SzU-Vr-HeB"/>
+                <outlet property="topBarView" destination="jaL-rX-aYg" id="I4w-jX-kCR"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaL-rX-aYg" userLabel="Top Bar View">
+                    <rect key="frame" x="0.0" y="44" width="414" height="64"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Owu-8v-rol">
+                            <rect key="frame" x="177" y="20.5" width="60" height="23"/>
+                            <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="19"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ktb-AZ-0CM">
+                            <rect key="frame" x="12" y="21" width="74" height="22"/>
+                            <state key="normal" title="Button" image="arrow.left" catalog="system"/>
+                            <connections>
+                                <action selector="tappedBackButton:" destination="-1" eventType="touchUpInside" id="hfi-P3-LDf"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="Owu-8v-rol" firstAttribute="centerY" secondItem="jaL-rX-aYg" secondAttribute="centerY" id="WfK-WE-cS5"/>
+                        <constraint firstItem="Owu-8v-rol" firstAttribute="centerX" secondItem="jaL-rX-aYg" secondAttribute="centerX" id="XHc-t7-pDZ"/>
+                        <constraint firstAttribute="height" constant="64" id="eJc-dY-lPV"/>
+                        <constraint firstItem="Ktb-AZ-0CM" firstAttribute="leading" secondItem="jaL-rX-aYg" secondAttribute="leading" constant="12" id="u0V-35-DKM"/>
+                        <constraint firstItem="Ktb-AZ-0CM" firstAttribute="centerY" secondItem="Owu-8v-rol" secondAttribute="centerY" id="zUR-Iv-gER"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d7S-T9-Lh7">
+                    <rect key="frame" x="0.0" y="108" width="414" height="754"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="d7S-T9-Lh7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Jm8-qK-j5v"/>
+                <constraint firstItem="d7S-T9-Lh7" firstAttribute="top" secondItem="jaL-rX-aYg" secondAttribute="bottom" id="VD4-OU-3Xz"/>
+                <constraint firstItem="jaL-rX-aYg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="YUm-dH-aVA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="d7S-T9-Lh7" secondAttribute="trailing" id="bh4-fu-oMr"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jaL-rX-aYg" secondAttribute="trailing" id="usG-xG-CdX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="d7S-T9-Lh7" secondAttribute="bottom" id="vqe-ia-lQ4"/>
+                <constraint firstItem="jaL-rX-aYg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="y0f-9o-imc"/>
+            </constraints>
+            <point key="canvasLocation" x="53.623188405797109" y="62.946428571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

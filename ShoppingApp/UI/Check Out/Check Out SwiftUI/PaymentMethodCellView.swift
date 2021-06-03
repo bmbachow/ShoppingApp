@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PaymentMethodCellView: View {
     
-    let paymentMethod: PaymentMethod
+    let paymentMethod: PaymentMethod?
     var isSelected: Bool
     let navigationAction: () -> Void
     let selectedAction: (() -> Void)?
@@ -64,9 +64,13 @@ struct PaymentMethodCellView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Spacer()
                         .frame(height: 8)
-                    Text(self.numberLine)
-                    Text(self.nameLine)
-                    Text(self.line3)
+                    if self.paymentMethod != nil {
+                        StandardText(self.numberLine)
+                        StandardText(self.nameLine)
+                        StandardText(self.line3)
+                    } else {
+                        StandardText("Cash on delivery")
+                    }
                 }
                 Spacer()
             }

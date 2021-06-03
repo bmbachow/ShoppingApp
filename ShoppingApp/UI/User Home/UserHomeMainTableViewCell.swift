@@ -13,18 +13,13 @@ class UserHomeMainTableViewCell: UITableViewCell {
     
     @IBOutlet weak var memberSinceLabel: UILabel!
     
-    init() {
-        super.init(style: .default, reuseIdentifier: nil)
-        Bundle.main.loadNibNamed("UserHomeMainTableViewCell", owner: self, options: nil)
-        self.contentView.fixInView(self)
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
+    @IBOutlet weak var profileImageView: UIImageView!
+ 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.width/2
+        self.profileImageView.clipsToBounds = true
+        self.profileImageView.contentMode = .scaleAspectFill
         // Initialization code
     }
 

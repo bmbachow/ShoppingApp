@@ -1,5 +1,5 @@
 //
-//  OrderConfirmationView.swift
+//  CheckoutConfirmationView.swift
 //  ShoppingApp
 //
 //  Created by Robert Olieman on 6/1/21.
@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-struct OrderConfirmationView: View {
+
+struct CheckoutConfirmationView: View {
     
     let remoteAPI: RemoteAPI
-    @ObservedObject var orderData: OrderData
+    var orderData: OrderData
     @State var showingThankYou = false
     
-    weak var delegate: SwiftUIOrderViewDelegate?
+    weak var delegate: SwiftUICheckoutViewDelegate?
     
     var shippingText: String {
         let shipping = self.orderData.calculatedShipping
@@ -25,7 +26,7 @@ struct OrderConfirmationView: View {
     }
     
     var body: some View {
-        ScrollView {
+        List {
             FormVStack {
                 
                 StandardButton(action: {
@@ -37,59 +38,58 @@ struct OrderConfirmationView: View {
                         ZStack {
                             Image(uiImage: cartItem.product?.image ?? UIImage(systemName: "questionmark")!)
                                 .resizable()
+                                .aspectRatio(contentMode: .fit)
                                 .frame(width: 55, height: 55)
                             if cartItem.number > 1 {
-                                Text("ⅹ\(cartItem.number)")
-                                    .font(.system(size: 13, weight: .heavy, design: .default))
+                                StandardText("ⅹ\(cartItem.number)", size: 13, style: .bold)
                                     .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                                     .background(Color(UIColor.link))
                                     .foregroundColor(.white)
                                     .cornerRadius(4)
                             }
                         }
-                        Text(cartItem.product?.name ?? "?")
+                        StandardText(cartItem.product?.name ?? "?", size: 15)
                             .lineLimit(2)
-                            .font(.system(size: 15, weight: .regular, design: .default))
-                        Text(NumberFormatter.dollars.string(from: cartItem.product!.price * Double(cartItem.number))!)
+                            .fixedSize(horizontal: false, vertical: true)
+                        Spacer()
+                        StandardText(NumberFormatter.dollars.string(from: cartItem.product!.price * Double(cartItem.number))!)
                     }
                 }
+                Spacer()
+                    .frame(height: 6)
                 FormHStack {
-                    Text("Shipping and handling:")
-                        .font(.system(size: 15, weight: .regular, design: .default))
+                    StandardText("Shipping and handling:", size: 15)
                     Spacer()
-                    Text(self.shippingText)
+                    StandardText(self.shippingText)
                 }
                 FormHStack {
-                    Text("Tax:")
-                        .font(.system(size: 15, weight: .regular, design: .default))
+                    StandardText("Tax:", size: 15)
                     Spacer()
-                    Text(NumberFormatter.dollars.string(from: self.orderData.calculatedTax)!)
+                    StandardText(NumberFormatter.dollars.string(from: self.orderData.calculatedTax)!)
                 }
                 
                 FormHStack {
-                    Text("Total:")
-                        .font(.system(size: 17, weight: .regular, design: .default))
+                    StandardText("Total:", size: 19, style: .semiBold)
                     Spacer()
-                    Text(NumberFormatter.dollars.string(from: self.orderData.total)!)
-                        .font(.system(size: 17, weight: .semibold, design: .default))
+                    StandardText(NumberFormatter.dollars.string(from: self.orderData.total)!, size: 19, style: .semiBold)
                 }
-                
-                
+            }
+            .listRowInsets(EdgeInsets())
+            FormVStack {
                 LabeledVStack(labelText: "Shipping address") {
                     AddressCellView(address: self.orderData.address!, isSelected: false, navigationAction: {}, editAction: {}, selectedAction: nil)
                 }
-                
+            }
+            .listRowInsets(EdgeInsets())
+            FormVStack {
                 LabeledVStack(labelText: "Payment method") {
-                    if let paymentMethod = self.orderData.paymentMethod {
-                        PaymentMethodCellView(paymentMethod: paymentMethod, isSelected: false, navigationAction: {}, selectedAction: nil)
-                    } else {
-                        Text("Cash on delivery")
-                    }
+                    PaymentMethodCellView(paymentMethod: self.orderData.paymentMethod, isSelected: false, navigationAction: {}, selectedAction: nil)
                 }
             }
+            .listRowInsets(EdgeInsets())
         }
         .fullScreenCover(isPresented: self.$showingThankYou, content: {
-            OrderThankYouView(order: self.orderData.order!, delegate: self.delegate)
+            CheckoutThankYouView(order: self.orderData.order!, delegate: self.delegate)
         })
     }
     

@@ -19,29 +19,48 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="I8j-j6-UnM">
-                    <rect key="frame" x="0.0" y="127" width="414" height="769"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEl-hq-gVv">
+                    <rect key="frame" x="0.0" y="44" width="414" height="64"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wish List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXz-kQ-Ctk">
+                            <rect key="frame" x="167.5" y="20.5" width="79" height="23"/>
+                            <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="19"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86G-jW-qQs">
+                            <rect key="frame" x="12" y="21" width="20" height="22"/>
+                            <state key="normal" image="arrow.backward" catalog="system"/>
+                            <connections>
+                                <action selector="tappedBackButton:" destination="-1" eventType="touchUpInside" id="51U-1k-Uig"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="86G-jW-qQs" firstAttribute="leading" secondItem="gEl-hq-gVv" secondAttribute="leading" constant="12" id="0UH-9G-Psr"/>
+                        <constraint firstItem="OXz-kQ-Ctk" firstAttribute="centerY" secondItem="gEl-hq-gVv" secondAttribute="centerY" id="3gL-s5-Jfo"/>
+                        <constraint firstItem="86G-jW-qQs" firstAttribute="centerY" secondItem="OXz-kQ-Ctk" secondAttribute="centerY" id="c9o-Wy-y9s"/>
+                        <constraint firstItem="OXz-kQ-Ctk" firstAttribute="centerX" secondItem="gEl-hq-gVv" secondAttribute="centerX" id="qPm-Wf-1iF"/>
+                        <constraint firstAttribute="height" constant="64" id="xSp-Gk-D7b"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="I8j-j6-UnM">
+                    <rect key="frame" x="0.0" y="108" width="414" height="788"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wish List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXz-kQ-Ctk">
-                    <rect key="frame" x="172" y="80" width="70" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86G-jW-qQs">
-                    <rect key="frame" x="20" y="79" width="20" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="arrow.backward" catalog="system"/>
-                    <connections>
-                        <action selector="tappedBackButton:" destination="-1" eventType="touchUpInside" id="51U-1k-Uig"/>
-                    </connections>
-                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="gEl-hq-gVv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="J1J-oI-uxX"/>
+                <constraint firstItem="I8j-j6-UnM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OIF-yV-1VC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="I8j-j6-UnM" secondAttribute="trailing" id="P7I-sG-Z4Y"/>
+                <constraint firstItem="I8j-j6-UnM" firstAttribute="top" secondItem="gEl-hq-gVv" secondAttribute="bottom" id="XpQ-o1-47e"/>
+                <constraint firstItem="gEl-hq-gVv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="aLY-Rr-OcA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gEl-hq-gVv" secondAttribute="trailing" id="ikp-R3-1vF"/>
+                <constraint firstItem="I8j-j6-UnM" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="34" id="pVA-6r-mmt"/>
+            </constraints>
             <point key="canvasLocation" x="85.507246376811594" y="131.91964285714286"/>
         </view>
     </objects>

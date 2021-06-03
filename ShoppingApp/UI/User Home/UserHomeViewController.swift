@@ -104,6 +104,7 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
         guard self.tableView != nil else { return }
         self.userHomeMainTableViewCell.nameLabel.text = (user?.firstName ?? "") + " " + (user?.lastName ?? "")
         self.userHomeMainTableViewCell.memberSinceLabel.text = self.memberSinceString
+        self.userHomeMainTableViewCell.profileImageView.image = self.user?.image ?? UIImage(systemName: "person.circle.fill")!
         self.tableView.reloadData()
         self.ordersCollectionView.reloadData()
         self.wishListCollectionView.reloadData()
@@ -126,7 +127,8 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
     
     
     @objc func tappedOrdersButton(_ sender: UIButton){
-        
+        let vc = OrdersListViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func tappedWishListButton(_ sender: UIButton){

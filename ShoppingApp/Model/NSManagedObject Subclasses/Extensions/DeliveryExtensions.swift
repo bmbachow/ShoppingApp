@@ -7,18 +7,32 @@
 
 import Foundation
 
+enum DeliveryStatus: CustomStringConvertible {
+    case preparingShipment
+    case inTransit
+    case delivered
+    
+    var description: String {
+        switch self {
+        case .preparingShipment:
+            return "Preparing Shipment"
+        case .inTransit:
+            return "In Transit"
+        case .delivered:
+            return "Delivered"
+        }
+    }
+}
+
 extension Delivery {
     
-    // add functionality like this in the extensions
-    
-    var isDelivered: Bool {
-        self.deliveredDate != nil
-    }
-    var isInTransit: Bool {
-        self.shippedDate != nil
-            && self.deliveredDate == nil
-    }
-    var isPreparingShipment: Bool {
-        self.shippedDate == nil
+    var status: DeliveryStatus {
+        if self.shippedDate == nil {
+            return .preparingShipment
+        } else if self.deliveredDate == nil {
+            return .inTransit
+        } else {
+            return .delivered
+        }
     }
 }

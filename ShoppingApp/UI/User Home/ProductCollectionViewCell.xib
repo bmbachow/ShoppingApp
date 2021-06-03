@@ -21,16 +21,24 @@
                         <rect key="frame" x="0.0" y="44" width="143" height="135"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dq5-gY-eDu" userLabel="imageGridView" customClass="ImageGridView" customModule="ShoppingApp" customModuleProvider="target">
-                                <rect key="frame" x="12" y="12" width="119" height="111"/>
+                                <rect key="frame" x="15" y="15" width="113" height="105"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yhq-rp-STH">
+                                <rect key="frame" x="10" y="10" width="123" height="115"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Dq5-gY-eDu" firstAttribute="leading" secondItem="aZX-8O-Odt" secondAttribute="leading" constant="12" id="0KS-ll-OOu"/>
-                            <constraint firstAttribute="bottom" secondItem="Dq5-gY-eDu" secondAttribute="bottom" constant="12" id="aqI-Ms-cu2"/>
-                            <constraint firstAttribute="trailing" secondItem="Dq5-gY-eDu" secondAttribute="trailing" constant="12" id="ibo-Vm-LOa"/>
-                            <constraint firstItem="Dq5-gY-eDu" firstAttribute="top" secondItem="aZX-8O-Odt" secondAttribute="top" constant="12" id="tpv-xw-uyJ"/>
+                            <constraint firstItem="Dq5-gY-eDu" firstAttribute="leading" secondItem="aZX-8O-Odt" secondAttribute="leading" constant="15" id="0KS-ll-OOu"/>
+                            <constraint firstItem="Yhq-rp-STH" firstAttribute="trailing" secondItem="Dq5-gY-eDu" secondAttribute="trailing" constant="5" id="Bq1-N5-MSj"/>
+                            <constraint firstItem="Yhq-rp-STH" firstAttribute="leading" secondItem="Dq5-gY-eDu" secondAttribute="leading" constant="-5" id="Dcj-ew-0qE"/>
+                            <constraint firstAttribute="bottom" secondItem="Dq5-gY-eDu" secondAttribute="bottom" constant="15" id="aqI-Ms-cu2"/>
+                            <constraint firstItem="Yhq-rp-STH" firstAttribute="bottom" secondItem="Dq5-gY-eDu" secondAttribute="bottom" constant="5" id="fVe-eI-JLK"/>
+                            <constraint firstAttribute="trailing" secondItem="Dq5-gY-eDu" secondAttribute="trailing" constant="15" id="ibo-Vm-LOa"/>
+                            <constraint firstItem="Yhq-rp-STH" firstAttribute="top" secondItem="Dq5-gY-eDu" secondAttribute="top" constant="-5" id="qHx-6C-pEQ"/>
+                            <constraint firstItem="Dq5-gY-eDu" firstAttribute="top" secondItem="aZX-8O-Odt" secondAttribute="top" constant="15" id="tpv-xw-uyJ"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -44,6 +52,7 @@
             </constraints>
             <size key="customSize" width="143" height="179"/>
             <connections>
+                <outlet property="borderView" destination="Yhq-rp-STH" id="sUZ-vu-8r7"/>
                 <outlet property="imageGridView" destination="Dq5-gY-eDu" id="bkE-fj-kQy"/>
             </connections>
             <point key="canvasLocation" x="83.333333333333343" y="116.85267857142857"/>

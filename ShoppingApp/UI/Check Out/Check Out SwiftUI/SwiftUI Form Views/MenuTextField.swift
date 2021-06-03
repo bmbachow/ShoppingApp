@@ -31,7 +31,7 @@ struct MenuTextField<ChoiceType: CustomStringConvertible>: View {
                 .foregroundColor(.white)
             HStack {
                 Text(self.choices[self.choiceIndex].description)
-                    .font(.system(size: self.fontSize))
+                    .font(Font(UIConstants.standardFont(size: self.fontSize, style: .regular)))
                     .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
                 Spacer()
             }

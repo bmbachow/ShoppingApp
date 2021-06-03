@@ -14,9 +14,8 @@ struct StandardButton: View {
     
     var body: some View {
         Button(action: self.action, label: {
-            Text(self.labelText)
+            StandardText(self.labelText, size: 17, style: .bold)
                 .foregroundColor(Color(UIColor.link))
-                .fontWeight(.bold)
         })
         .buttonStyle(PlainButtonStyle())
     }

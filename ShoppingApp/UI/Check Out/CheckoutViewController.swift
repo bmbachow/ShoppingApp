@@ -1,5 +1,5 @@
 //
-//  OrderViewController.swift
+//  CheckoutViewController.swift
 //  ShoppingApp
 //
 //  Created by Robert Olieman on 5/27/21.
@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-class OrderViewController: BaseViewController, SwiftUIOrderViewDelegate {
+class CheckoutViewController: BaseViewController, SwiftUICheckoutViewDelegate {
     
     let orderData: OrderData
     let cancelAction: () -> Void
@@ -23,7 +23,7 @@ class OrderViewController: BaseViewController, SwiftUIOrderViewDelegate {
         self.orderConfirmedAction = confirmedOrderAction
         self.orderData = orderData
         super.init(nibName: nil, bundle: nil)
-        self.hostingController = OrderNavigationView(remoteAPI: remoteAPI, orderData: self.orderData, delegate: self).wrappedInUIHostingController()
+        self.hostingController = CheckoutNavigationView(remoteAPI: remoteAPI, orderData: self.orderData, delegate: self).wrappedInUIHostingController()
         self.addChild(hostingController)
         self.view.addSubview(hostingController.view)
         self.hostingController.view.translatesAutoresizingMaskIntoConstraints = false

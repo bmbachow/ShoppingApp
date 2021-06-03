@@ -42,12 +42,12 @@ struct AddressCellView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Spacer()
                         .frame(height: 8)
-                    Text(address.fullName ?? "name?")
-                    Text(address.streetAddress ?? "streetAddress?")
+                    StandardText(address.fullName ?? "name?")
+                    StandardText(address.streetAddress ?? "streetAddress?")
                     if let streetAddress2 = address.streetAddress2 {
-                        Text(streetAddress2)
+                        StandardText(streetAddress2)
                     }
-                    Text(self.addressCityStateZipString)
+                    StandardText(self.addressCityStateZipString)
                 }
                 Spacer()
             }

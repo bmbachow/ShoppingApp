@@ -9,11 +9,15 @@ import Foundation
 
 extension Order {
     
-    static let defaultTaxRate: Double = 0.08
-    
-    static let freeShippingThreshold: Double = 200
-    
     var cartItemsArray: [CartItem] {
         self.cartItems?.array as? [CartItem] ?? []
+    }
+    
+    var deliveryStatus: DeliveryStatus {
+        return self.delivery?.status ?? .preparingShipment
+    }
+    
+    var total: Double {
+        return self.subtotal + self.tax + self.shippingPrice
     }
 }

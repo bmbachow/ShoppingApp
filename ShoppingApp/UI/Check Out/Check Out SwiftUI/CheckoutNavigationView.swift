@@ -1,5 +1,5 @@
 //
-//  OrderNavigationView.swift
+//  CheckoutNavigationView.swift
 //  ShoppingApp
 //
 //  Created by Robert Olieman on 5/28/21.
@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-protocol SwiftUIOrderViewDelegate: AnyObject {
+protocol SwiftUICheckoutViewDelegate: AnyObject {
     func cancel()
     func orderConfirmed(_ order: Order)
 }
 
-struct OrderNavigationView: View {
+struct CheckoutNavigationView: View {
     
     let remoteAPI: RemoteAPI
     @ObservedObject var orderData: OrderData
     
-    weak var delegate: SwiftUIOrderViewDelegate?
+    weak var delegate: SwiftUICheckoutViewDelegate?
     
     var body: some View {
         NavigationView {

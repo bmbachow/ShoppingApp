@@ -20,7 +20,7 @@ struct ChooseView: View {
     @State var editAddressSelection: Address?
     let mode: ChooseView.Mode
     
-    weak var delegate: SwiftUIOrderViewDelegate?
+    weak var delegate: SwiftUICheckoutViewDelegate?
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -48,7 +48,7 @@ struct ChooseView: View {
         case .address:
             return AnyView(ChooseView(remoteAPI: self.remoteAPI, orderData: self.orderData, mode: .paymentMethod, delegate: self.delegate))
         case .paymentMethod:
-            return AnyView(OrderConfirmationView(remoteAPI: self.remoteAPI, orderData: self.orderData, delegate: self.delegate))
+            return AnyView(CheckoutConfirmationView(remoteAPI: self.remoteAPI, orderData: self.orderData, delegate: self.delegate))
         }
     }
     
@@ -118,32 +118,30 @@ struct ChooseView: View {
                     }
                     
                 } else {
-                    Text(self.emptyMessageForCurrentMode)
+                    StandardText(self.emptyMessageForCurrentMode)
                 }
                 switch self.mode {
                 case .address:
-                    Button(action: { self.navigationSelection = 2 }, label: {
-                        Text("Add new address")
-                            .foregroundColor(Color(UIColor.link))
-                            .fontWeight(.bold)
-                    })
+                    StandardButton(action: {
+                        self.navigationSelection = 2
+                    }, labelText: "Add new address")
                     .buttonStyle(BorderlessButtonStyle())
                 case .paymentMethod:
                     Menu {
                         Button(action: {
                             self.navigationSelection = 4
                         }, label: {
-                            Text("Credit or debit card")
+                            StandardText("Credit or debit card")
                         })
                         Button(action: {
                             self.navigationSelection = 5
                         }, label: {
-                            Text("Personal checking account")
+                            StandardText("Personal checking account")
                         })
                     } label: {
                         Text("Add new payment method")
+                            .font(Font(UIConstants.standardFont(size: 17, style: .bold)))
                             .foregroundColor(Color(UIColor.link))
-                            .fontWeight(.bold)
                     }
                     StandardButton(action: {
                         self.orderData.paymentMethod = nil

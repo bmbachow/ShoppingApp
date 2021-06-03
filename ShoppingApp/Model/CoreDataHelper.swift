@@ -279,7 +279,8 @@ class CoreDataHelper: RemoteAPI {
         order.orderedDate = Date()
         
         let delivery = Delivery(context: self.viewContext)
-        order.delivery = delivery
+        delivery.order = order
+        delivery.address = address
         
         //MARK: TODO: delivery
         //we need some silly way to simulate delivery data

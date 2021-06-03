@@ -8,7 +8,21 @@
 import Foundation
 import UIKit
 
+enum FontStyle: String {
+    case regular = ""
+    case bold = "-Bold"
+    case boldItalic = "-BoldItalic"
+    case italic = "-Italic"
+    case light = "-Light"
+    case lightItalic = "-LightItalic"
+    case semiBold = "-SemiBold"
+    case semiBoldItalic = "-SemiBoldItalic"
+    case ultraBold = "-UltraBold"
+}
+
 class UIConstants {
     static let topBarHeight: CGFloat = 64
-    
+    static func standardFont(size: CGFloat, style: FontStyle) -> UIFont {
+        return UIFont(name: "GillSans" + style.rawValue, size: size)!
+    }
 }

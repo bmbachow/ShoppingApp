@@ -24,7 +24,7 @@ struct LabeledVStack<Content>: View where Content: View {
         VStack(alignment: .leading, spacing: 4) {
             if let labelText = self.labelText {
                 Text(labelText)
-                    .font(.system(size: 14, weight: .semibold, design: .default))
+                    .font(Font(UIConstants.standardFont(size: 14, style: .semiBold)))
             }
             self.content()
         }

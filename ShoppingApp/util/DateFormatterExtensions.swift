@@ -14,6 +14,12 @@ extension DateFormatter {
         return formatter
     }
     
+    static var standardDateFullMonth: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, MMMM d, yyyy"
+        return formatter
+    }
+    
     static var standardTime: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"

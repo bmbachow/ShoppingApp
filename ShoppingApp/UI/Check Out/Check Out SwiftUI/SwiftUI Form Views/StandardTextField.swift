@@ -30,7 +30,7 @@ struct StandardTextField: View {
                 .foregroundColor(.white)
 
             TextField(self.titleKey, text: self.text)
-                .font(.system(size: self.fontSize))
+                .font(Font(UIConstants.standardFont(size: self.fontSize, style: .regular)))
                 .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
         }
  

@@ -17,6 +17,7 @@ struct StandardToggle: View {
             Toggle("", isOn: self.$isOn)
                 .labelsHidden()
             Text(self.titleText)
+                .font(Font(UIConstants.standardFont(size: 17, style: .regular)))
             Spacer()
         }
     }
