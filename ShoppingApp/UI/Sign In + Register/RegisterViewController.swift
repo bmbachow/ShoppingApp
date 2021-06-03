@@ -8,8 +8,6 @@
 import UIKit
 
 class RegisterViewController: BaseViewController {
-
-    
     
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
@@ -75,10 +73,6 @@ class RegisterViewController: BaseViewController {
                 print(error.localizedDescription)
             }
         }
-        
-        
-        
-        
     }
     
     @IBAction func tappedSignInButton(_ sender: UIButton) {
