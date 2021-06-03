@@ -32,7 +32,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14M-Oe-Aup" customClass="roundButton" customModule="ShoppingApp" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14M-Oe-Aup" customClass="RoundButton" customModule="ShoppingApp" customModuleProvider="target">
                     <rect key="frame" x="130" y="407" width="154" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.66178721539999996" green="0.68710139299999995" blue="1" alpha="0.64423694350000005" colorSpace="custom" customColorSpace="sRGB"/>
