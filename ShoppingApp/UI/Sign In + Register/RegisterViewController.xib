@@ -126,6 +126,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
                     <state key="normal" title="Sign in here"/>
+                    <connections>
+                        <action selector="tappedSignInButton:" destination="-1" eventType="touchUpInside" id="Q5e-PD-Dng"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

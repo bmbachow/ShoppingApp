@@ -43,6 +43,7 @@ class WishListViewController: UserTabViewController, UITableViewDelegate, UITabl
         cell.delegate = self
         cell.productImageView.image = product.image
         cell.nameLabel.text = product.name
+        cell.priceLabel.text =  NumberFormatter.dollars.string(from: product.price)
         return cell
     }
     

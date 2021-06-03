@@ -12,6 +12,8 @@ class SignInViewController: BaseViewController {
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var pass: UITextField!
     
+    var tappedRegisterAction: (() -> Void)
+    
     weak var presentingUserTabViewController: UserTabViewController?
     
     override func viewDidLoad() {
@@ -26,8 +28,9 @@ class SignInViewController: BaseViewController {
         }
     }
     
-    init(presentingUserTabViewController: UserTabViewController?) {
+    init(presentingUserTabViewController: UserTabViewController?, tappedRegisterAction: @escaping () -> Void) {
         self.presentingUserTabViewController = presentingUserTabViewController
+        self.tappedRegisterAction = tappedRegisterAction
         super.init(nibName: "SignInViewController", bundle: nil)
     }
     
@@ -57,14 +60,7 @@ class SignInViewController: BaseViewController {
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func tappedRegisterButton(_ sender: UIButton) {
+        self.tappedRegisterAction()
     }
-    */
-
 }
