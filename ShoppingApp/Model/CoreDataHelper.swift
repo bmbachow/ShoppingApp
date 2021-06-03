@@ -642,7 +642,9 @@ class CoreDataHelper: RemoteAPI {
                 try! self.addProductToCartSync(product: product, user: user)
             }
             let orderData1 = OrderData(user: user)
-            let _ = try! self.placeOrderSync(user: user, subtotal: user.cartSubtotal, shippingPrice: orderData1.calculatedShipping, tax: orderData1.calculatedTax, address: address, paymentMethod: paymentMethod)
+            let order = try! self.placeOrderSync(user: user, subtotal: user.cartSubtotal, shippingPrice: orderData1.calculatedShipping, tax: orderData1.calculatedTax, address: address, paymentMethod: paymentMethod)
+            order.delivery?.shippedDate = Date()
+            order.delivery?.deliveredDate = Date()
         }
         
         let user2 = try! postNewUserSync(firstName: "Mark", lastName: "Zuckerberg", email: "mark@facebook.com", phoneNumber: "0987654321", password: "Facebook1!")

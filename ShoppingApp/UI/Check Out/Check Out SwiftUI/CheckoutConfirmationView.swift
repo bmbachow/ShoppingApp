@@ -116,7 +116,7 @@ struct CheckoutConfirmationView: View {
                         }, labelText: "Place order")
                     }
                     
-                    ForEach(self.orderData.user.cartItemsArray) { cartItem in
+                    ForEach(self.cartItems) { cartItem in
                         FormHStack {
                             ZStack {
                                 Image(uiImage: cartItem.product?.image ?? UIImage(systemName: "questionmark")!)
