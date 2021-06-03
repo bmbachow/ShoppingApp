@@ -7,19 +7,16 @@
 
 import UIKit
 
-class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
-
+class UserHomeViewController: UserViewController, UITableViewDelegate, UITableViewDataSource {
     
     
-    @IBOutlet weak var tableView: UITableView!
-    
-    weak var ordersCollectionView: UICollectionView!
-    
-    weak var ordersButton: UIButton!
-    
-    weak var wishListButton: UIButton!
-    
-    weak var wishListCollectionView: UICollectionView!
+    @IBOutlet override weak var tableView: UITableView! {
+        get {
+            return super.tableView
+        } set {
+            super.tableView = newValue
+        }
+    }
     
     weak var signOutButton: UIButton!
     
@@ -42,32 +39,6 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
         return cell
     }()
     
-    lazy private var ordersCollectionTableViewCell: ProductsCollectionTableViewCell = {
-        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "OrdersCollectionTableViewCell") as? ProductsCollectionTableViewCell else {
-            fatalError("Unable to dequeue ProductsCollectionTableViewCell")
-        }
-        self.ordersButton = cell.button
-        cell.button.addTarget(self, action: #selector(self.tappedOrdersButton(_:)), for: .touchUpInside)
-        cell.button.setTitle("Orders", for: .normal)
-        self.ordersCollectionView = cell.collectionView
-        self.ordersCollectionView.delegate = self
-        self.ordersCollectionView.dataSource = self
-        return cell
-    }()
-    
-    lazy private var wishListCollectionTableViewCell: ProductsCollectionTableViewCell = {
-        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "WishListCollectionTableViewCell") as? ProductsCollectionTableViewCell else {
-            fatalError("Unable to dequeue ProductsCollectionTableViewCell")
-        }
-        self.wishListButton = cell.button
-        cell.button.addTarget(self, action: #selector(self.tappedWishListButton(_:)), for: .touchUpInside)
-        cell.button.setTitle("Wish List", for: .normal)
-        self.wishListCollectionView = cell.collectionView
-        self.wishListCollectionView.delegate = self
-        self.wishListCollectionView.dataSource = self
-        return cell
-    }()
-    
     lazy private var userHomeStuffCell: UserHomeStuffCell = {
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "UserHomeStuffCell") as? UserHomeStuffCell else {
             fatalError("Unable to dequeue UserHomeStuffCell")
@@ -87,10 +58,10 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
         self.tableView.register(UINib(nibName: "ProductsCollectionTableViewCell", bundle: nil), forCellReuseIdentifier: "OrdersCollectionTableViewCell")
         self.tableView.register(UINib(nibName: "ProductsCollectionTableViewCell", bundle: nil), forCellReuseIdentifier: "WishListCollectionTableViewCell")
         self.tableView.register(UINib(nibName: "UserHomeStuffCell", bundle: nil), forCellReuseIdentifier: "UserHomeStuffCell")
-        let _ = self.ordersCollectionTableViewCell
-        let _ = self.wishListCollectionTableViewCell
-        self.ordersCollectionView.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductCollectionViewCell")
-        self.wishListCollectionView.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductCollectionViewCell")
+        
+        // this must be called after tableView is set up
+        self.setUpCollectionViews()
+        
         NSLayoutConstraint.activate([
             userNotSignedInViewController.view.topAnchor.constraint(equalTo: self.view.topAnchor),
             userNotSignedInViewController.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
@@ -141,18 +112,6 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
     
     
     
-    
-    @objc func tappedOrdersButton(_ sender: UIButton){
-        let vc = OrdersListViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @objc func tappedWishListButton(_ sender: UIButton){
-        let vc = WishListViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    
     @objc func tappedSignOutButton(_ sender: UIButton){
         self.user = nil
         self.presentSignInViewController()
@@ -201,41 +160,5 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
         }
         
     }
-    
-    //MARK: UICollectionView
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == self.ordersCollectionView {
-            return self.user?.ordersArray.count ?? 0
-        } else {
-            return self.user?.wishListProductsArray.count ?? 0
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == self.ordersCollectionView {
-            var images = [UIImage]()
-            if let cartItemsArray = self.user?.ordersArray[indexPath.row].cartItemsArray {
-                for cartItem in cartItemsArray {
-                    if let image = cartItem.product?.image {
-                        images += [image]
-                    }
-                }
-            }
-            guard let cell = self.wishListCollectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath) as? ProductCollectionViewCell else {
-                fatalError("Unable to dequeue ProductCollectionViewCell")
-            }
-            cell.imageGridView.setImages(images)
-            return cell
-        } else {
-            let product = self.user?.wishListProductsArray[indexPath.row]
-            guard let cell = self.wishListCollectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath) as? ProductCollectionViewCell else {
-                fatalError("Unable to dequeue ProductCollectionViewCell")
-            }
-            if let image = product?.image {
-                cell.imageGridView.setImages([image])
-            }
-            return cell
-        }
-    }
+
 }

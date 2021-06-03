@@ -7,10 +7,17 @@
 
 import UIKit
 
-class UserNotSignedInViewController: UserTabViewController, UITableViewDelegate, UITableViewDataSource {
+class UserNotSignedInViewController: UserViewController, UITableViewDelegate, UITableViewDataSource {
     var bcColor = UIView()
     @IBOutlet weak var signInButton: UIButton!
-    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet override weak var tableView: UITableView! {
+        get {
+            return super.tableView
+        } set {
+            super.tableView = newValue
+        }
+    }
     
     private var imageData = ["shoppingimg","wishlistimg","reviewimg"]
     private var textData = ["Shop with us and get the best deals on the market!","Add items to your wishlist for later purchases!","Create a review for your favorite products!"]
@@ -19,6 +26,11 @@ class UserNotSignedInViewController: UserTabViewController, UITableViewDelegate,
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: "UserNotSignInTableViewCell", bundle: nil), forCellReuseIdentifier: "UserNotSignInTableViewCell")
+        self.tableView.register(UINib(nibName: "ProductsCollectionTableViewCell", bundle: nil), forCellReuseIdentifier: "OrdersCollectionTableViewCell")
+        self.tableView.register(UINib(nibName: "ProductsCollectionTableViewCell", bundle: nil), forCellReuseIdentifier: "WishListCollectionTableViewCell")
+        
+        
+        self.setUpCollectionViews()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -36,19 +48,29 @@ class UserNotSignedInViewController: UserTabViewController, UITableViewDelegate,
         self.presentSignUpViewController()
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier:  "UserNotSignInTableViewCell") as! UserNotSignInTableViewCell
-        cell.img.image = UIImage(named: imageData[indexPath.row])
-        cell.label.text = textData[indexPath.row]
-        cell.backgroundColor = .clear
-        bcColor.backgroundColor = .systemGray5
-        cell.selectedBackgroundView = bcColor
-        return cell
+        switch indexPath.section {
+        case 0:
+            let cell = self.tableView.dequeueReusableCell(withIdentifier:  "UserNotSignInTableViewCell") as! UserNotSignInTableViewCell
+            cell.img.image = UIImage(named: imageData[indexPath.row])
+            cell.label.text = textData[indexPath.row]
+            cell.backgroundColor = .clear
+            bcColor.backgroundColor = .systemGray5
+            cell.selectedBackgroundView = bcColor
+            return cell
+        default:
+            return self.wishListCollectionTableViewCell
+        }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return imageData.count
+        switch section {
+        case 0:
+            return imageData.count
+        default:
+            return 1
+        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension

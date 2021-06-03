@@ -48,6 +48,7 @@
 		52286E062668FDEE003B2181 /* UserHomeStuffCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52286E042668FDEE003B2181 /* UserHomeStuffCell.xib */; };
 		52286E0A26690373003B2181 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52286E0926690373003B2181 /* BaseTableViewCell.swift */; };
 		52286E0C26690AE0003B2181 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52286E0B26690AE0003B2181 /* Assets.xcassets */; };
+		52286E0E26693120003B2181 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52286E0D26693120003B2181 /* UserViewController.swift */; };
 		522A96A9266849BF00DE4C98 /* StandardText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A96A8266849BF00DE4C98 /* StandardText.swift */; };
 		522A96AC266855C000DE4C98 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A96AB266855C000DE4C98 /* OrderDetailViewController.swift */; };
 		524CFECE2662724900B72981 /* LabeledTextFieldSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CFECD2662724900B72981 /* LabeledTextFieldSet.swift */; };
@@ -210,6 +211,7 @@
 		52286E042668FDEE003B2181 /* UserHomeStuffCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserHomeStuffCell.xib; sourceTree = "<group>"; };
 		52286E0926690373003B2181 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		52286E0B26690AE0003B2181 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		52286E0D26693120003B2181 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		522A96A8266849BF00DE4C98 /* StandardText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardText.swift; sourceTree = "<group>"; };
 		522A96AB266855C000DE4C98 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 		524CFECD2662724900B72981 /* LabeledTextFieldSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextFieldSet.swift; sourceTree = "<group>"; };
@@ -662,6 +664,7 @@
 				522458872666CEFF00CB89F6 /* ImageGridView.swift */,
 				52286E032668FDEE003B2181 /* UserHomeStuffCell.swift */,
 				52286E042668FDEE003B2181 /* UserHomeStuffCell.xib */,
+				52286E0D26693120003B2181 /* UserViewController.swift */,
 			);
 			path = "User Home";
 			sourceTree = "<group>";
@@ -892,6 +895,7 @@
 				5267258F265B0D3F00D9CAB9 /* UserDefaultsHelper.swift in Sources */,
 				52672589265AECA600D9CAB9 /* LoginCredentials.swift in Sources */,
 				524CFED92662812500B72981 /* FormHStack.swift in Sources */,
+				52286E0E26693120003B2181 /* UserViewController.swift in Sources */,
 				52E3627C265FC9E8004D6FD3 /* OrderData.swift in Sources */,
 				52FCE8D726653EB70076C438 /* LabeledVStack.swift in Sources */,
 				524CFECE2662724900B72981 /* LabeledTextFieldSet.swift in Sources */,
