@@ -7,10 +7,7 @@
 
 import UIKit
 
-class ShoppingProductPreviewTableViewCell:
-    
-
-    UITableViewCell {
+class ShoppingProductPreviewTableViewCell: BaseTableViewCell {
     
     @IBOutlet weak var productName: UILabel!
         

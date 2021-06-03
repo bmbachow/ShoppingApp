@@ -11,7 +11,7 @@ protocol OrderPreviewTableViewCellDelegate: AnyObject {
     func tappedNext(inCell cell: OrderPreviewTableViewCell)
 }
 
-class OrderPreviewTableViewCell: UITableViewCell {
+class OrderPreviewTableViewCell: BaseTableViewCell {
 
     @IBOutlet weak var orderItemStackView: UIStackView!
     

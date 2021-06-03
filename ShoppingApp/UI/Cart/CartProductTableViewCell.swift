@@ -12,7 +12,7 @@ protocol CartProductTableViewCellDelegate: AnyObject {
     func tappedDeleteButton(inCell cell: CartProductTableViewCell)
 }
 
-class CartProductTableViewCell: UITableViewCell {
+class CartProductTableViewCell: BaseTableViewCell {
     
     @IBOutlet weak var productImageView: UIImageView!
     

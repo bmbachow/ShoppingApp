@@ -116,8 +116,13 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         case 0:
             return
         default:
-            let viewController = ProductDetailViewController(product: self.products[indexPath.row])
-            self.navigationController?.pushViewController(viewController, animated: true)
+            guard let cell = self.tableView.cellForRow(at: indexPath) as? BaseTableViewCell else {
+                fatalError("Unable to get reference to cell")
+            }
+            cell.showSelection(true, animated: true, completion: {
+                let viewController = ProductDetailViewController(product: self.products[indexPath.row])
+                self.navigationController?.pushViewController(viewController, animated: true)
+            })
         }
     }
 }
@@ -163,7 +168,7 @@ extension ShoppingViewController: UICollectionViewDataSource{
     }
 }
 
-extension ShoppingViewController : MyCollectionViewCellDelegate{
+extension ShoppingViewController : MyCollectionViewCellDelegate {
     
     func tappedCategoryButton(in cell: MyCollectionViewCell) {
         guard let indexPath = self.collectionView.indexPath(for: cell) else {

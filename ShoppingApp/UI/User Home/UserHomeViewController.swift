@@ -21,6 +21,8 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
     
     weak var wishListCollectionView: UICollectionView!
     
+    weak var signOutButton: UIButton!
+    
     private let userNotSignedInViewController = UserNotSignedInViewController()
     
     private var shouldHideUserNotSignedInViewController: Bool {
@@ -70,6 +72,8 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "UserHomeStuffCell") as? UserHomeStuffCell else {
             fatalError("Unable to dequeue UserHomeStuffCell")
         }
+        self.signOutButton = cell.signOutButton
+        cell.signOutButton.addTarget(self, action: #selector(self.tappedSignOutButton(_:)), for: .touchUpInside)
         return cell
     }()
 
@@ -98,14 +102,16 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.userNotSignedInViewController.view.isHidden = self.shouldHideUserNotSignedInViewController
+        self.refreshUserNotSignedInVisibility()
     }
     
     override func userChanged() {
-        guard self.tableView != nil else { return }
         super.userChanged()
         self.refreshData()
-        self.userNotSignedInViewController.view.isHidden = self.shouldHideUserNotSignedInViewController
+    }
+    
+    func refreshUserNotSignedInVisibility() {
+            self.userNotSignedInViewController.view.isHidden = self.shouldHideUserNotSignedInViewController
     }
     
     func refreshData() {
@@ -117,6 +123,7 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
         self.tableView.reloadData()
         self.ordersCollectionView.reloadData()
         self.wishListCollectionView.reloadData()
+        self.refreshUserNotSignedInVisibility()
     }
     
     override func cartChanged() {
@@ -146,6 +153,10 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
     }
     
     
+    @objc func tappedSignOutButton(_ sender: UIButton){
+        self.user = nil
+        self.presentSignInViewController()
+    }
     
     
     

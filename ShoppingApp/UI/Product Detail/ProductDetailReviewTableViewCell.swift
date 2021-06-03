@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductDetailReviewTableViewCell: UITableViewCell {
+class ProductDetailReviewTableViewCell: BaseTableViewCell {
     
     @IBOutlet weak var usernameTextView: UITextView!
     

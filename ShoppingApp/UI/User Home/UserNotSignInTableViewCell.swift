@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserNotSignInTableViewCell: UITableViewCell {
+class UserNotSignInTableViewCell: BaseTableViewCell {
 
 
     @IBOutlet weak var img: UIImageView!

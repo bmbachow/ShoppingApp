@@ -12,7 +12,7 @@ protocol WishListTableViewCellDelegate: AnyObject {
     func tappedDeleteButton(inCell cell: WishListTableViewCell)
 }
 
-class WishListTableViewCell: UITableViewCell {
+class WishListTableViewCell: BaseTableViewCell {
     
     @IBOutlet weak var productImageView: UIImageView!
     

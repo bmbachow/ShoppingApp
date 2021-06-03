@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductDetailMainTableViewCell: UITableViewCell {
+class ProductDetailMainTableViewCell: BaseTableViewCell {
 
     
     @IBOutlet weak var productNameLabel: UILabel!

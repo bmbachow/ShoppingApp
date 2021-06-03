@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductDetailReviewHeaderTableViewCell: UITableViewCell {
+class ProductDetailReviewHeaderTableViewCell: BaseTableViewCell {
 
     @IBOutlet weak var writeAReviewButton: UIButton!
     

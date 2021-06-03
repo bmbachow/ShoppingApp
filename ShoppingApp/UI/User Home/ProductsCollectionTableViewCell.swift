@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductsCollectionTableViewCell: UITableViewCell {
+class ProductsCollectionTableViewCell: BaseTableViewCell {
     
     @IBOutlet weak var button: UIButton!
     

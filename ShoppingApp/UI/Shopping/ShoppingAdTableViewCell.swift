@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShoppingAdTableViewCell: UITableViewCell {
+class ShoppingAdTableViewCell: BaseTableViewCell {
     
     @IBOutlet weak var shoppingImage: UIImageView!
     

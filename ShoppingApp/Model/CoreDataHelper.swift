@@ -645,6 +645,10 @@ class CoreDataHelper: RemoteAPI {
             let _ = try! self.placeOrderSync(user: user, subtotal: user.cartSubtotal, shippingPrice: orderData1.calculatedShipping, tax: orderData1.calculatedTax, address: address, paymentMethod: paymentMethod)
         }
         
+        let user2 = try! postNewUserSync(firstName: "Mark", lastName: "Zuckerberg", email: "mark@facebook.com", phoneNumber: "0987654321", password: "Facebook1!")
+        
+        user2.setImageDataFromImage(UIImage(named: "mark")!)
+        
         for product in try! self.getRandomProducts(count: 4) {
             try! self.addProductToCartSync(product: product, user: user)
         }
@@ -652,6 +656,8 @@ class CoreDataHelper: RemoteAPI {
         for product in try! self.getRandomProducts(count: 8) {
             try! self.addProductToWishListSync(product: product, user: user)
         }
+        
+        
         
         try? self.viewContext.save()
         

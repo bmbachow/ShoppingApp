@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserHomeStuffCell: UITableViewCell {
+class UserHomeStuffCell: BaseTableViewCell {
     
     @IBOutlet weak var balanceLabel: UILabel!
     
