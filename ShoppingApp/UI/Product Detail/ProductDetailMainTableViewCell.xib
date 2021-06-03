@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -36,10 +36,13 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xqy-Mj-VVl">
-                        <rect key="frame" x="223.5" y="628" width="86" height="32"/>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xqy-Mj-VVl" customClass="roundButton" customModule="ShoppingApp" customModuleProvider="target">
+                        <rect key="frame" x="182" y="615" width="169" height="45"/>
+                        <color key="backgroundColor" red="0.66274509800000003" green="0.68627450980000004" blue="1" alpha="0.64423694350000005" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
-                        <state key="normal" title="Add to Cart"/>
+                        <state key="normal" title="Add to Cart">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
                     </button>
                     <view userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="CVI-vB-RsN" customClass="CosmosView" customModule="ShoppingApp" customModuleProvider="target">
                         <rect key="frame" x="12" y="553.5" width="261" height="35"/>
@@ -71,15 +74,18 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ban-xf-PSS" userLabel="Add to Wish List">
-                        <rect key="frame" x="208" y="666" width="117" height="45"/>
+                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ban-xf-PSS" userLabel="Add to Wish List" customClass="roundButton" customModule="ShoppingApp" customModuleProvider="target">
+                        <rect key="frame" x="182" y="668" width="169" height="45"/>
+                        <color key="backgroundColor" red="0.66274509800000003" green="0.68627450980000004" blue="1" alpha="0.64423694350000005" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
-                        <state key="normal" title="Add to Wish List"/>
+                        <state key="normal" title="Add to Wish List">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
                     </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Xqy-Mj-VVl" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="27r-3u-Q7N"/>
-                    <constraint firstAttribute="bottom" secondItem="Ban-xf-PSS" secondAttribute="bottom" constant="20" id="EcA-Og-gHM"/>
+                    <constraint firstAttribute="bottom" secondItem="Ban-xf-PSS" secondAttribute="bottom" constant="18" id="EcA-Og-gHM"/>
                     <constraint firstItem="e7D-ft-KEk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="JfZ-w4-ntm"/>
                     <constraint firstItem="e9B-p6-Lwo" firstAttribute="top" secondItem="fKO-ri-zdA" secondAttribute="bottom" constant="8" id="Roq-iP-kkn"/>
                     <constraint firstItem="e9B-p6-Lwo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="SC1-Qw-MYk"/>
