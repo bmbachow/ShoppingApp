@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var shoppingViewController: ShoppingViewController?
     
-    var userHomeViewController: UserHomeViewController?
+    var userHomeViewController: UserHomeSignedInViewController?
     
     var cartViewController: CartViewController?
     
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.shoppingViewController = ShoppingViewController()
         
-        self.userHomeViewController = UserHomeViewController()
+        self.userHomeViewController = UserHomeSignedInViewController()
         
         self.cartViewController = CartViewController()
         

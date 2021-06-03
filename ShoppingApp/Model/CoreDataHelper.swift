@@ -22,15 +22,15 @@ class CoreDataHelper: RemoteAPI {
         self.seedDatabaseIfEmpty()
     }
     //MARK: User
-    func postNewUser(firstName: String, lastName: String, email: String?, phoneNumber: String?, password: String, success: (User) -> Void, failure: (Error) -> Void) {
+    func postNewUser(firstName: String, lastName: String, email: String?, phoneNumber: String?, password: String, anonymousUser: AnonymousUser?, success: (User) -> Void, failure: (Error) -> Void) {
         do {
-            let user = try self.postNewUserSync(firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber, password: password)
+            let user = try self.postNewUserSync(firstName: firstName, lastName: lastName, email: email, phoneNumber: phoneNumber, password: password, anonymousUser: anonymousUser)
             success(user)
         } catch {
             failure(error)
         }
     }
-    private func postNewUserSync(firstName: String, lastName: String, email: String?, phoneNumber: String?, password: String) throws -> User {
+    private func postNewUserSync(firstName: String, lastName: String, email: String?, phoneNumber: String?, password: String, anonymousUser: AnonymousUser?) throws -> User {
         guard email != nil || phoneNumber != nil else {
             throw CoreDataHelperError.validationError("User must have email or phoneNumber.")
         }
@@ -67,7 +67,7 @@ class CoreDataHelper: RemoteAPI {
         return user
     }
     
-    func authenticateAndGetUser(emailOrPhoneNumber: String, password: String, success: (User?) -> Void, failure: (Error) -> Void) {
+    func authenticateAndGetUser(emailOrPhoneNumber: String, password: String, anonymousUser: AnonymousUser?, success: (User?) -> Void, failure: (Error) -> Void) {
         do {
             guard let user = try getUserSync(emailOrPhoneNumber: emailOrPhoneNumber) else {
                 return success(nil)
@@ -76,6 +76,16 @@ class CoreDataHelper: RemoteAPI {
                 return failure(CoreDataHelperError.dataCorruption("Unable to retrieve password from DB."))
             }
             if bcryptHasher.verify(password, matchesHash: hashedPassword) {
+                if let anonymousUser = anonymousUser {
+                    for cartItem in anonymousUser.cartItemsArray {
+                        cartItem.user = user
+                    }
+                    for wishListProduct in anonymousUser.wishListProductsArray {
+                        anonymousUser.removeFromWishListProducts(wishListProduct)
+                        user.addToWishListProducts(wishListProduct)
+                    }
+                }
+                try self.viewContext.save()
                 success(user)
             } else {
                 success(nil)
@@ -119,6 +129,39 @@ class CoreDataHelper: RemoteAPI {
         } catch {
             failure(error)
         }
+    }
+    
+    //MARK: AnonymousUser
+    
+    func getAnonymousUserOrCreateIfNotExists(uuid: UUID, success: (AnonymousUser) -> Void, failure: (Error) -> Void) {
+        let anonymousUser: AnonymousUser
+        do {
+            if let user = try getAnonymousUserSync(uuid: uuid) {
+                anonymousUser = user
+            } else {
+                anonymousUser = AnonymousUser(context: self.viewContext)
+                anonymousUser.uuid = uuid
+            }
+            success(anonymousUser)
+        } catch  {
+            failure(error)
+        }
+    }
+    
+    private func getAnonymousUserSync(uuid: UUID) throws -> AnonymousUser? {
+        let request: NSFetchRequest<AnonymousUser> = AnonymousUser.fetchRequest()
+        request.predicate = NSPredicate(format: "uuid == %@", uuid as CVarArg)
+        
+        let anonymousUsers = try self.viewContext.fetch(request)
+        if anonymousUsers.count > 0 {
+            return anonymousUsers[0]
+        } else {
+            return nil
+        }
+    }
+    
+    func clearAnonymousUserProperties(uuid: UUID, success: () -> Void, failure: (Error) -> Void) {
+        
     }
     
     //MARK: Cart
@@ -624,7 +667,7 @@ class CoreDataHelper: RemoteAPI {
         }
         
         
-        let user = try! postNewUserSync(firstName: "Jeff", lastName: "Bezos", email: "jeff@amazon.com", phoneNumber: "1234567890", password: "Amazon1!")
+        let user = try! postNewUserSync(firstName: "Jeff", lastName: "Bezos", email: "jeff@amazon.com", phoneNumber: "1234567890", password: "Amazon1!", anonymousUser: nil)
         
         user.setImageDataFromImage(UIImage(named: "jeff")!)
         
@@ -647,7 +690,7 @@ class CoreDataHelper: RemoteAPI {
             order.delivery?.deliveredDate = Date()
         }
         
-        let user2 = try! postNewUserSync(firstName: "Mark", lastName: "Zuckerberg", email: "mark@facebook.com", phoneNumber: "0987654321", password: "Facebook1!")
+        let user2 = try! postNewUserSync(firstName: "Mark", lastName: "Zuckerberg", email: "mark@facebook.com", phoneNumber: "0987654321", password: "Facebook1!", anonymousUser: nil)
         
         user2.setImageDataFromImage(UIImage(named: "mark")!)
         

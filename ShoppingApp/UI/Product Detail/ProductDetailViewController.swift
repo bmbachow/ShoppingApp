@@ -99,35 +99,18 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
     }
     
     @objc func tappedAddToCartButton(_ sender: UIButton) {
-        self.addProductToCart()
+        self.addProductToCart(self.product)
     }
     
     @objc func tappedAddToWishListButton(_ sender: UIButton) {
-        self.addProductToWishList()
+        self.addProductToWishList(self.product)
     }
     
     @objc func tappedWriteAReviewButton(_ sender: UIButton) {
+        guard self.user != nil, !(self.user is AnonymousUser) else {
+            return self.presentNotSignedInAlert()
+        }
         self.presentNewReviewViewController()
-    }
-    
-    func addProductToCart() {
-        if let user = self.user {
-            self.remoteAPI.addProductToCart(product: self.product, user: user, success: {
-                self.userTabBarController?.cartChanged(fromViewController: self)
-            }, failure: { error in
-                print(error.localizedDescription)
-            })
-        }
-    }
-    
-    func addProductToWishList() {
-        if let user = self.user {
-            self.remoteAPI.addProductToWishList(product: self.product, user: user, success: {
-                self.userTabBarController?.wishListChanged(fromViewController: self)
-            }, failure: { error in
-                print(error.localizedDescription)
-            })
-        }
     }
     
     func presentNewReviewViewController() {

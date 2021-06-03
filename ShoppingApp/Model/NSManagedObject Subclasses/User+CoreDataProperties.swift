@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  ShoppingApp
 //
-//  Created by Robert Olieman on 6/2/21.
+//  Created by Robert Olieman on 6/3/21.
 //
 //
 
@@ -19,12 +19,12 @@ extension User {
     @NSManaged public var email: String?
     @NSManaged public var firstName: String?
     @NSManaged public var giftCardBalance: Double
+    @NSManaged public var imageData: Data?
     @NSManaged public var lastName: String?
     @NSManaged public var password: String?
     @NSManaged public var phoneNumber: String?
     @NSManaged public var registeredDate: Date?
     @NSManaged public var searchHistory: [String]?
-    @NSManaged public var imageData: Data?
     @NSManaged public var addresses: NSOrderedSet?
     @NSManaged public var cartItems: NSOrderedSet?
     @NSManaged public var orders: NSOrderedSet?

@@ -10,11 +10,17 @@ import UIKit
 
 protocol RemoteAPI {
     //MARK: User
-    func postNewUser(firstName: String, lastName: String, email: String?, phoneNumber: String?, password: String, success: (User) -> Void, failure: (Error) -> Void)
+    func postNewUser(firstName: String, lastName: String, email: String?, phoneNumber: String?, password: String, anonymousUser: AnonymousUser?, success: (User) -> Void, failure: (Error) -> Void)
     
-    func authenticateAndGetUser(emailOrPhoneNumber: String, password: String, success: (User?) -> Void, failure: (Error) -> Void)
+    func authenticateAndGetUser(emailOrPhoneNumber: String, password: String, anonymousUser: AnonymousUser?, success: (User?) -> Void, failure: (Error) -> Void)
     
     func getUser(emailOrPhoneNumber: String, success: (User?) -> Void, failure: (Error) -> Void)
+    
+    //MARK: AnonymousUser
+    
+    func getAnonymousUserOrCreateIfNotExists(uuid: UUID, success: (AnonymousUser) -> Void, failure: (Error) -> Void)
+    
+    func clearAnonymousUserProperties(uuid: UUID, success: () -> Void, failure: (Error) -> Void)
     
     //MARK: Cart
     

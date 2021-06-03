@@ -1,5 +1,5 @@
 //
-//  UserHomeViewController.swift
+//  UserHomeNotSignedInViewController.swift
 //  ShoppingApp
 //
 //  Created by Robert Olieman on 5/23/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserNotSignedInViewController: UserViewController, UITableViewDelegate, UITableViewDataSource {
+class UserHomeNotSignedInViewController: UserHomeViewController, UITableViewDelegate, UITableViewDataSource {
     var bcColor = UIView()
     @IBOutlet weak var signInButton: UIButton!
     

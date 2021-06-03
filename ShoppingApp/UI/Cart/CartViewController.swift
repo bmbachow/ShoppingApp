@@ -46,7 +46,9 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func tappedCheckOutButton(_ sender: UIButton) {
-        guard self.user != nil else { return }
+        guard self.user != nil, !(self.user is AnonymousUser) else {
+            return self.presentNotSignedInAlert()
+        }
         self.goToCheckOut()
     }
     

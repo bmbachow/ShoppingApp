@@ -2,7 +2,7 @@
 //  PaymentMethod+CoreDataProperties.swift
 //  ShoppingApp
 //
-//  Created by Robert Olieman on 6/2/21.
+//  Created by Robert Olieman on 6/3/21.
 //
 //
 

@@ -12,6 +12,8 @@ class SignInViewController: BaseViewController {
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var pass: UITextField!
     
+    let anonymousUser: AnonymousUser?
+    
     var tappedRegisterAction: (() -> Void)
     
     weak var presentingUserTabViewController: UserTabViewController?
@@ -28,8 +30,9 @@ class SignInViewController: BaseViewController {
         }
     }
     
-    init(presentingUserTabViewController: UserTabViewController?, tappedRegisterAction: @escaping () -> Void) {
+    init(presentingUserTabViewController: UserTabViewController?, anonymousUser: AnonymousUser?, tappedRegisterAction: @escaping () -> Void) {
         self.presentingUserTabViewController = presentingUserTabViewController
+        self.anonymousUser = anonymousUser
         self.tappedRegisterAction = tappedRegisterAction
         super.init(nibName: "SignInViewController", bundle: nil)
     }
@@ -43,7 +46,7 @@ class SignInViewController: BaseViewController {
               let pass = self.pass.textnoEmptyString else{
             return
         }
-        remoteAPI.authenticateAndGetUser(emailOrPhoneNumber: userName, password: pass, success: { useroptional in
+        remoteAPI.authenticateAndGetUser(emailOrPhoneNumber: userName, password: pass, anonymousUser: self.anonymousUser, success: { useroptional in
             guard let user = useroptional else {
                 return presentBasicAlert(title: "Invalid Sign-In", message: "Check the email/phone or password", onDismiss: nil)
                 
@@ -56,8 +59,6 @@ class SignInViewController: BaseViewController {
             print(error.localizedDescription)
             
         })
-        
-        
     }
     
     @IBAction func tappedRegisterButton(_ sender: UIButton) {

@@ -10,12 +10,16 @@ import UIKit
 
 class UserTabBarController: UITabBarController {
     
+    var appDelegate: AppDelegate { UIApplication.shared.delegate as! AppDelegate }
+    
+    var remoteAPI: RemoteAPI { self.appDelegate.remoteAPI! }
+    
     let shoppingNavigationController: UINavigationController
     let userHomeNavigationController: UINavigationController
     let cartNavigationController: UINavigationController
     let settingsNavigationController: UINavigationController
     let shoppingViewController: ShoppingViewController
-    let userHomeViewController: UserHomeViewController
+    let userHomeViewController: UserHomeSignedInViewController
     let cartViewController: CartViewController
     let settingsViewController: SettingsViewController
     
@@ -27,7 +31,16 @@ class UserTabBarController: UITabBarController {
         return [self.shoppingViewController, self.userHomeViewController, self.cartViewController, self.settingsViewController]
     }
     
-    init(shoppingViewController: ShoppingViewController, userHomeViewController: UserHomeViewController, cartViewController: CartViewController, settingsViewController: SettingsViewController) {
+    var user: User? {
+        didSet {
+            for viewController in self.userTabViewControllers {
+                viewController.userChanged()
+            }
+            self.cartChanged(fromViewController: nil)
+        }
+    }
+    
+    init(shoppingViewController: ShoppingViewController, userHomeViewController: UserHomeSignedInViewController, cartViewController: CartViewController, settingsViewController: SettingsViewController) {
         self.shoppingViewController = shoppingViewController
         self.userHomeViewController = userHomeViewController
         self.cartViewController = cartViewController
@@ -50,19 +63,25 @@ class UserTabBarController: UITabBarController {
             navigationController.setNavigationBarHidden(true, animated: false)
         }
         self.viewControllers = self.navigationControllers
+      
+        if let uuid = UIDevice.current.identifierForVendor {
+            self.remoteAPI.getAnonymousUserOrCreateIfNotExists(
+                uuid: uuid,
+                success: { anonymousUser in
+                    self.user = anonymousUser
+                }, failure: { error in
+                    print(error.localizedDescription)
+                })
+        }
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var user: User? {
-        didSet {
-            for viewController in self.userTabViewControllers {
-                viewController.userChanged()
-            }
-            self.cartChanged(fromViewController: nil)
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
     
     func cartChanged(fromViewController sender: UserTabViewController?) {
@@ -81,8 +100,7 @@ class UserTabBarController: UITabBarController {
     }
     
     private func refreshCartBadge() {
-        if let cartItemsCount = user?.totalNumberOfProductsInCart,
-           cartItemsCount > 0 {
+        if let cartItemsCount = user?.totalNumberOfProductsInCart {
             self.cartNavigationController.tabBarItem.badgeValue = String(cartItemsCount)
         } else {
             self.cartNavigationController.tabBarItem.badgeValue = nil

@@ -18,10 +18,13 @@ class RegisterViewController: BaseViewController {
     
     weak var presentingUserTabViewController: UserTabViewController?
     
+    let anonymousUser: AnonymousUser?
+    
     var tappedSignInAction: (() -> Void)
     
-    init(presentingUserTabViewController: UserTabViewController, tappedSignInAction: @escaping () -> Void) {
+    init(presentingUserTabViewController: UserTabViewController, anonymousUser: AnonymousUser?, tappedSignInAction: @escaping () -> Void) {
         self.presentingUserTabViewController = presentingUserTabViewController
+        self.anonymousUser = anonymousUser
         self.tappedSignInAction = tappedSignInAction
         super.init(nibName: "RegisterViewController", bundle: nil)
     }
@@ -67,7 +70,7 @@ class RegisterViewController: BaseViewController {
             return presentBasicAlert(title: "Invalid Input", message: validationMessages.joined(separator: "\n\n"), onDismiss: nil)
         }
         else{
-            remoteAPI.postNewUser(firstName: firstName, lastName: lastName, email: email, phoneNumber: phone, password: pass, success: {user in
+            remoteAPI.postNewUser(firstName: firstName, lastName: lastName, email: email, phoneNumber: phone, password: pass, anonymousUser: self.anonymousUser, success: {user in
                 self.presentingUserTabViewController?.user = user
             }) { error in
                 print(error.localizedDescription)

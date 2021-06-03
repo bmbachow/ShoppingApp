@@ -16,7 +16,6 @@ class UserTabViewController: BaseViewController {
         } set {
             (self.tabBarController as? UserTabBarController)?.user = newValue
         }
-        
     }
     
     var userTabBarController: UserTabBarController? {
@@ -24,7 +23,7 @@ class UserTabViewController: BaseViewController {
     }
     
     func presentSignInViewController() {
-        let signInViewController = SignInViewController(presentingUserTabViewController: self, tappedRegisterAction: { [ weak self ] in
+        let signInViewController = SignInViewController(presentingUserTabViewController: self, anonymousUser: self.user as? AnonymousUser, tappedRegisterAction: { [ weak self ] in
             self?.dismiss(animated: true, completion: {
                 self?.presentSignUpViewController()
             })
@@ -33,12 +32,32 @@ class UserTabViewController: BaseViewController {
     }
     
     func presentSignUpViewController(){
-        let registerViewController = RegisterViewController(presentingUserTabViewController: self, tappedSignInAction: { [ weak self ] in
+        let registerViewController = RegisterViewController(presentingUserTabViewController: self, anonymousUser: self.user as? AnonymousUser, tappedSignInAction: { [ weak self ] in
             self?.dismiss(animated: true, completion: {
                 self?.presentSignInViewController()
             })
         })
         self.present(registerViewController, animated: true ,completion: nil)
+    }
+    
+    func presentNotSignedInAlert() {
+        var onDismiss: () -> Void = {}
+        self.presentAlertWithActions(
+            title: "You aren't signed in",
+            message: "Head over to our Sign in or Sign up page to get started.",
+            actions: [
+                (title: "Sign in", handler: { [weak self] in
+                    onDismiss = {self?.presentSignInViewController()}
+                }),
+                (title: "Sign up", handler: { [weak self] in
+                    onDismiss = {self?.presentSignUpViewController()}
+                }),
+                (title: "Dismiss", handler: {})
+            ],
+            onDismiss: {
+                onDismiss()
+            }
+        )
     }
     
     func userChanged() {
@@ -60,6 +79,28 @@ class UserTabViewController: BaseViewController {
             return
         }
         userTabViewController.wishListChanged()
+    }
+    
+    func addProductToCart(_ product: Product, completion: (() -> Void)? = nil) {
+        if let user = self.user {
+            self.remoteAPI.addProductToCart(product: product, user: user, success: {
+                self.userTabBarController?.cartChanged(fromViewController: self)
+                completion?()
+            }, failure: { error in
+                print(error.localizedDescription)
+            })
+        }
+    }
+    
+    func addProductToWishList(_ product: Product, completion: (() -> Void)? = nil) {
+        if let user = self.user {
+            self.remoteAPI.addProductToWishList(product: product, user: user, success: {
+                self.userTabBarController?.wishListChanged(fromViewController: self)
+                completion?()
+            }, failure: { error in
+                print(error.localizedDescription)
+            })
+        }
     }
     
     func nextUserTabViewControllerInNavigationController() -> UserTabViewController? {
