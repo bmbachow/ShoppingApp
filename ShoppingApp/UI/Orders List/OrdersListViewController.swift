@@ -52,9 +52,19 @@ class OrdersListViewController: UserTabViewController, UITableViewDelegate, UITa
             }
             return DateFormatter.standardDateFullMonth.string(from: date)
         }()
+        
+        let orderStatus: String = {
+            switch order.deliveryStatus {
+            case .preparingShipment, .inTransit:
+                return order.deliveryStatus.description
+            case .delivered:
+                return order.deliveryStatus.description + " " + DateFormatter.standardDateShort.string(from: order.delivery!.deliveredDate!)
+            }
+        }()
+        
         cell.configure(
             date: dateString,
-            orderStatus: order.deliveryStatus.description,
+            orderStatus: orderStatus,
             orderItems: { () -> [(image: UIImage?, name: String?)] in
                 var items = [(image: UIImage?, name: String?)]()
                 for item in order.cartItemsArray {
