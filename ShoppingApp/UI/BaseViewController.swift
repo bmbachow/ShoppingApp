@@ -21,13 +21,17 @@ class BaseViewController: UIViewController {
     }
     
     func presentBasicAlert(title: String? = nil, message: String? = nil, onDismiss: (() -> Void)? = nil) {
+        let alert = self.basicAlert(title: title, message: message, onDismiss: onDismiss)
+        self.present(alert, animated: true, completion: nil)
+    }
+    func basicAlert(title: String? = nil, message: String? = nil, onDismiss: (() -> Void)? = nil) -> AlertViewController {
         let alert = AlertViewController(title: title, message: message)
         alert.addAction(title: "OK") {
             self.dismiss(animated: true, completion: {
                 onDismiss?()
             })
         }
-        self.present(alert, animated: true, completion: nil)
+        return alert
     }
     
     func presentAlertWithActions(title: String? = nil, message: String? = nil, actions: [(title: String, handler: () -> Void)], onDismiss: (() -> Void)? = nil) {

@@ -60,6 +60,25 @@ class UserTabViewController: BaseViewController {
         )
     }
     
+    func presentFreeShippingAlert(currentSubtotal: Double, cancelAction: @escaping () -> Void, continueAction: @escaping () -> Void) {
+        var onDismiss: () -> Void = {}
+        self.presentAlertWithActions(
+            title: "Want free shipping?",
+            message: "Your subtotal is \(NumberFormatter.dollars.string(from: currentSubtotal)!). It needs to be a total of $200 to qualify for free shipping.",
+            actions: [
+                (title: "Cancel", handler: {
+                    onDismiss = {cancelAction()}
+                }),
+                (title: "Check out", handler: {
+                    onDismiss = {continueAction()}
+                })
+            ],
+            onDismiss: {
+                onDismiss()
+            }
+        )
+    }
+    
     func userChanged() {
         guard let userTabViewController = self.nextUserTabViewControllerInNavigationController() else {
             return

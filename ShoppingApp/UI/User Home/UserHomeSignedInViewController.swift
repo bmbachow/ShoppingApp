@@ -108,11 +108,7 @@ class UserHomeSignedInViewController: UserHomeViewController, UITableViewDelegat
         self.refreshData()
     }
     
-    
-    
-    
-    
-    
+
     @objc func tappedSignOutButton(_ sender: UIButton){
         if let uuid = UIDevice.current.identifierForVendor {
             self.remoteAPI.getAnonymousUserOrCreateIfNotExists(

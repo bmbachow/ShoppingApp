@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-class OrderDetailViewController: UIViewController, SwiftUICheckoutViewDelegate {
+class OrderDetailViewController: BaseViewController, SwiftUICheckoutViewDelegate, SwiftUIConfirmReturnDelegate {
 
     var hostingController: UIHostingController<AnyView> = EmptyView().wrappedInUIHostingController()
     
@@ -17,7 +17,7 @@ class OrderDetailViewController: UIViewController, SwiftUICheckoutViewDelegate {
         self.hostingController = Text("").wrappedInUIHostingController()
         let orderData = OrderData(user: order.user!)
         orderData.order = order
-        self.hostingController = CheckoutConfirmationView(remoteAPI: remoteAPI, orderData: orderData, mode: .orderDetail, delegate: self).wrappedInUIHostingController()
+        self.hostingController = CheckoutConfirmationView(remoteAPI: remoteAPI, orderData: orderData, mode: .orderDetail, confirmReturnDelegate: self).wrappedInUIHostingController()
         self.addChild(hostingController)
         self.view.addSubview(hostingController.view)
         self.hostingController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -41,6 +41,15 @@ class OrderDetailViewController: UIViewController, SwiftUICheckoutViewDelegate {
     
     func orderConfirmed(_ order: Order) {
         
+    }
+    
+    //MARK: SwiftUIConfirmReturnDelegate
+    
+    func confirmReturn(amount: Double, onAlertDismissed: @escaping () -> Void) {
+        let alert = basicAlert(title: "Return initiated", message: "A refund of \(NumberFormatter.dollars.string(from: amount)!) has been added to your gift card balance.", onDismiss: {
+            onAlertDismissed()
+        })
+        self.presentedViewController?.present(alert, animated: false, completion: nil)
     }
     
 

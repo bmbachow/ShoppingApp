@@ -25,4 +25,7 @@ class UIConstants {
     static func standardFont(size: CGFloat, style: FontStyle) -> UIFont {
         return UIFont(name: "GillSans" + style.rawValue, size: size)!
     }
+    
+    static var accentColorApp: UIColor { return UIColor(named: "AccentColorApp")! }
+    static var lightGrayCapsule: UIColor { return UIColor(named: "lightGrayCapsule")! }
 }

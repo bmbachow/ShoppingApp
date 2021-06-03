@@ -19,6 +19,7 @@ class OrderData: ObservableObject {
     @Published var address: Address?
     
     @Published var order: Order?
+    @Published var returnItem: CartItem?
     
     var calculatedTax: Double {
         return self.user.cartSubtotal * OrderData.taxRate

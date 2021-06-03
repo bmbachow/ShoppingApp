@@ -29,7 +29,7 @@ class OrderPreviewTableViewCell: BaseTableViewCell {
         super.awakeFromNib()
         self.dateStackViewSuperview.layer.cornerRadius = 7
         self.dateStackViewSuperview.layer.cornerCurve = .continuous
-        self.dateStackViewSuperview.backgroundColor = .systemGray6
+        self.dateStackViewSuperview.backgroundColor = UIConstants.lightGrayCapsule
         let tapGestureRecognizer = UITapGestureRecognizer()
         tapGestureRecognizer.addTarget(self, action: #selector(self.tappedDateStackViewSuperview(_:)))
         self.dateStackViewSuperview.gestureRecognizers = [tapGestureRecognizer]

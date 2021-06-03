@@ -18,10 +18,15 @@ struct CheckoutConfirmationView: View {
     let remoteAPI: RemoteAPI
     @ObservedObject var orderData: OrderData
     @State var showingThankYou = false
+    @State var showingReturnConfirmation = false
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     let mode: Mode
     
     weak var delegate: SwiftUICheckoutViewDelegate?
+    
+    weak var confirmReturnDelegate: SwiftUIConfirmReturnDelegate?
     
     var shippingText: String {
         let shipping = self.shippingAndHandling
@@ -99,7 +104,9 @@ struct CheckoutConfirmationView: View {
                     HStack {
                         Spacer()
                             .frame(width: 12)
-                        Button(action: { self.delegate?.cancel() }, label: {
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }, label: {
                             Image(systemName: "arrow.left")
                         })
                         Spacer()
@@ -117,25 +124,49 @@ struct CheckoutConfirmationView: View {
                     }
                     
                     ForEach(self.cartItems) { cartItem in
-                        FormHStack {
-                            ZStack {
-                                Image(uiImage: cartItem.product?.image ?? UIImage(systemName: "questionmark")!)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 55, height: 55)
-                                if cartItem.number > 1 {
-                                    StandardText("ⅹ\(cartItem.number)", size: 13, style: .bold)
-                                        .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
-                                        .background(Color(UIColor.link))
-                                        .foregroundColor(.white)
-                                        .cornerRadius(4)
+                        VStack {
+                            FormHStack {
+                                ZStack {
+                                    Image(uiImage: cartItem.product?.image ?? UIImage(systemName: "questionmark")!)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 55, height: 55)
+                                    if cartItem.number > 1 {
+                                        StandardText("ⅹ\(cartItem.number)", size: 13, style: .bold)
+                                            .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
+                                            .background(Color(UIColor.link))
+                                            .foregroundColor(.white)
+                                            .cornerRadius(4)
+                                    }
+                                }
+                                StandardText(cartItem.product?.name ?? "?", size: 15)
+                                    .lineLimit(2)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                Spacer()
+                                StandardText(NumberFormatter.dollars.string(from: cartItem.product!.price * Double(cartItem.number))!)
+                            }
+                            if self.mode == .orderDetail && self.orderData.order?.deliveryStatus == .delivered {
+                                if cartItem.numberUnreturned > 0 {
+                                    Spacer()
+                                    StandardButton(action: {
+                                        self.orderData.returnItem = cartItem
+                                        print(self.showingReturnConfirmation)
+                                        self.showingReturnConfirmation = true
+                                    }, labelText: "Return item\(cartItem.number > 1 ? "(s)" : "")")
+                                    Spacer()
+                                }
+                                if cartItem.numberReturned > 0 {
+                                    HStack {
+                                        StandardText("Returned\(cartItem.numberReturned > 1 ? " \(cartItem.numberReturned)" : "") for \(NumberFormatter.dollars.string(from: cartItem.product!.price * Double(cartItem.numberReturned))!)", size: 15)
+                                            .padding(5)
+                                            .background(Color(UIConstants.lightGrayCapsule))
+                                            .cornerRadius(5)
+                                        Spacer()
+                                    }
+                                    Spacer()
+                                        .frame(height: 8)
                                 }
                             }
-                            StandardText(cartItem.product?.name ?? "?", size: 15)
-                                .lineLimit(2)
-                                .fixedSize(horizontal: false, vertical: true)
-                            Spacer()
-                            StandardText(NumberFormatter.dollars.string(from: cartItem.product!.price * Double(cartItem.number))!)
                         }
                     }
                     Spacer()
@@ -193,6 +224,9 @@ struct CheckoutConfirmationView: View {
             }
             .fullScreenCover(isPresented: self.$showingThankYou, content: {
                 CheckoutThankYouView(order: self.orderData.order!, delegate: self.delegate)
+            })
+            .fullScreenCover(isPresented: self.$showingReturnConfirmation, content: {
+                ConfirmReturnView(remoteAPI: self.remoteAPI, cartItem: self.orderData.returnItem!, orderData: self.orderData, delegate: self.confirmReturnDelegate!, isPresented: self.$showingReturnConfirmation)
             })
         }
         .navigationBarHidden(self.mode == .orderDetail)

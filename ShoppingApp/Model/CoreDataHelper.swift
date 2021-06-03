@@ -325,14 +325,35 @@ class CoreDataHelper: RemoteAPI {
         delivery.order = order
         delivery.address = address
         
-        //MARK: TODO: delivery
-        //we need some silly way to simulate delivery data
-        
         for cartItem in user.cartItemsArray {
             user.removeFromCartItems(cartItem)
         }
         try self.viewContext.save()
         return order
+    }
+    
+    func returnItems(cartItem: CartItem, numberToReturn: Int, success: (Order) -> Void, failure: (Error) -> Void) {
+        guard cartItem.numberUnreturned >= numberToReturn else {
+            return failure(CoreDataHelperError.validationError("Cannot return more items than available unreturned items."))
+        }
+        guard let order = cartItem.order else {
+            return failure(CoreDataHelperError.dataCorruption("Cart item does not have an associated order."))
+        }
+        guard let user = order.user else {
+            return failure(CoreDataHelperError.dataCorruption("Order does not have an associated user"))
+        }
+        guard let product = cartItem.product else {
+            return failure(CoreDataHelperError.dataCorruption("Cart item does not have an associated product"))
+        }
+        cartItem.numberReturned += Int16(numberToReturn)
+        user.giftCardBalance += product.price * Double(numberToReturn)
+        do {
+            try self.viewContext.save()
+            success(order)
+        } catch {
+            failure(error)
+        }
+        
     }
     
     //MARK: Category

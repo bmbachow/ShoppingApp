@@ -46,11 +46,22 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func tappedCheckOutButton(_ sender: UIButton) {
-        guard self.user != nil, !(self.user is AnonymousUser) else {
+        guard let user = self.user, !(self.user is AnonymousUser) else {
             return self.presentNotSignedInAlert()
         }
-        self.goToCheckOut()
+        if user.cartSubtotal < OrderData.freeShippingThreshold {
+            self.presentFreeShippingAlert(
+                currentSubtotal: user.cartSubtotal,
+                cancelAction: {},
+                continueAction: { [weak self] in
+                    self?.goToCheckOut()
+                })
+        } else {
+            self.goToCheckOut()
+        }
     }
+    
+    
     
     override func cartChanged() {
         super.cartChanged()

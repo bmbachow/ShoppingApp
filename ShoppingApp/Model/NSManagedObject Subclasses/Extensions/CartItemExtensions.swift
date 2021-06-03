@@ -14,4 +14,8 @@ extension CartItem {
         }
         return product.price * Double(self.number)
     }
+    
+    var numberUnreturned: Int16 {
+        return self.number - self.numberReturned
+    }
 }

@@ -71,6 +71,20 @@ class RoundButton2 : RoundButton{
         
     }
 }
+
+extension UIButton {
+    func styleAsRoundButton() {
+        self.layer.cornerRadius = 10
+        self.clipsToBounds = true
+        self.titleLabel?.font = UIConstants.standardFont(size: 17, style: .regular)
+        self.backgroundColor = UIConstants.accentColorApp
+        self.setTitleColor(.black, for: .normal)
+    }
+}
+
+
+
+
 class roundLabel : UILabel{
     
     required init?(coder: NSCoder){

@@ -43,6 +43,9 @@ class AlertViewController: BaseViewController {
         self.titleLabel.text = self.titleText
         self.messageLabel.text = message
         
+        self.titleLabel.font = UIConstants.standardFont(size: 17, style: .semiBold)
+        self.messageLabel.font = UIConstants.standardFont(size: 17, style: .regular)
+        
         self.mainBackgroundView.layer.cornerRadius = 12
         
         if self.titleText == nil {
@@ -62,6 +65,7 @@ class AlertViewController: BaseViewController {
 
     func addAction(title: String, handler: @escaping () -> Void) {
         let button = UIButton(type: .system)
+        button.styleAsRoundButton()
         button.setTitle(title, for: .normal)
         self.actions += [(button, handler)]
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)

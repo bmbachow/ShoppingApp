@@ -17,6 +17,7 @@ extension CartItem {
     }
 
     @NSManaged public var number: Int16
+    @NSManaged public var numberReturned: Int16
     @NSManaged public var order: Order?
     @NSManaged public var product: Product?
     @NSManaged public var user: User?
