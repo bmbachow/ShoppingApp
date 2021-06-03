@@ -51,7 +51,7 @@ extension UITextField {
     }
 }
 
-class roundButton : UIButton{
+class RoundButton : UIButton{
     
     required init?(coder: NSCoder){
         super.init(coder:coder)
@@ -60,6 +60,17 @@ class roundButton : UIButton{
     }
 }
 
+class RoundButton2 : RoundButton{
+    
+    required init?(coder: NSCoder){
+        super.init(coder:coder)
+        NSLayoutConstraint.activate([
+            self.heightAnchor.constraint(equalToConstant: 30),
+            self.widthAnchor.constraint(equalToConstant: 169)
+        ])
+        
+    }
+}
 class roundLabel : UILabel{
     
     required init?(coder: NSCoder){
