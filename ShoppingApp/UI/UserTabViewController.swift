@@ -24,12 +24,20 @@ class UserTabViewController: BaseViewController {
     }
     
     func presentSignInViewController() {
-        let signInViewController = SignInViewController(presentingUserTabViewController: self)
+        let signInViewController = SignInViewController(presentingUserTabViewController: self, tappedRegisterAction: { [ weak self ] in
+            self?.dismiss(animated: true, completion: {
+                self?.presentSignUpViewController()
+            })
+        })
         self.present(signInViewController, animated: true, completion: nil)
     }
     
     func presentSignUpViewController(){
-        let registerViewController = RegisterViewController(presentingUserTabViewController: self)
+        let registerViewController = RegisterViewController(presentingUserTabViewController: self, tappedSignInAction: { [ weak self ] in
+            self?.dismiss(animated: true, completion: {
+                self?.presentSignInViewController()
+            })
+        })
         self.present(registerViewController, animated: true ,completion: nil)
     }
     

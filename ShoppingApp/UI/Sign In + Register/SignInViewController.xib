@@ -62,6 +62,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
                     <state key="normal" title="Register here"/>
+                    <connections>
+                        <action selector="tappedRegisterButton:" destination="-1" eventType="touchUpInside" id="BLA-z6-zB1"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
