@@ -65,6 +65,13 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
         self.wishListCollectionView.dataSource = self
         return cell
     }()
+    
+    lazy private var userHomeStuffCell: UserHomeStuffCell = {
+        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "UserHomeStuffCell") as? UserHomeStuffCell else {
+            fatalError("Unable to dequeue UserHomeStuffCell")
+        }
+        return cell
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +82,7 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
         self.tableView.register(UINib(nibName: "UserHomeMainTableViewCell", bundle: nil), forCellReuseIdentifier: "UserHomeMainTableViewCell")
         self.tableView.register(UINib(nibName: "ProductsCollectionTableViewCell", bundle: nil), forCellReuseIdentifier: "OrdersCollectionTableViewCell")
         self.tableView.register(UINib(nibName: "ProductsCollectionTableViewCell", bundle: nil), forCellReuseIdentifier: "WishListCollectionTableViewCell")
+        self.tableView.register(UINib(nibName: "UserHomeStuffCell", bundle: nil), forCellReuseIdentifier: "UserHomeStuffCell")
         let _ = self.ordersCollectionTableViewCell
         let _ = self.wishListCollectionTableViewCell
         self.ordersCollectionView.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductCollectionViewCell")
@@ -105,6 +113,7 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
         self.userHomeMainTableViewCell.nameLabel.text = (user?.firstName ?? "") + " " + (user?.lastName ?? "")
         self.userHomeMainTableViewCell.memberSinceLabel.text = self.memberSinceString
         self.userHomeMainTableViewCell.profileImageView.image = self.user?.image ?? UIImage(systemName: "person.circle.fill")!
+        self.userHomeStuffCell.balanceLabel.text = NumberFormatter.dollars.string(from: self.user?.giftCardBalance ?? 0)
         self.tableView.reloadData()
         self.ordersCollectionView.reloadData()
         self.wishListCollectionView.reloadData()
@@ -151,20 +160,22 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        2
+        3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
             return self.userHomeMainTableViewCell
-        default:
+        case 1:
             switch indexPath.row {
             case 0:
                 return self.ordersCollectionTableViewCell
             default:
                 return self.wishListCollectionTableViewCell
             }
+        default:
+            return self.userHomeStuffCell
         }
     }
     
@@ -172,8 +183,10 @@ class UserHomeViewController: UserTabViewController, UITableViewDelegate, UITabl
         switch section {
         case 0:
             return 1
-        default:
+        case 1:
             return 2
+        default:
+            return 1
         }
         
     }

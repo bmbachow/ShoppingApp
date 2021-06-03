@@ -10,7 +10,7 @@ import UIKit
 
 extension User {
     var ordersArray: [Order] {
-        self.orders?.array as? [Order] ?? []
+        (self.orders?.array as? [Order] ?? []).sorted(by: {$0.orderedDate! > $1.orderedDate!})
     }
     var cartItemsArray: [CartItem] {
         self.cartItems?.array as? [CartItem] ?? []
