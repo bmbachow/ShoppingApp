@@ -78,6 +78,12 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
         super.wishListChanged(notification)
     }
     
+    override func userChanged(_ notification: Notification) {
+        super.cartChanged(notification)
+        guard notification.object as? UserTabViewController != self else { return }
+        self.refreshCart()
+    }
+    
     func goToCheckOut() {
         guard let user = self.user else { return }
         let orderViewController = CheckoutViewController(user: user, cartItems: self.cartItems, remoteAPI: self.remoteAPI,

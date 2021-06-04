@@ -141,7 +141,7 @@ struct ChooseView: View {
                     } label: {
                         Text("Add new payment method")
                             .font(Font(UIConstants.standardFont(size: 17, style: .bold)))
-                            .foregroundColor(Color(UIColor.link))
+                            .foregroundColor(Color(UIConstants.secondaryButtonColor))
                     }
                     StandardButton(action: {
                         self.orderData.paymentMethod = nil

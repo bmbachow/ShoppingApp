@@ -45,7 +45,7 @@ struct ConfirmReturnView: View {
                     if cartItem.number > 1 {
                         StandardText("ⅹ\(cartItem.number)", size: 20, style: .bold)
                             .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                            .background(Color(UIColor.link))
+                            .background(Color(UIConstants.secondaryButtonColor))
                             .foregroundColor(.white)
                             .cornerRadius(6)
                     }

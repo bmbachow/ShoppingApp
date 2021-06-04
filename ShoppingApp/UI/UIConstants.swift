@@ -27,5 +27,6 @@ class UIConstants {
     }
     
     static var accentColorApp: UIColor { return UIColor(named: "AccentColorApp")! }
+    static var secondaryButtonColor: UIColor { return UIColor(named: "secondaryButtonColor")! }
     static var lightGrayCapsule: UIColor { return UIColor(named: "lightGrayCapsule")! }
 }

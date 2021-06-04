@@ -53,7 +53,7 @@ struct PaymentMethodCellView: View {
                 if let selectedAction = self.selectedAction {
                     Image(systemName: self.isSelected ? "smallcircle.fill.circle.fill" : "circle")
                         .font(Font.system(size: 25, weight: .ultraLight))
-                        .foregroundColor(Color(UIColor.link))
+                        .foregroundColor(Color(UIConstants.secondaryButtonColor))
                         .onTapGesture {
                             selectedAction()
                         }

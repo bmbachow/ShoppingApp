@@ -134,7 +134,7 @@ struct CheckoutConfirmationView: View {
                                     if cartItem.number > 1 {
                                         StandardText("ⅹ\(cartItem.number)", size: 13, style: .bold)
                                             .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
-                                            .background(Color(UIColor.link))
+                                            .background(Color(UIConstants.secondaryButtonColor))
                                             .foregroundColor(.white)
                                             .cornerRadius(4)
                                     }
