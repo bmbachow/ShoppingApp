@@ -91,12 +91,19 @@ struct CheckoutConfirmationView: View {
         }
     }
     
-    
-    
+    var navigationTitleText: String {
+        switch self.mode {
+        case .checkout:
+            return "Order confirmation"
+        case .orderDetail:
+            return DateFormatter.standardDateShort.string(from: self.orderData.order!.orderedDate!)
+        }
+    }
     
     
     var body: some View {
         VStack {
+            /*
             if self.mode == .orderDetail {
                 ZStack(alignment: .center) {
                     EmptyView()
@@ -115,6 +122,7 @@ struct CheckoutConfirmationView: View {
                 }
                 .frame(height: 64)
             }
+ */
             List {
                 FormVStack {
                     if self.mode == .checkout {
@@ -230,8 +238,7 @@ struct CheckoutConfirmationView: View {
             })
         }
         //.modifier(ColorTopSafeArea(.white))
-        .navigationBarHidden(self.mode == .orderDetail)
-        .navigationTitle("Order confirmation")
+        .navigationTitle(self.navigationTitleText)
     }
     
     func placeOrder() {

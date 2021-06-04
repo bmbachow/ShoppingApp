@@ -24,6 +24,13 @@ class WishListViewController: UserTabViewController, UITableViewDelegate, UITabl
         let footerView = UIView()
         footerView.backgroundColor = .white
         self.wishListTable.tableFooterView = footerView
+        self.navigationItem.title = "Wish List"
+        (self.navigationController as? BazaarNavigationController)?.setLogoVisibile(false)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     @IBAction func tappedBackButton(_ sender: UIButton) {
