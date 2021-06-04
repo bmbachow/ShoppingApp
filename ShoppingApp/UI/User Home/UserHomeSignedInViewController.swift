@@ -94,7 +94,6 @@ class UserHomeSignedInViewController: UserHomeViewController, UITableViewDelegat
     
     func refreshData() {
         guard self.tableView != nil else { return }
-  
         self.userHomeMainTableViewCell.configure(
             name: (user?.firstName ?? "") + " " + (user?.lastName ?? ""),
             memberSince: self.memberSinceString,
@@ -124,7 +123,7 @@ class UserHomeSignedInViewController: UserHomeViewController, UITableViewDelegat
     }
     
     func refreshWishList() {
-        self.wishListCollectionView.reloadData()
+        self.wishListCollectionView?.reloadData()
     }
     
     func refreshGiftCardBalance() {

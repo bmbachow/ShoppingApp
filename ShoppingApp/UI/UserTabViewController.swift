@@ -23,11 +23,13 @@ class UserTabViewController: BaseViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         Notifications.addUserChangedObserver(self, selector: #selector(self.userChanged(_:)))
         Notifications.addCartChangedObserver(self, selector: #selector(self.cartChanged(_:)))
         Notifications.addWishListChangedObserver(self, selector: #selector(self.wishListChanged(_:)))
         Notifications.addGiftCardBalanceChangedObserver(self, selector: #selector(self.giftCardBalanceChanged(_:)))
         Notifications.addProfilePhotoChangedObserver(self, selector: #selector(self.profilePhotoChanged(_:)))
+        Notifications.addOrdersChangedObserver(self, selector: #selector(self.ordersChanged(_:)))
     }
     
     func presentSignInViewController() {
@@ -106,6 +108,12 @@ class UserTabViewController: BaseViewController {
     @objc func profilePhotoChanged(_ notification: Notification) {
         
     }
+    
+    
+    @objc func ordersChanged(_ notification: Notification) {
+        
+    }
+    
     
     func addProductToCart(_ product: Product, completion: (() -> Void)? = nil) {
         if let user = self.user {

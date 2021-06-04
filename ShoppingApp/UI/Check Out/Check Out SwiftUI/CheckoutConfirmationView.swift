@@ -236,7 +236,7 @@ struct CheckoutConfirmationView: View {
         self.remoteAPI.placeOrder(user: self.orderData.user, subtotal: self.orderData.user.cartSubtotal, shippingPrice: self.orderData.calculatedShipping, tax: self.orderData.calculatedTax, address: self.orderData.address!, paymentMethod: self.orderData.paymentMethod, success: { order in
             self.orderData.order = order
             self.showingThankYou = true
-            
+            Notifications.postOrdersChanged(fromViewController: nil)
         }, failure: { error in
             print(error.localizedDescription)
         })

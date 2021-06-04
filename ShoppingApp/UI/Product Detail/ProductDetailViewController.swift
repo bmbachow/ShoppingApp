@@ -133,6 +133,7 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
     override func profilePhotoChanged(_ notification: Notification) {
         super.profilePhotoChanged(notification)
         guard let user = self.user else { return }
+        guard self.tableView != nil else { return }
         guard let indexPaths = self.tableView.indexPathsForVisibleRows?
                 .filter({$0.section == 3 &&
                     self.productReviewsArray[$0.row].user == user

@@ -31,6 +31,11 @@ class OrdersListViewController: UserTabViewController, UITableViewDelegate, UITa
         self.navigationController?.popViewController(animated: true)
     }
     
+    override func ordersChanged(_ notification: Notification) {
+        super.ordersChanged(notification)
+        self.tableView?.reloadData()
+    }
+    
     //MARK: UITableVIew
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
