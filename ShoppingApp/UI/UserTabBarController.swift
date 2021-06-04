@@ -86,7 +86,6 @@ class UserTabBarController: UITabBarController {
     
     func cartChanged(fromViewController sender: UserTabViewController?) {
         for viewController in self.userTabViewControllers {
-            guard viewController != sender else { continue }
             viewController.cartChanged()
         }
         self.refreshCartBadge()
@@ -96,6 +95,13 @@ class UserTabBarController: UITabBarController {
         for viewController in self.userTabViewControllers {
             guard viewController != sender else { continue }
             viewController.wishListChanged()
+        }
+    }
+    
+    func giftCardBalanceChanged(fromViewController sender: UserTabViewController?) {
+        for viewController in self.userTabViewControllers {
+            guard viewController != sender else { continue }
+            viewController.giftCardBalanceChanged()
         }
     }
     

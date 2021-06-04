@@ -204,4 +204,8 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
         }
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.goToProductDetail(product: self.relatedProductsArray[indexPath.row])
+    }
 }

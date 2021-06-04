@@ -118,4 +118,13 @@ class UserHomeViewController: UserTabViewController, UICollectionViewDelegate, U
             return cell
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.ordersCollectionView {
+            
+        } else {
+            guard let product = self.user?.wishListProductsArray[indexPath.row] else { return }
+            self.goToProductDetail(product: product)
+        }
+    }
 }

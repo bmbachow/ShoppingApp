@@ -90,24 +90,35 @@ class UserHomeSignedInViewController: UserHomeViewController, UITableViewDelegat
         self.userHomeMainTableViewCell.nameLabel.text = (user?.firstName ?? "") + " " + (user?.lastName ?? "")
         self.userHomeMainTableViewCell.memberSinceLabel.text = self.memberSinceString
         self.userHomeMainTableViewCell.profileImageView.image = self.user?.image ?? UIImage(systemName: "person.circle.fill")!
-        self.userHomeStuffCell.balanceLabel.text = NumberFormatter.dollars.string(from: self.user?.giftCardBalance ?? 0)
+        self.refreshGiftCardBalance()
         self.tableView.reloadData()
         self.ordersCollectionView.reloadData()
-        self.wishListCollectionView.reloadData()
         self.refreshUserNotSignedInVisibility()
-        self.userNotSignedInViewController.wishListChanged()
+        self.refreshWishList()
     }
     
     override func cartChanged() {
         super.cartChanged()
-        self.refreshData()
     }
     
     override func wishListChanged() {
         super.wishListChanged()
-        self.refreshData()
+        self.refreshWishList()
     }
     
+    override func giftCardBalanceChanged() {
+        super.giftCardBalanceChanged()
+        self.refreshGiftCardBalance()
+    }
+    
+    func refreshWishList() {
+        self.wishListCollectionView.reloadData()
+        self.userNotSignedInViewController.wishListChanged()
+    }
+    
+    func refreshGiftCardBalance() {
+        self.userHomeStuffCell.balanceLabel.text = NumberFormatter.dollars.string(from: self.user?.giftCardBalance ?? 0)
+    }
 
     @objc func tappedSignOutButton(_ sender: UIButton){
         if let uuid = UIDevice.current.identifierForVendor {

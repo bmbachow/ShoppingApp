@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-class OrderDetailViewController: BaseViewController, SwiftUICheckoutViewDelegate, SwiftUIConfirmReturnDelegate {
+class OrderDetailViewController: UserTabViewController, SwiftUICheckoutViewDelegate, SwiftUIConfirmReturnDelegate {
 
     var hostingController: UIHostingController<AnyView> = EmptyView().wrappedInUIHostingController()
     
@@ -50,6 +50,7 @@ class OrderDetailViewController: BaseViewController, SwiftUICheckoutViewDelegate
             onAlertDismissed()
         })
         self.presentedViewController?.present(alert, animated: false, completion: nil)
+        self.userTabBarController?.giftCardBalanceChanged(fromViewController: self)
     }
     
 

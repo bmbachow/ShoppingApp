@@ -100,6 +100,13 @@ class UserTabViewController: BaseViewController {
         userTabViewController.wishListChanged()
     }
     
+    func giftCardBalanceChanged() {
+        guard let userTabViewController = self.nextUserTabViewControllerInNavigationController() else {
+            return
+        }
+        userTabViewController.giftCardBalanceChanged()
+    }
+    
     func addProductToCart(_ product: Product, completion: (() -> Void)? = nil) {
         if let user = self.user {
             self.remoteAPI.addProductToCart(product: product, user: user, success: {
@@ -128,5 +135,10 @@ class UserTabViewController: BaseViewController {
             return nil
         }
         return navigationController?.viewControllers[index + 1] as? UserTabViewController
+    }
+    
+    func goToProductDetail(product: Product) {
+        let viewController = ProductDetailViewController(product: product)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

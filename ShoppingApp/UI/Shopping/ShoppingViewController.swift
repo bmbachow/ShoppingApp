@@ -157,8 +157,7 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
                     fatalError("Unable to get reference to cell")
                 }
                 cell.showSelection(true, animated: true, completion: {
-                    let viewController = ProductDetailViewController(product: self.products[indexPath.row])
-                    self.navigationController?.pushViewController(viewController, animated: true)
+                    self.goToProductDetail(product: self.products[indexPath.row])
                 })
             }
         } else {
@@ -198,7 +197,7 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
 
 //MARK: UICollectionView
 
-extension ShoppingViewController: UICollectionViewDelegate{
+extension ShoppingViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
