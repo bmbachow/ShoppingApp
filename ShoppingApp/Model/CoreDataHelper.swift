@@ -63,6 +63,21 @@ class CoreDataHelper: RemoteAPI {
         user.phoneNumber = phoneNumber
         user.password = try bcryptHasher.hashPasword(password)
         user.registeredDate = Date()
+        
+        if let anonymousUser = anonymousUser {
+            for cartItem in anonymousUser.cartItemsArray {
+                cartItem.user = user
+            }
+            for wishListProduct in anonymousUser.wishListProductsArray {
+                anonymousUser.removeFromWishListProducts(wishListProduct)
+                user.addToWishListProducts(wishListProduct)
+            }
+            if let searchHistory = anonymousUser.searchHistory {
+                user.searchHistory = searchHistory
+            }
+            anonymousUser.searchHistory = nil
+        }
+        
         try self.viewContext.save()
         return user
     }
@@ -84,6 +99,14 @@ class CoreDataHelper: RemoteAPI {
                         anonymousUser.removeFromWishListProducts(wishListProduct)
                         user.addToWishListProducts(wishListProduct)
                     }
+                    if let newSearchHistory = anonymousUser.searchHistory {
+                        var searchHistory = user.searchHistory ?? []
+                        for string in newSearchHistory {
+                            searchHistory = [string] + searchHistory.filter({$0 != string})
+                        }
+                        user.searchHistory = searchHistory
+                    }
+                    anonymousUser.searchHistory = nil
                 }
                 try self.viewContext.save()
                 success(user)
@@ -113,6 +136,7 @@ class CoreDataHelper: RemoteAPI {
         let user = arr[0]
         return user
     }
+    
     func getUser(emailOrPhoneNumber: String, success: (User?) -> Void, failure: (Error) -> Void) {
         do {
             let user = try self.getUserSync(emailOrPhoneNumber: emailOrPhoneNumber)
@@ -129,6 +153,33 @@ class CoreDataHelper: RemoteAPI {
         } catch {
             failure(error)
         }
+    }
+    
+    func addToSearchHistory(user: User, searchString: String, success: () -> Void, failure: (Error) -> Void) {
+        do {
+            try self.addToSearchHistorySync(user: user, searchString: searchString)
+            success()
+        } catch {
+            failure(error)
+        }
+    }
+    func removeFromSearchHistory(user: User, searchString: String, success: () -> Void, failure: (Error) -> Void) {
+        do {
+            if let searchHistory = user.searchHistory {
+                user.searchHistory = searchHistory.filter({$0 != searchString})
+            }
+            try self.viewContext.save()
+            success()
+        } catch {
+            failure(error)
+        }
+    }
+    
+    private func addToSearchHistorySync(user: User, searchString: String) throws {
+        var searchHistory: [String] = user.searchHistory ?? []
+        searchHistory = [searchString] + searchHistory.filter({$0 != searchString})
+        user.searchHistory = searchHistory
+        try self.viewContext.save()
     }
     
     //MARK: AnonymousUser

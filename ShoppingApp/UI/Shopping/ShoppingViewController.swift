@@ -7,10 +7,12 @@
 
 import UIKit
 
-class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITableViewDataSource {
+class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITableViewDataSource, SearchHistoryTableViewCellDelegate {
+    
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var searchHistoryTableView: UITableView!
     @IBOutlet var collectionView: UICollectionView!
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -18,11 +20,19 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
     
     private var shouldShowSignInViewControllerOnAppear = true
     
+    private var shouldHideSearchHistoryTableView: Bool {
+        !self.searchBar.isFirstResponder
+    }
+    
     private var products = [Product]()
     
     private var categories = [Category]()
     
-    private var selectedCategory: Category?
+    private var searchHistory: [String] {
+        self.user?.searchHistory ?? []
+    }
+    
+    //private var selectedCategory: Category?
     
     lazy var adCell : ShoppingAdTableViewCell = {
         return self.tableView.dequeueReusableCell(withIdentifier: "ShoppingAdTableViewCell") as! ShoppingAdTableViewCell
@@ -33,8 +43,11 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         self.searchBar.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.searchHistoryTableView.delegate = self
+        self.searchHistoryTableView.dataSource = self
         self.tableView.register(UINib(nibName: "ShoppingAdTableViewCell", bundle: nil), forCellReuseIdentifier: "ShoppingAdTableViewCell")
         self.tableView.register(UINib(nibName: "ShoppingProductPreviewTableViewCell", bundle: nil), forCellReuseIdentifier: "ShoppingProductPreviewTableViewCell")
+        self.searchHistoryTableView.register(UINib(nibName: "SearchHistoryTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchHistoryTableViewCell")
 //        let layout = UICollectionViewFlowLayout()
 //        layout.itemSize = CGSize (width: 200, height: 120)
 //        collectionView.collectionViewLayout = layout
@@ -56,11 +69,14 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
             print(error.localizedDescription)
         })
         
+        self.tableView.tableFooterView = UIView()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.adCell.startAdTimer()
+        self.refreshSearchHistoryTableViewVisibility()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -76,56 +92,111 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         self.adCell.invalidateTimer()
     }
     
+    func refreshSearchHistoryTableViewVisibility() {
+        self.searchHistoryTableView?.isHidden = self.shouldHideSearchHistoryTableView
+    }
+    
+    override func userChanged() {
+        super.userChanged()
+        self.tableView?.reloadData()
+        self.searchHistoryTableView?.reloadData()
+    }
+    
     //MARK: UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        default:
-            return self.products.count
+        if tableView == self.tableView {
+            switch section {
+            case 0:
+                return 1
+            default:
+                return self.products.count
+            }
+        } else {
+            return self.searchHistory.count
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
-            return self.adCell
-        default:
-            let product = self.products[indexPath.row]
-            let cell = self.tableView.dequeueReusableCell(withIdentifier: "ShoppingProductPreviewTableViewCell") as! ShoppingProductPreviewTableViewCell
-            cell.productName.text = product.name
-            cell.productImage.image = product.image
-            cell.productPrice.text = NumberFormatter.dollars.string(from: Float(product.price))
-            cell.productRating.rating = product.averageRating ?? 0
-            
+        if tableView == self.tableView {
+            switch indexPath.section {
+            case 0:
+                return self.adCell
+            default:
+                let product = self.products[indexPath.row]
+                let cell = self.tableView.dequeueReusableCell(withIdentifier: "ShoppingProductPreviewTableViewCell") as! ShoppingProductPreviewTableViewCell
+                cell.productName.text = product.name
+                cell.productImage.image = product.image
+                cell.productPrice.text = NumberFormatter.dollars.string(from: Float(product.price))
+                cell.productRating.rating = product.averageRating ?? 0
+                
+                return cell
+            }
+        } else {
+            guard let cell = self.searchHistoryTableView.dequeueReusableCell(withIdentifier: "SearchHistoryTableViewCell") as? SearchHistoryTableViewCell else {
+                fatalError("Unable to dequeue SearchHistoryTableViewCell")
+            }
+            cell.label.text = self.searchHistory[indexPath.row]
+            cell.delegate = self
             return cell
-            
         }
-        
     }
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return tableView == self.tableView ? 2 : 1
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 0:
-            return
-        default:
-            guard let cell = self.tableView.cellForRow(at: indexPath) as? BaseTableViewCell else {
-                fatalError("Unable to get reference to cell")
+        if tableView == self.tableView {
+            switch indexPath.section {
+            case 0:
+                return
+            default:
+                guard let cell = self.tableView.cellForRow(at: indexPath) as? BaseTableViewCell else {
+                    fatalError("Unable to get reference to cell")
+                }
+                cell.showSelection(true, animated: true, completion: {
+                    let viewController = ProductDetailViewController(product: self.products[indexPath.row])
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                })
             }
-            cell.showSelection(true, animated: true, completion: {
-                let viewController = ProductDetailViewController(product: self.products[indexPath.row])
-                self.navigationController?.pushViewController(viewController, animated: true)
-            })
+        } else {
+            let text = self.searchHistory[indexPath.row]
+            self.searchBar.text = text
+            self.searchFromSearchBarText()
         }
     }
+    
+    func scrollToTop() {
+        self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+    }
+    
+    //MARK: SearchHistoryTableViewCellDelegate
+    
+    func tappedXButton(inCell cell: SearchHistoryTableViewCell) {
+        guard let indexPath = self.searchHistoryTableView.indexPath(for: cell) else {
+            return
+        }
+        self.searchHistoryTableView.beginUpdates()
+        let count = self.searchHistory.count
+        guard let user = self.user else { return }
+        self.remoteAPI.removeFromSearchHistory(user: user, searchString: self.searchHistory[indexPath.row], success: {
+            if self.searchHistory.count == count - 1 {
+                self.searchHistoryTableView.deleteRows(at: [indexPath], with: .top)
+            } else {
+                self.searchHistoryTableView.reloadData()
+            }
+            self.searchHistoryTableView.endUpdates()
+        }, failure: { error in
+            self.searchHistoryTableView.endUpdates()
+            print(error.localizedDescription)
+        })
+   
+    }
 }
+
+//MARK: UICollectionView
 
 extension ShoppingViewController: UICollectionViewDelegate{
     
@@ -174,30 +245,67 @@ extension ShoppingViewController : MyCollectionViewCellDelegate {
         guard let indexPath = self.collectionView.indexPath(for: cell) else {
             return
         }
+        let selectedCategory: Category?
         switch indexPath.section {
         case 0:
-            self.selectedCategory = nil
+            selectedCategory = nil
         default:
-            self.selectedCategory = self.categories[indexPath.row]
+            selectedCategory = self.categories[indexPath.row]
         }
+        self.search(searchString: nil, category: selectedCategory)
     }
 }
 
+//MARK: UISearchBar
+
 extension ShoppingViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.refreshSearchHistoryTableViewVisibility()
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchString = searchBar.text else { return }
-        self.remoteAPI.getProducts(searchString: searchString, category: self.selectedCategory, success: { products in
+        self.searchFromSearchBarText()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.text = ""
+        self.searchFromSearchBarText()
+    }
+    
+    func closeSearch() {
+        self.searchBar.resignFirstResponder()
+        self.refreshSearchHistoryTableViewVisibility()
+        self.searchHistoryTableView.reloadData()
+    }
+    
+    func searchFromSearchBarText() {
+        var searchString: String? = searchBar.text
+        if searchString == "" {
+            searchString = nil
+        }
+        self.search(searchString: searchString, category: nil)
+        self.closeSearch()
+    }
+    
+    func search(searchString: String?, category: Category?) {
+        
+        self.remoteAPI.getProducts(searchString: searchString, category: category, success: { products in
             self.products = products
             self.tableView.reloadData()
+            self.scrollToTop()
+            if let searchString = searchString, searchString != "", let user = self.user {
+                self.remoteAPI.addToSearchHistory(user: user, searchString: searchString, success: {}, failure: { error in
+                    print(error.localizedDescription)
+                })
+            }
         }, failure: { error in
             print(error.localizedDescription)
         })
     }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.searchBar.resignFirstResponder()
-    }
+
 }
+
 
 //
 //extension ShoppingViewController: UICollectionViewDelegateFlowLayout{

@@ -16,6 +16,10 @@ protocol RemoteAPI {
     
     func getUser(emailOrPhoneNumber: String, success: (User?) -> Void, failure: (Error) -> Void)
     
+    func addToSearchHistory(user: User, searchString: String, success: () -> Void, failure: (Error) -> Void)
+    
+    func removeFromSearchHistory(user: User, searchString: String, success: () -> Void, failure: (Error) -> Void)
+    
     //MARK: AnonymousUser
     
     func getAnonymousUserOrCreateIfNotExists(uuid: UUID, success: (AnonymousUser) -> Void, failure: (Error) -> Void)

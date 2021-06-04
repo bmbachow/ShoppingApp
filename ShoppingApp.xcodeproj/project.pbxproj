@@ -39,6 +39,8 @@
 		520CE53726697C6C00793FB2 /* Address+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520CE51D26697C6B00793FB2 /* Address+CoreDataProperties.swift */; };
 		520CE53826697C6C00793FB2 /* CardPaymentMethod+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520CE51E26697C6B00793FB2 /* CardPaymentMethod+CoreDataClass.swift */; };
 		520CE53926697C6C00793FB2 /* CardPaymentMethod+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520CE51F26697C6B00793FB2 /* CardPaymentMethod+CoreDataProperties.swift */; };
+		520CE53E2669B11600793FB2 /* SearchHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520CE53C2669B11600793FB2 /* SearchHistoryTableViewCell.swift */; };
+		520CE53F2669B11600793FB2 /* SearchHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 520CE53D2669B11600793FB2 /* SearchHistoryTableViewCell.xib */; };
 		520F43D8265D448C00A6B282 /* StarFillMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43C8265D448C00A6B282 /* StarFillMode.swift */; };
 		520F43D9265D448C00A6B282 /* StarLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43C9265D448C00A6B282 /* StarLayer.swift */; };
 		520F43DA265D448C00A6B282 /* CosmosAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43CA265D448C00A6B282 /* CosmosAccessibility.swift */; };
@@ -204,6 +206,8 @@
 		520CE51D26697C6B00793FB2 /* Address+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Address+CoreDataProperties.swift"; path = "ShoppingApp/Model/Address+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		520CE51E26697C6B00793FB2 /* CardPaymentMethod+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CardPaymentMethod+CoreDataClass.swift"; path = "ShoppingApp/Model/CardPaymentMethod+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		520CE51F26697C6B00793FB2 /* CardPaymentMethod+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CardPaymentMethod+CoreDataProperties.swift"; path = "ShoppingApp/Model/CardPaymentMethod+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		520CE53C2669B11600793FB2 /* SearchHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		520CE53D2669B11600793FB2 /* SearchHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		520F43C8265D448C00A6B282 /* StarFillMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarFillMode.swift; sourceTree = "<group>"; };
 		520F43C9265D448C00A6B282 /* StarLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarLayer.swift; sourceTree = "<group>"; };
 		520F43CA265D448C00A6B282 /* CosmosAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosAccessibility.swift; sourceTree = "<group>"; };
@@ -643,6 +647,8 @@
 		52E0B076265B1A7000B9C77E /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
+				520CE53C2669B11600793FB2 /* SearchHistoryTableViewCell.swift */,
+				520CE53D2669B11600793FB2 /* SearchHistoryTableViewCell.xib */,
 				52E0B072265B1A6A00B9C77E /* ShoppingViewController.swift */,
 				52E0B073265B1A6A00B9C77E /* ShoppingViewController.xib */,
 				52927767265C3B6700394180 /* ShoppingAdTableViewCell.swift */,
@@ -795,6 +801,7 @@
 				520F43EB265D798D00A6B282 /* ProductDetailReviewTableViewCell.xib in Resources */,
 				5292776E265C3CA300394180 /* ShoppingProductPreviewTableViewCell.xib in Resources */,
 				52EEF3F1265E9208006C3759 /* CartProductTableViewCell.xib in Resources */,
+				520CE53F2669B11600793FB2 /* SearchHistoryTableViewCell.xib in Resources */,
 				52286E062668FDEE003B2181 /* UserHomeStuffCell.xib in Resources */,
 				52E0B087265B1B1E00B9C77E /* SettingsViewController.xib in Resources */,
 				52D8F8B226580C6400EF220A /* SignInViewController.xib in Resources */,
@@ -892,6 +899,7 @@
 				5292777A265C3F1500394180 /* ProductDetailMainTableViewCell.swift in Sources */,
 				520F43E0265D448C00A6B282 /* CosmosLayers.swift in Sources */,
 				520CE53126697C6C00793FB2 /* AccountPaymentMethod+CoreDataProperties.swift in Sources */,
+				520CE53E2669B11600793FB2 /* SearchHistoryTableViewCell.swift in Sources */,
 				52CD8B18265BE09C00AFAC8C /* AlertViewController.swift in Sources */,
 				52E0B06F265B199100B9C77E /* UserTabViewController.swift in Sources */,
 				526724D4265AE3FC00D9CAB9 /* ProductExtensions.swift in Sources */,

@@ -157,7 +157,7 @@ struct CheckoutConfirmationView: View {
                                 }
                                 if cartItem.numberReturned > 0 {
                                     HStack {
-                                        StandardText("Returned\(cartItem.numberReturned > 1 ? " \(cartItem.numberReturned)" : "") for \(NumberFormatter.dollars.string(from: cartItem.product!.price * Double(cartItem.numberReturned))!)", size: 15)
+                                        StandardText("Returned\(cartItem.numberReturned > 1 ? " \(cartItem.numberReturned)" : "") for a refund of \(NumberFormatter.dollars.string(from: cartItem.product!.price * Double(cartItem.numberReturned))!).", size: 15)
                                             .padding(5)
                                             .background(Color(UIConstants.lightGrayCapsule))
                                             .cornerRadius(5)
