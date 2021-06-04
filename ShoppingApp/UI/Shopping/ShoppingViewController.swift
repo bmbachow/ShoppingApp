@@ -96,8 +96,9 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         self.searchHistoryTableView?.isHidden = self.shouldHideSearchHistoryTableView
     }
     
-    override func userChanged() {
-        super.userChanged()
+    override func userChanged(_ notification: Notification) {
+        super.userChanged(notification)
+        guard notification.object as? UserTabViewController != self else { return }
         self.tableView?.reloadData()
         self.searchHistoryTableView?.reloadData()
     }

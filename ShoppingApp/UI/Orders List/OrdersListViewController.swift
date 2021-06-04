@@ -84,7 +84,6 @@ class OrdersListViewController: UserTabViewController, UITableViewDelegate, UITa
             return
         }
         let order = self.orders[indexPath.row]
-        let viewController = OrderDetailViewController(order: order, remoteAPI: self.remoteAPI)
-        self.navigationController?.pushViewController(viewController, animated: true)
+        self.goToOrderDetail(order: order, remoteAPI: self.remoteAPI)
     }
 }

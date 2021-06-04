@@ -16,16 +16,33 @@ class Notifications {
         static let giftCardBalanceChanged = "giftCardBalanceChanged"
     }
     
-    static func postUserChanged(fromViewController sender: UserTabViewController) {
+    
+    static func postUserChanged(fromViewController sender: UserTabViewController?) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Name.userChanged), object: sender)
     }
-    static func postCartChanged(fromViewController sender: UserTabViewController) {
+    static func postCartChanged(fromViewController sender: UserTabViewController?) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Name.cartChanged), object: sender)
     }
-    static func postWishListChanged(fromViewController sender: UserTabViewController) {
+    static func postWishListChanged(fromViewController sender: UserTabViewController?) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Name.wishListChanged), object: sender)
     }
-    static func postGiftCardBalanceChanged(fromViewController sender: UserTabViewController) {
+    static func postGiftCardBalanceChanged(fromViewController sender: UserTabViewController?) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Name.giftCardBalanceChanged), object: sender)
+    }
+    
+    static func addUserChangedObserver(_ observer: Any, selector: Selector) {
+        NotificationCenter.default.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: Name.userChanged), object: nil)
+    }
+    
+    static func addCartChangedObserver(_ observer: Any, selector: Selector) {
+        NotificationCenter.default.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: Name.cartChanged), object: nil)
+    }
+    
+    static func addWishListChangedObserver(_ observer: Any, selector: Selector) {
+        NotificationCenter.default.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: Name.wishListChanged), object: nil)
+    }
+    
+    static func addGiftCardBalanceChangedObserver(_ observer: Any, selector: Selector) {
+        NotificationCenter.default.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: Name.giftCardBalanceChanged), object: nil)
     }
 }

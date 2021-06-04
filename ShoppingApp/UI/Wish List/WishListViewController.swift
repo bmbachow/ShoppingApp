@@ -60,7 +60,7 @@ class WishListViewController: UserTabViewController, UITableViewDelegate, UITabl
             return
         }
         self.remoteAPI.addProductToCart(product: self.wishListItems[indexPath.row], user: self.user!, success: {
-            self.userTabBarController?.cartChanged(fromViewController: self)
+            Notifications.postCartChanged(fromViewController: self)
         }, failure: { error in
             print(error.localizedDescription)
         })
@@ -82,8 +82,9 @@ class WishListViewController: UserTabViewController, UITableViewDelegate, UITabl
         })
     }
     
-    override func wishListChanged() {
-        super.wishListChanged()
+    override func wishListChanged(_ notification: Notification) {
+        super.wishListChanged(notification)
+        guard notification.object as? UserTabViewController != self else { return }
         self.wishListTable.reloadData()
     }
 

@@ -50,7 +50,7 @@ class OrderDetailViewController: UserTabViewController, SwiftUICheckoutViewDeleg
             onAlertDismissed()
         })
         self.presentedViewController?.present(alert, animated: false, completion: nil)
-        self.userTabBarController?.giftCardBalanceChanged(fromViewController: self)
+        Notifications.postGiftCardBalanceChanged(fromViewController: self)
     }
     
 

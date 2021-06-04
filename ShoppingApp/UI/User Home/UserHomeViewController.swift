@@ -76,8 +76,9 @@ class UserHomeViewController: UserTabViewController, UICollectionViewDelegate, U
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    override func wishListChanged() {
-        super.wishListChanged()
+    override func wishListChanged(_ notification: Notification) {
+        super.wishListChanged(notification)
+        guard notification.object as? UserTabViewController != self else { return }
         self.ordersCollectionView?.reloadData()
         self.wishListCollectionView?.reloadData()
     }
@@ -121,7 +122,8 @@ class UserHomeViewController: UserTabViewController, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.ordersCollectionView {
-            
+            guard let order = self.user?.ordersArray[indexPath.row] else { return }
+            self.goToOrderDetail(order: order, remoteAPI: self.remoteAPI)
         } else {
             guard let product = self.user?.wishListProductsArray[indexPath.row] else { return }
             self.goToProductDetail(product: product)

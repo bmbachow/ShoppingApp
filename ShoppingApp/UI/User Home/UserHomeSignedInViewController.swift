@@ -76,8 +76,9 @@ class UserHomeSignedInViewController: UserHomeViewController, UITableViewDelegat
         self.refreshUserNotSignedInVisibility()
     }
     
-    override func userChanged() {
-        super.userChanged()
+    override func userChanged(_ notification: Notification) {
+        super.userChanged(notification)
+        guard notification.object as? UserTabViewController != self else { return }
         self.refreshData()
     }
     
@@ -97,23 +98,24 @@ class UserHomeSignedInViewController: UserHomeViewController, UITableViewDelegat
         self.refreshWishList()
     }
     
-    override func cartChanged() {
-        super.cartChanged()
+    override func cartChanged(_ notification: Notification) {
+        super.cartChanged(notification)
     }
     
-    override func wishListChanged() {
-        super.wishListChanged()
+    override func wishListChanged(_ notification: Notification) {
+        super.wishListChanged(notification)
+        guard notification.object as? UserTabViewController != self else { return }
         self.refreshWishList()
     }
     
-    override func giftCardBalanceChanged() {
-        super.giftCardBalanceChanged()
+    override func giftCardBalanceChanged(_ notification: Notification) {
+        super.giftCardBalanceChanged(notification)
+        guard notification.object as? UserTabViewController != self else { return }
         self.refreshGiftCardBalance()
     }
     
     func refreshWishList() {
         self.wishListCollectionView.reloadData()
-        self.userNotSignedInViewController.wishListChanged()
     }
     
     func refreshGiftCardBalance() {

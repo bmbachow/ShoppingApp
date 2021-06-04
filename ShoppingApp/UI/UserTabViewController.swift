@@ -22,6 +22,13 @@ class UserTabViewController: BaseViewController {
         return self.tabBarController as? UserTabBarController
     }
     
+    override func viewDidLoad() {
+        Notifications.addUserChangedObserver(self, selector: #selector(self.userChanged(_:)))
+        Notifications.addCartChangedObserver(self, selector: #selector(self.cartChanged(_:)))
+        Notifications.addWishListChangedObserver(self, selector: #selector(self.wishListChanged(_:)))
+        Notifications.addGiftCardBalanceChangedObserver(self, selector: #selector(self.giftCardBalanceChanged(_:)))
+    }
+    
     func presentSignInViewController() {
         let signInViewController = SignInViewController(presentingUserTabViewController: self, anonymousUser: self.user as? AnonymousUser, tappedRegisterAction: { [ weak self ] in
             self?.dismiss(animated: true, completion: {
@@ -79,38 +86,26 @@ class UserTabViewController: BaseViewController {
         )
     }
     
-    func userChanged() {
-        guard let userTabViewController = self.nextUserTabViewControllerInNavigationController() else {
-            return
-        }
-        userTabViewController.userChanged()
+    @objc func userChanged(_ notification: Notification) {
+        
     }
     
-    func cartChanged() {
-        guard let userTabViewController = self.nextUserTabViewControllerInNavigationController() else {
-            return
-        }
-        userTabViewController.cartChanged()
+    @objc func cartChanged(_ notification: Notification) {
+        
     }
     
-    func wishListChanged() {
-        guard let userTabViewController = self.nextUserTabViewControllerInNavigationController() else {
-            return
-        }
-        userTabViewController.wishListChanged()
+    @objc func wishListChanged(_ notification: Notification) {
+        
     }
     
-    func giftCardBalanceChanged() {
-        guard let userTabViewController = self.nextUserTabViewControllerInNavigationController() else {
-            return
-        }
-        userTabViewController.giftCardBalanceChanged()
+    @objc func giftCardBalanceChanged(_ notification: Notification) {
+        
     }
     
     func addProductToCart(_ product: Product, completion: (() -> Void)? = nil) {
         if let user = self.user {
             self.remoteAPI.addProductToCart(product: product, user: user, success: {
-                self.userTabBarController?.cartChanged(fromViewController: self)
+                Notifications.postCartChanged(fromViewController: self)
                 completion?()
             }, failure: { error in
                 print(error.localizedDescription)
@@ -121,7 +116,7 @@ class UserTabViewController: BaseViewController {
     func addProductToWishList(_ product: Product, completion: (() -> Void)? = nil) {
         if let user = self.user {
             self.remoteAPI.addProductToWishList(product: product, user: user, success: {
-                self.userTabBarController?.wishListChanged(fromViewController: self)
+                Notifications.postWishListChanged(fromViewController: self)
                 completion?()
             }, failure: { error in
                 print(error.localizedDescription)
@@ -129,16 +124,13 @@ class UserTabViewController: BaseViewController {
         }
     }
     
-    func nextUserTabViewControllerInNavigationController() -> UserTabViewController? {
-        guard let index = self.navigationController?.viewControllers.firstIndex(of: self) else { return nil }
-        guard navigationController!.viewControllers.count > index + 1 else {
-            return nil
-        }
-        return navigationController?.viewControllers[index + 1] as? UserTabViewController
-    }
-    
     func goToProductDetail(product: Product) {
         let viewController = ProductDetailViewController(product: product)
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func goToOrderDetail(order: Order, remoteAPI: RemoteAPI) {
+        let viewController = OrderDetailViewController(order: order, remoteAPI: self.remoteAPI)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

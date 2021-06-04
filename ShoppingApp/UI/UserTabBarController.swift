@@ -33,10 +33,8 @@ class UserTabBarController: UITabBarController {
     
     var user: User? {
         didSet {
-            for viewController in self.userTabViewControllers {
-                viewController.userChanged()
-            }
-            self.cartChanged(fromViewController: nil)
+            Notifications.postUserChanged(fromViewController: nil)
+            self.refreshCartBadge()
         }
     }
     
@@ -82,27 +80,11 @@ class UserTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Notifications.addCartChangedObserver(self, selector: #selector(self.cartChanged(_:)))
     }
     
-    func cartChanged(fromViewController sender: UserTabViewController?) {
-        for viewController in self.userTabViewControllers {
-            viewController.cartChanged()
-        }
+    @objc func cartChanged(_ notification: Notification) {
         self.refreshCartBadge()
-    }
-    
-    func wishListChanged(fromViewController sender: UserTabViewController?) {
-        for viewController in self.userTabViewControllers {
-            guard viewController != sender else { continue }
-            viewController.wishListChanged()
-        }
-    }
-    
-    func giftCardBalanceChanged(fromViewController sender: UserTabViewController?) {
-        for viewController in self.userTabViewControllers {
-            guard viewController != sender else { continue }
-            viewController.giftCardBalanceChanged()
-        }
     }
     
     private func refreshCartBadge() {

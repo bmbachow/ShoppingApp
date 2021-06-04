@@ -63,14 +63,19 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
     
     
     
-    override func cartChanged() {
-        super.cartChanged()
+    override func cartChanged(_ notification: Notification) {
+        super.cartChanged(notification)
+        guard notification.object as? UserTabViewController != self else { return }
+        self.refreshCart()
+    }
+    
+    func refreshCart() {
         self.updateSubtotalAmountLabel()
         self.tableView?.reloadData()
     }
     
-    override func wishListChanged() {
-        super.wishListChanged()
+    override func wishListChanged(_ notification: Notification) {
+        super.wishListChanged(notification)
     }
     
     func goToCheckOut() {
@@ -79,8 +84,8 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
                                                       cancelAction: { [weak self] in
                                                         self?.dismiss(animated: true, completion: nil)
                                                       }, confirmedOrderAction: { [weak self] order in
-                                                        self?.cartChanged()
-                                                        self?.userTabBarController?.cartChanged(fromViewController: self)
+                                                        self?.refreshCart()
+                                                        Notifications.postCartChanged(fromViewController: self)
                                                         self?.dismiss(animated: true, completion: nil)
                                                       })
         orderViewController.modalPresentationStyle = .fullScreen
@@ -123,20 +128,36 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
             return
         }
         let cartItem = self.cartItems[indexPath.row]
-        self.remoteAPI.changeCartItemNumber(cartItem: cartItem, number: Int(cell.stepper.value), success: {
+        let value = Int(cell.stepper.value)
+        
+        
+        self.remoteAPI.changeCartItemNumber(cartItem: cartItem, number: value, success: {
             cell.numberLabel.text = String(self.cartItems[indexPath.row].number)
-            self.userTabBarController?.cartChanged(fromViewController: self)
+            Notifications.postCartChanged(fromViewController: self)
             self.updateSubtotalAmountLabel()
+            
+            if value == 0 {
+                Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: {_ in 
+                    self.deleteCartItem(atIndexPath: indexPath)
+                })
+            }
+            
         }, failure: { error in
             cell.stepper.value = Double(cartItem.number)
             print(error.localizedDescription)
         })
+        
+        
     }
     
     func tappedDeleteButton(inCell cell: CartProductTableViewCell) {
         guard let indexPath = self.tableView.indexPath(for: cell) else {
             return
         }
+        self.deleteCartItem(atIndexPath: indexPath)
+    }
+    
+    func deleteCartItem(atIndexPath indexPath: IndexPath) {
         let cartItem = self.cartItems[indexPath.row]
         print(self.cartItems.count)
         self.tableView.beginUpdates()
@@ -144,7 +165,7 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
             print(self.cartItems.count)
             self.tableView.deleteRows(at: [indexPath], with: .right)
             self.tableView.endUpdates()
-            self.userTabBarController?.cartChanged(fromViewController: self)
+            Notifications.postCartChanged(fromViewController: self)
             self.updateSubtotalAmountLabel()
         }, failure: { error in
             self.tableView.endUpdates()
