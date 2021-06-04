@@ -60,7 +60,7 @@ class RoundButton : UIButton{
     }
 }
 
-class RoundButton2 : RoundButton{
+class RoundButton2 : RoundButton {
     
     required init?(coder: NSCoder){
         super.init(coder:coder)
@@ -79,6 +79,15 @@ extension UIButton {
         self.titleLabel?.font = UIConstants.standardFont(size: 17, style: .regular)
         self.backgroundColor = UIConstants.accentColorApp
         self.setTitleColor(.black, for: .normal)
+    }
+}
+
+extension UIBarButtonItem {
+    
+    static func noTextButton() -> UIBarButtonItem {
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        return backButton
     }
 }
 

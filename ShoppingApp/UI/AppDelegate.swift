@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
         self.remoteAPI = CoreDataHelper(container: self.persistentContainer)
@@ -39,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.settingsViewController = SettingsViewController()
         
+        self.setupUIAppearance()
+        
         self.tabBarController = UserTabBarController(shoppingViewController: self.shoppingViewController!, userHomeViewController: self.userHomeViewController!, cartViewController: self.cartViewController!, settingsViewController: self.settingsViewController!)
         
         self.window!.rootViewController = self.tabBarController!
@@ -48,7 +51,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         
         
+   
+ 
+        return true
+    }
+
+    func setupUIAppearance() {
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIConstants.standardFont(size: 19, style: .regular)], for: .normal)
+        UIBarButtonItem.appearance().tintColor = UIConstants.appOrangeColor
  
         
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIConstants.standardFont(size: 19, style: .semiBold)]
@@ -64,12 +74,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().isOpaque = true
         
- 
- 
-        return true
+        
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage()
+        
+        UITabBar.appearance().isTranslucent = true
+        //UITabBar.appearance().barTintColor = UIConstants.accentColorApp
     }
-
-    
     
 
     // MARK: - Core Data stack

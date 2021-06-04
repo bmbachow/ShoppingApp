@@ -10,7 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductDetailViewController" customModule="ShoppingApp" customModuleProvider="target">
             <connections>
-                <outlet property="backButton" destination="777-Qe-oqX" id="dbN-Jz-1Ui"/>
                 <outlet property="tableView" destination="Cki-d3-e6y" id="bNg-uI-RZd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,32 +19,25 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cki-d3-e6y">
-                    <rect key="frame" x="0.0" y="83" width="414" height="779"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cki-d3-e6y">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="777-Qe-oqX" customClass="BackButton" customModule="ShoppingApp" customModuleProvider="target">
-                    <rect key="frame" x="10" y="44" width="20" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="arrow.left" catalog="system"/>
-                    <connections>
-                        <action selector="tappedBackButton:" destination="-1" eventType="touchUpInside" id="QYk-v1-Lm1"/>
-                    </connections>
-                </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="paperplane2-removebg-preview" translatesAutoresizingMaskIntoConstraints="NO" id="W0J-ch-i4z">
-                    <rect key="frame" x="186" y="39" width="42" height="37"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Cki-d3-e6y" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3tS-ui-7WG"/>
+                <constraint firstAttribute="bottom" secondItem="Cki-d3-e6y" secondAttribute="bottom" id="TiE-FO-Qoj"/>
+                <constraint firstItem="Cki-d3-e6y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Z4b-ZJ-96w"/>
+                <constraint firstAttribute="trailing" secondItem="Cki-d3-e6y" secondAttribute="trailing" id="r8s-BS-QWd"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
             <point key="canvasLocation" x="-59.420289855072468" y="58.928571428571423"/>
         </view>
     </objects>
     <resources>
-        <image name="arrow.left" catalog="system" width="128" height="98"/>
-        <image name="paperplane2-removebg-preview" width="488" height="511"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

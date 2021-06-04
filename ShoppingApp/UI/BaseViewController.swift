@@ -15,6 +15,12 @@ class BaseViewController: UIViewController {
     
     var remoteAPI: RemoteAPI { self.appDelegate.remoteAPI! }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem.noTextButton()
+        
+    }
+    
     func presentSwiftUIView<T: View>(view: T) {
         let hostingController = UIHostingController(rootView: view)
         self.present(hostingController, animated: true, completion: nil)

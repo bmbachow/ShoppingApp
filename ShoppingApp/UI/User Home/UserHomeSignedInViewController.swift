@@ -80,6 +80,7 @@ class UserHomeSignedInViewController: UserHomeViewController, UITableViewDelegat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.refreshUserNotSignedInVisibility()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func userChanged(_ notification: Notification) {

@@ -70,13 +70,14 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
         })
         
         self.tableView.tableFooterView = UIView()
-        
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.adCell.startAdTimer()
         self.refreshSearchHistoryTableViewVisibility()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {

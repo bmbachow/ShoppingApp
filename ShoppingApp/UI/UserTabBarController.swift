@@ -14,10 +14,10 @@ class UserTabBarController: UITabBarController {
     
     var remoteAPI: RemoteAPI { self.appDelegate.remoteAPI! }
     
-    let shoppingNavigationController: UINavigationController
-    let userHomeNavigationController: UINavigationController
-    let cartNavigationController: UINavigationController
-    let settingsNavigationController: UINavigationController
+    let shoppingNavigationController: BazaarNavigationController
+    let userHomeNavigationController: BazaarNavigationController
+    let cartNavigationController: BazaarNavigationController
+    let settingsNavigationController: BazaarNavigationController
     let shoppingViewController: ShoppingViewController
     let userHomeViewController: UserHomeSignedInViewController
     let cartViewController: CartViewController
@@ -38,30 +38,36 @@ class UserTabBarController: UITabBarController {
         }
     }
     
+    let blurView = BlurView()
+    let colorView = UIView()
+    
     init(shoppingViewController: ShoppingViewController, userHomeViewController: UserHomeSignedInViewController, cartViewController: CartViewController, settingsViewController: SettingsViewController) {
         self.shoppingViewController = shoppingViewController
         self.userHomeViewController = userHomeViewController
         self.cartViewController = cartViewController
         self.settingsViewController = settingsViewController
      
-        self.shoppingNavigationController = UINavigationController(rootViewController: self.shoppingViewController)
+        self.shoppingNavigationController = BazaarNavigationController(rootViewController: self.shoppingViewController)
         self.shoppingNavigationController.tabBarItem = UITabBarItem(title: "Shop", image: UIImage(systemName: "bag"), selectedImage: UIImage(systemName: "bag.fill"))
         
-        self.userHomeNavigationController = UINavigationController(rootViewController: self.userHomeViewController)
+        self.userHomeNavigationController = BazaarNavigationController(rootViewController: self.userHomeViewController)
         self.userHomeNavigationController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
         
-        self.cartNavigationController = UINavigationController(rootViewController: self.cartViewController)
+        self.cartNavigationController = BazaarNavigationController(rootViewController: self.cartViewController)
         self.cartNavigationController.tabBarItem = UITabBarItem(title: "Cart", image: UIImage(systemName: "cart"), selectedImage: UIImage(systemName: "cart.fill"))
         self.cartNavigationController.tabBarItem.badgeColor = UIConstants.appOrangeColor
             
-        self.settingsNavigationController = UINavigationController(rootViewController: self.settingsViewController)
+        self.settingsNavigationController = BazaarNavigationController(rootViewController: self.settingsViewController)
         self.settingsNavigationController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "line.horizontal.3"), selectedImage: nil)
         super.init(nibName: nil, bundle: nil)
         self.tabBar.tintColor = UIConstants.secondaryButtonColor
         
+        /*
         for navigationController in self.navigationControllers {
             navigationController.setNavigationBarHidden(true, animated: false)
         }
+ */
+        
         self.viewControllers = self.navigationControllers
       
         if let uuid = UIDevice.current.identifierForVendor {
@@ -73,11 +79,23 @@ class UserTabBarController: UITabBarController {
                     print(error.localizedDescription)
                 })
         }
+        
+        self.colorView.backgroundColor = UIConstants.accentColorAppTranslucent
+        
+        self.view.insertSubview(self.blurView, at: 1)
+        self.view.insertSubview(self.colorView, at: 2)
     }
     
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        let frame = CGRect(x: 0, y: self.view.frame.height - self.tabBar.frame.height, width: self.view.frame.width, height: self.tabBar.frame.height)
+        self.blurView.frame = frame
+        self.colorView.frame = frame
     }
     
     override func viewDidLoad() {

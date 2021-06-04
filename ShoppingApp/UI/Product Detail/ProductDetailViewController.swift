@@ -96,6 +96,13 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
             print(error.localizedDescription)
         })
         self.refreshProductReviewsArray()
+
+        (self.navigationController as? BazaarNavigationController)?.setLogoVisibile(true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     @objc func tappedAddToCartButton(_ sender: UIButton) {
