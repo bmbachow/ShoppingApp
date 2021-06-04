@@ -23,15 +23,15 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pQp-ZV-XTh" userLabel="Search History Table View">
+                    <rect key="frame" x="0.0" y="108" width="414" height="754"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIc-DP-Cek" userLabel="Top safe area view">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                     <color key="backgroundColor" name="AccentColorApp"/>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6EK-RE-PNN">
-                    <rect key="frame" x="0.0" y="150" width="414" height="746"/>
-                    <color key="backgroundColor" name="AccentColorApp"/>
-                </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1y-1Q-qav">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1y-1Q-qav" userLabel="Top Bar View">
                     <rect key="frame" x="0.0" y="44" width="414" height="64"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPE-xu-Qki" customClass="roundLabel" customModule="ShoppingApp" customModuleProvider="target">
@@ -61,10 +61,6 @@
                         <constraint firstItem="DPE-xu-Qki" firstAttribute="bottom" secondItem="Iyl-sC-8rQ" secondAttribute="bottom" constant="-8" id="yIU-d9-nk8"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pQp-ZV-XTh" userLabel="Search History Table View">
-                    <rect key="frame" x="0.0" y="108" width="414" height="754"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </tableView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ZIJ-n0-JGg">
                     <rect key="frame" x="0.0" y="108" width="414" height="42"/>
                     <color key="backgroundColor" name="AccentColorApp"/>
@@ -78,6 +74,10 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6EK-RE-PNN">
+                    <rect key="frame" x="0.0" y="150" width="414" height="746"/>
+                    <color key="backgroundColor" name="AccentColorApp"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
