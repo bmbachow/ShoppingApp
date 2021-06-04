@@ -17,7 +17,6 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    
     private var shouldShowSignInViewControllerOnAppear = true
     
     private var shouldHideSearchHistoryTableView: Bool {
@@ -40,6 +39,12 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let textField = self.searchBar.value(forKey: "searchField") as? UITextField {
+            textField.font = UIConstants.standardFont(size: 18, style: .regular)
+        }
+        
+
         self.searchBar.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
