@@ -14,6 +14,7 @@ class Notifications {
         static let cartChanged = "cartChanged"
         static let wishListChanged = "wishListChanged"
         static let giftCardBalanceChanged = "giftCardBalanceChanged"
+        static let profilePhotoChanged = "profilePhotoChanged"
     }
     
     
@@ -29,6 +30,11 @@ class Notifications {
     static func postGiftCardBalanceChanged(fromViewController sender: UserTabViewController?) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Name.giftCardBalanceChanged), object: sender)
     }
+    static func postProfilePhotoChanged(fromViewController sender: UserTabViewController?) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Name.profilePhotoChanged), object: sender)
+    }
+    
+    
     
     static func addUserChangedObserver(_ observer: Any, selector: Selector) {
         NotificationCenter.default.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: Name.userChanged), object: nil)
@@ -41,8 +47,10 @@ class Notifications {
     static func addWishListChangedObserver(_ observer: Any, selector: Selector) {
         NotificationCenter.default.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: Name.wishListChanged), object: nil)
     }
-    
     static func addGiftCardBalanceChangedObserver(_ observer: Any, selector: Selector) {
         NotificationCenter.default.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: Name.giftCardBalanceChanged), object: nil)
+    }
+    static func addProfilePhotoChangedObserver(_ observer: Any, selector: Selector) {
+        NotificationCenter.default.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: Name.profilePhotoChanged), object: nil)
     }
 }

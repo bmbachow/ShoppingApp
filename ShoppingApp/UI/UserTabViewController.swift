@@ -27,6 +27,7 @@ class UserTabViewController: BaseViewController {
         Notifications.addCartChangedObserver(self, selector: #selector(self.cartChanged(_:)))
         Notifications.addWishListChangedObserver(self, selector: #selector(self.wishListChanged(_:)))
         Notifications.addGiftCardBalanceChangedObserver(self, selector: #selector(self.giftCardBalanceChanged(_:)))
+        Notifications.addProfilePhotoChangedObserver(self, selector: #selector(self.profilePhotoChanged(_:)))
     }
     
     func presentSignInViewController() {
@@ -99,6 +100,10 @@ class UserTabViewController: BaseViewController {
     }
     
     @objc func giftCardBalanceChanged(_ notification: Notification) {
+        
+    }
+    
+    @objc func profilePhotoChanged(_ notification: Notification) {
         
     }
     

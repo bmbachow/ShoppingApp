@@ -129,6 +129,23 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
         })
         self.tableView.reloadData()
     }
+    
+    override func profilePhotoChanged(_ notification: Notification) {
+        super.profilePhotoChanged(notification)
+        guard let user = self.user else { return }
+        guard let indexPaths = self.tableView.indexPathsForVisibleRows?
+                .filter({$0.section == 3 &&
+                    self.productReviewsArray[$0.row].user == user
+                }) else {
+            return
+        }
+        for indexPath in indexPaths {
+            guard let cell = self.tableView.cellForRow(at: indexPath) as? ProductDetailReviewTableViewCell else {
+                continue
+            }
+            cell.userImageView.image = user.image
+        }
+    }
    
 
     //MARK: UITableView
@@ -181,7 +198,7 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
             if let image = review.user?.image {
                 cell.userImageView.image = image
             } else {
-                cell.userImageView.image = UIImage(systemName: "person.circle.fill")
+                cell.userImageView.image = UIImage(systemName: "person.crop.circle.fill")
             }
             cell.hideSeparator(tableViewWidth: self.tableView.frame.width)
             return cell

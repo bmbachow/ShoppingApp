@@ -211,8 +211,14 @@ class CoreDataHelper: RemoteAPI {
         }
     }
     
-    func clearAnonymousUserProperties(uuid: UUID, success: () -> Void, failure: (Error) -> Void) {
-        
+    func postProfileImage(user: User, image: UIImage, success: () -> Void, failure: (Error) -> Void) {
+        user.setImageDataFromImage(image)
+        do {
+            try self.viewContext.save()
+            success()
+        } catch {
+            failure(error)
+        }
     }
     
     //MARK: Cart

@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import MobileCoreServices
+import AVFoundation
+import AVKit
 
 class UserHomeSignedInViewController: UserHomeViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -35,6 +38,9 @@ class UserHomeSignedInViewController: UserHomeViewController, UITableViewDelegat
     lazy private var userHomeMainTableViewCell: UserHomeMainTableViewCell = {
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "UserHomeMainTableViewCell") as? UserHomeMainTableViewCell else {
             fatalError("Unable to dequeue UserHomeMainTableViewCell")
+        }
+        cell.profileImageView.tapAction = { [weak self] in
+            self?.tappedProfileImageView()
         }
         return cell
     }()
@@ -88,9 +94,12 @@ class UserHomeSignedInViewController: UserHomeViewController, UITableViewDelegat
     
     func refreshData() {
         guard self.tableView != nil else { return }
-        self.userHomeMainTableViewCell.nameLabel.text = (user?.firstName ?? "") + " " + (user?.lastName ?? "")
-        self.userHomeMainTableViewCell.memberSinceLabel.text = self.memberSinceString
-        self.userHomeMainTableViewCell.profileImageView.image = self.user?.image ?? UIImage(systemName: "person.circle.fill")!
+  
+        self.userHomeMainTableViewCell.configure(
+            name: (user?.firstName ?? "") + " " + (user?.lastName ?? ""),
+            memberSince: self.memberSinceString,
+            profileImage: self.user?.image)
+        
         self.refreshGiftCardBalance()
         self.tableView.reloadData()
         self.ordersCollectionView.reloadData()
@@ -135,7 +144,9 @@ class UserHomeSignedInViewController: UserHomeViewController, UITableViewDelegat
         }
     }
     
-    
+    func tappedProfileImageView() {
+        self.showImagePicker()
+    }
     
     
     
@@ -179,4 +190,33 @@ class UserHomeSignedInViewController: UserHomeViewController, UITableViewDelegat
         
     }
 
+}
+
+
+extension UserHomeSignedInViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        switch info[.mediaType] as! CFString {
+        case kUTTypeImage:
+            if let image = info[.editedImage] as? UIImage,
+               let user = self.user {
+                self.remoteAPI.postProfileImage(user: user, image: image, success: {
+                    self.userHomeMainTableViewCell.setProfileImage(image)
+                    Notifications.postProfilePhotoChanged(fromViewController: self)
+                }, failure: { error in
+                    print(error.localizedDescription)
+                })
+            }
+            self.dismiss(animated: true, completion: nil)
+        default: break
+        }
+    }
+    
+    func showImagePicker() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.mediaTypes = [kUTTypeImage as String]
+        imagePickerController.allowsEditing = true
+        self.present(imagePickerController, animated: true, completion: nil)
+    }
 }
