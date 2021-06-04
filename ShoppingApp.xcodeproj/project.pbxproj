@@ -136,6 +136,9 @@
 		52CD8B17265BE09C00AFAC8C /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52CD8B15265BE09C00AFAC8C /* AlertViewController.xib */; };
 		52CD8B18265BE09C00AFAC8C /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8B16265BE09C00AFAC8C /* AlertViewController.swift */; };
 		52D369F4266A4FE300A4236B /* ButtonImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D369F3266A4FE300A4236B /* ButtonImageView.swift */; };
+		52D369F6266A74D900A4236B /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D369F5266A74D900A4236B /* BackButton.swift */; };
+		52D369FA266A822500A4236B /* PaddedLazyVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D369F9266A822500A4236B /* PaddedLazyVStack.swift */; };
+		52D369FC266A8CA900A4236B /* ColorTopSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D369FB266A8CA900A4236B /* ColorTopSafeArea.swift */; };
 		52D8F89926580BA700EF220A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D8F89826580BA700EF220A /* AppDelegate.swift */; };
 		52D8F8A326580BA700EF220A /* ShoppingApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52D8F8A126580BA700EF220A /* ShoppingApp.xcdatamodeld */; };
 		52D8F8A826580BA900EF220A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52D8F8A626580BA900EF220A /* LaunchScreen.storyboard */; };
@@ -306,6 +309,9 @@
 		52CD8B15265BE09C00AFAC8C /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		52CD8B16265BE09C00AFAC8C /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		52D369F3266A4FE300A4236B /* ButtonImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonImageView.swift; sourceTree = "<group>"; };
+		52D369F5266A74D900A4236B /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		52D369F9266A822500A4236B /* PaddedLazyVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedLazyVStack.swift; sourceTree = "<group>"; };
+		52D369FB266A8CA900A4236B /* ColorTopSafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTopSafeArea.swift; sourceTree = "<group>"; };
 		52D8F89526580BA700EF220A /* ShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D8F89826580BA700EF220A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52D8F8A226580BA700EF220A /* ShoppingApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoppingApp.xcdatamodel; sourceTree = "<group>"; };
@@ -424,6 +430,7 @@
 				524CFECD2662724900B72981 /* LabeledTextFieldSet.swift */,
 				52FCE8D626653EB70076C438 /* LabeledVStack.swift */,
 				524CFECF2662783000B72981 /* FormVStack.swift */,
+				52D369F9266A822500A4236B /* PaddedLazyVStack.swift */,
 				52A2872D265FF25C008584E9 /* StandardTextField.swift */,
 				52FCE8D4266533820076C438 /* MenuTextField.swift */,
 				524CFED82662812500B72981 /* FormHStack.swift */,
@@ -431,6 +438,7 @@
 				524CFED226627CBC00B72981 /* StandardToggle.swift */,
 				524CFED426627D7F00B72981 /* StandardButton.swift */,
 				522A96A8266849BF00DE4C98 /* StandardText.swift */,
+				52D369FB266A8CA900A4236B /* ColorTopSafeArea.swift */,
 			);
 			path = "SwiftUI Form Views";
 			sourceTree = "<group>";
@@ -635,6 +643,7 @@
 				52E0B06A265B11BB00B9C77E /* ViewControllerBlueprint.storyboard */,
 				52927780265C5A4400394180 /* UIExtensions.swift */,
 				52A2873126600102008584E9 /* UIConstants.swift */,
+				52D369F5266A74D900A4236B /* BackButton.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -874,6 +883,7 @@
 				522A96AC266855C000DE4C98 /* OrderDetailViewController.swift in Sources */,
 				520F43DA265D448C00A6B282 /* CosmosAccessibility.swift in Sources */,
 				520CE53426697C6C00793FB2 /* User+CoreDataClass.swift in Sources */,
+				52D369FA266A822500A4236B /* PaddedLazyVStack.swift in Sources */,
 				520F43D9265D448C00A6B282 /* StarLayer.swift in Sources */,
 				52FCE8D9266547680076C438 /* USState.swift in Sources */,
 				524CFED526627D7F00B72981 /* StandardButton.swift in Sources */,
@@ -911,6 +921,7 @@
 				526724D4265AE3FC00D9CAB9 /* ProductExtensions.swift in Sources */,
 				520F43DC265D448C00A6B282 /* CosmosDefaultSettings.swift in Sources */,
 				52FCE8DF2665582F0076C438 /* PaymentMethodCellView.swift in Sources */,
+				52D369F6266A74D900A4236B /* BackButton.swift in Sources */,
 				520CE52926697C6B00793FB2 /* AnonymousUser+CoreDataProperties.swift in Sources */,
 				524CFED7266280E500B72981 /* FormSpacer.swift in Sources */,
 				520CE52326697C6B00793FB2 /* PaymentMethod+CoreDataProperties.swift in Sources */,
@@ -984,6 +995,7 @@
 				52FCE97126656F9E0076C438 /* MonthInt.swift in Sources */,
 				526724D8265AE41300D9CAB9 /* PaymentMethodExtensions.swift in Sources */,
 				522A96A9266849BF00DE4C98 /* StandardText.swift in Sources */,
+				52D369FC266A8CA900A4236B /* ColorTopSafeArea.swift in Sources */,
 				520F43ED265D88B000A6B282 /* DateFormatterExtensions.swift in Sources */,
 				5224588E2667160C00CB89F6 /* CustomPaddingTextView.swift in Sources */,
 				520CE52126697C6B00793FB2 /* Category+CoreDataProperties.swift in Sources */,

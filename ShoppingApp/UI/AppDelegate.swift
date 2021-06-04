@@ -45,8 +45,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window!.rootViewController = self.tabBarController!
         self.window!.makeKeyAndVisible()
+    
         
-        // Override point for customization after application launch.
+        
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIConstants.standardFont(size: 19, style: .regular)], for: .normal)
+ 
+        
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIConstants.standardFont(size: 19, style: .semiBold)]
+ 
+        /*
+        UINavigationBar.appearance().backgroundColor = .white
+        UINavigationBar.appearance().isTranslucent = false
+ */
+ 
+        UINavigationBar.appearance().setBackgroundImage(UIImage(color: .white)!, for: UIBarMetrics.default)
+        
+        UINavigationBar.appearance().isTranslucent = true
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().isOpaque = true
+        
+ 
+ 
         return true
     }
 

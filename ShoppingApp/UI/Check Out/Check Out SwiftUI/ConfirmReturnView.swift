@@ -85,6 +85,7 @@ struct ConfirmReturnView: View {
             }, labelText: "Cancel")
             Spacer()
         }
+        //.modifier(ColorTopSafeArea(.white))
     }
 }
 

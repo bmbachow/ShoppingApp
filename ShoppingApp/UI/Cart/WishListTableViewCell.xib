@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,7 +26,7 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPT-U8-UKO">
-                        <rect key="frame" x="286" y="174.5" width="51" height="30"/>
+                        <rect key="frame" x="286" y="174" width="51" height="30"/>
                         <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="15"/>
                         <state key="normal" title="Delete">
                             <color key="titleColor" systemColor="systemRedColor"/>
@@ -55,7 +56,7 @@
                         <rect key="frame" x="74" y="174" width="85" height="30"/>
                         <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                         <state key="normal" title="Add To Cart">
-                            <color key="titleColor" red="0.53333333329999999" green="0.4549019608" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleColor" name="secondaryButtonColor"/>
                         </state>
                         <connections>
                             <action selector="tappedAddToCartButton:" destination="0ni-Y3-lKZ" eventType="touchUpInside" id="VIa-R6-zZz"/>
@@ -64,10 +65,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="RS7-VM-Uh5" firstAttribute="leading" secondItem="8v9-e6-tm6" secondAttribute="leadingMargin" constant="54" id="2D2-cw-jay"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="sPT-U8-UKO" secondAttribute="bottom" constant="15.5" id="EBh-n8-jwE"/>
                     <constraint firstAttribute="bottomMargin" secondItem="RS7-VM-Uh5" secondAttribute="bottom" constant="16" id="PIe-cR-kDk"/>
                     <constraint firstItem="Mbo-h8-7MI" firstAttribute="top" secondItem="8v9-e6-tm6" secondAttribute="top" constant="25" id="QfF-9H-BPl"/>
                     <constraint firstItem="Ol6-Nb-rRe" firstAttribute="centerY" secondItem="Mbo-h8-7MI" secondAttribute="centerY" id="Re4-Ky-lg3"/>
+                    <constraint firstItem="sPT-U8-UKO" firstAttribute="bottom" secondItem="RS7-VM-Uh5" secondAttribute="bottom" id="cNw-Jq-MN7"/>
                     <constraint firstAttribute="trailing" secondItem="sPT-U8-UKO" secondAttribute="trailing" constant="35" id="dF5-xU-BhV"/>
                     <constraint firstItem="Mbo-h8-7MI" firstAttribute="leading" secondItem="8v9-e6-tm6" secondAttribute="leading" constant="25" id="hcW-oo-vTm"/>
                     <constraint firstItem="Ol6-Nb-rRe" firstAttribute="leading" secondItem="Mbo-h8-7MI" secondAttribute="trailing" constant="25" id="j8s-mE-IF1"/>
@@ -86,6 +87,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="secondaryButtonColor">
+            <color red="0.056982979364406987" green="0.27371587197637404" blue="0.77942595473763088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

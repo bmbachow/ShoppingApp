@@ -42,6 +42,7 @@ struct NewAccountPaymentMethodView: View {
                     .disabled(self.shouldDisableSaveButton)
             }
         }
+        //.modifier(ColorTopSafeArea(.white))
         .navigationTitle(Text("New checking account"))
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: {

@@ -23,6 +23,8 @@ struct CheckoutNavigationView: View {
         NavigationView {
             ChooseView(remoteAPI: self.remoteAPI, orderData: self.orderData, mode: .address, delegate: self.delegate)
         }
+        .accentColor(Color(UIConstants.appOrangeColor))
+        .font(Font(UIConstants.standardFont(size: 17, style: .regular)))
     }
 }
 

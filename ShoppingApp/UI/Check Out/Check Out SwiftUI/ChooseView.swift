@@ -88,8 +88,8 @@ struct ChooseView: View {
     
     
     var body: some View {
-        
-            List {
+        ScrollView {
+            PaddedLazyVStack {
                 if !self.listForCurrentModeIsEmpty() {
                     switch self.mode {
                     case .address:
@@ -185,7 +185,8 @@ struct ChooseView: View {
                     }
                 }
             )
+        }
+        //.modifier(ColorTopSafeArea(.white))
     }
+    
 }
-
-

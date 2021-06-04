@@ -30,7 +30,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ktb-AZ-0CM">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ktb-AZ-0CM" customClass="BackButton" customModule="ShoppingApp" customModuleProvider="target">
                             <rect key="frame" x="12" y="21" width="74" height="22"/>
                             <state key="normal" title="Button" image="arrow.left" catalog="system"/>
                             <connections>

@@ -20,5 +20,6 @@ struct CheckoutThankYouView: View {
                 StandardButton(action: { self.delegate?.orderConfirmed(self.order) }, labelText: "Close")
             }
         }
+        //.modifier(ColorTopSafeArea(.white))
     }
 }

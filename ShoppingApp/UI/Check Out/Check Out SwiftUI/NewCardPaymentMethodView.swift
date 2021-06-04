@@ -53,6 +53,7 @@ struct NewCardPaymentMethodView: View {
                     .disabled(self.shouldDisableSaveButton)
             }
         }
+        //.modifier(ColorTopSafeArea(.white))
         .navigationTitle(Text("New credit or debit card"))
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: {

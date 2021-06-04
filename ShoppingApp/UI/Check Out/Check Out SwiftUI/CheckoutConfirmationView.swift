@@ -229,7 +229,9 @@ struct CheckoutConfirmationView: View {
                 ConfirmReturnView(remoteAPI: self.remoteAPI, cartItem: self.orderData.returnItem!, orderData: self.orderData, delegate: self.confirmReturnDelegate!, isPresented: self.$showingReturnConfirmation)
             })
         }
+        //.modifier(ColorTopSafeArea(.white))
         .navigationBarHidden(self.mode == .orderDetail)
+        .navigationTitle("Order confirmation")
     }
     
     func placeOrder() {

@@ -43,20 +43,22 @@ class UserTabBarController: UITabBarController {
         self.userHomeViewController = userHomeViewController
         self.cartViewController = cartViewController
         self.settingsViewController = settingsViewController
-        
+     
         self.shoppingNavigationController = UINavigationController(rootViewController: self.shoppingViewController)
-        self.shoppingNavigationController.tabBarItem = UITabBarItem(title: "Shop", image: UIImage(systemName: "house"), selectedImage: nil)
+        self.shoppingNavigationController.tabBarItem = UITabBarItem(title: "Shop", image: UIImage(systemName: "bag"), selectedImage: UIImage(systemName: "bag.fill"))
         
         self.userHomeNavigationController = UINavigationController(rootViewController: self.userHomeViewController)
-        self.userHomeNavigationController.tabBarItem = UITabBarItem(title: "User", image: UIImage(systemName: "person"), selectedImage: nil)
+        self.userHomeNavigationController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
         
         self.cartNavigationController = UINavigationController(rootViewController: self.cartViewController)
-        self.cartNavigationController.tabBarItem = UITabBarItem(title: "Cart", image: UIImage(systemName: "cart"), selectedImage: nil)
-        self.cartNavigationController.tabBarItem.badgeColor = .systemGreen
-        
+        self.cartNavigationController.tabBarItem = UITabBarItem(title: "Cart", image: UIImage(systemName: "cart"), selectedImage: UIImage(systemName: "cart.fill"))
+        self.cartNavigationController.tabBarItem.badgeColor = UIConstants.appOrangeColor
+            
         self.settingsNavigationController = UINavigationController(rootViewController: self.settingsViewController)
         self.settingsNavigationController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "line.horizontal.3"), selectedImage: nil)
         super.init(nibName: nil, bundle: nil)
+        self.tabBar.tintColor = UIConstants.secondaryButtonColor
+        
         for navigationController in self.navigationControllers {
             navigationController.setNavigationBarHidden(true, animated: false)
         }

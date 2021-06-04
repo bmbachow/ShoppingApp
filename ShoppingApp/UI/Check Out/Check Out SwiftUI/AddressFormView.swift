@@ -70,6 +70,7 @@ struct AddressFormView: View {
                 .disabled(self.shouldDisableSaveButton)
             }
         }
+        //.modifier(ColorTopSafeArea(.white))
         .navigationTitle(Text("New address"))
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: {
