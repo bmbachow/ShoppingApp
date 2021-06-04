@@ -41,6 +41,7 @@
 		520CE53926697C6C00793FB2 /* CardPaymentMethod+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520CE51F26697C6B00793FB2 /* CardPaymentMethod+CoreDataProperties.swift */; };
 		520CE53E2669B11600793FB2 /* SearchHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520CE53C2669B11600793FB2 /* SearchHistoryTableViewCell.swift */; };
 		520CE53F2669B11600793FB2 /* SearchHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 520CE53D2669B11600793FB2 /* SearchHistoryTableViewCell.xib */; };
+		520CE5412669C96500793FB2 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520CE5402669C96500793FB2 /* Notifications.swift */; };
 		520F43D8265D448C00A6B282 /* StarFillMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43C8265D448C00A6B282 /* StarFillMode.swift */; };
 		520F43D9265D448C00A6B282 /* StarLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43C9265D448C00A6B282 /* StarLayer.swift */; };
 		520F43DA265D448C00A6B282 /* CosmosAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43CA265D448C00A6B282 /* CosmosAccessibility.swift */; };
@@ -208,6 +209,7 @@
 		520CE51F26697C6B00793FB2 /* CardPaymentMethod+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CardPaymentMethod+CoreDataProperties.swift"; path = "ShoppingApp/Model/CardPaymentMethod+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		520CE53C2669B11600793FB2 /* SearchHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		520CE53D2669B11600793FB2 /* SearchHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryTableViewCell.xib; sourceTree = "<group>"; };
+		520CE5402669C96500793FB2 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		520F43C8265D448C00A6B282 /* StarFillMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarFillMode.swift; sourceTree = "<group>"; };
 		520F43C9265D448C00A6B282 /* StarLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarLayer.swift; sourceTree = "<group>"; };
 		520F43CA265D448C00A6B282 /* CosmosAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosAccessibility.swift; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 			isa = PBXGroup;
 			children = (
 				5267257E265AECA600D9CAB9 /* InputValidator.swift */,
+				520CE5402669C96500793FB2 /* Notifications.swift */,
 				5267257F265AECA600D9CAB9 /* KeychainHelper.swift */,
 				5267258E265B0D3F00D9CAB9 /* UserDefaultsHelper.swift */,
 				52672580265AECA600D9CAB9 /* GeneralError.swift */,
@@ -949,6 +952,7 @@
 				520F43F0265D9A8800A6B282 /* UserHomeSignedInViewController.swift in Sources */,
 				52E0B081265B1AD100B9C77E /* CartViewController.swift in Sources */,
 				520F43DB265D448C00A6B282 /* CosmosText.swift in Sources */,
+				520CE5412669C96500793FB2 /* Notifications.swift in Sources */,
 				52927769265C3B6700394180 /* ShoppingAdTableViewCell.swift in Sources */,
 				526724CE265AE3DB00D9CAB9 /* CategoryExtensions.swift in Sources */,
 				5267258B265AECA600D9CAB9 /* NumberFormatterExtensions.swift in Sources */,
