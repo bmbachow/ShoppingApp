@@ -12,12 +12,15 @@ class OrderDetailViewController: UserTabViewController, SwiftUICheckoutViewDeleg
 
     var hostingController: UIHostingController<AnyView> = EmptyView().wrappedInUIHostingController()
     
+    let order: Order
+    
     init(order: Order, remoteAPI: RemoteAPI) {
+        self.order = order
         super.init(nibName: nil, bundle: nil)
         self.hostingController = Text("").wrappedInUIHostingController()
         let orderData = OrderData(user: order.user!)
         orderData.order = order
-        self.hostingController = CheckoutConfirmationView(remoteAPI: remoteAPI, orderData: orderData, mode: .orderDetail, confirmReturnDelegate: self).wrappedInUIHostingController()
+        self.hostingController = OrderSummaryView(remoteAPI: remoteAPI, orderData: orderData, mode: .orderDetail, confirmReturnDelegate: self).wrappedInUIHostingController()
         self.addChild(hostingController)
         self.view.addSubview(hostingController.view)
         self.hostingController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -31,6 +34,11 @@ class OrderDetailViewController: UserTabViewController, SwiftUICheckoutViewDeleg
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = DateFormatter.standardDateShort.string(from: self.order.orderedDate!)
     }
     
     //MARK: SwiftUICheckoutViewDelegate

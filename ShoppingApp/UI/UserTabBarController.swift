@@ -84,6 +84,8 @@ class UserTabBarController: UITabBarController {
         
         self.view.insertSubview(self.blurView, at: 1)
         self.view.insertSubview(self.colorView, at: 2)
+        
+        
     }
     
     

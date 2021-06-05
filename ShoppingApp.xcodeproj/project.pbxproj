@@ -66,7 +66,7 @@
 		520F43F5265DA48C00A6B282 /* UserHomeMainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 520F43F3265DA48C00A6B282 /* UserHomeMainTableViewCell.xib */; };
 		520F43F8265DA4B000A6B282 /* ProductsCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F43F6265DA4B000A6B282 /* ProductsCollectionTableViewCell.swift */; };
 		520F43F9265DA4B000A6B282 /* ProductsCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 520F43F7265DA4B000A6B282 /* ProductsCollectionTableViewCell.xib */; };
-		5224582026667C9100CB89F6 /* CheckoutConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5224581F26667C9100CB89F6 /* CheckoutConfirmationView.swift */; };
+		5224582026667C9100CB89F6 /* OrderSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5224581F26667C9100CB89F6 /* OrderSummaryView.swift */; };
 		522458862666C86600CB89F6 /* CheckoutThankYouView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522458852666C86600CB89F6 /* CheckoutThankYouView.swift */; };
 		522458882666CEFF00CB89F6 /* ImageGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522458872666CEFF00CB89F6 /* ImageGridView.swift */; };
 		5224588B26670F8D00CB89F6 /* ProductDetailReviewHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5224588926670F8D00CB89F6 /* ProductDetailReviewHeaderTableViewCell.swift */; };
@@ -240,7 +240,7 @@
 		520F43F3265DA48C00A6B282 /* UserHomeMainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserHomeMainTableViewCell.xib; sourceTree = "<group>"; };
 		520F43F6265DA4B000A6B282 /* ProductsCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		520F43F7265DA4B000A6B282 /* ProductsCollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductsCollectionTableViewCell.xib; sourceTree = "<group>"; };
-		5224581F26667C9100CB89F6 /* CheckoutConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutConfirmationView.swift; sourceTree = "<group>"; };
+		5224581F26667C9100CB89F6 /* OrderSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryView.swift; sourceTree = "<group>"; };
 		522458852666C86600CB89F6 /* CheckoutThankYouView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutThankYouView.swift; sourceTree = "<group>"; };
 		522458872666CEFF00CB89F6 /* ImageGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGridView.swift; sourceTree = "<group>"; };
 		5224588926670F8D00CB89F6 /* ProductDetailReviewHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailReviewHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -572,7 +572,7 @@
 				52895E6226616C070012B0AA /* NewAccountPaymentMethodView.swift */,
 				52895E6026616BD00012B0AA /* NewCardPaymentMethodView.swift */,
 				52895E6626618CB30012B0AA /* CheckoutNavigationView.swift */,
-				5224581F26667C9100CB89F6 /* CheckoutConfirmationView.swift */,
+				5224581F26667C9100CB89F6 /* OrderSummaryView.swift */,
 				520CE504266979CF00793FB2 /* ConfirmReturnView.swift */,
 				52A2873726602B43008584E9 /* AnimatingTextView.swift */,
 			);
@@ -993,7 +993,7 @@
 				52EEF3F0265E9208006C3759 /* CartProductTableViewCell.swift in Sources */,
 				526724D6265AE40900D9CAB9 /* OrderExtensions.swift in Sources */,
 				524CFED326627CBC00B72981 /* StandardToggle.swift in Sources */,
-				5224582026667C9100CB89F6 /* CheckoutConfirmationView.swift in Sources */,
+				5224582026667C9100CB89F6 /* OrderSummaryView.swift in Sources */,
 				527CEAC12668280A00AB57B9 /* OrderPreviewTableViewCell.swift in Sources */,
 				526724D0265AE3E600D9CAB9 /* AccountPaymentMethodExtensions.swift in Sources */,
 				52FCE97126656F9E0076C438 /* MonthInt.swift in Sources */,

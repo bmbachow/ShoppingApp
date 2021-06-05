@@ -80,6 +80,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UITabBar.appearance().isTranslucent = true
         //UITabBar.appearance().barTintColor = UIConstants.accentColorApp
+        
+        UITextField.appearance().font = UIConstants.standardFont(size: 18, style: .regular)
+        
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIConstants.standardFont(size: 10, style: .regular)], for: .normal)
     }
     
 

@@ -48,7 +48,7 @@ struct ChooseView: View {
         case .address:
             return AnyView(ChooseView(remoteAPI: self.remoteAPI, orderData: self.orderData, mode: .paymentMethod, delegate: self.delegate))
         case .paymentMethod:
-            return AnyView(CheckoutConfirmationView(remoteAPI: self.remoteAPI, orderData: self.orderData, mode: .checkout, delegate: self.delegate))
+            return AnyView(OrderSummaryView(remoteAPI: self.remoteAPI, orderData: self.orderData, mode: .checkout, delegate: self.delegate))
         }
     }
     

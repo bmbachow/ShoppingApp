@@ -1,5 +1,5 @@
 //
-//  CheckoutConfirmationView.swift
+//  OrderSummaryView.swift
 //  ShoppingApp
 //
 //  Created by Robert Olieman on 6/1/21.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct CheckoutConfirmationView: View {
+struct OrderSummaryView: View {
     
     enum Mode {
         case checkout
@@ -90,17 +90,6 @@ struct CheckoutConfirmationView: View {
             return self.orderData.order!.delivery!.address!
         }
     }
-    
-    var navigationTitleText: String {
-        switch self.mode {
-        case .checkout:
-            return "Order confirmation"
-        case .orderDetail:
-            return DateFormatter.standardDateShort.string(from: self.orderData.order!.orderedDate!)
-        }
-    }
-    
-    
     var body: some View {
         VStack {
             /*
@@ -165,6 +154,7 @@ struct CheckoutConfirmationView: View {
                                 }
                                 if cartItem.numberReturned > 0 {
                                     HStack {
+                                        Spacer()
                                         StandardText("Returned\(cartItem.numberReturned > 1 ? " \(cartItem.numberReturned)" : "") for a refund of \(NumberFormatter.dollars.string(from: cartItem.product!.price * Double(cartItem.numberReturned))!).", size: 15)
                                             .padding(5)
                                             .background(Color(UIConstants.lightGrayCapsule))
@@ -238,7 +228,7 @@ struct CheckoutConfirmationView: View {
             })
         }
         //.modifier(ColorTopSafeArea(.white))
-        .navigationTitle(self.navigationTitleText)
+        .navigationTitle("Order confirmation")
     }
     
     func placeOrder() {
