@@ -28,7 +28,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vc2-3w-zd5">
-                            <rect key="frame" x="24" y="100" width="366" height="417"/>
+                            <rect key="frame" x="24" y="60" width="366" height="417"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="KeK-AX-EGR">
                                     <rect key="frame" x="0.0" y="0.0" width="366" height="91"/>
@@ -111,7 +111,7 @@
                         </stackView>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="gdp-nw-O62" firstAttribute="top" secondItem="vc2-3w-zd5" secondAttribute="top" constant="-100" id="VyX-Ig-XFX"/>
+                        <constraint firstItem="gdp-nw-O62" firstAttribute="top" secondItem="vc2-3w-zd5" secondAttribute="top" constant="-60" id="VyX-Ig-XFX"/>
                         <constraint firstItem="vc2-3w-zd5" firstAttribute="bottom" secondItem="gdp-nw-O62" secondAttribute="bottom" id="fJs-ya-XWQ"/>
                         <constraint firstItem="vc2-3w-zd5" firstAttribute="leading" secondItem="E3w-3E-KQI" secondAttribute="leading" constant="24" id="tgB-P1-WIE"/>
                         <constraint firstItem="E3w-3E-KQI" firstAttribute="trailing" secondItem="vc2-3w-zd5" secondAttribute="trailing" constant="24" id="tkH-vu-fI2"/>
