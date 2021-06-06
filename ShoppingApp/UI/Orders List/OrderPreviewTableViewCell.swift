@@ -33,10 +33,6 @@ class OrderPreviewTableViewCell: BaseTableViewCell {
         let tapGestureRecognizer = UITapGestureRecognizer()
         tapGestureRecognizer.addTarget(self, action: #selector(self.tappedDateStackViewSuperview(_:)))
         self.dateStackViewSuperview.gestureRecognizers = [tapGestureRecognizer]
-        /*
-        self.dateStackViewSuperview.layer.borderColor = UIColor(named: "textViewBorderColor")!.cgColor
-        self.dateStackViewSuperview.layer.borderWidth = 0.8
- */
     }
     
     @objc func tappedDateStackViewSuperview(_ sender: UITapGestureRecognizer) {

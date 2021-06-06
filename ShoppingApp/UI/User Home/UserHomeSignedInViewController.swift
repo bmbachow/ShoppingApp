@@ -111,11 +111,7 @@ class UserHomeSignedInViewController: UserHomeViewController, UITableViewDelegat
         super.cartChanged(notification)
     }
     
-    override func wishListChanged(_ notification: Notification) {
-        super.wishListChanged(notification)
-        guard notification.object as? UserTabViewController != self else { return }
-        self.refreshWishList()
-    }
+
     
     override func giftCardBalanceChanged(_ notification: Notification) {
         super.giftCardBalanceChanged(notification)
@@ -123,9 +119,6 @@ class UserHomeSignedInViewController: UserHomeViewController, UITableViewDelegat
         self.refreshGiftCardBalance()
     }
     
-    func refreshWishList() {
-        self.wishListCollectionView?.reloadData()
-    }
     
     func refreshGiftCardBalance() {
         self.userHomeStuffCell.balanceLabel.text = NumberFormatter.dollars.string(from: self.user?.giftCardBalance ?? 0)
@@ -155,7 +148,16 @@ class UserHomeSignedInViewController: UserHomeViewController, UITableViewDelegat
     //MARK: UITableView
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        UITableView.automaticDimension
+        if indexPath.section == 1 {
+            guard let user = self.user else { return 0 }
+            switch indexPath.row {
+            case 0:
+                return user.ordersArray.isEmpty ? 0 : UITableView.automaticDimension
+            default:
+                return user.wishListProductsArray.isEmpty ? 0 : UITableView.automaticDimension
+            }
+        }
+        return UITableView.automaticDimension
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CartViewController" customModule="ShoppingApp" customModuleProvider="target">
             <connections>
+                <outlet property="cartHeaderView" destination="Zu5-8Y-so6" id="4sG-9F-nYq"/>
                 <outlet property="checkOutButton" destination="2dE-nG-k5f" id="YxF-k9-x9T"/>
                 <outlet property="emptyCartView" destination="Zu5-8Y-so6" id="ZGb-81-eFb"/>
                 <outlet property="subtotalAmountLabel" destination="glm-2m-ILT" id="i12-0f-214"/>
@@ -23,64 +24,75 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zu5-8Y-so6">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UC4-Ld-Gug">
-                    <rect key="frame" x="0.0" y="114" width="414" height="782"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EBe-Yw-hAN">
-                    <rect key="frame" x="151.5" y="44" width="111.5" height="22"/>
+                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zu5-8Y-so6" userLabel="Cart header view">
+                    <rect key="frame" x="0.0" y="44" width="414" height="89"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtotal: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dF-pv-7Ow">
-                            <rect key="frame" x="0.0" y="0.0" width="71" height="22"/>
-                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="19"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glm-2m-ILT">
-                            <rect key="frame" x="71" y="0.0" width="40.5" height="22"/>
-                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="19"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="4GL-yW-FCW" userLabel="Cart header VStack">
+                            <rect key="frame" x="0.0" y="12" width="414" height="65"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="EBe-Yw-hAN" userLabel="Sutbtotal HStack">
+                                    <rect key="frame" x="151.5" y="0.0" width="111.5" height="22"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtotal: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dF-pv-7Ow">
+                                            <rect key="frame" x="0.0" y="0.0" width="71" height="22"/>
+                                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="19"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glm-2m-ILT">
+                                            <rect key="frame" x="71" y="0.0" width="40.5" height="22"/>
+                                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="19"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dE-nG-k5f">
+                                    <rect key="frame" x="168" y="35" width="78" height="30"/>
+                                    <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="15"/>
+                                    <state key="normal" title="Check out">
+                                        <color key="titleColor" name="secondaryButtonColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="tappedCheckOutButton:" destination="-1" eventType="touchUpInside" id="4MJ-PR-ibO"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
                     </subviews>
-                </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dE-nG-k5f">
-                    <rect key="frame" x="168" y="72" width="78" height="30"/>
-                    <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="15"/>
-                    <state key="normal" title="Check out">
-                        <color key="titleColor" name="secondaryButtonColor"/>
-                    </state>
-                    <connections>
-                        <action selector="tappedCheckOutButton:" destination="-1" eventType="touchUpInside" id="4MJ-PR-ibO"/>
-                    </connections>
-                </button>
+                    <color key="backgroundColor" name="translucentWhite"/>
+                    <constraints>
+                        <constraint firstItem="4GL-yW-FCW" firstAttribute="top" secondItem="Zu5-8Y-so6" secondAttribute="top" constant="12" id="Grq-Jg-cWt"/>
+                        <constraint firstAttribute="trailing" secondItem="4GL-yW-FCW" secondAttribute="trailing" id="cwb-GE-Ov1"/>
+                        <constraint firstAttribute="bottom" secondItem="4GL-yW-FCW" secondAttribute="bottom" constant="12" id="pBg-mb-ErN"/>
+                        <constraint firstItem="4GL-yW-FCW" firstAttribute="leading" secondItem="Zu5-8Y-so6" secondAttribute="leading" id="ts2-Yz-lPD"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="2dE-nG-k5f" firstAttribute="top" secondItem="5dF-pv-7Ow" secondAttribute="bottom" constant="6" id="4vp-Vl-IPu"/>
-                <constraint firstItem="Zu5-8Y-so6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="5dv-R9-pLv"/>
-                <constraint firstItem="UC4-Ld-Gug" firstAttribute="top" secondItem="2dE-nG-k5f" secondAttribute="bottom" constant="12" id="MEQ-no-moI"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UC4-Ld-Gug" secondAttribute="trailing" id="QBQ-yv-b89"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Zu5-8Y-so6" secondAttribute="bottom" id="QjG-Zz-Xf5"/>
-                <constraint firstItem="5dF-pv-7Ow" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Xmc-kT-Tyh"/>
-                <constraint firstItem="UC4-Ld-Gug" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="34" id="aaq-25-4Ge"/>
-                <constraint firstItem="2dE-nG-k5f" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="jLl-11-18h"/>
-                <constraint firstItem="UC4-Ld-Gug" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qWn-X9-vO5"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Zu5-8Y-so6" secondAttribute="trailing" id="qgW-mZ-CbE"/>
-                <constraint firstItem="Zu5-8Y-so6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="s9L-s1-TXF"/>
-                <constraint firstItem="EBe-Yw-hAN" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="vKX-q8-XK2"/>
+                <constraint firstItem="Zu5-8Y-so6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="22n-3e-E7c"/>
+                <constraint firstAttribute="trailing" secondItem="Zu5-8Y-so6" secondAttribute="trailing" id="6He-sH-wrm"/>
+                <constraint firstAttribute="top" secondItem="UC4-Ld-Gug" secondAttribute="top" id="9tc-Vc-pqv"/>
+                <constraint firstItem="Zu5-8Y-so6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="QTG-TI-Shm"/>
+                <constraint firstItem="UC4-Ld-Gug" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="VU5-Pk-syc"/>
+                <constraint firstItem="UC4-Ld-Gug" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cMd-Pf-KoW"/>
+                <constraint firstAttribute="trailing" secondItem="UC4-Ld-Gug" secondAttribute="trailing" id="xrz-TO-B4F"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="97.767857142857139"/>
         </view>
     </objects>
     <resources>
         <namedColor name="secondaryButtonColor">
-            <color red="0.056982979364406987" green="0.27371587197637404" blue="0.77942595473763088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.057000000029802322" green="0.27399998903274536" blue="0.77899998426437378" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="translucentWhite">
+            <color red="1" green="1" blue="1" alpha="0.91645358256156872" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

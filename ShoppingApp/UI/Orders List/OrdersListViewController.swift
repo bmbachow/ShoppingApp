@@ -25,7 +25,7 @@ class OrdersListViewController: UserTabViewController, UITableViewDelegate, UITa
         self.tableView.delegate = self
         self.tableView.dataSource = self 
         self.tableView.register(UINib(nibName: "OrderPreviewTableViewCell", bundle: nil), forCellReuseIdentifier: "OrderPreviewTableViewCell")
-        self.navigationItem.title = "Wish List"
+        self.navigationItem.title = "Orders"
         (self.navigationController as? BazaarNavigationController)?.setLogoVisibile(false)
     }
     

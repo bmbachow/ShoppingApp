@@ -17,6 +17,7 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var emptyCartView: UIView!
     
+    @IBOutlet weak var cartHeaderView: UIView!
     
     var subtotalAmountLabelText: String {
         NumberFormatter.dollars.string(from: self.user?.cartSubtotal ?? 0) ?? "?"
@@ -39,6 +40,12 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
         footer.backgroundColor = .white
         self.tableView.tableFooterView = footer
         self.updateSubtotalAmountLabel()
+        self.navigationItem.title = "Cart"
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.tableView?.contentInset.top = self.cartHeaderView.frame.height
     }
     
     func updateSubtotalAmountLabel() {
@@ -60,8 +67,6 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
             self.goToCheckOut()
         }
     }
-    
-    
     
     override func cartChanged(_ notification: Notification) {
         super.cartChanged(notification)

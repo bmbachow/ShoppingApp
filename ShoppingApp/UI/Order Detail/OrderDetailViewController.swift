@@ -36,9 +36,14 @@ class OrderDetailViewController: UserTabViewController, SwiftUICheckoutViewDeleg
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        (self.navigationController as? BazaarNavigationController)?.setLogoVisibile(false)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationItem.title = DateFormatter.standardDateShort.string(from: self.order.orderedDate!)
+        self.navigationItem.title = "Order " + DateFormatter.standardDateShort.string(from: self.order.orderedDate!)
     }
     
     //MARK: SwiftUICheckoutViewDelegate

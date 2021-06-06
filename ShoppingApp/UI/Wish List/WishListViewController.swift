@@ -83,6 +83,7 @@ class WishListViewController: UserTabViewController, UITableViewDelegate, UITabl
         remoteAPI.deleteProductFromWishList(product: self.wishListItems[indexPath.row], user: self.user!, success: {
             wishListTable.deleteRows(at: [indexPath], with: .right)
             wishListTable.endUpdates()
+            Notifications.postWishListChanged(fromViewController: self)
         }, failure: { error in
             print(error.localizedDescription)
             wishListTable.endUpdates()

@@ -69,7 +69,7 @@ class UserHomeNotSignedInViewController: UserHomeViewController, UITableViewDele
         case 0:
             return imageData.count
         default:
-            return 1
+            return self.user?.wishListProductsArray.count == 0 ? 0 : 1
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
