@@ -27,8 +27,8 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
         return self.user?.cartItemsArray ?? []
     }
     
-    var shouldHideEmptyCartView: Bool {
-        return self.cartItems.isEmpty
+    var cartHasItems: Bool {
+        return !self.cartItems.isEmpty
     }
     
     override func viewDidLoad() {
@@ -41,11 +41,12 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
         self.tableView.tableFooterView = footer
         self.updateSubtotalAmountLabel()
         self.navigationItem.title = "Cart"
+ 
     }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        self.tableView?.contentInset.top = self.cartHeaderView.frame.height
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.refreshCartHeaderVisibility(animated: false)
     }
     
     func updateSubtotalAmountLabel() {
@@ -75,8 +76,24 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
     }
     
     func refreshCart() {
+        self.view.setNeedsLayout()
         self.updateSubtotalAmountLabel()
         self.tableView?.reloadData()
+    }
+    
+    func refreshCartHeaderVisibility(animated: Bool) {
+        let visible = self.cartHasItems
+        let action = {
+            self.cartHeaderView.isHidden = !visible
+            self.tableView?.contentInset.top = visible ? self.cartHeaderView.frame.height : 0
+        }
+        if animated {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.cartHeaderView.alpha = visible ? 1 : 0
+            }, completion: {_ in action()})
+        } else {
+            action()
+        }
     }
     
     override func wishListChanged(_ notification: Notification) {
@@ -178,6 +195,7 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
             self.tableView.endUpdates()
             Notifications.postCartChanged(fromViewController: self)
             self.updateSubtotalAmountLabel()
+            self.refreshCartHeaderVisibility(animated: true)
         }, failure: { error in
             self.tableView.endUpdates()
             print(error.localizedDescription)
