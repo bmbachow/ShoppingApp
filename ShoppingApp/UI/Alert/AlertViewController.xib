@@ -26,32 +26,32 @@
                     <rect key="frame" x="83" y="391.5" width="248" height="123"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ISA-h7-9lh">
-                            <rect key="frame" x="16" y="16" width="216" height="123"/>
+                            <rect key="frame" x="12" y="16" width="224" height="123"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awA-pB-6wa">
-                                    <rect key="frame" x="0.0" y="0.0" width="216" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="224" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Da8-z4-ynm">
-                                    <rect key="frame" x="0.0" y="36.5" width="216" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="36.5" width="224" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="dIz-ri-dEz">
-                                    <rect key="frame" x="0.0" y="73" width="216" height="50"/>
+                                    <rect key="frame" x="0.0" y="73" width="224" height="50"/>
                                 </stackView>
                             </subviews>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="ISA-h7-9lh" secondAttribute="bottom" constant="16" id="78P-i3-Qlh"/>
-                        <constraint firstAttribute="trailing" secondItem="ISA-h7-9lh" secondAttribute="trailing" constant="16" id="WzQ-J9-lGP"/>
-                        <constraint firstItem="ISA-h7-9lh" firstAttribute="top" secondItem="kdk-0h-73M" secondAttribute="top" constant="16" id="jCa-9X-9wz"/>
-                        <constraint firstItem="ISA-h7-9lh" firstAttribute="leading" secondItem="kdk-0h-73M" secondAttribute="leading" constant="16" id="jkI-ML-QNf"/>
+                        <constraint firstAttribute="bottom" secondItem="ISA-h7-9lh" secondAttribute="bottom" constant="12" id="78P-i3-Qlh"/>
+                        <constraint firstAttribute="trailing" secondItem="ISA-h7-9lh" secondAttribute="trailing" constant="12" id="WzQ-J9-lGP"/>
+                        <constraint firstItem="ISA-h7-9lh" firstAttribute="top" secondItem="kdk-0h-73M" secondAttribute="top" constant="12" id="jCa-9X-9wz"/>
+                        <constraint firstItem="ISA-h7-9lh" firstAttribute="leading" secondItem="kdk-0h-73M" secondAttribute="leading" constant="12" id="jkI-ML-QNf"/>
                     </constraints>
                 </view>
             </subviews>

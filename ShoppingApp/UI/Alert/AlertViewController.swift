@@ -60,7 +60,7 @@ class AlertViewController: BaseViewController {
             self.actionStackView.addArrangedSubview(action.button)
         }
         
-        self.actionStackView.spacing = 10
+        self.actionStackView.spacing = 6
     }
 
     func addAction(title: String, handler: @escaping () -> Void) {

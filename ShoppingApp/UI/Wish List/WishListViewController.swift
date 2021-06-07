@@ -12,8 +12,12 @@ class WishListViewController: UserTabViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var wishListTable: UITableView!
         
-    var wishListItems: [Product]{
+    var wishListItems: [Product] {
         return self.user?.wishListProductsArray ?? []
+    }
+    
+    override var shouldShowEmptyPromptView: Bool {
+        self.wishListItems.isEmpty
     }
     
     override func viewDidLoad() {
@@ -26,6 +30,8 @@ class WishListViewController: UserTabViewController, UITableViewDelegate, UITabl
         self.wishListTable.tableFooterView = footerView
         self.navigationItem.title = "Wish List"
         (self.navigationController as? BazaarNavigationController)?.setLogoVisibile(false)
+        
+        self.emptyPromptView.setUp(image: UIImage(named: "wishlistimg")!, labelText: "Your wish list is empty...", buttonTitle: "Continue shopping")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,10 +39,15 @@ class WishListViewController: UserTabViewController, UITableViewDelegate, UITabl
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    
     @IBAction func tappedBackButton(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
+    override func tappedEmptyPromptButton(_ sender: UIButton) {
+        self.tabBarController?.selectedIndex = 0
+        self.navigationController?.popViewController(animated: false)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return wishListItems.count
@@ -82,6 +93,7 @@ class WishListViewController: UserTabViewController, UITableViewDelegate, UITabl
         
         remoteAPI.deleteProductFromWishList(product: self.wishListItems[indexPath.row], user: self.user!, success: {
             wishListTable.deleteRows(at: [indexPath], with: .right)
+            self.updateEmptyPromptViewVisibility(animated: true, completion: nil)
             wishListTable.endUpdates()
             Notifications.postWishListChanged(fromViewController: self)
         }, failure: { error in
@@ -93,6 +105,7 @@ class WishListViewController: UserTabViewController, UITableViewDelegate, UITabl
     override func wishListChanged(_ notification: Notification) {
         super.wishListChanged(notification)
         guard notification.object as? UserTabViewController != self else { return }
+        self.updateEmptyPromptViewVisibility(animated: false, completion: nil)
         self.wishListTable.reloadData()
     }
 

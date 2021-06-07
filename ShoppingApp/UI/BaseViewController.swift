@@ -15,9 +15,44 @@ class BaseViewController: UIViewController {
     
     var remoteAPI: RemoteAPI { self.appDelegate.remoteAPI! }
     
+    let emptyPromptView = EmptyPromptView()
+    
+    var shouldShowEmptyPromptView: Bool { false }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.backBarButtonItem = UIBarButtonItem.noTextButton()
+        self.view.insertSubview(self.emptyPromptView, at: 0)
+        let safeArea = self.view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            self.emptyPromptView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            self.emptyPromptView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            self.emptyPromptView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            self.emptyPromptView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+        ])
+        self.emptyPromptView.button.addTarget(self, action: #selector(self.tappedEmptyPromptButton(_:)), for: .touchUpInside)
+        self.updateEmptyPromptViewVisibility(animated: false, completion: nil)
+    }
+    
+    func updateEmptyPromptViewVisibility(animated: Bool, completion: (() -> Void)? ) {
+        
+        self.view.bringSubviewToFront(self.emptyPromptView)
+        
+        let action = {
+            self.emptyPromptView.alpha = self.shouldShowEmptyPromptView ? 1 : 0
+        }
+        if animated {
+            UIView.animate(withDuration: 0.5, animations: {
+                action()
+            }, completion: { _ in
+                completion?()
+            })
+        } else {
+            action()
+        }
+    }
+    
+    @objc func tappedEmptyPromptButton(_ sender: UIButton) {
         
     }
     

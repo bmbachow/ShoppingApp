@@ -26,8 +26,8 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPT-U8-UKO">
-                        <rect key="frame" x="286" y="174" width="51" height="30"/>
-                        <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="15"/>
+                        <rect key="frame" x="292" y="174" width="45" height="30"/>
+                        <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="15"/>
                         <state key="normal" title="Delete">
                             <color key="titleColor" systemColor="systemRedColor"/>
                         </state>
@@ -52,11 +52,12 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RS7-VM-Uh5">
-                        <rect key="frame" x="74" y="174" width="85" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RS7-VM-Uh5" customClass="RoundButton" customModule="ShoppingApp" customModuleProvider="target">
+                        <rect key="frame" x="25" y="174" width="180" height="30"/>
+                        <color key="backgroundColor" name="AccentColorApp"/>
                         <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                         <state key="normal" title="Add To Cart">
-                            <color key="titleColor" name="secondaryButtonColor"/>
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <connections>
                             <action selector="tappedAddToCartButton:" destination="0ni-Y3-lKZ" eventType="touchUpInside" id="VIa-R6-zZz"/>
@@ -64,14 +65,15 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="RS7-VM-Uh5" firstAttribute="leading" secondItem="8v9-e6-tm6" secondAttribute="leadingMargin" constant="54" id="2D2-cw-jay"/>
                     <constraint firstAttribute="bottomMargin" secondItem="RS7-VM-Uh5" secondAttribute="bottom" constant="16" id="PIe-cR-kDk"/>
                     <constraint firstItem="Mbo-h8-7MI" firstAttribute="top" secondItem="8v9-e6-tm6" secondAttribute="top" constant="25" id="QfF-9H-BPl"/>
                     <constraint firstItem="Ol6-Nb-rRe" firstAttribute="centerY" secondItem="Mbo-h8-7MI" secondAttribute="centerY" id="Re4-Ky-lg3"/>
                     <constraint firstItem="sPT-U8-UKO" firstAttribute="bottom" secondItem="RS7-VM-Uh5" secondAttribute="bottom" id="cNw-Jq-MN7"/>
                     <constraint firstAttribute="trailing" secondItem="sPT-U8-UKO" secondAttribute="trailing" constant="35" id="dF5-xU-BhV"/>
+                    <constraint firstItem="RS7-VM-Uh5" firstAttribute="width" secondItem="Mbo-h8-7MI" secondAttribute="width" id="hBH-PJ-iXT"/>
                     <constraint firstItem="Mbo-h8-7MI" firstAttribute="leading" secondItem="8v9-e6-tm6" secondAttribute="leading" constant="25" id="hcW-oo-vTm"/>
                     <constraint firstItem="Ol6-Nb-rRe" firstAttribute="leading" secondItem="Mbo-h8-7MI" secondAttribute="trailing" constant="25" id="j8s-mE-IF1"/>
+                    <constraint firstItem="RS7-VM-Uh5" firstAttribute="centerX" secondItem="Mbo-h8-7MI" secondAttribute="centerX" id="lF4-9m-Z4u"/>
                     <constraint firstAttribute="trailing" secondItem="Ol6-Nb-rRe" secondAttribute="trailing" constant="25" id="urO-xc-Jsw"/>
                     <constraint firstItem="RS7-VM-Uh5" firstAttribute="top" secondItem="Mbo-h8-7MI" secondAttribute="bottom" constant="26" id="xdv-2d-9uq"/>
                 </constraints>
@@ -87,8 +89,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="secondaryButtonColor">
-            <color red="0.056982979364406987" green="0.27371587197637404" blue="0.77942595473763088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="AccentColorApp">
+            <color red="0.82400000095367432" green="0.83499997854232788" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

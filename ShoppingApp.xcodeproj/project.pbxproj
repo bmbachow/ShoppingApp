@@ -146,6 +146,7 @@
 		52D8F8A826580BA900EF220A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52D8F8A626580BA900EF220A /* LaunchScreen.storyboard */; };
 		52D8F8B126580C6400EF220A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D8F8AF26580C6400EF220A /* SignInViewController.swift */; };
 		52D8F8B226580C6400EF220A /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D8F8B026580C6400EF220A /* SignInViewController.xib */; };
+		52D9687F266E6D5500E66543 /* EmptyPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D9687E266E6D5500E66543 /* EmptyPromptView.swift */; };
 		52E0B069265B104500B9C77E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E0B068265B104500B9C77E /* BaseViewController.swift */; };
 		52E0B06B265B11BB00B9C77E /* ViewControllerBlueprint.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52E0B06A265B11BB00B9C77E /* ViewControllerBlueprint.storyboard */; };
 		52E0B06D265B193600B9C77E /* UserTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E0B06C265B193600B9C77E /* UserTabBarController.swift */; };
@@ -322,6 +323,7 @@
 		52D8F8A926580BA900EF220A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52D8F8AF26580C6400EF220A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		52D8F8B026580C6400EF220A /* SignInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
+		52D9687E266E6D5500E66543 /* EmptyPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPromptView.swift; sourceTree = "<group>"; };
 		52E0B068265B104500B9C77E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		52E0B06A265B11BB00B9C77E /* ViewControllerBlueprint.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewControllerBlueprint.storyboard; sourceTree = "<group>"; };
 		52E0B06C265B193600B9C77E /* UserTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTabBarController.swift; sourceTree = "<group>"; };
@@ -634,6 +636,7 @@
 				527CEAB82668254A00AB57B9 /* Orders List */,
 				522A96AA2668555D00DE4C98 /* Order Detail */,
 				52D8F89826580BA700EF220A /* AppDelegate.swift */,
+				52D9687E266E6D5500E66543 /* EmptyPromptView.swift */,
 				52D36A03266AABFB00A4236B /* BazaarNavigationController.swift */,
 				52D369F3266A4FE300A4236B /* ButtonImageView.swift */,
 				52E0B06C265B193600B9C77E /* UserTabBarController.swift */,
@@ -979,6 +982,7 @@
 				520F43E3265D448C00A6B282 /* CosmosTouch.swift in Sources */,
 				52E0B07C265B1ABA00B9C77E /* UserHomeNotSignedInViewController.swift in Sources */,
 				520F43D8265D448C00A6B282 /* StarFillMode.swift in Sources */,
+				52D9687F266E6D5500E66543 /* EmptyPromptView.swift in Sources */,
 				52A2873826602B43008584E9 /* AnimatingTextView.swift in Sources */,
 				520F43DF265D448C00A6B282 /* RightToLeft.swift in Sources */,
 				526724D2265AE3F100D9CAB9 /* CardPaymentMethodExtensions.swift in Sources */,

@@ -79,6 +79,11 @@ extension UIButton {
         self.titleLabel?.font = UIConstants.standardFont(size: 17, style: .regular)
         self.backgroundColor = UIConstants.accentColorApp
         self.setTitleColor(.black, for: .normal)
+        
+        NSLayoutConstraint.activate([
+            self.heightAnchor.constraint(equalToConstant: 30),
+            self.widthAnchor.constraint(equalToConstant: 169)
+        ])
     }
 }
 

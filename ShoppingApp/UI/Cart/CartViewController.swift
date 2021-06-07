@@ -19,6 +19,8 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var cartHeaderView: UIView!
     
+    
+    
     var subtotalAmountLabelText: String {
         NumberFormatter.dollars.string(from: self.user?.cartSubtotal ?? 0) ?? "?"
     }
@@ -31,6 +33,10 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
         return !self.cartItems.isEmpty
     }
     
+    override var shouldShowEmptyPromptView: Bool {
+        return self.cartItems.isEmpty
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "CartProductTableViewCell", bundle: nil), forCellReuseIdentifier: "CartProductTableViewCell")
@@ -41,12 +47,15 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
         self.tableView.tableFooterView = footer
         self.updateSubtotalAmountLabel()
         self.navigationItem.title = "Cart"
+        
+        self.emptyPromptView.setUp(image: UIImage(named: "bluecart")!, labelText: "Your cart is empty...", buttonTitle: "Continue shopping")
  
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.refreshCartHeaderVisibility(animated: false)
+        self.updateEmptyPromptViewVisibility(animated: false, completion: nil)
     }
     
     func updateSubtotalAmountLabel() {
@@ -86,10 +95,11 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
         let action = {
             self.cartHeaderView.isHidden = !visible
             self.tableView?.contentInset.top = visible ? self.cartHeaderView.frame.height : 0
+            self.cartHeaderView.alpha = visible ? 1 : 0
         }
         if animated {
             UIView.animate(withDuration: 0.5, animations: {
-                self.cartHeaderView.alpha = visible ? 1 : 0
+                action()
             }, completion: {_ in action()})
         } else {
             action()
@@ -104,6 +114,10 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
         super.cartChanged(notification)
         guard notification.object as? UserTabViewController != self else { return }
         self.refreshCart()
+    }
+    
+    override func tappedEmptyPromptButton(_ sender: UIButton) {
+        self.tabBarController?.selectedIndex = 0
     }
     
     func goToCheckOut() {
@@ -196,6 +210,7 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
             Notifications.postCartChanged(fromViewController: self)
             self.updateSubtotalAmountLabel()
             self.refreshCartHeaderVisibility(animated: true)
+            self.updateEmptyPromptViewVisibility(animated: true, completion: nil)
         }, failure: { error in
             self.tableView.endUpdates()
             print(error.localizedDescription)
