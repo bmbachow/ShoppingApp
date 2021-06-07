@@ -15,6 +15,9 @@ struct AddressCellView: View {
     let editAction: () -> Void
     let selectedAction: (() -> Void)?
     
+    var indentSize: CGFloat = 24
+    var addSeparator = true
+    
     var addressCityStateZipString: String {
         var str = ""
         str += (self.address.city ?? "city?")
@@ -25,9 +28,12 @@ struct AddressCellView: View {
         return str
     }
     
+    
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             HStack {
+                Spacer()
+                    .frame(width: self.indentSize)
                 if let selectedAction = self.selectedAction {
                     Image(systemName: self.isSelected ? "smallcircle.fill.circle.fill" : "circle")
                         .font(Font.system(size: 25, weight: .ultraLight))
@@ -53,23 +59,27 @@ struct AddressCellView: View {
             }
             if self.isSelected {
                 Spacer()
-                    .frame(height: 8)
+                    .frame(height: 12)
                 HStack {
                     Spacer()
-                    StandardButton(action: self.navigationAction, labelText: "Select this address")
+                    StandardButton1(action: self.navigationAction, labelText: "Select this address")
                     Spacer()
                 }
                 Spacer()
-                    .frame(height: 8)
+                    .frame(height: 12)
                 HStack {
                     Spacer()
-                    StandardButton(action: self.editAction, labelText: "Edit")
+                    StandardButton2(action: self.editAction, labelText: "Edit")
                     Spacer()
                 }
             }
             Spacer()
-                .frame(height: 8)
+                .frame(height: 14)
+            if self.addSeparator {
+                Separator()
+            }
         }
+        .padding(0)
     }
 }
 

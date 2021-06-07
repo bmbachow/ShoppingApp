@@ -10,6 +10,6 @@ import SwiftUI
 struct FormSpacer: View {
     var body: some View {
         Spacer()
-            .frame(height: 12)
+            .frame(height: 4)
     }
 }

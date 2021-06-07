@@ -89,7 +89,7 @@ struct ChooseView: View {
     
     var body: some View {
         ScrollView {
-            PaddedLazyVStack {
+            LazyVStack {
                 if !self.listForCurrentModeIsEmpty() {
                     switch self.mode {
                     case .address:
@@ -120,12 +120,17 @@ struct ChooseView: View {
                 } else {
                     StandardText(self.emptyMessageForCurrentMode)
                 }
+                Spacer()
+                    .frame(height: 14)
                 switch self.mode {
                 case .address:
-                    StandardButton(action: {
+                    StandardButton2(action: {
                         self.navigationSelection = 2
                     }, labelText: "Add new address")
                     .buttonStyle(BorderlessButtonStyle())
+                    Spacer()
+                        .frame(height: 14)
+                    Separator()
                 case .paymentMethod:
                     Menu {
                         Button(action: {
@@ -140,15 +145,22 @@ struct ChooseView: View {
                         })
                     } label: {
                         Text("Add new payment method")
-                            .font(Font(UIConstants.standardFont(size: 17, style: .bold)))
+                            .font(Font(UIConstants.standardFont(size: 15, style: .semiBold)))
                             .foregroundColor(Color(UIConstants.secondaryButtonColor))
                     }
-                    StandardButton(action: {
+                    Spacer()
+                        .frame(height: 14)
+                    Separator()
+                    Spacer()
+                        .frame(height: 14)
+                    StandardButton2(action: {
                         self.orderData.paymentMethod = nil
                         self.navigationSelection = 1
                     }, labelText: "Pay with cash on delivery")
+                    Spacer()
+                        .frame(height: 14)
+                    Separator()
                 }
-                
             }            .navigationTitle(Text(self.titleTextForCurrentMode))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

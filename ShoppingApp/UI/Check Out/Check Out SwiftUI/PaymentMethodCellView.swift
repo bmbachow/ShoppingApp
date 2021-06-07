@@ -15,6 +15,9 @@ struct PaymentMethodCellView: View {
     let navigationAction: () -> Void
     let selectedAction: (() -> Void)?
     
+    var indentSize: CGFloat = 24
+    var addSeparator = true
+    
     var numberLine: String {
         if let card = self.paymentMethod as? CardPaymentMethod {
             let number = card.cardNumber ?? "number?"
@@ -50,6 +53,8 @@ struct PaymentMethodCellView: View {
     var body: some View {
         VStack {
             HStack {
+                Spacer()
+                    .frame(width: self.indentSize)
                 if let selectedAction = self.selectedAction {
                     Image(systemName: self.isSelected ? "smallcircle.fill.circle.fill" : "circle")
                         .font(Font.system(size: 25, weight: .ultraLight))
@@ -76,15 +81,18 @@ struct PaymentMethodCellView: View {
             }
             if self.isSelected {
                 Spacer()
-                    .frame(height: 8)
+                    .frame(height: 12)
                 HStack {
                     Spacer()
-                    StandardButton(action: self.navigationAction, labelText: "Pay with this \(self.paymentMethod is CardPaymentMethod ? "card" : "account")")
+                    StandardButton1(action: self.navigationAction, labelText: "Pay with this \(self.paymentMethod is CardPaymentMethod ? "card" : "account")")
                     Spacer()
                 }
             }
             Spacer()
-                .frame(height: 8)
+                .frame(height: 14)
+            if self.addSeparator {
+                Separator()
+            }
         }
     }
 }

@@ -70,7 +70,7 @@ struct ConfirmReturnView: View {
                         .labelsHidden()
                 }
             }
-            StandardButton(action: {
+            StandardButton2(action: {
                 self.remoteAPI.returnItems(cartItem: self.cartItem, numberToReturn: self.numberToReturn, success: { order in
                     self.orderData.order = order
                     self.delegate?.confirmReturn(amount: self.refundAmount, onAlertDismissed: {
@@ -80,7 +80,7 @@ struct ConfirmReturnView: View {
                     print(error.localizedDescription)
                 })
             }, labelText: "Confirm return")
-            StandardButton(action: {
+            StandardButton2(action: {
                 self.isPresented = false
             }, labelText: "Cancel")
             Spacer()

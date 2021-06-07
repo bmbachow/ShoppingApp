@@ -61,10 +61,14 @@ struct AddressFormView: View {
                         (titleKey: "", text: self.$zipCodeText),
                     ])
                 }
-                FormSpacer()
+                //FormSpacer()
+                HStack {
+                    Spacer()
                 StandardToggle(isOn: self.$makeDefault, titleText: "Make this my default address")
-                FormSpacer()
-                StandardButton(action: {
+                    Spacer()
+                }
+                //FormSpacer()
+                StandardButton1(action: {
                     self.saveAndSelectAddress()
                 }, labelText: "Save address")
                 .disabled(self.shouldDisableSaveButton)

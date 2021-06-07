@@ -49,7 +49,7 @@ struct NewCardPaymentMethodView: View {
                 FormSpacer()
                 StandardToggle(isOn: self.$makeDefault, titleText: "Make this my default payment method")
                 FormSpacer()
-                StandardButton(action: self.saveAndSelectCardPaymentMethod, labelText: "Save card")
+                StandardButton2(action: self.saveAndSelectCardPaymentMethod, labelText: "Save card")
                     .disabled(self.shouldDisableSaveButton)
             }
         }

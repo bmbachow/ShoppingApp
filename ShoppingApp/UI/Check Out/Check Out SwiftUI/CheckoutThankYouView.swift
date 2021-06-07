@@ -17,7 +17,7 @@ struct CheckoutThankYouView: View {
         ScrollView {
             FormVStack {
                 StandardText("Thank you for your order", size: 20, style: .bold)
-                StandardButton(action: { self.delegate?.orderConfirmed(self.order) }, labelText: "Close")
+                StandardButton2(action: { self.delegate?.orderConfirmed(self.order) }, labelText: "Close")
             }
         }
         //.modifier(ColorTopSafeArea(.white))

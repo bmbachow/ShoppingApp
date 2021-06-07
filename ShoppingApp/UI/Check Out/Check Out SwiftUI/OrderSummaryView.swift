@@ -91,31 +91,11 @@ struct OrderSummaryView: View {
         }
     }
     var body: some View {
-        VStack {
-            /*
-            if self.mode == .orderDetail {
-                ZStack(alignment: .center) {
-                    EmptyView()
-                        .border(Color.black, width: 1)
-                    HStack {
-                        Spacer()
-                            .frame(width: 12)
-                        Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }, label: {
-                            Image(systemName: "arrow.left")
-                        })
-                        Spacer()
-                    }
-                    StandardText(DateFormatter.standardDateShort.string(from: self.orderData.order!.orderedDate!), size: 19, style: .semiBold)
-                }
-                .frame(height: 64)
-            }
- */
-            List {
+        ScrollView {
+            LazyVStack {
                 FormVStack {
                     if self.mode == .checkout {
-                        StandardButton(action: {
+                        StandardButton1(action: {
                             self.placeOrder()
                         }, labelText: "Place order")
                     }
@@ -145,7 +125,7 @@ struct OrderSummaryView: View {
                             if self.mode == .orderDetail && self.orderData.order?.deliveryStatus == .delivered {
                                 if cartItem.numberUnreturned > 0 {
                                     Spacer()
-                                    StandardButton(action: {
+                                    StandardButton2(action: {
                                         self.orderData.returnItem = cartItem
                                         print(self.showingReturnConfirmation)
                                         self.showingReturnConfirmation = true
@@ -187,18 +167,21 @@ struct OrderSummaryView: View {
                     }
                 }
                 .listRowInsets(EdgeInsets())
+                Separator()
                 FormVStack {
                     LabeledVStack(labelText: "Shipping address") {
-                        AddressCellView(address: self.address, isSelected: false, navigationAction: {}, editAction: {}, selectedAction: nil)
+                        AddressCellView(address: self.address, isSelected: false, navigationAction: {}, editAction: {}, selectedAction: nil, indentSize: 0, addSeparator: false)
                     }
                 }
                 .listRowInsets(EdgeInsets())
+                Separator()
                 FormVStack {
                     LabeledVStack(labelText: "Payment method") {
-                        PaymentMethodCellView(paymentMethod: self.paymentMethod, isSelected: false, navigationAction: {}, selectedAction: nil)
+                        PaymentMethodCellView(paymentMethod: self.paymentMethod, isSelected: false, navigationAction: {}, selectedAction: nil, indentSize: 0, addSeparator: false)
                     }
                 }
                 .listRowInsets(EdgeInsets())
+                Separator()
                 if self.mode == .orderDetail {
                     FormVStack {
                         LabeledVStack(labelText: "Order status") {
@@ -212,12 +195,13 @@ struct OrderSummaryView: View {
                                 .frame(height: 8)
                             HStack {
                                 Spacer()
-                                StandardButton(action: {}, labelText: "Track order")
+                                StandardButton2(action: {}, labelText: "Track order")
                                 Spacer()
                             }
                         }
                     }
                     .listRowInsets(EdgeInsets())
+                    Separator()
                 }
             }
             .fullScreenCover(isPresented: self.$showingThankYou, content: {
@@ -226,6 +210,7 @@ struct OrderSummaryView: View {
             .fullScreenCover(isPresented: self.$showingReturnConfirmation, content: {
                 ConfirmReturnView(remoteAPI: self.remoteAPI, cartItem: self.orderData.returnItem!, orderData: self.orderData, delegate: self.confirmReturnDelegate!, isPresented: self.$showingReturnConfirmation)
             })
+            .listRowInsets(EdgeInsets())
         }
         //.modifier(ColorTopSafeArea(.white))
         .navigationTitle("Order confirmation")

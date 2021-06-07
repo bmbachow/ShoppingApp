@@ -19,7 +19,7 @@ struct FormVStack<Content>: View where Content : View {
         VStack(alignment: .center, spacing: 20) {
             self.content()
         }
-        .padding(24)
+        .padding(EdgeInsets(top: 4, leading: 24, bottom: 0, trailing: 24))
     }
 }
 

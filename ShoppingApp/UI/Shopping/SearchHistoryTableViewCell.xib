@@ -25,7 +25,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qvu-DK-fSk">
-                        <rect key="frame" x="287" y="13" width="17" height="18"/>
+                        <rect key="frame" x="276" y="0.0" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Qvu-DK-fSk" secondAttribute="height" multiplier="1:1" id="KOL-06-fpZ"/>
+                        </constraints>
                         <color key="tintColor" systemColor="secondaryLabelColor"/>
                         <state key="normal">
                             <imageReference key="image" image="xmark" catalog="system" renderingMode="template"/>
@@ -38,9 +41,12 @@
                 <constraints>
                     <constraint firstItem="glF-3q-PtZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="022-25-GS1"/>
                     <constraint firstItem="Qvu-DK-fSk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="N1p-e3-q0T"/>
-                    <constraint firstAttribute="trailing" secondItem="Qvu-DK-fSk" secondAttribute="trailing" constant="16" id="RGf-Ya-U1F"/>
+                    <constraint firstAttribute="trailing" secondItem="Qvu-DK-fSk" secondAttribute="trailing" id="RGf-Ya-U1F"/>
                     <constraint firstItem="Qvu-DK-fSk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="glF-3q-PtZ" secondAttribute="trailing" constant="10" id="Zji-w1-whq"/>
+                    <constraint firstItem="Qvu-DK-fSk" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="fUR-8B-sSj"/>
+                    <constraint firstAttribute="bottom" secondItem="glF-3q-PtZ" secondAttribute="bottom" constant="12" id="kLQ-Ii-pNF"/>
                     <constraint firstItem="glF-3q-PtZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="yi7-o3-Jxl"/>
+                    <constraint firstItem="glF-3q-PtZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="znJ-Ad-ZLj"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
