@@ -61,6 +61,7 @@ class AlertViewController: BaseViewController {
         }
         
         self.actionStackView.spacing = 6
+        
     }
 
     func addAction(title: String, handler: @escaping () -> Void) {
