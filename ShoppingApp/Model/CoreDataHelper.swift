@@ -64,6 +64,9 @@ class CoreDataHelper: RemoteAPI {
         user.password = try bcryptHasher.hashPasword(password)
         user.registeredDate = Date()
         
+        let cashOnDelivery = CashOnDeliveryPaymentMethod(context: self.viewContext)
+        user.addToPaymentMethods(cashOnDelivery)
+        
         if let anonymousUser = anonymousUser {
             for cartItem in anonymousUser.cartItemsArray {
                 cartItem.user = user
@@ -538,6 +541,9 @@ class CoreDataHelper: RemoteAPI {
         cardPaymentMethod.cardNumber = cardNumber
         cardPaymentMethod.expirationMonth = Int16(expirationMonth)
         cardPaymentMethod.expirationYear = Int16(expirationYear)
+        
+        
+        
         if isDefault {
             for paymentMethod in user.paymentMethodsArray {
                 paymentMethod.isDefault = false

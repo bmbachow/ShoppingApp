@@ -73,12 +73,12 @@ struct OrderSummaryView: View {
         }
     }
     
-    var paymentMethod: PaymentMethod? {
+    var paymentMethod: PaymentMethod {
         switch self.mode {
         case .checkout:
-            return self.orderData.paymentMethod
+            return self.orderData.paymentMethod!
         case .orderDetail:
-            return self.orderData.order!.paymentMethod
+            return self.orderData.order!.paymentMethod!
         }
     }
     

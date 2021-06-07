@@ -22,7 +22,12 @@ extension User {
         self.reviews?.array as? [ProductReview] ?? []
     }
     var paymentMethodsArray: [PaymentMethod] {
-        self.paymentMethods?.array as? [PaymentMethod] ?? []
+        var array = self.paymentMethods?.array as? [PaymentMethod] ?? []
+        if let cashOnDeliveryIndex = array.firstIndex(where: {$0 is CashOnDeliveryPaymentMethod}) {
+            let cashOnDelivery = array.remove(at: cashOnDeliveryIndex)
+            array += [cashOnDelivery]
+        }
+        return array
     }
     var addressesArray: [Address] {
         self.addresses?.array as? [Address] ?? []
