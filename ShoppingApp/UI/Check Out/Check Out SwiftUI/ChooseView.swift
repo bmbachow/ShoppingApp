@@ -118,7 +118,12 @@ struct ChooseView: View {
                     }
                     
                 } else {
-                    StandardText(self.emptyMessageForCurrentMode)
+                    Spacer()
+                        .frame(height: 14)
+                    StandardText(self.emptyMessageForCurrentMode, size: 15)
+                    Spacer()
+                        .frame(height: 14)
+                    Separator()
                 }
                 Spacer()
                     .frame(height: 14)
@@ -148,15 +153,6 @@ struct ChooseView: View {
                             .font(Font(UIConstants.standardFont(size: 15, style: .semiBold)))
                             .foregroundColor(Color(UIConstants.secondaryButtonColor))
                     }
-                    Spacer()
-                        .frame(height: 14)
-                    Separator()
-                    Spacer()
-                        .frame(height: 14)
-                    StandardButton2(action: {
-                        self.orderData.paymentMethod = nil
-                        self.navigationSelection = 1
-                    }, labelText: "Pay with cash on delivery")
                     Spacer()
                         .frame(height: 14)
                     Separator()

@@ -185,6 +185,8 @@ struct OrderSummaryView: View {
                 if self.mode == .orderDetail {
                     FormVStack {
                         LabeledVStack(labelText: "Order status") {
+                            Spacer()
+                                .frame(height: 8)
                             HStack {
                                 VStack {
                                     StandardText(self.orderData.order!.deliveryStatus.description)
