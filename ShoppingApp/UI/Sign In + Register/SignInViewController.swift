@@ -10,7 +10,7 @@ import UIKit
 class SignInViewController: BaseViewController {
 
     @IBOutlet weak var userName: UITextField!
-    @IBOutlet weak var pass: UITextField!
+    @IBOutlet weak var pass: PasswordTextField!
     
     let anonymousUser: AnonymousUser?
     

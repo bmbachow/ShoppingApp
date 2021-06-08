@@ -11,8 +11,8 @@ class RegisterViewController: BaseViewController {
     
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
-    @IBOutlet weak var pass: UITextField!
-    @IBOutlet weak var confirmPass: UITextField!
+    @IBOutlet weak var pass: PasswordTextField!
+    @IBOutlet weak var confirmPass: PasswordTextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var phone: UITextField!
     

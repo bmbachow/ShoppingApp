@@ -27,7 +27,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Umr-cM-1Uv">
+                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Umr-cM-1Uv" customClass="PasswordTextField" customModule="ShoppingApp" customModuleProvider="target">
                     <rect key="frame" x="80" y="349" width="255" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -76,7 +76,7 @@
     <resources>
         <image name="Bazaar-removebg-preview" width="500" height="500"/>
         <namedColor name="secondaryButtonColor">
-            <color red="0.056982979364406987" green="0.27371587197637404" blue="0.77942595473763088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.057000000029802322" green="0.27399998903274536" blue="0.77899998426437378" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
