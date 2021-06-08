@@ -109,6 +109,7 @@
 		52B70C38265EA40A0061E757 /* CartItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B70C37265EA40A0061E757 /* CartItemExtensions.swift */; };
 		52CD8B17265BE09C00AFAC8C /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52CD8B15265BE09C00AFAC8C /* AlertViewController.xib */; };
 		52CD8B18265BE09C00AFAC8C /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CD8B16265BE09C00AFAC8C /* AlertViewController.swift */; };
+		52D1BEBC26701E8F007A03E8 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1BEBB26701E8F007A03E8 /* PasswordTextField.swift */; };
 		52D369F4266A4FE300A4236B /* ButtonImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D369F3266A4FE300A4236B /* ButtonImageView.swift */; };
 		52D369F6266A74D900A4236B /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D369F5266A74D900A4236B /* BackButton.swift */; };
 		52D369FC266A8CA900A4236B /* ColorTopSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D369FB266A8CA900A4236B /* ColorTopSafeArea.swift */; };
@@ -287,6 +288,7 @@
 		52B70C37265EA40A0061E757 /* CartItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemExtensions.swift; sourceTree = "<group>"; };
 		52CD8B15265BE09C00AFAC8C /* AlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
 		52CD8B16265BE09C00AFAC8C /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		52D1BEBB26701E8F007A03E8 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		52D369F3266A4FE300A4236B /* ButtonImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonImageView.swift; sourceTree = "<group>"; };
 		52D369F5266A74D900A4236B /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		52D369FB266A8CA900A4236B /* ColorTopSafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTopSafeArea.swift; sourceTree = "<group>"; };
@@ -645,6 +647,7 @@
 				527CEAB82668254A00AB57B9 /* Orders List */,
 				522A96AA2668555D00DE4C98 /* Order Detail */,
 				52D8F89826580BA700EF220A /* AppDelegate.swift */,
+				52D1BEBB26701E8F007A03E8 /* PasswordTextField.swift */,
 				52D9687E266E6D5500E66543 /* EmptyPromptView.swift */,
 				52D36A03266AABFB00A4236B /* BazaarNavigationController.swift */,
 				52D369F3266A4FE300A4236B /* ButtonImageView.swift */,
@@ -1005,6 +1008,7 @@
 				524CFED326627CBC00B72981 /* StandardToggle.swift in Sources */,
 				5224582026667C9100CB89F6 /* OrderSummaryView.swift in Sources */,
 				527CEAC12668280A00AB57B9 /* OrderPreviewTableViewCell.swift in Sources */,
+				52D1BEBC26701E8F007A03E8 /* PasswordTextField.swift in Sources */,
 				526724D0265AE3E600D9CAB9 /* AccountPaymentMethodExtensions.swift in Sources */,
 				52FCE97126656F9E0076C438 /* MonthInt.swift in Sources */,
 				526724D8265AE41300D9CAB9 /* PaymentMethodExtensions.swift in Sources */,
