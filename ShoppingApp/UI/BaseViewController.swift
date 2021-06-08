@@ -63,7 +63,7 @@ class BaseViewController: UIViewController {
     
     func presentBasicAlert(title: String? = nil, message: String? = nil, onDismiss: (() -> Void)? = nil) {
         let alert = self.basicAlert(title: title, message: message, onDismiss: onDismiss)
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: false, completion: nil)
     }
     func basicAlert(title: String? = nil, message: String? = nil, onDismiss: (() -> Void)? = nil) -> AlertViewController {
         let alert = AlertViewController(title: title, message: message)
@@ -85,7 +85,7 @@ class BaseViewController: UIViewController {
                 })
             }
         }
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: false, completion: nil)
     }
 
 }

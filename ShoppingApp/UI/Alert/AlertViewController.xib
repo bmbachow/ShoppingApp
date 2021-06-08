@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertViewController" customModule="ShoppingApp" customModuleProvider="target">
             <connections>
                 <outlet property="actionStackView" destination="dIz-ri-dEz" id="MWf-mF-uNJ"/>
+                <outlet property="dimmerView" destination="ZHn-Qy-rmH" id="OPy-jU-apn"/>
                 <outlet property="mainBackgroundView" destination="kdk-0h-73M" id="TSJ-5x-YB6"/>
                 <outlet property="mainStackView" destination="ISA-h7-9lh" id="n8T-lI-8FO"/>
                 <outlet property="messageLabel" destination="Da8-z4-ynm" id="2Yr-D2-eud"/>
@@ -22,6 +23,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZHn-Qy-rmH" userLabel="Dimmer View">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.50344626319329466" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kdk-0h-73M">
                     <rect key="frame" x="72.5" y="391.5" width="269" height="123"/>
                     <subviews>
@@ -64,9 +69,13 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="top" secondItem="ZHn-Qy-rmH" secondAttribute="top" id="48C-6D-6YX"/>
                 <constraint firstItem="kdk-0h-73M" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="4mb-7v-QiC"/>
+                <constraint firstItem="ZHn-Qy-rmH" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="5Mw-5J-ZEZ"/>
+                <constraint firstAttribute="trailing" secondItem="ZHn-Qy-rmH" secondAttribute="trailing" id="l0e-Nt-8Nl"/>
                 <constraint firstItem="kdk-0h-73M" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.65" id="mJY-xm-cS0"/>
                 <constraint firstItem="kdk-0h-73M" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="rRu-uF-xvA"/>
+                <constraint firstItem="ZHn-Qy-rmH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xqf-5Y-Pxa"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="78.348214285714278"/>
         </view>
