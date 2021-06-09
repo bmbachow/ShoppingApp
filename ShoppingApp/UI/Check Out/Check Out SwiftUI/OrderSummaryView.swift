@@ -16,7 +16,7 @@ struct OrderSummaryView: View {
     }
     
     let remoteAPI: RemoteAPI
-    var orderData: OrderData
+    @ObservedObject var orderData: OrderData
     @State var showingThankYou = false
     @State var showingReturnConfirmation = false
     
@@ -226,6 +226,7 @@ struct OrderSummaryView: View {
                                 }
                                 Spacer()
                             }
+                            /*
                             Spacer()
                                 .frame(height: 8)
                             HStack {
@@ -233,6 +234,7 @@ struct OrderSummaryView: View {
                                 StandardButton2(action: {}, labelText: "Track order")
                                 Spacer()
                             }
+ */
                         }
                     }
                     .listRowInsets(EdgeInsets())

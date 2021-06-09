@@ -797,6 +797,9 @@ class CoreDataHelper: RemoteAPI {
             for product in try! self.getRandomProducts(count: i) {
                 try! self.addProductToCartSync(product: product, user: user)
             }
+            if i == 5 {
+                user.cartItemsArray.last?.number = 5
+            }
             let orderData1 = OrderData(user: user)
             let order = try! self.placeOrderSync(user: user, subtotal: user.cartSubtotal, shippingPrice: orderData1.calculatedShipping, tax: orderData1.calculatedTax, address: address, paymentMethod: paymentMethod)
             order.delivery?.shippedDate = Date()
