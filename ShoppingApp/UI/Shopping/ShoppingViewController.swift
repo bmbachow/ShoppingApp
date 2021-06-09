@@ -16,9 +16,7 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
     @IBOutlet var collectionView: UICollectionView!
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    private var shouldShowSignInViewControllerOnAppear = true
-    
+
     private var shouldHideSearchHistoryTableView: Bool {
         !self.searchBar.isFirstResponder
     }
@@ -87,10 +85,6 @@ class ShoppingViewController: UserTabViewController, UITableViewDelegate, UITabl
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if self.shouldShowSignInViewControllerOnAppear {
-            self.presentSignInViewController()
-            self.shouldShowSignInViewControllerOnAppear = false
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

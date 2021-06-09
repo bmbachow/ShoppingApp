@@ -22,7 +22,7 @@ class RegisterViewController: BaseViewController {
     
     var tappedSignInAction: (() -> Void)
     
-    init(presentingUserTabViewController: UserTabViewController, anonymousUser: AnonymousUser?, tappedSignInAction: @escaping () -> Void) {
+    init(presentingUserTabViewController: UserTabViewController?, anonymousUser: AnonymousUser?, tappedSignInAction: @escaping () -> Void) {
         self.presentingUserTabViewController = presentingUserTabViewController
         self.anonymousUser = anonymousUser
         self.tappedSignInAction = tappedSignInAction
