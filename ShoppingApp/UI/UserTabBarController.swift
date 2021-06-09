@@ -24,7 +24,7 @@ class UserTabBarController: UITabBarController {
     let settingsViewController: SettingsViewController
     
     var navigationControllers: [UINavigationController] {
-        return [self.shoppingNavigationController, self.userHomeNavigationController, self.cartNavigationController, self.settingsNavigationController]
+        return [self.shoppingNavigationController, self.userHomeNavigationController, self.cartNavigationController, /*self.settingsNavigationController*/]
     }
     
     var userTabViewControllers: [UserTabViewController] {
