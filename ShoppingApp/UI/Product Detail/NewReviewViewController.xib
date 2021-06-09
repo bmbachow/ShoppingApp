@@ -27,8 +27,8 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UOO-RV-WmV">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vc2-3w-zd5">
-                            <rect key="frame" x="24" y="60" width="366" height="417"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vc2-3w-zd5">
+                            <rect key="frame" x="24" y="60" width="366" height="419"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="KeK-AX-EGR">
                                     <rect key="frame" x="0.0" y="0.0" width="366" height="91"/>
@@ -99,15 +99,23 @@
                                         </textView>
                                     </subviews>
                                 </stackView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RH3-e6-cSn">
-                                    <rect key="frame" x="0.0" y="387" width="366" height="30"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" title="Submit Review"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RH3-e6-cSn" customClass="RoundButton2" customModule="ShoppingApp" customModuleProvider="target">
+                                    <rect key="frame" x="132" y="387" width="102" height="32"/>
+                                    <color key="backgroundColor" name="AccentColorApp"/>
+                                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
+                                    <state key="normal" title="Submit Review">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
                                     <connections>
                                         <action selector="tappedSubmitReviewButton:" destination="-1" eventType="touchUpInside" id="W0Y-V1-BRa"/>
                                     </connections>
                                 </button>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="10r-Zk-DuU" firstAttribute="width" secondItem="vc2-3w-zd5" secondAttribute="width" id="KsK-FL-TeA"/>
+                                <constraint firstItem="KeK-AX-EGR" firstAttribute="width" secondItem="vc2-3w-zd5" secondAttribute="width" id="W3x-dQ-fy8"/>
+                                <constraint firstItem="SRV-Xq-sBU" firstAttribute="width" secondItem="vc2-3w-zd5" secondAttribute="width" id="frK-4F-TkX"/>
+                            </constraints>
                         </stackView>
                     </subviews>
                     <constraints>
@@ -137,6 +145,9 @@
         </designable>
     </designables>
     <resources>
+        <namedColor name="AccentColorApp">
+            <color red="0.82400000095367432" green="0.83499997854232788" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="cosmosBorderColor">
             <color red="0.8410000205039978" green="0.50499999523162842" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

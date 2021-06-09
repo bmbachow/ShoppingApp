@@ -95,14 +95,7 @@ struct AddressFormView: View {
     func saveAndSelectAddress() {
         
         if let address = self.address {
-            address.fullName = self.nameText
-            address.streetAddress = self.streetAddressText
-            address.streetAddress2 = self.streetAddress2Text
-            address.city = self.cityText
-            address.state = self.stateText
-            address.zipCode = self.zipCodeText
-            address.isDefault = self.makeDefault
-            self.remoteAPI.patchAddress(address: address, success: {
+            self.remoteAPI.patchAddress(address: address, fullName: self.nameText, streetAddress: self.streetAddressText, streetAddress2: self.streetAddress2Text, city: self.cityText, state: self.stateText, zipCode: self.zipCodeText, isDefault: self.makeDefault, success: {_ in
                 self.orderData.address = address
                 self.presentationMode.wrappedValue.dismiss()
             }, failure: { error in

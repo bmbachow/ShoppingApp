@@ -83,6 +83,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UITextField.appearance().font = UIConstants.standardFont(size: 18, style: .regular)
         
+        UITextView.appearance().font = UIConstants.standardFont(size: 18, style: .regular)
+        
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIConstants.standardFont(size: 10, style: .regular)], for: .normal)
     }
     

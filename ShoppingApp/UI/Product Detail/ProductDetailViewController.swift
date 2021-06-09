@@ -124,7 +124,7 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
     
     func presentNewReviewViewController() {
         guard let user = self.user else { return }
-        let review = self.product.reviewsArray.first(where: {$0.user == self})
+        let review = self.product.reviewsArray.first(where: {$0.user == user})
         
         let viewController = NewReviewViewController(user: user, product: self.product, review: review, reviewSubmittedAction: { [weak self] in
             self?.refreshProductReviewsArray()

@@ -530,22 +530,42 @@ class CoreDataHelper: RemoteAPI {
         return address
     }
     
-    func patchAddress(address: Address, success: () -> Void, failure: (Error) -> Void) {
-        let isDefault = address.isDefault
-        if isDefault, let user = address.user {
-            for paymentMethod in user.paymentMethodsArray {
-                paymentMethod.isDefault = false
+    func patchAddress(address: Address, fullName: String?, streetAddress: String?, streetAddress2: String?, city: String?, state: String?, zipCode: String?, isDefault: Bool?, success: (Address) -> Void, failure: (Error) -> Void) {
+        if let fullName = fullName {
+            address.fullName = fullName
+        }
+        if let streetAddress = streetAddress {
+            address.streetAddress = streetAddress
+        }
+        if let streetAddress2 = streetAddress2 {
+            address.streetAddress2 = streetAddress2
+        }
+        if let city = city {
+            address.city = city
+        }
+        if let state = state {
+            address.state = state
+        }
+        if let zipCode = zipCode {
+            address.zipCode = zipCode
+        }
+        if let isDefault = isDefault {
+            address.isDefault = isDefault
+            if isDefault, let user = address.user {
+                for paymentMethod in user.paymentMethodsArray {
+                    paymentMethod.isDefault = false
+                }
+                address.isDefault = true
             }
-            address.isDefault = true
         }
         do {
             try self.viewContext.save()
-            success()
+            success(address)
         } catch {
             failure(error)
         }
     }
-    
+
     //MARK: PaymentMethod
     
     func postNewCardPaymentMethod(user: User, nameOnCard: String, cardNumber: String, expirationMonth: Int, expirationYear: Int, isDefault: Bool, success: (CardPaymentMethod) -> Void, failure: (Error) -> Void) {
@@ -598,22 +618,6 @@ class CoreDataHelper: RemoteAPI {
         accountPaymentMethod.isDefault = isDefault
         try self.viewContext.save()
         return accountPaymentMethod
-    }
-    
-    func patchPaymentMethod(paymentMethod: PaymentMethod, success: () -> Void, failure: (Error) -> Void) {
-        let isDefault = paymentMethod.isDefault
-        if isDefault, let user = paymentMethod.user {
-            for paymentMethod in user.paymentMethodsArray {
-                paymentMethod.isDefault = false
-            }
-            paymentMethod.isDefault = true
-        }
-        do {
-            try self.viewContext.save()
-            success()
-        } catch {
-            failure(error)
-        }
     }
     
     //MARK: seedDatabaseIfEmpty()

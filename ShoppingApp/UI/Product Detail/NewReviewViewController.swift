@@ -59,21 +59,32 @@ class NewReviewViewController: BaseViewController, UITextViewDelegate {
         self.bodyTextView.layer.cornerRadius = 6
         self.bodyTextView.layer.cornerCurve = .continuous
         
+        if let review = self.review {
+            self.titleTextField.text = review.title
+            self.bodyTextView.text = review.body
+            self.cosmosView.rating = Double(review.rating)
+        }
+        
         self.updateReviewButtonStatus()
+        
     }
     
     @IBAction func tappedSubmitReviewButton(_ sender: UIButton) {
         guard let reviewData = self.getReviewData() else {
             return
         }
-        if self.review == nil {
-            self.remoteAPI.postNewProductReview(user: self.user, product: self.product, title: reviewData.title, body: reviewData.body, rating: reviewData.rating, success: { productReview in
+        if let review = self.review {
+            self.remoteAPI.patchProductReview(review: review, title: reviewData.title, body: reviewData.body, rating: reviewData.rating, success: { productReview in
                 self.reviewSubmittedAction()
             }, failure: { error in
                 print(error.localizedDescription)
             })
         } else {
-            
+            self.remoteAPI.postNewProductReview(user: self.user, product: self.product, title: reviewData.title, body: reviewData.body, rating: reviewData.rating, success: { productReview in
+                self.reviewSubmittedAction()
+            }, failure: { error in
+                print(error.localizedDescription)
+            })
         }
     }
     
