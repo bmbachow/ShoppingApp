@@ -24,15 +24,18 @@ class NewReviewViewController: BaseViewController, UITextViewDelegate {
     
     private let product: Product
     
+    private let review: ProductReview?
+    
     private let reviewSubmittedAction: () -> Void
     
     private var shouldDisableSubmitReviewButton: Bool {
         return self.getReviewData() == nil
     }
     
-    init(user: User, product: Product, reviewSubmittedAction: @escaping () -> Void) {
+    init(user: User, product: Product, review: ProductReview?, reviewSubmittedAction: @escaping () -> Void) {
         self.user = user
         self.product = product
+        self.review = review
         self.reviewSubmittedAction = reviewSubmittedAction
         super.init(nibName: "NewReviewViewController", bundle: nil)
     }
@@ -63,11 +66,15 @@ class NewReviewViewController: BaseViewController, UITextViewDelegate {
         guard let reviewData = self.getReviewData() else {
             return
         }
-        self.remoteAPI.postNewProductReview(user: self.user, product: self.product, title: reviewData.title, body: reviewData.body, rating: reviewData.rating, success: { productReview in
-            self.reviewSubmittedAction()
-        }, failure: { error in
-            print(error.localizedDescription)
-        })
+        if self.review == nil {
+            self.remoteAPI.postNewProductReview(user: self.user, product: self.product, title: reviewData.title, body: reviewData.body, rating: reviewData.rating, success: { productReview in
+                self.reviewSubmittedAction()
+            }, failure: { error in
+                print(error.localizedDescription)
+            })
+        } else {
+            
+        }
     }
     
     @IBAction func titleTextFieldChanged(_ sender: UITextField) {

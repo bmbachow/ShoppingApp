@@ -484,6 +484,24 @@ class CoreDataHelper: RemoteAPI {
         }
     }
     
+    func patchProductReview(review: ProductReview, title: String?, body: String?, rating: StarRating?, success: (ProductReview) -> Void, failure: (Error) -> Void) {
+        if let title = title {
+            review.title = title
+        }
+        if let body = body {
+            review.body = body
+        }
+        if let rating = rating {
+            review.rating = rating.rawValue
+        }
+        do {
+            try self.viewContext.save()
+            success(review)
+        } catch {
+            failure(error)
+        }
+    }
+    
     //MARK: Address
     func postNewAddress(user: User, fullName: String, streetAddress: String, streetAddress2: String?, city: String, state: String, zipCode: String, isDefault: Bool, success: (Address) -> Void, failure: (Error) -> Void) {
         do {

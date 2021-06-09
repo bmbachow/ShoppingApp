@@ -66,6 +66,8 @@ protocol RemoteAPI {
     //MARK: ProductReview
     func postNewProductReview(user: User?, product: Product, title: String, body: String, rating: StarRating, success: (ProductReview) -> Void, failure: (Error) -> Void)
     
+    func patchProductReview(review: ProductReview, title: String?, body: String?, rating: StarRating?, success: (ProductReview) -> Void, failure: (Error) -> Void)
+    
     //MARK: Address
     func postNewAddress(user: User, fullName: String, streetAddress: String, streetAddress2: String?, city: String, state: String, zipCode: String, isDefault: Bool, success: (Address) -> Void, failure: (Error) -> Void)
 

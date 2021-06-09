@@ -124,7 +124,9 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
     
     func presentNewReviewViewController() {
         guard let user = self.user else { return }
-        let viewController = NewReviewViewController(user: user, product: self.product, reviewSubmittedAction: { [weak self] in
+        let review = self.product.reviewsArray.first(where: {$0.user == self})
+        
+        let viewController = NewReviewViewController(user: user, product: self.product, review: review, reviewSubmittedAction: { [weak self] in
             self?.refreshProductReviewsArray()
             self?.dismiss(animated: true, completion: nil)
         })
