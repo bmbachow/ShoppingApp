@@ -65,6 +65,12 @@ class BaseViewController: UIViewController {
         let alert = self.basicAlert(title: title, message: message, onDismiss: onDismiss)
         self.present(alert, animated: false, completion: nil)
     }
+    
+    func presentFlashAlert(message: String, onDismiss: (() -> Void)? = nil) {
+        let alert = self.flashAlert(withTimeInterval: 1, message: message, onDismiss: onDismiss)
+        self.present(alert, animated: false, completion: nil)
+    }
+    
     func basicAlert(title: String? = nil, message: String? = nil, onDismiss: (() -> Void)? = nil) -> AlertViewController {
         let alert = AlertViewController(title: title, message: message)
         alert.addAction(title: "OK") {
@@ -72,6 +78,11 @@ class BaseViewController: UIViewController {
                 onDismiss?()
             })
         }
+        return alert
+    }
+    
+    func flashAlert(withTimeInterval timeInterval: TimeInterval, message: String, onDismiss: (() -> Void)? = nil) -> AlertViewController {
+        let alert = AlertViewController(flashAlertWithTimeInterval: timeInterval, message: message, onDismiss: onDismiss)
         return alert
     }
     

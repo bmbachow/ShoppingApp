@@ -77,11 +77,7 @@ class WishListViewController: UserTabViewController, UITableViewDelegate, UITabl
         guard let indexPath = wishListTable.indexPath(for: cell) else {
             return
         }
-        self.remoteAPI.addProductToCart(product: self.wishListItems[indexPath.row], user: self.user!, success: {
-            Notifications.postCartChanged(fromViewController: self)
-        }, failure: { error in
-            print(error.localizedDescription)
-        })
+        self.addProductToCart(self.wishListItems[indexPath.row])
     }
     
     func tappedDeleteButton(inCell cell: WishListTableViewCell) {

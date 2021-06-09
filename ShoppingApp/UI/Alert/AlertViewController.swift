@@ -21,14 +21,24 @@ class AlertViewController: BaseViewController {
     
     @IBOutlet weak var dimmerView: UIView!
     
+   
+    @IBOutlet weak var mainStackViewToTopConstraint: NSLayoutConstraint!
     
     private let titleText: String?
     
     private let message: String?
     
-    var actions = [(button: UIButton, closure: () -> Void)]()
+    private var actions = [(button: UIButton, closure: () -> Void)]()
     
-    var hasBeenPresented = false
+    private var hasBeenPresented = false
+    
+    private var onFlashDismiss: (() -> Void)?
+    
+    private var isFlashAlert = false
+    
+    private var flashTimeInterval: TimeInterval = 0
+    
+    
     
     init(title: String? = nil, message: String? = nil) {
         self.titleText = title
@@ -37,6 +47,17 @@ class AlertViewController: BaseViewController {
         self.modalPresentationStyle = .overFullScreen
         self.modalTransitionStyle = .crossDissolve
     }
+    
+    init(flashAlertWithTimeInterval timeInterval: TimeInterval, message: String, onDismiss: (() -> Void)?) {
+        self.titleText = nil
+        self.message = message
+        super.init(nibName: "AlertViewController", bundle: nil)
+        self.modalPresentationStyle = .overFullScreen
+        self.modalTransitionStyle = .crossDissolve
+        self.isFlashAlert = true
+        self.flashTimeInterval = timeInterval
+    }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -47,6 +68,14 @@ class AlertViewController: BaseViewController {
         
         self.titleLabel.text = self.titleText
         self.messageLabel.text = message
+        
+        if self.isFlashAlert {
+            self.messageLabel.textAlignment = .center
+            self.mainStackViewToTopConstraint.constant = 8
+            
+            self.mainStackView.removeArrangedSubview(self.actionStackView)
+            self.mainStackView.removeArrangedSubview(self.titleLabel)
+        }
         
         self.titleLabel.font = UIConstants.standardFont(size: 17, style: .semiBold)
         self.messageLabel.font = UIConstants.standardFont(size: 17, style: .regular)
@@ -77,6 +106,17 @@ class AlertViewController: BaseViewController {
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
                 self.view.alpha = 1
                 self.mainBackgroundView.transform = .identity
+            })
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.isFlashAlert {
+            Timer.scheduledTimer(withTimeInterval: self.flashTimeInterval, repeats: false, block: { _ in
+                self.presentingViewController?.dismiss(animated: true, completion: {
+                    self.onFlashDismiss?()
+                })
             })
         }
     }

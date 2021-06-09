@@ -119,6 +119,7 @@ class UserTabViewController: BaseViewController {
         if let user = self.user {
             self.remoteAPI.addProductToCart(product: product, user: user, success: {
                 Notifications.postCartChanged(fromViewController: self)
+                self.presentFlashAlert(message: "Added to Cart")
                 completion?()
             }, failure: { error in
                 print(error.localizedDescription)
@@ -130,6 +131,7 @@ class UserTabViewController: BaseViewController {
         if let user = self.user {
             self.remoteAPI.addProductToWishList(product: product, user: user, success: {
                 Notifications.postWishListChanged(fromViewController: self)
+                self.presentFlashAlert(message: "Added to Wish List")
                 completion?()
             }, failure: { error in
                 print(error.localizedDescription)

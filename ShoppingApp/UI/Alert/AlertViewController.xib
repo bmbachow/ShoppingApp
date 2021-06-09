@@ -13,6 +13,7 @@
                 <outlet property="dimmerView" destination="ZHn-Qy-rmH" id="OPy-jU-apn"/>
                 <outlet property="mainBackgroundView" destination="kdk-0h-73M" id="TSJ-5x-YB6"/>
                 <outlet property="mainStackView" destination="ISA-h7-9lh" id="n8T-lI-8FO"/>
+                <outlet property="mainStackViewToTopConstraint" destination="jCa-9X-9wz" id="Gn9-yu-EZb"/>
                 <outlet property="messageLabel" destination="Da8-z4-ynm" id="2Yr-D2-eud"/>
                 <outlet property="titleLabel" destination="awA-pB-6wa" id="p5c-fp-yPa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -27,8 +28,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" white="0.0" alpha="0.50344626319329466" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kdk-0h-73M">
-                    <rect key="frame" x="72.5" y="391.5" width="269" height="123"/>
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kdk-0h-73M">
+                    <rect key="frame" x="73" y="392" width="269" height="216"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ISA-h7-9lh">
                             <rect key="frame" x="8" y="15.5" width="253" height="121"/>
