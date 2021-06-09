@@ -29,11 +29,12 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCP-iB-Y8l">
-                        <rect key="frame" x="124.5" y="70.5" width="71" height="41.5"/>
-                        <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="17"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OCP-iB-Y8l" customClass="RoundButton2" customModule="ShoppingApp" customModuleProvider="target">
+                        <rect key="frame" x="132" y="70.5" width="56" height="41.5"/>
+                        <color key="backgroundColor" name="AccentColorApp"/>
+                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                         <state key="normal" title="Sign out">
-                            <color key="titleColor" name="secondaryButtonColor"/>
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                     </button>
                 </subviews>
@@ -58,8 +59,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="secondaryButtonColor">
-            <color red="0.056982979364406987" green="0.27371587197637404" blue="0.77942595473763088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="AccentColorApp">
+            <color red="0.82400000095367432" green="0.83499997854232788" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

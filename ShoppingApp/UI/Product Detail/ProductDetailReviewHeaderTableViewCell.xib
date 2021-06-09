@@ -17,23 +17,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="219"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Bdx-PC-xAb">
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="Bdx-PC-xAb">
                         <rect key="frame" x="11" y="11" width="298" height="197"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5m-vA-ZB8">
-                                <rect key="frame" x="0.0" y="0.0" width="298" height="32.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All reviews" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5m-vA-ZB8">
+                                <rect key="frame" x="0.0" y="0.0" width="298" height="77.5"/>
                                 <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqx-GV-tBw">
-                                <rect key="frame" x="0.0" y="32.5" width="298" height="164.5"/>
-                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="17"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqx-GV-tBw" customClass="RoundButton2" customModule="ShoppingApp" customModuleProvider="target">
+                                <rect key="frame" x="96.5" y="95.5" width="105" height="101.5"/>
+                                <color key="backgroundColor" name="AccentColorApp"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                 <state key="normal" title="Write a review">
-                                    <color key="titleColor" name="secondaryButtonColor"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="r5m-vA-ZB8" firstAttribute="width" secondItem="Bdx-PC-xAb" secondAttribute="width" id="Hs3-7i-dJe"/>
+                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
@@ -51,8 +55,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="secondaryButtonColor">
-            <color red="0.53299999237060547" green="0.45500001311302185" blue="0.82400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="AccentColorApp">
+            <color red="0.82400000095367432" green="0.83499997854232788" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

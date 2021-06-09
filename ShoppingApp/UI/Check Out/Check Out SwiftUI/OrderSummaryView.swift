@@ -64,10 +64,19 @@ struct OrderSummaryView: View {
         }
     }
     
-    var total: Double {
+    var totalBeforeGiftCard: Double {
         switch self.mode {
         case .checkout:
-            return self.orderData.total
+            return self.orderData.totalBeforeGiftCard
+        case .orderDetail:
+            return self.orderData.order!.total + self.orderData.order!.amountPaidWithGiftCardBalance
+        }
+    }
+    
+    var totalAfterGiftCard: Double {
+        switch self.mode {
+        case .checkout:
+            return self.orderData.totalAfterGiftCard
         case .orderDetail:
             return self.orderData.order!.total
         }
@@ -80,6 +89,17 @@ struct OrderSummaryView: View {
         case .orderDetail:
             return self.orderData.order!.paymentMethod!
         }
+    }
+    
+    var amountPaidWithGiftCardBalance: Double? {
+        let amount: Double
+        switch self.mode {
+        case .checkout:
+            amount = self.orderData.amountPaidWithGiftCardBalance <= self.totalBeforeGiftCard ? self.orderData.amountPaidWithGiftCardBalance : self.totalBeforeGiftCard
+        case .orderDetail:
+            amount = self.orderData.order!.amountPaidWithGiftCardBalance
+        }
+        return amount > 0 ? amount : nil
     }
     
     var address: Address {
@@ -160,10 +180,23 @@ struct OrderSummaryView: View {
                         StandardText(NumberFormatter.dollars.string(from: self.tax)!)
                     }
                     
+                    if let amountPaidWithGiftCardBalance = self.amountPaidWithGiftCardBalance {
+                        FormHStack {
+                            StandardText("Total before gift card:", size: 15)
+                            Spacer()
+                            StandardText(NumberFormatter.dollars.string(from: self.totalBeforeGiftCard)!, size: 17)
+                        }
+                        FormHStack {
+                            StandardText("Gift card balance:", size: 17)
+                            Spacer()
+                            StandardText("-\(NumberFormatter.dollars.string(from: amountPaidWithGiftCardBalance)!)", size: 17)
+                        }
+                    }
+                    
                     FormHStack {
                         StandardText("Total:", size: 19, style: .semiBold)
                         Spacer()
-                        StandardText(NumberFormatter.dollars.string(from: self.total)!, size: 19, style: .semiBold)
+                        StandardText(NumberFormatter.dollars.string(from: self.totalAfterGiftCard)!, size: 19, style: .semiBold)
                     }
                 }
                 .listRowInsets(EdgeInsets())
@@ -177,7 +210,7 @@ struct OrderSummaryView: View {
                 Separator()
                 FormVStack {
                     LabeledVStack(labelText: "Payment method") {
-                        PaymentMethodCellView(paymentMethod: self.paymentMethod, isSelected: false, navigationAction: {}, selectedAction: nil, indentSize: 0, addSeparator: false)
+                        PaymentMethodCellView(paymentMethod: self.paymentMethod, amountPaidWithGiftCardBalance: self.amountPaidWithGiftCardBalance, isSelected: false, navigationAction: {}, selectedAction: nil, indentSize: 0, addSeparator: false)
                     }
                 }
                 .listRowInsets(EdgeInsets())
@@ -214,12 +247,11 @@ struct OrderSummaryView: View {
             })
             .listRowInsets(EdgeInsets())
         }
-        //.modifier(ColorTopSafeArea(.white))
         .navigationTitle("Order confirmation")
     }
     
     func placeOrder() {
-        self.remoteAPI.placeOrder(user: self.orderData.user, subtotal: self.orderData.user.cartSubtotal, shippingPrice: self.orderData.calculatedShipping, tax: self.orderData.calculatedTax, address: self.orderData.address!, paymentMethod: self.orderData.paymentMethod, success: { order in
+        self.remoteAPI.placeOrder(user: self.orderData.user, subtotal: self.orderData.user.cartSubtotal, shippingPrice: self.orderData.calculatedShipping, tax: self.orderData.calculatedTax, address: self.orderData.address!, paymentMethod: self.orderData.paymentMethod, amountPaidWithGiftCardBalance: self.amountPaidWithGiftCardBalance, success: { order in
             self.orderData.order = order
             self.showingThankYou = true
             Notifications.postOrdersChanged(fromViewController: nil)

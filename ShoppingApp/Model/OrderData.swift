@@ -16,6 +16,7 @@ class OrderData: ObservableObject {
     
     @Published var user: User
     @Published var paymentMethod: PaymentMethod?
+    @Published var amountPaidWithGiftCardBalance: Double
     @Published var address: Address?
     
     @Published var order: Order?
@@ -32,11 +33,17 @@ class OrderData: ObservableObject {
         return Double(self.user.totalNumberOfProductsInCart) * OrderData.shippingPerProduct
     }
     
-    var total: Double {
+    var totalBeforeGiftCard: Double {
         return self.user.cartSubtotal + self.calculatedTax + self.calculatedShipping
+    }
+    
+    var totalAfterGiftCard: Double {
+        let total = self.user.cartSubtotal + self.calculatedTax + self.calculatedShipping - self.amountPaidWithGiftCardBalance
+        return total > 0 ? total : 0
     }
     
     init(user: User) {
         self.user = user
+        self.amountPaidWithGiftCardBalance = user.giftCardBalance
     }
 }

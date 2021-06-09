@@ -47,6 +47,8 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
             }
             self.relatedItemsCollectionView = cell.collectionView
             cell.button.setTitle("Check these out", for: .normal)
+            cell.button.isUserInteractionEnabled = false
+            cell.button.setTitleColor(.black, for: .normal)
             return cell
         }()
     

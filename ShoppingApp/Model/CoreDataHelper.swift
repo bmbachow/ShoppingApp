@@ -359,9 +359,13 @@ class CoreDataHelper: RemoteAPI {
     
     
     //MARK: Order
-    func placeOrder(user: User, subtotal: Double, shippingPrice: Double, tax: Double, address: Address, paymentMethod: PaymentMethod?, success: (Order) -> Void, failure: (Error) -> Void) {
+    func placeOrder(user: User, subtotal: Double, shippingPrice: Double, tax: Double, address: Address, paymentMethod: PaymentMethod?, amountPaidWithGiftCardBalance: Double?, success: (Order) -> Void, failure: (Error) -> Void) {
         do {
             let order = try self.placeOrderSync(user: user, subtotal: subtotal, shippingPrice: shippingPrice, tax: tax, address: address, paymentMethod: paymentMethod)
+            if let amountPaidWithGiftCardBalance = amountPaidWithGiftCardBalance {
+                order.amountPaidWithGiftCardBalance = amountPaidWithGiftCardBalance
+                user.giftCardBalance -= amountPaidWithGiftCardBalance
+            }
             success(order)
         } catch {
             failure(error)

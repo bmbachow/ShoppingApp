@@ -42,6 +42,7 @@ struct AddressCellView: View {
                             selectedAction()
                         }
                         .buttonStyle(BorderlessButtonStyle())
+                        .frame(width: 25, height: 25)
                     Spacer()
                         .frame(width: 26)
                 }

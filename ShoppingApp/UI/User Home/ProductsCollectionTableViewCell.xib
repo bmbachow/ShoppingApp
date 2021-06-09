@@ -32,8 +32,8 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDi-NF-qIj">
-                        <rect key="frame" x="11" y="11" width="55" height="26"/>
-                        <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="15"/>
+                        <rect key="frame" x="11" y="11" width="46" height="26"/>
+                        <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="15"/>
                         <state key="normal" title="Button">
                             <color key="titleColor" name="secondaryButtonColor"/>
                         </state>
@@ -61,7 +61,7 @@
     </objects>
     <resources>
         <namedColor name="secondaryButtonColor">
-            <color red="0.056982979364406987" green="0.27371587197637404" blue="0.77942595473763088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.057000000029802322" green="0.27399998903274536" blue="0.77899998426437378" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

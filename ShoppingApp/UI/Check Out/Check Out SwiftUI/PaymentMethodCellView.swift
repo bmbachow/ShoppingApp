@@ -11,6 +11,7 @@ import SwiftUI
 struct PaymentMethodCellView: View {
     
     let paymentMethod: PaymentMethod
+    let amountPaidWithGiftCardBalance: Double?
     var isSelected: Bool
     let navigationAction: () -> Void
     let selectedAction: (() -> Void)?
@@ -77,6 +78,7 @@ struct PaymentMethodCellView: View {
                                 selectedAction()
                             }
                             .buttonStyle(BorderlessButtonStyle())
+                            .frame(width: 25, height: 25)
                     }
                     Spacer()
                         .frame(width: 26)
@@ -88,6 +90,9 @@ struct PaymentMethodCellView: View {
                         StandardText(self.numberLine)
                         StandardText(self.nameLine)
                         StandardText(self.line3)
+                        if let amountPaidWithGiftCardBalance = self.amountPaidWithGiftCardBalance {
+                            StandardText("Gift card balance: \(NumberFormatter.dollars.string(from: amountPaidWithGiftCardBalance)!)")
+                        }
                     } else {
                         StandardText("Cash on delivery")
                     }

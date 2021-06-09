@@ -19,6 +19,7 @@ struct ChooseView: View {
     @State var navigationSelection: Int?
     @State var editAddressSelection: Address?
     let mode: ChooseView.Mode
+
     
     weak var delegate: SwiftUICheckoutViewDelegate?
     
@@ -106,9 +107,18 @@ struct ChooseView: View {
                                             })
                         }
                     case .paymentMethod:
+                        
+                        if self.orderData.user.giftCardBalance > 0 {
+                            UseGiftCardBalanceView(isSelected: self.orderData.amountPaidWithGiftCardBalance > 0, giftCardBalance: self.orderData.user.giftCardBalance, navigationAction: {}, selectedAction: {
+                                self.orderData.amountPaidWithGiftCardBalance =
+                                    self.orderData.amountPaidWithGiftCardBalance > 0 ? 0
+                                    : self.orderData.user.giftCardBalance
+                            })
+                        }
+                        
                         ForEach(self.orderData.user.paymentMethodsArray) { paymentMethod in
                             let isSelected = self.isSelectedPaymentMethod(paymentMethod)
-                            PaymentMethodCellView(paymentMethod: paymentMethod, isSelected: isSelected,
+                            PaymentMethodCellView(paymentMethod: paymentMethod, amountPaidWithGiftCardBalance: nil, isSelected: isSelected,
                                                   navigationAction: {
                                                     self.navigationSelection = 1
                                                   }, selectedAction: {
@@ -194,7 +204,6 @@ struct ChooseView: View {
                 }
             )
         }
-        //.modifier(ColorTopSafeArea(.white))
     }
     
 }

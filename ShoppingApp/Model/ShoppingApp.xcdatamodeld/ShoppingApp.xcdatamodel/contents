@@ -54,6 +54,7 @@
         <relationship name="deliveryForDestinationLocation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Delivery" inverseName="destinationLocation" inverseEntity="Delivery"/>
     </entity>
     <entity name="Order" representedClassName="Order" syncable="YES">
+        <attribute name="amountPaidWithGiftCardBalance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="orderedDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="shippingPrice" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
         <attribute name="subtotal" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -104,19 +105,19 @@
         <relationship name="wishListProducts" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Product" inverseName="wishListUsers" inverseEntity="Product"/>
     </entity>
     <elements>
-        <element name="AccountPaymentMethod" positionX="-6384.904418945312" positionY="-4417.254959106446" width="188.1484375" height="88"/>
-        <element name="Address" positionX="-6183.104125976562" positionY="-4465.57096862793" width="128" height="178"/>
-        <element name="AnonymousUser" positionX="-6922.61865234375" positionY="-4336.356506347656" width="128" height="58"/>
-        <element name="CardPaymentMethod" positionX="-6584.082885742187" positionY="-4393.669036865234" width="167.1560668945312" height="103"/>
-        <element name="CartItem" positionX="-6922.849853515626" positionY="-3987.412750244141" width="128" height="118"/>
-        <element name="Category" positionX="-6930.761474609374" positionY="-4106.501678466797" width="128" height="88"/>
-        <element name="Delivery" positionX="-5984.096557617188" positionY="-4279.970642089844" width="128" height="148"/>
-        <element name="Location" positionX="-5787.086791992188" positionY="-4072.270568847657" width="128" height="103"/>
-        <element name="Order" positionX="-6371.215942382813" positionY="-4272.460601806642" width="128" height="163"/>
-        <element name="PaymentMethod" positionX="-6567.479187011719" positionY="-4517.728713989258" width="128" height="88"/>
-        <element name="Product" positionX="-6388.620544433595" positionY="-4106.456146240235" width="128" height="163"/>
-        <element name="ProductReview" positionX="-6215.284912109375" positionY="-4041.701965332031" width="128" height="133"/>
-        <element name="User" positionX="-6750.714721679688" positionY="-4399.569351196289" width="128" height="268"/>
-        <element name="CashOnDeliveryPaymentMethod" positionX="-6396.098510742188" positionY="-4518.695526123047" width="228.9498291015625" height="43"/>
+        <element name="AccountPaymentMethod" positionX="-6384.904418945312" positionY="-4415.627151489259" width="188.1484375" height="88"/>
+        <element name="Address" positionX="-6181.883300781249" positionY="-4465.57096862793" width="128" height="178"/>
+        <element name="AnonymousUser" positionX="-6918.14208984375" positionY="-4331.473083496094" width="128" height="58"/>
+        <element name="CardPaymentMethod" positionX="-6582.048095703124" positionY="-4390.820373535156" width="167.1560668945312" height="103"/>
+        <element name="CartItem" positionX="-6919.187255859376" positionY="-3985.691925048829" width="128" height="118"/>
+        <element name="CashOnDeliveryPaymentMethod" positionX="-6400.574951171876" positionY="-4522.916381835938" width="228.9498291015625" height="43"/>
+        <element name="Category" positionX="-6930.761474609374" positionY="-4106.0947265625" width="128" height="88"/>
+        <element name="Delivery" positionX="-5988.979980468751" positionY="-4279.563690185547" width="128" height="148"/>
+        <element name="Location" positionX="-5790.342407226563" positionY="-4072.270568847657" width="128" height="103"/>
+        <element name="Order" positionX="-6366.332519531251" positionY="-4272.053619384767" width="128" height="28"/>
+        <element name="PaymentMethod" positionX="-6565.444396972656" positionY="-4516.914810180664" width="128" height="88"/>
+        <element name="Product" positionX="-6384.958068847657" positionY="-4098.317047119142" width="128" height="163"/>
+        <element name="ProductReview" positionX="-6212.843139648438" positionY="-4040.888061523437" width="128" height="133"/>
+        <element name="User" positionX="-6751.528686523438" positionY="-4399.569351196289" width="128" height="268"/>
     </elements>
 </model>

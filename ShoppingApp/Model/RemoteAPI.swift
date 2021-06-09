@@ -51,7 +51,7 @@ protocol RemoteAPI {
     func getProducts(searchString: String?, category: Category?, success: ([Product]) -> Void, failure: (Error) -> Void)
     
     //MARK: Order
-    func placeOrder(user: User, subtotal: Double, shippingPrice: Double, tax: Double, address: Address, paymentMethod: PaymentMethod?, success: (Order) -> Void, failure: (Error) -> Void)
+    func placeOrder(user: User, subtotal: Double, shippingPrice: Double, tax: Double, address: Address, paymentMethod: PaymentMethod?, amountPaidWithGiftCardBalance: Double?, success: (Order) -> Void, failure: (Error) -> Void)
     
     func returnItems(cartItem: CartItem, numberToReturn: Int, success: (Order) -> Void, failure: (Error) -> Void)
     
