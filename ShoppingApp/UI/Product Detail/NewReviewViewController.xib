@@ -94,7 +94,7 @@
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="160" id="7Hy-pH-o5p"/>
                                             </constraints>
                                             <color key="textColor" systemColor="labelColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="18"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                     </subviews>

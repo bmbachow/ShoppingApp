@@ -9,6 +9,11 @@ import UIKit
 import SwiftUI
 
 class NewReviewViewController: BaseViewController, UITextViewDelegate {
+    
+    enum ExistingReviewTask {
+        case edit(_ review: ProductReview)
+        case replace(_ review: ProductReview)
+    }
 
     @IBOutlet weak var mainStackView: UIStackView!
     
@@ -24,7 +29,7 @@ class NewReviewViewController: BaseViewController, UITextViewDelegate {
     
     private let product: Product
     
-    private let review: ProductReview?
+    private let existingReviewTask: ExistingReviewTask?
     
     private let reviewSubmittedAction: () -> Void
     
@@ -32,10 +37,10 @@ class NewReviewViewController: BaseViewController, UITextViewDelegate {
         return self.getReviewData() == nil
     }
     
-    init(user: User, product: Product, review: ProductReview?, reviewSubmittedAction: @escaping () -> Void) {
+    init(user: User, product: Product, existingReviewTask: ExistingReviewTask?, reviewSubmittedAction: @escaping () -> Void) {
         self.user = user
         self.product = product
-        self.review = review
+        self.existingReviewTask = existingReviewTask
         self.reviewSubmittedAction = reviewSubmittedAction
         super.init(nibName: "NewReviewViewController", bundle: nil)
     }
@@ -59,7 +64,7 @@ class NewReviewViewController: BaseViewController, UITextViewDelegate {
         self.bodyTextView.layer.cornerRadius = 6
         self.bodyTextView.layer.cornerCurve = .continuous
         
-        if let review = self.review {
+        if case let .edit(review) = self.existingReviewTask {
             self.titleTextField.text = review.title
             self.bodyTextView.text = review.body
             self.cosmosView.rating = Double(review.rating)
@@ -73,14 +78,19 @@ class NewReviewViewController: BaseViewController, UITextViewDelegate {
         guard let reviewData = self.getReviewData() else {
             return
         }
-        if let review = self.review {
+        if case let .edit(review) = self.existingReviewTask {
             self.remoteAPI.patchProductReview(review: review, title: reviewData.title, body: reviewData.body, rating: reviewData.rating, success: { productReview in
                 self.reviewSubmittedAction()
             }, failure: { error in
                 print(error.localizedDescription)
             })
         } else {
-            self.remoteAPI.postNewProductReview(user: self.user, product: self.product, title: reviewData.title, body: reviewData.body, rating: reviewData.rating, success: { productReview in
+            var review: ProductReview?
+            if case let .replace(existingReview) = self.existingReviewTask {
+                review = existingReview
+            }
+            
+            self.remoteAPI.postNewProductReview(replacingExistingReview: review, user: self.user, product: self.product, title: reviewData.title, body: reviewData.body, rating: reviewData.rating, success: { productReview in
                 self.reviewSubmittedAction()
             }, failure: { error in
                 print(error.localizedDescription)

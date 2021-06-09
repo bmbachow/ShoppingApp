@@ -468,7 +468,7 @@ class CoreDataHelper: RemoteAPI {
     
     //MARK: ProductReview
     
-    func postNewProductReview(user: User?, product: Product, title: String, body: String, rating: StarRating, success: (ProductReview) -> Void, failure: (Error) -> Void) {
+    func postNewProductReview(replacingExistingReview existingReview: ProductReview?, user: User?, product: Product, title: String, body: String, rating: StarRating, success: (ProductReview) -> Void, failure: (Error) -> Void) {
         let review = ProductReview(context: self.viewContext)
         review.user = user
         review.product = product
@@ -476,6 +476,9 @@ class CoreDataHelper: RemoteAPI {
         review.body = body
         review.rating = rating.rawValue
         review.postedDate = Date()
+        if let existingReview = existingReview {
+            self.viewContext.delete(existingReview)
+        }
         do {
             try self.viewContext.save()
             success(review)
@@ -771,7 +774,7 @@ class CoreDataHelper: RemoteAPI {
             self.postNewProduct(name: productData.name, categoryName: productData.categoryName, price: productData.price, productDescription: productData.productDescription, image: productData.image, success: { product in
                 for _ in 0..<20 {
                     let reviewData = self.generateRandomReviewData()
-                    self.postNewProductReview(user: nil, product: product, title: reviewData.title, body: reviewData.body, rating: reviewData.rating, success: {_ in}, failure: {_ in})
+                    self.postNewProductReview(replacingExistingReview: nil, user: nil, product: product, title: reviewData.title, body: reviewData.body, rating: reviewData.rating, success: {_ in}, failure: {_ in})
                 }
             }, failure: {_ in})
         }

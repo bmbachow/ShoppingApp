@@ -119,14 +119,35 @@ class ProductDetailViewController: UserTabViewController, UITableViewDelegate, U
         guard self.user != nil, !(self.user is AnonymousUser) else {
             return self.presentNotSignedInAlert()
         }
-        self.presentNewReviewViewController()
+        self.attemptPresentNewReviewViewController()
     }
     
-    func presentNewReviewViewController() {
+    func attemptPresentNewReviewViewController() {
+        var onDismiss: () -> Void = {}
+        if let review = self.product.reviewsArray.first(where: {$0.user == user}){
+            self.presentAlertWithActions(title: "You've already reviewed this product", message: "Would you like to edit your existing review or replace it with a new one?", actions: [
+                (title: "Edit", handler: {
+                    onDismiss = { [weak self] in
+                        self?.presentNewReviewViewController(existingReviewTask: .edit(review))
+                    }
+                } ),
+                (title: "Replace", handler: {
+                    onDismiss = { [weak self] in
+                        self?.presentNewReviewViewController(existingReviewTask: .replace(review))
+                    }
+                }),
+                (title: "Cancel", handler: {
+                    
+                })
+            ], onDismiss: {onDismiss()})
+        } else {
+            self.presentNewReviewViewController(existingReviewTask: nil)
+        }
+    }
+    
+    func presentNewReviewViewController(existingReviewTask: NewReviewViewController.ExistingReviewTask?) {
         guard let user = self.user else { return }
-        let review = self.product.reviewsArray.first(where: {$0.user == user})
-        
-        let viewController = NewReviewViewController(user: user, product: self.product, review: review, reviewSubmittedAction: { [weak self] in
+        let viewController = NewReviewViewController(user: user, product: self.product, existingReviewTask: existingReviewTask, reviewSubmittedAction: { [weak self] in
             self?.refreshProductReviewsArray()
             self?.dismiss(animated: true, completion: nil)
         })
