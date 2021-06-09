@@ -16,7 +16,7 @@ struct OrderSummaryView: View {
     }
     
     let remoteAPI: RemoteAPI
-    @ObservedObject var orderData: OrderData
+    var orderData: OrderData
     @State var showingThankYou = false
     @State var showingReturnConfirmation = false
     
