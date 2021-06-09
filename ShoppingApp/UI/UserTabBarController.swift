@@ -103,22 +103,6 @@ class UserTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Notifications.addCartChangedObserver(self, selector: #selector(self.cartChanged(_:)))
-        
-        let launchScreen = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateViewController(identifier: "launchScreen")
-        self.addChild(launchScreen)
-        self.view.addSubview(launchScreen.view)
-        NSLayoutConstraint.activate([
-            launchScreen.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            launchScreen.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            launchScreen.view.topAnchor.constraint(equalTo: self.view.topAnchor),
-            launchScreen.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-        ])
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: {_ in
-            self.presentSignInViewController(completion: {
-                launchScreen.view.removeFromSuperview()
-                launchScreen.removeFromParent()
-            })
-        })
     }
     
     @objc func cartChanged(_ notification: Notification) {
@@ -132,23 +116,4 @@ class UserTabBarController: UITabBarController {
             self.cartNavigationController.tabBarItem.badgeValue = nil
         }
     }
-    
-    func presentSignInViewController(completion: (() -> Void)? = nil) {
-        let signInViewController = SignInViewController(presentingUserTabViewController: nil, anonymousUser: self.user as? AnonymousUser, tappedRegisterAction: { [ weak self ] in
-            self?.dismiss(animated: true, completion: {
-                self?.presentSignUpViewController()
-            })
-        })
-        self.present(signInViewController, animated: true, completion: completion)
-    }
-    
-    func presentSignUpViewController() {
-        let registerViewController = RegisterViewController(presentingUserTabViewController: nil, anonymousUser: self.user as? AnonymousUser, tappedSignInAction: { [ weak self ] in
-            self?.dismiss(animated: true, completion: {
-                self?.presentSignInViewController()
-            })
-        })
-        self.present(registerViewController, animated: true ,completion: nil)
-    }
-    
 }
