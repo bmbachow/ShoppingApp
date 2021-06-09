@@ -326,7 +326,7 @@
 		52D369FB266A8CA900A4236B /* ColorTopSafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTopSafeArea.swift; sourceTree = "<group>"; };
 		52D36A03266AABFB00A4236B /* BazaarNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BazaarNavigationController.swift; sourceTree = "<group>"; };
 		52D36A05266AB94D00A4236B /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
-		52D8F89526580BA700EF220A /* ShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		52D8F89526580BA700EF220A /* Bazaar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bazaar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D8F89826580BA700EF220A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52D8F8A226580BA700EF220A /* ShoppingApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoppingApp.xcdatamodel; sourceTree = "<group>"; };
 		52D8F8A726580BA900EF220A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -621,7 +621,7 @@
 		52D8F89626580BA700EF220A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				52D8F89526580BA700EF220A /* ShoppingApp.app */,
+				52D8F89526580BA700EF220A /* Bazaar.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -782,7 +782,7 @@
 			);
 			name = ShoppingApp;
 			productName = ShoppingApp;
-			productReference = 52D8F89526580BA700EF220A /* ShoppingApp.app */;
+			productReference = 52D8F89526580BA700EF220A /* Bazaar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1198,7 +1198,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.robertolieman.ShoppingApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Bazaar;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1219,7 +1219,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.robertolieman.ShoppingApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Bazaar;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
