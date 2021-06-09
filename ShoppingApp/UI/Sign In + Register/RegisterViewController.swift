@@ -71,7 +71,10 @@ class RegisterViewController: BaseViewController {
         }
         else{
             remoteAPI.postNewUser(firstName: firstName, lastName: lastName, email: email, phoneNumber: phone, password: pass, anonymousUser: self.anonymousUser, success: {user in
-                self.presentingUserTabViewController?.user = user
+                self.presentBasicAlert(title: "Registered successfully", message: "You will now be signed in to your account.", onDismiss: {
+                    self.presentingUserTabViewController?.user = user
+                    self.presentingViewController?.dismiss(animated: true, completion: nil)
+                })
             }) { error in
                 print(error.localizedDescription)
             }
