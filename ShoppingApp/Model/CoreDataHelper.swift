@@ -623,12 +623,14 @@ class CoreDataHelper: RemoteAPI {
         return accountPaymentMethod
     }
     
+
     //MARK: seedDatabaseIfEmpty()
     
     private func seedDatabaseIfEmpty() {
         guard !UserDefaultsHelper().databaseWasSeeded else {
             return
         }
+        
         
         let categories: [(name: String, image: UIImage)] = [
             (name: "Monitors", image: UIImage()),
@@ -770,11 +772,99 @@ class CoreDataHelper: RemoteAPI {
             self.postNewCategory(name: category.name, image: category.image, success: {_ in}, failure: {_ in})
         }
         
+        let names = [
+            "Brian",
+            "Brain",
+            "Kirtland",
+            "Kritland",
+            "Johnathan",
+            "Jonathan",
+            "Jonathon",
+            "Johnathon",
+            "Jonathin",
+            "Johnathin",
+            "Rob",
+            "Asha",
+            "Robert",
+            "Antonio",
+            "Daivion",
+            "Blaire",
+            "Edward",
+            "Peter",
+            "Yazid",
+            "Tommy",
+            "Dominik",
+            "Lea",
+            "Jared",
+            "Justin",
+            "Jason",
+            "Kangseok",
+            "Scott",
+            "Lam",
+            "Harsh",
+            "Jiminy",
+            "Realboy",
+            "Pluto",
+            "Bruno",
+            "Carl",
+            "Spencer",
+            "Whitney",
+            "Jennifer",
+            "Rose",
+            "Haley",
+            "Sloane",
+            "Angela",
+            "Frank",
+            "Jessica",
+            "Sarah",
+            "Rita",
+            "Lou",
+            "Monica",
+            "Erica",
+            "Tina",
+            "Sandra",
+            "Elizabeth",
+            "Joe",
+            "Chloe",
+            "Donald",
+            "Jon",
+            "John",
+            "Jawn",
+            "Gritty",
+            "Ryan",
+            "Greg",
+            "Leo",
+            "Kim",
+            "Jack",
+            "Will",
+            "Jasmine",
+            "Alladin",
+            "Yoda",
+            "Luke",
+            "Leia",
+            "R2D2",
+            "Frodo",
+            "Gandalf",
+            "Merry",
+            "Pippin",
+            "Luigi",
+            "Mario",
+            "Sonic",
+            "Peach"
+        ]
+        
+        for name in names {
+            let user = User(context: self.viewContext)
+            user.firstName = name
+        }
+        
         for productData in products {
             self.postNewProduct(name: productData.name, categoryName: productData.categoryName, price: productData.price, productDescription: productData.productDescription, image: productData.image, success: { product in
-                for _ in 0..<20 {
+                let request: NSFetchRequest<User> = User.fetchRequest()
+                let users = try! self.viewContext.fetch(request).shuffled().prefix(20)
+                for user in users {
                     let reviewData = self.generateRandomReviewData()
-                    self.postNewProductReview(replacingExistingReview: nil, user: nil, product: product, title: reviewData.title, body: reviewData.body, rating: reviewData.rating, success: {_ in}, failure: {_ in})
+                    self.postNewProductReview(replacingExistingReview: nil, user: user, product: product, title: reviewData.title, body: reviewData.body, rating: reviewData.rating, success: {_ in}, failure: {_ in})
                 }
             }, failure: {_ in})
         }
