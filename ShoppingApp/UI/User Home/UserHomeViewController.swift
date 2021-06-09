@@ -88,14 +88,24 @@ class UserHomeViewController: UserTabViewController, UICollectionViewDelegate, U
         self.refreshOrders()
     }
     
+    override func userChanged(_ notification: Notification) {
+        super.userChanged(notification)
+        guard notification.object as? UserTabViewController != self else {
+            return
+        }
+        self.wishListCollectionView?.reloadData()
+        self.tableView?.reloadData()
+    }
+    
     func refreshWishList() {
         self.tableView?.reloadData()
         self.wishListCollectionView?.reloadData()
+        self.tableView?.reloadData()
     }
     
     func refreshOrders() {
-        self.tableView?.reloadData()
         self.ordersCollectionView?.reloadData()
+        self.tableView?.reloadData()
     }
     
 

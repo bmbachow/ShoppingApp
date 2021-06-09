@@ -50,6 +50,7 @@ class UserHomeNotSignedInViewController: UserHomeViewController, UITableViewDele
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
