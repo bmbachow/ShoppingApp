@@ -56,6 +56,10 @@ class OrderDetailViewController: UserTabViewController, SwiftUICheckoutViewDeleg
         
     }
     
+    func continueShopping(_ order: Order) {
+        
+    }
+    
     //MARK: SwiftUIConfirmReturnDelegate
     
     func confirmReturn(amount: Double, onAlertDismissed: @escaping () -> Void) {

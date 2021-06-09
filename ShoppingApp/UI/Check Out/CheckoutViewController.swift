@@ -13,14 +13,16 @@ class CheckoutViewController: BaseViewController, SwiftUICheckoutViewDelegate {
     let orderData: OrderData
     let cancelAction: () -> Void
     let orderConfirmedAction: (Order) -> Void
+    let continueShoppingAction: (Order) -> Void
     
     var hostingController: UIHostingController<AnyView> = EmptyView().wrappedInUIHostingController()
     
     
-    init(user: User, cartItems: [CartItem], remoteAPI: RemoteAPI, cancelAction: @escaping () -> Void, confirmedOrderAction: @escaping (Order) -> Void) {
+    init(user: User, cartItems: [CartItem], remoteAPI: RemoteAPI, cancelAction: @escaping () -> Void, confirmedOrderAction: @escaping (Order) -> Void, continueShoppingAction: @escaping (Order) -> Void) {
         let orderData = OrderData(user: user)
         self.cancelAction = cancelAction
         self.orderConfirmedAction = confirmedOrderAction
+        self.continueShoppingAction = continueShoppingAction
         self.orderData = orderData
         super.init(nibName: nil, bundle: nil)
         self.hostingController = CheckoutNavigationView(remoteAPI: remoteAPI, orderData: self.orderData, delegate: self).wrappedInUIHostingController()
@@ -49,4 +51,7 @@ class CheckoutViewController: BaseViewController, SwiftUICheckoutViewDelegate {
         self.orderConfirmedAction(order)
     }
 
+    func continueShopping(_ order: Order) {
+        self.continueShoppingAction(order)
+    }
 }

@@ -129,6 +129,11 @@ class CartViewController: UserTabViewController, UITableViewDelegate, UITableVie
                                                         self?.refreshCart()
                                                         Notifications.postCartChanged(fromViewController: self)
                                                         self?.dismiss(animated: true, completion: nil)
+                                                      }, continueShoppingAction: { [weak self] order in
+                                                        self?.refreshCart()
+                                                        Notifications.postCartChanged(fromViewController: self)
+                                                        self?.tabBarController?.selectedIndex = 0
+                                                        self?.dismiss(animated: true, completion: nil)
                                                       })
         orderViewController.modalPresentationStyle = .fullScreen
         self.present(orderViewController, animated: true)

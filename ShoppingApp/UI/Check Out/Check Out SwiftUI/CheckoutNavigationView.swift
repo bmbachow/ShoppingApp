@@ -10,6 +10,7 @@ import SwiftUI
 protocol SwiftUICheckoutViewDelegate: AnyObject {
     func cancel()
     func orderConfirmed(_ order: Order)
+    func continueShopping(_ order: Order)
 }
 
 struct CheckoutNavigationView: View {
