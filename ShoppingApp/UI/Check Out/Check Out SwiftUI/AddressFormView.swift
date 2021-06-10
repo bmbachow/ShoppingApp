@@ -64,9 +64,8 @@ struct AddressFormView: View {
                             guard let initialChoiceRawValue = self.address?.state else {
                                 return nil
                             }
-                            let state = USState(rawValue: initialChoiceRawValue)
                             return USState(rawValue: initialChoiceRawValue)
-                        }())
+                        }(), noChoiceYetText: nil)
                     })
                     LabeledTextFieldSet(labelText: "Zip code", fields: [
                         (titleKey: "", text: self.$zipCodeText, textFieldType: .zipCode, inputIsValid: self.$zipCodeTextIsValid),

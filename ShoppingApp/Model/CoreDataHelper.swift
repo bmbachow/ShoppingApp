@@ -571,19 +571,20 @@ class CoreDataHelper: RemoteAPI {
 
     //MARK: PaymentMethod
     
-    func postNewCardPaymentMethod(user: User, nameOnCard: String, cardNumber: String, expirationMonth: Int, expirationYear: Int, isDefault: Bool, success: (CardPaymentMethod) -> Void, failure: (Error) -> Void) {
+    func postNewCardPaymentMethod(user: User, nameOnCard: String, cardNumber: String, cvvNumber: String, expirationMonth: Int, expirationYear: Int, isDefault: Bool, success: (CardPaymentMethod) -> Void, failure: (Error) -> Void) {
         do {
-            let cardPaymentMethod = try self.postNewCardPaymentMethodSync(user: user, nameOnCard: nameOnCard, cardNumber: cardNumber, expirationMonth: expirationMonth, expirationYear: expirationYear, isDefault: isDefault)
+            let cardPaymentMethod = try self.postNewCardPaymentMethodSync(user: user, nameOnCard: nameOnCard, cardNumber: cardNumber, cvvNumber: cvvNumber, expirationMonth: expirationMonth, expirationYear: expirationYear, isDefault: isDefault)
             success(cardPaymentMethod)
         } catch {
             failure(error)
         }
     }
-    private func postNewCardPaymentMethodSync(user: User, nameOnCard: String, cardNumber: String, expirationMonth: Int, expirationYear: Int, isDefault: Bool) throws -> CardPaymentMethod {
+    private func postNewCardPaymentMethodSync(user: User, nameOnCard: String, cardNumber: String, cvvNumber: String, expirationMonth: Int, expirationYear: Int, isDefault: Bool) throws -> CardPaymentMethod {
         let cardPaymentMethod = CardPaymentMethod(context: self.viewContext)
         cardPaymentMethod.user = user
         cardPaymentMethod.nameOnCard = nameOnCard
         cardPaymentMethod.cardNumber = cardNumber
+        cardPaymentMethod.cvvNumber = cvvNumber
         cardPaymentMethod.expirationMonth = Int16(expirationMonth)
         cardPaymentMethod.expirationYear = Int16(expirationYear)
         
@@ -874,7 +875,7 @@ class CoreDataHelper: RemoteAPI {
         
         user.setImageDataFromImage(UIImage(named: "jeff")!)
         
-        let paymentMethod = try! self.postNewCardPaymentMethodSync(user: user, nameOnCard: user.fullName, cardNumber: "773860154875542", expirationMonth: 3, expirationYear: 2024, isDefault: true)
+        let paymentMethod = try! self.postNewCardPaymentMethodSync(user: user, nameOnCard: user.fullName, cardNumber: "773860154875542", cvvNumber: "745", expirationMonth: 3, expirationYear: 2024, isDefault: true)
         
         let _ = try! self.postNewAccountPaymentMethodSync(user: user, nameOnAccount: "Jeff Bezos", accountNumber: "889367108842", routingNumber: "534824219", isDefault: false)
         

@@ -17,14 +17,16 @@ struct MenuTextField<ChoiceType: CustomStringConvertible>: View {
     
     let choices: [ChoiceType]
     
+    let noChoiceYetText: String?
+    
     var text: String {
         guard choiceIndex != -1 else {
-            return "--"
+            return self.noChoiceYetText ?? "--"
         }
         return self.choices[choiceIndex].description
     }
     
-    init(choices: [ChoiceType], choiceAction: @escaping (ChoiceType) -> Void, initialChoice: ChoiceType?, fontSize: CGFloat? = nil) {
+    init(choices: [ChoiceType], choiceAction: @escaping (ChoiceType) -> Void, initialChoice: ChoiceType?, noChoiceYetText: String?, fontSize: CGFloat? = nil) {
         let fontSize = fontSize ?? StandardTextField.standardFontSize
         self.choices = choices
         self.choiceAction = choiceAction
@@ -34,6 +36,7 @@ struct MenuTextField<ChoiceType: CustomStringConvertible>: View {
         } else {
             self.choiceIndex = -1
         }
+        self.noChoiceYetText = noChoiceYetText
     }
     
     var body: some View {

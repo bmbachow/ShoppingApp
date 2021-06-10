@@ -75,7 +75,7 @@ protocol RemoteAPI {
     
     //MARK: PaymentMethod
     
-    func postNewCardPaymentMethod(user: User, nameOnCard: String, cardNumber: String, expirationMonth: Int, expirationYear: Int, isDefault: Bool, success: (CardPaymentMethod) -> Void, failure: (Error) -> Void)
+    func postNewCardPaymentMethod(user: User, nameOnCard: String, cardNumber: String, cvvNumber: String, expirationMonth: Int, expirationYear: Int, isDefault: Bool, success: (CardPaymentMethod) -> Void, failure: (Error) -> Void)
     
     func postNewAccountPaymentMethod(user: User, nameOnAccount: String, accountNumber: String, routingNumber: String, isDefault: Bool, success: (AccountPaymentMethod) -> Void, failure: (Error) -> Void)
 

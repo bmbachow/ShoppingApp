@@ -42,7 +42,7 @@ struct NewAccountPaymentMethodView: View {
                 FormSpacer()
                 StandardToggle(isOn: self.$makeDefault, titleText: "Make this my default payment method")
                 FormSpacer()
-                StandardButton2(action: self.saveAndSelectAccountPaymentMethod, labelText: "Save account")
+                StandardButton1(action: self.saveAndSelectAccountPaymentMethod, labelText: "Save account")
                     .disabled(self.shouldDisableSaveButton)
             }
         }

@@ -16,13 +16,14 @@ struct StandardTextField: View {
         case bankACcountNumber
         case bankRoutingNumber
         case zipCode
+        case cvvNumber
         case none
         
         func filterRule(_ character: Character) -> Bool {
             switch self {
             case .anyInput, .none:
                 return true
-            case .cardNumber, .bankACcountNumber, .bankRoutingNumber, .zipCode:
+            case .cardNumber, .bankACcountNumber, .bankRoutingNumber, .zipCode, .cvvNumber:
                 return character.isNumber
             }
         }
@@ -48,6 +49,8 @@ struct StandardTextField: View {
                 return 5
             case .none:
                 return 0
+            case .cvvNumber:
+                return 3
             }
         }
         
@@ -65,6 +68,8 @@ struct StandardTextField: View {
                 return 5
             case .none:
                 return Int.max
+            case .cvvNumber:
+                return 4
             }
         }
     }

@@ -63,7 +63,7 @@ struct AddressCellView: View {
                     .frame(height: 12)
                 HStack {
                     Spacer()
-                    StandardButton1(action: self.navigationAction, labelText: "Select this address")
+                    StandardButton1(action: self.navigationAction, labelText: "Ship to this address")
                     Spacer()
                 }
                 Spacer()

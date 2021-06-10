@@ -21,6 +21,7 @@
     </entity>
     <entity name="CardPaymentMethod" representedClassName="CardPaymentMethod" parentEntity="PaymentMethod" syncable="YES">
         <attribute name="cardNumber" attributeType="String"/>
+        <attribute name="cvvNumber" optional="YES" attributeType="String"/>
         <attribute name="expirationMonth" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="expirationYear" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="nameOnCard" attributeType="String"/>
@@ -108,7 +109,7 @@
         <element name="AccountPaymentMethod" positionX="-6384.904418945312" positionY="-4415.627151489259" width="188.1484375" height="88"/>
         <element name="Address" positionX="-6181.883300781249" positionY="-4465.57096862793" width="128" height="178"/>
         <element name="AnonymousUser" positionX="-6918.14208984375" positionY="-4331.473083496094" width="128" height="58"/>
-        <element name="CardPaymentMethod" positionX="-6582.048095703124" positionY="-4390.820373535156" width="167.1560668945312" height="103"/>
+        <element name="CardPaymentMethod" positionX="-6582.862060546874" positionY="-4392.041198730469" width="167.1560668945312" height="118"/>
         <element name="CartItem" positionX="-6919.187255859376" positionY="-3985.691925048829" width="128" height="118"/>
         <element name="CashOnDeliveryPaymentMethod" positionX="-6400.574951171876" positionY="-4522.916381835938" width="228.9498291015625" height="43"/>
         <element name="Category" positionX="-6930.761474609374" positionY="-4106.0947265625" width="128" height="88"/>
