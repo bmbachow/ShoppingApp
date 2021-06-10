@@ -78,13 +78,14 @@ struct StandardTextField: View {
     static let standardFontSize: CGFloat = 17
     let fontSize: CGFloat
     
-    @State var inputIsValid = false
+    var inputIsValid: Binding<Bool>?
     
     let textFieldType: StandardTextField.TextFieldType    
-    init(_ titleKey: LocalizedStringKey, text: Binding<String>, textFieldType: TextFieldType, fontSize: CGFloat? = nil) {
+    init(_ titleKey: LocalizedStringKey, text: Binding<String>, inputIsValid: Binding<Bool>?, textFieldType: TextFieldType, fontSize: CGFloat? = nil) {
         let fontSize = fontSize ?? StandardTextField.standardFontSize
         self.titleKey = titleKey
         self.text = text
+        self.inputIsValid = inputIsValid
         self.textFieldType = textFieldType
         self.fontSize = fontSize
     }
@@ -104,12 +105,12 @@ struct StandardTextField: View {
                     
                     self.text.wrappedValue = String(self.text.wrappedValue.prefix(self.textFieldType.maximumLength))
                     
-                    self.inputIsValid = self.textFieldType.validationRule(self.text.wrappedValue)
+                    self.inputIsValid?.wrappedValue = self.textFieldType.validationRule(self.text.wrappedValue)
                 }
             if self.textFieldType != .none {
                 HStack {
                     Spacer()
-                    if self.inputIsValid {
+                    if self.inputIsValid?.wrappedValue == true{
                         self.validImage
                     } else {
                         self.invalidImage
@@ -120,7 +121,7 @@ struct StandardTextField: View {
             }
         }
         .onAppear(perform: {
-            self.inputIsValid = self.textFieldType.validationRule(self.text.wrappedValue)
+            self.inputIsValid?.wrappedValue = self.textFieldType.validationRule(self.text.wrappedValue)
         })
     }
 }

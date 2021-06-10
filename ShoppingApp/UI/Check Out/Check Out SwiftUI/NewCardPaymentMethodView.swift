@@ -15,16 +15,20 @@ struct NewCardPaymentMethodView: View {
     @State var nameOnCard: String = ""
     @State var cardNumber: String = ""
     
-    @State var expirationMonth: Int = 1
-    @State var expirationYear: Int = 2021
+    @State var expirationMonth: Int?
+    @State var expirationYear: Int?
     
     @State var makeDefault: Bool = false
     
     var shouldDisableSaveButton: Bool {
-        self.nameOnCard.isEmpty ||
-            self.cardNumber.isEmpty
+        !self.nameOnCardIsValid ||
+            !self.cardNumberIsValid ||
+            self.expirationMonth == nil ||
+            self.expirationYear == nil
     }
 
+    @State var nameOnCardIsValid = false
+    @State var cardNumberIsValid = false
     
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -33,18 +37,18 @@ struct NewCardPaymentMethodView: View {
         ScrollView {
             FormVStack {
                 LabeledTextFieldSet(labelText: "", fields: [
-                    (titleKey: "Name on card", text: self.$nameOnCard, textFieldType: .anyInput),
-                    (titleKey: "Card number", text: self.$cardNumber, textFieldType: .cardNumber)
+                    (titleKey: "Name on card", text: self.$nameOnCard, textFieldType: .anyInput, inputIsValid: self.$nameOnCardIsValid),
+                    (titleKey: "Card number", text: self.$cardNumber, textFieldType: .cardNumber, inputIsValid: self.$cardNumberIsValid)
                 ])
                 FormHStack {
                     LabeledVStack(labelText: "Expiration date") {
                         FormHStack {
-                            MenuTextField(choices:  Month.allCases, choiceAction: { choice in
+                            MenuTextField(choices: Month.allCases, choiceAction: { choice in
                                 self.expirationMonth = choice.rawValue
-                            })
+                            }, initialChoice: nil)
                             MenuTextField(choices:  DateConstants.years, choiceAction: { choice in
                                 self.expirationYear = choice
-                            })
+                            }, initialChoice: nil)
                         }
                     }
                 }
@@ -68,8 +72,8 @@ struct NewCardPaymentMethodView: View {
             user: self.orderData.user,
             nameOnCard: self.nameOnCard,
             cardNumber: self.cardNumber,
-            expirationMonth: self.expirationMonth,
-            expirationYear: self.expirationYear,
+            expirationMonth: self.expirationMonth!,
+            expirationYear: self.expirationYear!,
             isDefault: self.makeDefault,
             success: { cardPaymentMethod in
                 self.orderData.paymentMethod = cardPaymentMethod

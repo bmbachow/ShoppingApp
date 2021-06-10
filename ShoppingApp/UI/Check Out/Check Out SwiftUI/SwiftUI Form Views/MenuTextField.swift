@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MenuTextField<ChoiceType: CustomStringConvertible>: View {
     
-    @State private var choiceIndex: Int? = nil
+    @State private var choiceIndex: Int
+    
     let choiceAction: (ChoiceType) -> Void
     
     let fontSize: CGFloat
@@ -17,17 +18,22 @@ struct MenuTextField<ChoiceType: CustomStringConvertible>: View {
     let choices: [ChoiceType]
     
     var text: String {
-        guard let choiceIndex = self.choiceIndex else {
+        guard choiceIndex != -1 else {
             return "--"
         }
         return self.choices[choiceIndex].description
     }
     
-    init(choices: [ChoiceType], choiceAction: @escaping (ChoiceType) -> Void, fontSize: CGFloat? = nil) {
+    init(choices: [ChoiceType], choiceAction: @escaping (ChoiceType) -> Void, initialChoice: ChoiceType?, fontSize: CGFloat? = nil) {
         let fontSize = fontSize ?? StandardTextField.standardFontSize
         self.choices = choices
         self.choiceAction = choiceAction
         self.fontSize = fontSize
+        if let index = choices.firstIndex(where: {$0.description == initialChoice?.description}) {
+            self.choiceIndex = index
+        } else {
+            self.choiceIndex = -1
+        }
     }
     
     var body: some View {

@@ -19,10 +19,14 @@ struct NewAccountPaymentMethodView: View {
     @State var makeDefault: Bool = false
     
     var shouldDisableSaveButton: Bool {
-        self.nameOnAccount.isEmpty ||
-            self.accountNumber.isEmpty ||
-            self.routingNumber.isEmpty 
+        !self.nameOnAccountIsValid ||
+            !self.accountNumberIsValid ||
+            !self.routingNumberIsValid
     }
+    
+    @State var nameOnAccountIsValid = false
+    @State var accountNumberIsValid = false
+    @State var routingNumberIsValid = false
 
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -31,9 +35,9 @@ struct NewAccountPaymentMethodView: View {
         ScrollView {
             FormVStack {
                 LabeledTextFieldSet(labelText: "", fields: [
-                    (titleKey: "Name on card", text: self.$nameOnAccount, textFieldType: .anyInput),
-                    (titleKey: "Routing number", text: self.$routingNumber, textFieldType: .bankRoutingNumber),
-                    (titleKey: "Account number", text: self.$accountNumber, textFieldType: .bankACcountNumber)
+                    (titleKey: "Name on card", text: self.$nameOnAccount, textFieldType: .anyInput, inputIsValid: self.$nameOnAccountIsValid),
+                    (titleKey: "Routing number", text: self.$routingNumber, textFieldType: .bankRoutingNumber, inputIsValid: self.$routingNumberIsValid),
+                    (titleKey: "Account number", text: self.$accountNumber, textFieldType: .bankACcountNumber, inputIsValid: self.$accountNumberIsValid)
                 ])
                 FormSpacer()
                 StandardToggle(isOn: self.$makeDefault, titleText: "Make this my default payment method")

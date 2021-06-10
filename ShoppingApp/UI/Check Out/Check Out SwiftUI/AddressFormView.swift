@@ -23,12 +23,17 @@ struct AddressFormView: View {
     var address: Address?
     
     var shouldDisableSaveButton: Bool {
-        self.nameText.isEmpty ||
-            self.streetAddressText.isEmpty ||
-            self.cityText.isEmpty ||
+        !self.nameTextIsValid ||
+            !self.streetAddressTextIsValid ||
+            !self.cityTextIsValid ||
             self.stateText.isEmpty ||
-            self.zipCodeText.isEmpty
+            !self.zipCodeTextIsValid
     }
+    
+    @State var nameTextIsValid = false
+    @State var streetAddressTextIsValid = false
+    @State var cityTextIsValid = false
+    @State var zipCodeTextIsValid = false
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -42,23 +47,29 @@ struct AddressFormView: View {
         ScrollView {
             FormVStack {
                 LabeledTextFieldSet(labelText: "Full name", fields: [
-                    (titleKey: "", text: self.$nameText, textFieldType: .anyInput),
+                    (titleKey: "", text: self.$nameText, textFieldType: .anyInput, inputIsValid: self.$nameTextIsValid),
                 ])
                 LabeledTextFieldSet(labelText: "Address", fields: [
-                    (titleKey: "Street address", text: self.$streetAddressText, textFieldType: .anyInput),
-                    (titleKey: "Street address line 2 (optional)", text: self.$streetAddress2Text, textFieldType: .none)
+                    (titleKey: "Street address", text: self.$streetAddressText, textFieldType: .anyInput, inputIsValid: self.$streetAddressTextIsValid),
+                    (titleKey: "Street address line 2 (optional)", text: self.$streetAddress2Text, textFieldType: .none, inputIsValid: nil)
                 ])
                 LabeledTextFieldSet(labelText: "City", fields: [
-                    (titleKey: "", text: self.$cityText, textFieldType: .anyInput),
+                    (titleKey: "", text: self.$cityText, textFieldType: .anyInput, inputIsValid: self.$cityTextIsValid),
                 ])
                 FormHStack {
                     LabeledVStack(labelText: "State", {
                         MenuTextField(choices: USState.allCases, choiceAction: { usState in
                             self.stateText = usState.rawValue
-                        })
+                        }, initialChoice: { () -> USState? in
+                            guard let initialChoiceRawValue = self.address?.state else {
+                                return nil
+                            }
+                            let state = USState(rawValue: initialChoiceRawValue)
+                            return USState(rawValue: initialChoiceRawValue)
+                        }())
                     })
                     LabeledTextFieldSet(labelText: "Zip code", fields: [
-                        (titleKey: "", text: self.$zipCodeText, textFieldType: .zipCode),
+                        (titleKey: "", text: self.$zipCodeText, textFieldType: .zipCode, inputIsValid: self.$zipCodeTextIsValid),
                     ])
                 }
                 //FormSpacer()
@@ -75,7 +86,7 @@ struct AddressFormView: View {
             }
         }
         //.modifier(ColorTopSafeArea(.white))
-        .navigationTitle(Text("New address"))
+        .navigationTitle(Text(self.address == nil ? "New address" : "Edit address"))
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: {
             if let address = self.address {
