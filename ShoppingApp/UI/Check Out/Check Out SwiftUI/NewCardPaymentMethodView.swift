@@ -24,6 +24,8 @@ struct NewCardPaymentMethodView: View {
         self.nameOnCard.isEmpty ||
             self.cardNumber.isEmpty
     }
+
+    
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -31,8 +33,8 @@ struct NewCardPaymentMethodView: View {
         ScrollView {
             FormVStack {
                 LabeledTextFieldSet(labelText: "", fields: [
-                    (titleKey: "Name on card", text: self.$nameOnCard),
-                    (titleKey: "Card number", text: self.$cardNumber)
+                    (titleKey: "Name on card", text: self.$nameOnCard, textFieldType: .anyInput),
+                    (titleKey: "Card number", text: self.$cardNumber, textFieldType: .cardNumber)
                 ])
                 FormHStack {
                     LabeledVStack(labelText: "Expiration date") {

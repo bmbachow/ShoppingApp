@@ -31,9 +31,9 @@ struct NewAccountPaymentMethodView: View {
         ScrollView {
             FormVStack {
                 LabeledTextFieldSet(labelText: "", fields: [
-                    (titleKey: "Name on card", text: self.$nameOnAccount),
-                    (titleKey: "Routing number", text: self.$routingNumber),
-                    (titleKey: "Account number", text: self.$accountNumber)
+                    (titleKey: "Name on card", text: self.$nameOnAccount, textFieldType: .anyInput),
+                    (titleKey: "Routing number", text: self.$routingNumber, textFieldType: .bankRoutingNumber),
+                    (titleKey: "Account number", text: self.$accountNumber, textFieldType: .bankACcountNumber)
                 ])
                 FormSpacer()
                 StandardToggle(isOn: self.$makeDefault, titleText: "Make this my default payment method")

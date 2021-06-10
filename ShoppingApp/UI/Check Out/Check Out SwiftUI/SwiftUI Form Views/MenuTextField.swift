@@ -9,12 +9,19 @@ import SwiftUI
 
 struct MenuTextField<ChoiceType: CustomStringConvertible>: View {
     
-    @State private var choiceIndex: Int = 0
+    @State private var choiceIndex: Int? = nil
     let choiceAction: (ChoiceType) -> Void
     
     let fontSize: CGFloat
     
     let choices: [ChoiceType]
+    
+    var text: String {
+        guard let choiceIndex = self.choiceIndex else {
+            return "--"
+        }
+        return self.choices[choiceIndex].description
+    }
     
     init(choices: [ChoiceType], choiceAction: @escaping (ChoiceType) -> Void, fontSize: CGFloat? = nil) {
         let fontSize = fontSize ?? StandardTextField.standardFontSize
@@ -30,7 +37,7 @@ struct MenuTextField<ChoiceType: CustomStringConvertible>: View {
                 .frame(height: self.fontSize + 24)
                 .foregroundColor(.white)
             HStack {
-                Text(self.choices[self.choiceIndex].description)
+                Text(self.text)
                     .font(Font(UIConstants.standardFont(size: self.fontSize, style: .regular)))
                     .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
                 Spacer()

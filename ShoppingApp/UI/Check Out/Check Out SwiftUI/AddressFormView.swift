@@ -42,14 +42,14 @@ struct AddressFormView: View {
         ScrollView {
             FormVStack {
                 LabeledTextFieldSet(labelText: "Full name", fields: [
-                    (titleKey: "", text: self.$nameText),
+                    (titleKey: "", text: self.$nameText, textFieldType: .anyInput),
                 ])
                 LabeledTextFieldSet(labelText: "Address", fields: [
-                    (titleKey: "Street address", text: self.$streetAddressText),
-                    (titleKey: "Street address line 2 (optional)", text: self.$streetAddress2Text)
+                    (titleKey: "Street address", text: self.$streetAddressText, textFieldType: .anyInput),
+                    (titleKey: "Street address line 2 (optional)", text: self.$streetAddress2Text, textFieldType: .none)
                 ])
                 LabeledTextFieldSet(labelText: "City", fields: [
-                    (titleKey: "", text: self.$cityText),
+                    (titleKey: "", text: self.$cityText, textFieldType: .anyInput),
                 ])
                 FormHStack {
                     LabeledVStack(labelText: "State", {
@@ -58,7 +58,7 @@ struct AddressFormView: View {
                         })
                     })
                     LabeledTextFieldSet(labelText: "Zip code", fields: [
-                        (titleKey: "", text: self.$zipCodeText),
+                        (titleKey: "", text: self.$zipCodeText, textFieldType: .zipCode),
                     ])
                 }
                 //FormSpacer()
@@ -95,12 +95,22 @@ struct AddressFormView: View {
     func saveAndSelectAddress() {
         
         if let address = self.address {
-            self.remoteAPI.patchAddress(address: address, fullName: self.nameText, streetAddress: self.streetAddressText, streetAddress2: self.streetAddress2Text, city: self.cityText, state: self.stateText, zipCode: self.zipCodeText, isDefault: self.makeDefault, success: {_ in
-                self.orderData.address = address
-                self.presentationMode.wrappedValue.dismiss()
-            }, failure: { error in
-                print(error.localizedDescription)
-            })
+            self.remoteAPI.patchAddress(
+                address: address,
+                fullName: self.nameText,
+                streetAddress: self.streetAddressText,
+                streetAddress2: self.streetAddress2Text.isEmpty
+                                            ? nil : self.streetAddress2Text,
+                city: self.cityText,
+                state: self.stateText,
+                zipCode: self.zipCodeText,
+                isDefault: self.makeDefault,
+                success: {_ in
+                    self.orderData.address = address
+                    self.presentationMode.wrappedValue.dismiss()
+                }, failure: { error in
+                    print(error.localizedDescription)
+                })
         } else {
             self.remoteAPI.postNewAddress(
                 user: self.orderData.user,

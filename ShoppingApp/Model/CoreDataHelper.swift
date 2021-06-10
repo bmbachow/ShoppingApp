@@ -540,9 +540,9 @@ class CoreDataHelper: RemoteAPI {
         if let streetAddress = streetAddress {
             address.streetAddress = streetAddress
         }
-        if let streetAddress2 = streetAddress2 {
-            address.streetAddress2 = streetAddress2
-        }
+        
+        address.streetAddress2 = streetAddress2
+        
         if let city = city {
             address.city = city
         }
